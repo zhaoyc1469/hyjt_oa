@@ -261,4 +261,7 @@ public interface HomeService {
 
     @POST("/APIWorkingConference/Delete")
     Observable<BaseJson<Object>> skipReportDelete(@Body CEmailSendReqs cEmailSendReqs);
+
+    @POST("/APIWorkingConsult/GetData")
+    Observable<BaseJson<Object>> SLConsultList(@Body CEmailSendReqs cEmailSendReqs);
 }
