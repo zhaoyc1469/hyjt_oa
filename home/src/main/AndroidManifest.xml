@@ -85,7 +85,10 @@
             android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
         <activity android:name=".mvp.ui.activity.SkipReportListActivity" />
         <activity android:name=".mvp.ui.activity.SkipReportDetailActivity" />
-        <activity android:name=".mvp.ui.activity.SkipReportCreateActivity"></activity>
+        <activity android:name=".mvp.ui.activity.SkipReportCreateActivity" />
+        <activity android:name=".mvp.ui.activity.SLConsultListActivity" />
+        <activity android:name=".mvp.ui.activity.SLConsultCreateActivity" />
+        <activity android:name=".mvp.ui.activity.SLConsultEditActivity"></activity>
     </application>
 
 </manifest>
