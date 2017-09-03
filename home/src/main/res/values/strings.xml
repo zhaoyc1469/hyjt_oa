@@ -1,0 +1,34 @@
+<resources>
+    <string name="home_app_name">Home</string>
+    <string name="home_work_name">辽宁环宇综合管理平台</string>
+    <string name="home_base_url">http://test.cemtn.cn/</string>
+
+    <string name="home_clear">清空</string>
+    <string name="home_add">添加</string>
+
+    <string name="home_organic_wait_trouble">问题</string>
+
+    <string name="home_main_work">工作</string>
+    <string name="home_main_message">信息</string>
+    <string name="home_main_linkman">联系人</string>
+    <string name="home_main_mine">我的</string>
+
+
+    <string name="home_mlist_new_meeting">新增会议纪要</string>
+    <string name="home_meeting_save">保   存</string>
+
+    <string name="home_meeting_issue">会议议题</string>
+    <string name="home_meeting_site">会议地点</string>
+    <string name="home_meeting_person">与会人员</string>
+    <string name="home_meeting_compere">主持人</string>
+    <string name="home_meeting_content">会议内容</string>
+    <string name="home_meeting_time">会议时间</string>
+    <string name="home_meeting_department">参会部门</string>
+    <string name="home_meeting_recorder">记录人</string>
+    <string name="home_meeting_picture">图片</string>
+    <string name="home_meeting_accessory">附件</string>
+    <string name="home_meeting_supervisor">督办人</string>
+    <string name="home_meeting_executor">执行人</string>
+
+
+</resources>

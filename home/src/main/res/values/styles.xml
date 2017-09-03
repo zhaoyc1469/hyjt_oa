@@ -1,0 +1,102 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="home_ll_org_top_btn">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="home_rl_org_top_btn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">49dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:background">@drawable/home_bg_module</item>
+    </style>
+
+    <style name="home_tv_org_top_btn_name">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textColor">@color/home_common_000000</item>
+    </style>
+
+    <style name="home_tv_org_top_btn_notice_nub">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textColor">@color/home_common_000000</item>
+    </style>
+
+    <style name="home_tv_new_meeting">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:textColor">@color/home_common_000000</item>
+    </style>
+
+    <style name="home_edt_new_meeting">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:minWidth">140dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">89dp</item>
+        <item name="android:layout_marginRight">14dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/home_common_434242</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColorHint">@color/home_common_9CA0A4</item>
+    </style>
+
+
+    <style name="home_popwindow_anim_style">
+        <item name="android:windowEnterAnimation">@anim/home_anim_enter_bottom</item>
+        <!-- 指定显示的动画xml -->
+        <item name="android:windowExitAnimation">@anim/home_anim_exit_bottom</item>
+        <!-- 指定消失的动画xml -->
+    </style>
+
+    <style name="home_meeting_line">
+        <item name="android:layout_marginStart">86dp</item>
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#000</item>
+    </style>
+
+
+    <style name="home_edt_create_staff">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:minWidth">140dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">92dp</item>
+        <item name="android:layout_marginRight">14dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/home_common_434242</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColorHint">@color/home_common_9CA0A4</item>
+    </style>
+
+    <style name="home_spinner_staff">        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">92dp</item>
+        <item name="android:layout_marginTop">1dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:textColor">@color/home_common_000000</item>
+    </style>
+
+</resources>

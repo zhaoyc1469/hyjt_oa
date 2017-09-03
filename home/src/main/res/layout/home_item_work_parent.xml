@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/home_common_FFFFFF">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/home_common_9CA0A4"/>
+
+    <TextView
+        android:id="@+id/tv_expend_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:text="业务管理"
+        android:textColor="@color/home_common_000000"
+        android:textSize="@dimen/home_common_14sp" />
+
+    <TextView
+        android:id="@+id/tv_expend_more"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:text="展开"
+        android:textColor="@color/home_common_000000"
+        android:textSize="@dimen/home_common_12sp" />
+
+    <LinearLayout
+        android:id="@+id/rl_iclud_org_line_1"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:layout_below="@id/tv_expend_name"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_parent_1"
+            style="@style/home_ll_org_top_btn">
+
+            <RelativeLayout
+                android:id="@+id/rl_parent_1"
+                style="@style/home_rl_org_top_btn">
+
+                <ImageView
+                    android:id="@+id/iv_parent_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_parent_1"
+                style="@style/home_tv_org_top_btn_name"
+                android:text="@string/app_name" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_parent_2"
+            style="@style/home_ll_org_top_btn">
+
+            <RelativeLayout
+                android:id="@+id/rl_parent_2"
+                style="@style/home_rl_org_top_btn">
+
+                <ImageView
+                    android:id="@+id/iv_parent_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_parent_2"
+                style="@style/home_tv_org_top_btn_name"
+                android:text="@string/app_name" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_parent_3"
+            style="@style/home_ll_org_top_btn">
+
+            <RelativeLayout
+                android:id="@+id/rl_parent_3"
+                style="@style/home_rl_org_top_btn">
+
+                <ImageView
+                    android:id="@+id/iv_parent_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_parent_3"
+                style="@style/home_tv_org_top_btn_name"
+                android:text="@string/app_name" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_parent_4"
+            style="@style/home_ll_org_top_btn">
+
+            <RelativeLayout
+                android:id="@+id/rl_parent_4"
+                style="@style/home_rl_org_top_btn">
+
+                <ImageView
+                    android:id="@+id/iv_parent_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_parent_4"
+                style="@style/home_tv_org_top_btn_name"
+                android:text="@string/app_name" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_parent_5"
+            style="@style/home_ll_org_top_btn">
+
+            <RelativeLayout
+                android:id="@+id/rl_parent_5"
+                style="@style/home_rl_org_top_btn">
+
+                <ImageView
+                    android:id="@+id/iv_parent_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_parent_5"
+                style="@style/home_tv_org_top_btn_name"
+                android:text="@string/app_name" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/parent_dashed_view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/rl_iclud_org_line_1"
+        android:layerType="software" />
+
+</RelativeLayout>

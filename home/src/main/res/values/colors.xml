@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="home_colorPrimary">#3F51B5</color>
+    <color name="home_colorPrimaryDark">#303F9F</color>
+    <color name="home_colorAccent">#FF4081</color>
+
+
+    <color name="home_common_1277C7">#1277C7</color>
+    <color name="home_common_FF2626">#FF2626</color>
+    <color name="home_common_FF5C36">#FF5C36</color>
+    <color name="home_common_0E8CFF">#0E8CFF</color>
+    <color name="home_common_0D8CFF">#0D8CFF</color>
+    <color name="home_common_000000">#000000</color>
+    <color name="home_common_434242">#434242</color>
+    <color name="home_common_FFFFFF">#FFFFFF</color>
+    <color name="home_common_9CA0A4">#9CA0A4</color>
+    <color name="home_common_D8DCDF">#D8DCDF</color>
+    <color name="home_common_E3E3E3">#E3E3E3</color>
+    <color name="home_common_1077C5">#1077C5</color>
+    <color name="home_common_F8F8F8">#F8F8F8</color>
+
+
+    <color name="home_common_00BAC5">#00BAC5</color>
+    <color name="home_common_5ECDD4">#5ECDD4</color>
+</resources>

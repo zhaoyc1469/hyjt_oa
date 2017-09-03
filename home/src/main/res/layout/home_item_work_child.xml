@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/home_common_FFFFFF"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_child_1"
+            style="@style/home_ll_org_top_btn">
+
+            <RelativeLayout
+                android:id="@+id/rl_child_1"
+                style="@style/home_rl_org_top_btn">
+
+                <ImageView
+                    android:id="@+id/iv_child_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_child_1"
+                style="@style/home_tv_org_top_btn_name" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_child_2"
+            style="@style/home_ll_org_top_btn">
+
+            <RelativeLayout
+                android:id="@+id/rl_child_2"
+                style="@style/home_rl_org_top_btn">
+
+                <ImageView
+                    android:id="@+id/iv_child_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_child_2"
+                style="@style/home_tv_org_top_btn_name" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_child_3"
+            style="@style/home_ll_org_top_btn">
+
+            <RelativeLayout
+                android:id="@+id/rl_child_3"
+                style="@style/home_rl_org_top_btn">
+
+                <ImageView
+                    android:id="@+id/iv_child_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_child_3"
+                style="@style/home_tv_org_top_btn_name" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_child_4"
+            style="@style/home_ll_org_top_btn">
+
+            <RelativeLayout
+                android:id="@+id/rl_child_4"
+                style="@style/home_rl_org_top_btn">
+
+                <ImageView
+                    android:id="@+id/iv_child_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_child_4"
+                style="@style/home_tv_org_top_btn_name" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_child_5"
+            style="@style/home_ll_org_top_btn">
+
+
+            <RelativeLayout
+                android:id="@+id/rl_child_5"
+                style="@style/home_rl_org_top_btn">
+
+                <ImageView
+                    android:id="@+id/iv_child_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_child_5"
+                style="@style/home_tv_org_top_btn_name" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layerType="software" />
+</LinearLayout>

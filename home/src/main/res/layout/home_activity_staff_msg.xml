@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_edit_staff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_common_F8F8F8">
+
+    <include
+        android:id="@+id/icld_edit_staff"
+        layout="@layout/home_include_back_title" />
+
+    <LinearLayout
+        android:id="@+id/ll_bottom_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_edit_staff"
+            android:layout_width="110dp"
+            android:layout_height="29dp"
+            android:background="@drawable/home_bg_new_meeting"
+            android:text="@string/home_meeting_save" />
+
+        <Button
+            android:id="@+id/btn_del_staff"
+            android:layout_width="110dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/home_bg_new_meeting"
+            android:text="删除" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/slv_staff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_bottom_btn"
+        android:layout_below="@id/icld_edit_staff">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="部门" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_sel_dept"
+                    style="@style/home_edt_create_staff"
+                    android:focusable="false"
+                    android:hint="选择部门" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="姓名" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_name"
+                    style="@style/home_edt_create_staff"
+                    android:hint="姓名" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="员工工号" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_staff_id"
+                    android:focusable="false"
+                    style="@style/home_edt_create_staff" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="性别" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_sex"
+                    style="@style/home_edt_create_staff"
+                    android:focusable="false"
+                    android:hint="请选择" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="出生日期" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_birthday"
+                    style="@style/home_edt_create_staff"
+                    android:focusable="false"
+                    android:hint="出生日期" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="民族" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_nation"
+                    style="@style/home_edt_create_staff"
+                    android:focusable="false"
+                    android:hint="请选择" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="政治面貌" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_politics_status"
+                    style="@style/home_edt_create_staff"
+                    android:focusable="false"
+                    android:hint="请选择" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="婚育状况" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_marriage_status"
+                    style="@style/home_edt_create_staff"
+                    android:focusable="false"
+                    android:hint="请选择" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="户口所在地" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="91dp"
+                    android:background="#000" />
+
+                <EditText
+                    android:id="@+id/edt_census_register"
+                    style="@style/home_edt_create_staff"
+                    android:layout_marginStart="97dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="籍贯" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_native_place"
+                    style="@style/home_edt_create_staff" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="现居住地" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_current_address"
+                    style="@style/home_edt_create_staff" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="身份证号" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_identity_card"
+                    style="@style/home_edt_create_staff" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="外语等级" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_foreign_language"
+                    style="@style/home_edt_create_staff"
+                    android:focusable="false"
+                    android:hint="请选择" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="计算机等级" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="91dp"
+                    android:background="#000" />
+
+                <EditText
+                    android:id="@+id/edt_computer_level"
+                    style="@style/home_edt_create_staff"
+                    android:layout_marginStart="97dp"
+                    android:focusable="false"
+                    android:hint="请选择" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="最高学历" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_most_education"
+                    style="@style/home_edt_create_staff"
+                    android:focusable="false"
+                    android:hint="请选择" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="职务" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_duty"
+                    style="@style/home_edt_create_staff" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="职位" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_post"
+                    style="@style/home_edt_create_staff"
+                    android:focusable="false"
+                    android:hint="请选择" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="职称" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_post_title"
+                    style="@style/home_edt_create_staff"
+                    android:hint="请选择" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="入职时间" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_entry_time"
+                    style="@style/home_edt_create_staff"
+                    android:focusable="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="职工状态" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_staff_status"
+                    style="@style/home_edt_create_staff"
+                    android:focusable="false"
+                    android:hint="请选择" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="是否住宿" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_is_live"
+                    style="@style/home_edt_create_staff"
+                    android:focusable="false"
+                    android:hint="请选择" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="档案所在地" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="91dp"
+                    android:background="#000" />
+
+                <EditText
+                    android:id="@+id/edt_record_address"
+                    style="@style/home_edt_create_staff"
+                    android:layout_marginStart="97dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="签约时间" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_sign_time"
+                    style="@style/home_edt_create_staff"
+                    android:focusable="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="到约时间" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_expire_time"
+                    style="@style/home_edt_create_staff"
+                    android:focusable="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="是否参保" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_is_insured"
+                    style="@style/home_edt_create_staff"
+                    android:focusable="false"
+                    android:hint="请选择" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="保险所在地" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="91dp"
+                    android:background="#000" />
+
+                <EditText
+                    android:id="@+id/edt_insured_address"
+                    style="@style/home_edt_create_staff"
+                    android:layout_marginStart="97dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="手机号码" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_phone_num"
+                    style="@style/home_edt_create_staff" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="手机小号" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_other_phonenum"
+                    style="@style/home_edt_create_staff" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="办公小号" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_other_offnum"
+                    style="@style/home_edt_create_staff" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="QQ" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_qq"
+                    style="@style/home_edt_create_staff" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="邮箱" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_mailbox"
+                    style="@style/home_edt_create_staff" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="备注" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_remark"
+                    style="@style/home_edt_create_staff" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="权利 责任 义务" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="116dp"
+                    android:background="#000" />
+
+
+                <EditText
+                    android:id="@+id/edt_rights_duty"
+                    android:layout_marginStart="120dp"
+                    style="@style/home_edt_create_staff" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="职责范围" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_responsibility"
+                    style="@style/home_edt_create_staff" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="家庭状况" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_family_state"
+                    style="@style/home_edt_create_staff" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="离职时间" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_dimission_time"
+                    style="@style/home_edt_create_staff"
+                    android:focusable="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="添加教育经历" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="116dp"
+                    android:background="#000" />
+
+                <Button
+                    android:id="@+id/btn_add_education"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/home_add"
+                    android:textColor="@color/home_common_FFFFFF"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="添加工作经历" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="116dp"
+                    android:background="#000" />
+
+                <Button
+                    android:id="@+id/btn_add_workexp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/home_add"
+                    android:textColor="@color/home_common_FFFFFF"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_edu_pack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_work_exp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_staf_file"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:layout_width='match_parent'
+                    android:layout_height='wrap_content'
+                    android:gravity='center_horizontal'
+                    android:text="个人附件"
+                    android:textColor='@color/home_common_000000'
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recy_staff_pic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <LinearLayout
+                android:id="@+id/ll_file_pack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

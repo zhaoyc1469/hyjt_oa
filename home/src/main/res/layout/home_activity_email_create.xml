@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_create_email"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_common_F8F8F8">
+
+    <include
+        android:id="@+id/icld_email_detail"
+        layout="@layout/home_include_back_title" />
+
+    <LinearLayout
+        android:id="@+id/ll_bottom_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
+        android:layout_marginTop="3dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="110dp"
+            android:layout_height="29dp"
+            android:background="@drawable/home_bg_new_meeting"
+            android:text="发送" />
+    </LinearLayout>
+
+
+    <ScrollView
+        android:id="@+id/slv_email"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_bottom_btn"
+        android:layout_below="@id/icld_email_detail">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="29dp"
+                    android:text="主题:"
+                    android:textColor="@color/home_common_000000"
+                    android:textSize="16sp" />
+
+
+                <EditText
+                    android:id="@+id/tv_theme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="30dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="22dp"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:background="@drawable/home_bg_white_table"
+                    android:textColor="@color/home_common_000000"
+                    android:textSize="16sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="29dp"
+                    android:background="@null"
+                    android:text="收件人:"
+                    android:textColor="@color/home_common_000000"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/tv_receiver"
+                    android:layout_width="match_parent"
+                    android:layout_marginEnd="22dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="30dp"
+                    android:layout_marginStart="6dp"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:background="@drawable/home_bg_white_table"
+                    android:textColor="@color/home_common_000000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="29dp"-->
+            <!--android:textSize="16sp"-->
+            <!--android:text="发送人:"-->
+            <!--android:textColor="@color/home_common_000000" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/tv_sender"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="6dp"-->
+            <!--android:textSize="16sp"-->
+            <!--android:textColor="@color/home_common_000000" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="29dp"-->
+            <!--android:textSize="16sp"-->
+            <!--android:text="发送时间:"-->
+            <!--android:textColor="@color/home_common_000000" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/tv_send_time"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="6dp"-->
+            <!--android:textSize="16sp"-->
+            <!--android:textColor="@color/home_common_000000" />-->
+
+            <!--</LinearLayout>-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="21dp"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <EditText
+                    android:id="@+id/edt_cm_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:minHeight="290dp"
+                    android:textColor="@color/home_common_000000"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_add_file"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="附件列表"
+                    android:textColor="@color/home_common_000000"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_add_file"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
+                    android:text="添加" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_file_pack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="14dp"
+                android:layout_marginStart="14dp"
+                android:orientation="vertical">
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

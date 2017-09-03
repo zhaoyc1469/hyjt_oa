@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="home_AddPicView">
+        <attr name="home_numColumns" format="integer"/>
+    </declare-styleable>
+</resources>

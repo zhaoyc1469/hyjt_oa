@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_common_FFFFFF"
+    tools:context="com.hyjt.client.mvp.ui.activity.HomeActivity">
+
+
+    <com.hyjt.client.mvp.ui.view.BottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"/>
+
+
+    <!--<FrameLayout-->
+        <!--android:id="@+id/main_frame"-->
+        <!--android:layout_above="@id/bottomBar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--/>-->
+
+    <FrameLayout
+        android:id="@+id/main_frame"
+        android:layout_marginBottom="48.5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+</RelativeLayout>

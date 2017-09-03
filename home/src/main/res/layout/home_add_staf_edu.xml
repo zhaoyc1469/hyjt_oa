@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp">
+
+        <TextView
+            android:layout_width='wrap_content'
+            android:layout_height='match_parent'
+            android:layout_marginLeft='16dp'
+            android:layout_centerInParent='true'
+            android:text="教育经历"
+            android:textSize="20sp"
+            android:textColor='@color/home_common_000000' />
+
+
+        <Button
+            android:id="@+id/btn_del_edu"
+            android:layout_width='70dp'
+            android:layout_height='wrap_content'
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="删除"
+            android:textSize="12sp"
+            android:textColor='@color/home_common_FFFFFF' />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="学校名称" />
+
+        <View
+            style="@style/home_meeting_line"/>
+        <EditText
+            android:id="@+id/edt_school"
+            style="@style/home_edt_new_meeting"
+            android:hint="请输入学校名称" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="毕业日期" />
+
+        <View
+            style="@style/home_meeting_line"/>
+        <EditText
+            android:id="@+id/edt_graduation_time"
+            style="@style/home_edt_new_meeting"
+            android:focusable="false"
+            android:hint="请选择" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="专业" />
+
+        <View
+            style="@style/home_meeting_line"/>
+        <EditText
+            android:id="@+id/edt_major"
+            style="@style/home_edt_new_meeting"
+            android:hint="请填写专业" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="学历学位" />
+
+        <View
+            style="@style/home_meeting_line"/>
+        <EditText
+            android:id="@+id/edt_education"
+            style="@style/home_edt_new_meeting"
+            android:hint="请填写学历学位" />
+    </RelativeLayout>
+
+
+
+</LinearLayout>

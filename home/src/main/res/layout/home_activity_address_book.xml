@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_common_F8F8F8"
+    android:id="@+id/rl_address_book">
+
+    <include
+        android:id="@+id/icld_address_book"
+        layout="@layout/home_include_back_title" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_address_book"
+        android:layout_below="@id/icld_address_book"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="19dp">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy_address_book"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+</RelativeLayout>

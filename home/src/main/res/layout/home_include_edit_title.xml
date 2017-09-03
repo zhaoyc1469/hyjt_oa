@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="49dp"
+    android:background="#406CEF">
+
+    <ImageView
+        android:id="@+id/iv_top_back"
+        android:layout_centerVertical="true"
+        android:layout_width="18dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:src="@mipmap/home_iv_top_back_w"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/iv_top_back"
+        android:layout_marginStart="11dp"
+        android:textColor="@color/home_common_FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="编辑测试" />
+
+
+    <TextView
+        android:id="@+id/iv_top_edit"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="19dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="编辑"
+        android:textSize="20sp"
+        android:textColor="@color/home_common_FFFFFF"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal">
+
+    <LinearLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_bg_dp_pop"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/home_common_000000"
+                android:text="部门" />
+
+            <EditText
+                android:id="@+id/edt_dept_name"
+                android:focusable="false"
+                android:background="@null"
+                android:hint="请选择部门"
+                android:layout_width="wrap_content"
+                android:minWidth="69dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/home_common_000000"
+                android:layout_marginStart="25dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="320dp"
+            android:layout_height="0.5dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#a8a8a8" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/home_common_000000"
+                android:text="姓名" />
+
+            <EditText
+                android:id="@+id/edt_staff_name"
+                android:layout_width="wrap_content"
+                android:minWidth="69dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/home_common_000000"
+                android:layout_marginStart="25dp"/>
+        </LinearLayout>
+
+        <!--<View-->
+            <!--android:layout_width="320dp"-->
+            <!--android:layout_height="0.5dp"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:background="#a8a8a8" />-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="42dp"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginRight="5dp"-->
+            <!--android:background="?android:attr/selectableItemBackground"-->
+            <!--android:clickable="true"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="30dp"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:textColor="@color/home_common_000000"-->
+                <!--android:text="学历" />-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/edt_staff_edu"-->
+                <!--android:focusable="false"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:minWidth="50dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:textColor="@color/home_common_000000"-->
+                <!--android:layout_marginStart="25dp"/>-->
+        <!--</LinearLayout>-->
+
+        <!--<View-->
+            <!--android:layout_width="320dp"-->
+            <!--android:layout_height="0.5dp"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:background="#a8a8a8" />-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="42dp"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginRight="5dp"-->
+            <!--android:background="?android:attr/selectableItemBackground"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="30dp"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:textColor="@color/home_common_000000"-->
+                <!--android:text="签约日期" />-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/edt_start_time"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:minWidth="50dp"-->
+                <!--android:textColor="@color/home_common_000000"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_marginStart="35dp"/>-->
+        <!--</LinearLayout>-->
+
+        <!--<View-->
+            <!--android:layout_width="320dp"-->
+            <!--android:layout_height="0.5dp"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:background="#a8a8a8" />-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="42dp"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginRight="5dp"-->
+            <!--android:background="?android:attr/selectableItemBackground"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="30dp"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:textColor="@color/home_common_000000"-->
+                <!--android:text="到约日期" />-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/edt_end_time"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:minWidth="50dp"-->
+                <!--android:textColor="@color/home_common_000000"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_marginStart="35dp"/>-->
+        <!--</LinearLayout>-->
+
+        <View
+            android:layout_width="320dp"
+            android:layout_height="0.5dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#a8a8a8" />
+
+        <LinearLayout
+            android:id="@+id/ll_bloc_heating"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_sel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="搜索" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

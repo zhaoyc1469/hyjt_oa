@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 保户信息查询 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/home_common_0E8CFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/home_common_FFFFFF"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/accList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="1.0px"
+            android:fastScrollEnabled="true" />
+    </LinearLayout>
+</LinearLayout>
+

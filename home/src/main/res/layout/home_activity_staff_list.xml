@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/home_common_F8F8F8"
+    android:id="@+id/rl_staff_list">
+
+
+    <include
+        android:id="@+id/icld_staff_list"
+        layout="@layout/home_include_back_title" />
+
+    <Button
+        android:id="@+id/btn_new_staff"
+        android:layout_width="160dp"
+        android:layout_height="29dp"
+        android:background="@drawable/home_bg_new_meeting"
+        android:text="新建员工信息"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="19dp"/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_staff_list"
+        android:layout_below="@id/icld_staff_list"
+        android:layout_above="@id/btn_new_staff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy_staff_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+
+</RelativeLayout>

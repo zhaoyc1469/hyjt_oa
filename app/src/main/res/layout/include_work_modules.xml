@@ -1,0 +1,1723 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_gsgl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/home_common_FFFFFF">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/home_common_9CA0A4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/work_gsgl"
+            android:textColor="@color/home_common_000000"
+            android:textSize="@dimen/home_common_14sp" />
+
+        <TextView
+            android:id="@+id/tv_gsgl_expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/work_expand"
+            android:textColor="@color/home_common_000000"
+            android:textSize="@dimen/home_common_12sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_gsgl"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_below="@id/tv_gsgl_expand"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_gsjg"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_gsjg"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_gsjg" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_gsjg_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_gsjg"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_gsjg" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_gszl"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_gszl"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_gszl"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_gszl" />
+
+
+                    <RelativeLayout
+                        style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_gszl_num"
+                            style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_gszl"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_gszl" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_bmzl"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_bmzl"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_bmzl"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_bmzl" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_bmzl_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_bmzl"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_bmzl" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_zfwz"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_zfwz"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_zfwz"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_zfwz" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_zfwz_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_zfwz"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_zfwz" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_gswz"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_gswz"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_gswz"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_gswz" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_gswz_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_gswz"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_gswz" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_gsgl_child"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_below="@id/ll_gsgl"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/ll_hylt"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_hylt"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_hylt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_hylt" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_hylt_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_hylt"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_hylt" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_yjhb"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_yjhb"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_yjhb"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_yjhb" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_yjhb_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_yjhb"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_yjhb" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_xjxc"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_xjxc"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_xjxc"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_xjxc" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_xjxc_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_xjxc"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_xjxc" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_txl"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_txl"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_txl"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_txl" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_txl_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_txl"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_txl" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/home_ll_org_top_btn"
+                android:visibility="invisible">
+
+                <RelativeLayout style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY" />
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/app_name" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_ywgl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/home_common_FFFFFF">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/home_common_9CA0A4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/work_ywgl"
+            android:textColor="@color/home_common_000000"
+            android:textSize="@dimen/home_common_14sp" />
+
+        <TextView
+            android:id="@+id/tv_ywgl_expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/work_expand"
+            android:textColor="@color/home_common_000000"
+            android:textSize="@dimen/home_common_12sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_ywgl"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_below="@id/tv_ywgl_expand"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_hyjy"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_hyjy"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_hyjy" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_hyjy_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_hyjy"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="会议纪要" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_djjrw"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_djjrw"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_djjrw"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_djjrw" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/rl_djjrw_num"
+                        style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_djjrw_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_djjrw"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_djjrw" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_cqdjj"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_cqdjj"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_cqdjj"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_cqdjj" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_cqdjj_num"
+                        style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_cqdjj_num"
+                            style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_cqdjj"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_cqdjj" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_dbrw"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_dbrw"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_dbrw"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_dbrw" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_dbrw_num"
+                        style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_dbrw_num"
+                            style="@style/tvWorkMsg" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_dbrw"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_dbrw" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_khgx"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_khgx"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_khgx" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_khgx_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_khgx"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_khgx" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_ywgl_child"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_below="@id/ll_ywgl"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/ll_lfxx"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_lfxx"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_lfxx"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_lfxx" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_lfxx_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_lfxx"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_lfxx" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_nbyj"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_nbyj"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_nbyj"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_lfxx" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_nbyj_num"
+                        style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_nbyj_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_nbyj"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="内部邮件" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/home_ll_org_top_btn"
+                android:visibility="invisible">
+
+                <RelativeLayout style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView style="@style/home_tv_org_top_btn_name" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/home_ll_org_top_btn"
+                android:visibility="invisible">
+
+                <RelativeLayout style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView style="@style/home_tv_org_top_btn_name" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/home_ll_org_top_btn"
+                android:visibility="invisible">
+
+                <RelativeLayout style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY" />
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/app_name" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_ywsq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/home_common_FFFFFF">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/home_common_9CA0A4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/work_ywsq"
+            android:textColor="@color/home_common_000000"
+            android:textSize="@dimen/home_common_14sp" />
+
+        <TextView
+            android:id="@+id/tv_ywsq_expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/work_expand"
+            android:textColor="@color/home_common_000000"
+            android:textSize="@dimen/home_common_12sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_ywsq"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_below="@id/tv_ywsq_expand"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_jksq"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_jksq"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_jksq" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_jksq_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_jksq"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_jksq" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_bxsq"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_bxsq"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_bxsq"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_bxsq" />
+
+
+                    <RelativeLayout
+                        style="@style/rlWorkMsg" >
+
+                        <TextView
+                            android:id="@+id/tv_bxsq_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_bxsq"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_bxsq" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_ycsq"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_ycsq"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_ycsq"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_ycsq" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_ycsq_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_ycsq"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_ycsq" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_wply"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_wply"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_wply"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_wply" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_wply_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_wply"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_wply" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_yyly"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_yysq"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_yysq"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_yysq" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_yysq_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_yysq"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_yysq" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_ywsq_child"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_below="@id/ll_ywsq"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/ll_cgsq"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_cgsq"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_cgsq"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_cgsq" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_cgsq_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_cgsq"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_cgsq" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_dysq"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_dysq"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_dysq"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_dysq" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_dysq_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_dysq"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_dysq" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_sjsq"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_sjsq"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_sjsq" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_sjsq_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_sjsq" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_fwsq"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_fwsq"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_fwsq" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_fwsq_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_fwsq" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_htsq"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_htsq" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_htsq_num"
+                            style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_htsq" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_rsgl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/home_common_FFFFFF">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/home_common_9CA0A4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/work_rsgl"
+            android:textColor="@color/home_common_000000"
+            android:textSize="@dimen/home_common_14sp" />
+
+        <TextView
+            android:id="@+id/tv_rsgl_expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/work_expand"
+            android:textColor="@color/home_common_000000"
+            android:textSize="@dimen/home_common_12sp"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:id="@+id/ll_rsgl"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_below="@id/tv_rsgl_expand"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_zp"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_zp"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_zp" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_zp_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_zp"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_zp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_dgsqd"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_dgsqd"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_dgsqd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_dgsqd" />
+
+
+                    <RelativeLayout
+                        style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_dgsqd_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_dgsqd"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_dgsqd" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_lzsqd"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_lzsqd"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_lzsqd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_lzsqd" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_lzsqd_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_lzsqd"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_lzsqd" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_ygxx"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_ygxx"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_ygxx"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_ygxx" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_ygxx_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_ygxx"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_ygxx" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_jtgg"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_jtgg"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_jtgg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_jtgg" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_jtgg_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_jtgg"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="集团公告" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_xmgl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/home_common_FFFFFF">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/home_common_9CA0A4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/work_xmgl"
+            android:textColor="@color/home_common_000000"
+            android:textSize="@dimen/home_common_14sp" />
+
+        <TextView
+            android:id="@+id/tv_xmgl_expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/work_expand"
+            android:textColor="@color/home_common_000000"
+            android:textSize="@dimen/home_common_12sp"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:id="@+id/ll_xmgl"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_below="@id/tv_xmgl_expand"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_xmda"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_xmda"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_xmda" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_xmda_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_xmda"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_xmda" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_xmhb"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_xmhb"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_xmhb"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_xmhb" />
+
+
+                    <RelativeLayout
+                        style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_xmhb_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_xmhb"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_xmhb" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_xmzl"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_xmzl"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_xmzl"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_xmzl" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_xmzl_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_xmzl"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_xmzl" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/home_ll_org_top_btn"
+                android:visibility="invisible">
+
+                <RelativeLayout style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView style="@style/home_tv_org_top_btn_name" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/home_ll_org_top_btn"
+                android:visibility="invisible">
+
+                <RelativeLayout style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView style="@style/home_tv_org_top_btn_name" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_cwgl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/home_common_FFFFFF">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/home_common_9CA0A4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/work_cwgl"
+            android:textColor="@color/home_common_000000"
+            android:textSize="@dimen/home_common_14sp" />
+
+        <TextView
+            android:id="@+id/tv_cwgl_expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/work_expand"
+            android:textColor="@color/home_common_000000"
+            android:textSize="@dimen/home_common_12sp"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:id="@+id/ll_cwgl"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_below="@id/tv_cwgl_expand"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_jksp"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_jksp"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_jksp" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_jksp_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_jksp"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_jksp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_fysp"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_fysp"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_fysp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_fysp" />
+
+
+                    <RelativeLayout
+                        style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_fysp_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_fysp"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_fysp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_bxsp"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_bxsp"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_bxsp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_bxsp" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_bxsp_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_bxsp"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_bxsp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/home_ll_org_top_btn"
+                android:visibility="invisible">
+
+                <RelativeLayout style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView style="@style/home_tv_org_top_btn_name" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/home_ll_org_top_btn"
+                android:visibility="invisible">
+
+                <RelativeLayout style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView style="@style/home_tv_org_top_btn_name" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_zlgl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/home_common_FFFFFF">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/home_common_9CA0A4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/work_zlgl"
+            android:textColor="@color/home_common_000000"
+            android:textSize="@dimen/home_common_14sp" />
+
+        <TextView
+            android:id="@+id/tv_zlgl_expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/work_expand"
+            android:textColor="@color/home_common_000000"
+            android:textSize="@dimen/home_common_12sp"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:id="@+id/ll_zlgl"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_below="@id/tv_zlgl_expand"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_bg"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_bg"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_bg" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_bg_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_bg"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_bg" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_ht"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_ht"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_ht"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_ht" />
+
+
+                    <RelativeLayout
+                        style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_ht_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_ht"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_ht" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_qt"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_qt"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_qt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_qt" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_qt_num" style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_qt"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="@string/work_qt" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/home_ll_org_top_btn"
+                android:visibility="invisible">
+
+                <RelativeLayout style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView style="@style/home_tv_org_top_btn_name" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/home_ll_org_top_btn"
+                android:visibility="invisible">
+
+                <RelativeLayout style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY" />
+
+                    <RelativeLayout style="@style/rlWorkMsg">
+
+                        <TextView style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView style="@style/home_tv_org_top_btn_name" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

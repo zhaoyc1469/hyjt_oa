@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">环宇管理平台</string>
+
+
+    <string name="login">登录</string>
+    <string name="reb_pwd">记住密码</string>
+    <string name="user_hint">请输入用户名称</string>
+    <string name="pwd_hint">请输入记住密码</string>
+
+
+    <!--工作模块-->
+    <string name="work_expand">展开</string>
+    <string name="work_gsgl">公司管理</string>
+    <string name="work_gsjg">公司架构</string>
+    <string name="work_gszl">公司治理</string>
+    <string name="work_bmzl">部门治理</string>
+    <string name="work_zfwz">政府网站</string>
+    <string name="work_gswz">公司网站</string>
+    <string name="work_hylt">环宇论坛</string>
+    <string name="work_yjhb">越级汇报</string>
+    <string name="work_xjxc">献计献策</string>
+    <string name="work_txl">通讯录</string>
+
+    <string name="work_ywgl">业务管理</string>
+    <string name="work_hyjy">会议纪要</string>
+    <string name="work_djjrw">待解决任务</string>
+    <string name="work_cqdjj">长期待解决</string>
+    <string name="work_dbrw">督办任务</string>
+    <string name="work_khgx">客户关系</string>
+    <string name="work_lfxx">来访消息</string>
+    <string name="work_jtgg">集团公告</string>
+
+    <string name="work_ywsq">业务申请</string>
+    <string name="work_jksq">借款申请</string>
+    <string name="work_bxsq">报销申请</string>
+    <string name="work_ycsq">用车申请</string>
+    <string name="work_wply">物品领用</string>
+    <string name="work_yysq">用印申请</string>
+    <string name="work_cgsq">采购申请</string>
+    <string name="work_dysq">打印申请</string>
+    <string name="work_sjsq">送件申请</string>
+    <string name="work_fwsq">发文申请</string>
+    <string name="work_htsq">合同申请</string>
+
+    <string name="work_rsgl">人事管理</string>
+    <string name="work_zp">招聘</string>
+    <string name="work_dgsqd">调岗申请单</string>
+    <string name="work_lzsqd">离职申请单</string>
+    <string name="work_ygxx">员工信息</string>
+
+    <string name="work_xmgl">项目管理</string>
+    <string name="work_xmda">项目档案</string>
+    <string name="work_xmhb">项目汇报</string>
+    <string name="work_xmzl">项目资料</string>
+
+    <string name="work_cwgl">财务管理</string>
+    <string name="work_jksp">借款审批</string>
+    <string name="work_fysp">费用审批</string>
+    <string name="work_bxsp">报销审批</string>
+
+    <string name="work_zlgl">资料管理</string>
+    <string name="work_bg">报告</string>
+    <string name="work_ht">合同</string>
+    <string name="work_qt">其他</string>
+
+</resources>

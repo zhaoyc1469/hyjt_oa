@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_meeting_log"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_common_F8F8F8"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/icld_new_meeting_log"
+        layout="@layout/home_include_back_title" />
+
+    <Button
+        android:id="@+id/btn_new_meeting"
+        android:layout_width="160dp"
+        android:layout_height="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="19dp"
+        android:background="@drawable/home_bg_new_meeting"
+        android:text="@string/home_meeting_save" />
+
+    <ScrollView
+        android:id="@+id/slv_meeting"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_new_meeting"
+        android:layout_below="@id/icld_new_meeting_log"
+        android:layout_marginBottom="19dp"
+        android:layout_marginTop="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="@string/home_meeting_issue" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_home_meeting_issue"
+                    style="@style/home_edt_new_meeting"
+                    android:hint="@string/home_meeting_issue" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="@string/home_meeting_site" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_home_meeting_site"
+                    style="@style/home_edt_new_meeting"
+                    android:hint="@string/home_meeting_site" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/home_meeting_person"
+                    android:textColor="@color/home_common_000000" />
+
+                <View style="@style/home_meeting_line" />
+
+                <Button
+                    android:id="@+id/btn_person_clear"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/home_clear" />
+
+                <EditText
+                    android:id="@+id/edt_home_meeting_person"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="14dp"
+                    android:layout_marginStart="89dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toStartOf="@id/btn_person_clear"
+                    android:background="@null"
+                    android:focusable="false"
+                    android:gravity="top"
+                    android:hint="@string/home_meeting_person"
+                    android:textColor="@color/home_common_434242"
+                    android:textColorHint="@color/home_common_9CA0A4"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="@string/home_meeting_compere" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_home_meeting_compere"
+                    style="@style/home_edt_new_meeting"
+                    android:focusable="false"
+                    android:hint="@string/home_meeting_compere" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table"
+                android:minHeight="100dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/home_meeting_content"
+                    android:textColor="@color/home_common_000000" />
+
+
+                <EditText
+                    android:id="@+id/edt_home_meeting_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="14dp"
+                    android:layout_marginStart="89dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="@string/home_meeting_content"
+                    android:minHeight="80dp"
+                    android:textColor="@color/home_common_434242"
+                    android:textColorHint="@color/home_common_9CA0A4"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="86dp"
+                    android:background="#000000" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="86dp"
+                    android:background="#000000" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignBottom="@id/edt_home_meeting_content"
+                    android:layout_alignTop="@id/edt_home_meeting_content"
+                    android:layout_marginStart="86dp"
+                    android:background="#000000" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="@string/home_meeting_time" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_meeting_time"
+                    style="@style/home_edt_new_meeting"
+                    android:hint="@string/home_meeting_time" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="@string/home_meeting_department" />
+
+                <View style="@style/home_meeting_line" />
+
+                <EditText
+                    android:id="@+id/edt_home_meeting_department"
+                    style="@style/home_edt_new_meeting"
+                    android:hint="@string/home_meeting_department" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    android:id="@+id/tv_add_pic"
+                    style="@style/home_tv_new_meeting"
+                    android:text="@string/home_meeting_picture" />
+
+                <View
+                    android:id="@+id/view_add_pic_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/tv_add_pic"
+                    android:background="#000" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:layout_alignBottom="@id/view_add_pic_line"
+                    android:layout_marginStart="86dp"
+                    android:background="#000" />
+
+
+
+                <com.hyjt.home.mvp.ui.view.addpicview.AddPicView
+                    android:id="@+id/add_pic_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="22dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="@string/home_meeting_recorder" />
+
+                <View style="@style/home_meeting_line" />
+
+                <TextView
+                    android:id="@+id/tv_recorder"
+                    style="@style/home_edt_new_meeting"
+                    android:hint="@string/home_meeting_recorder" />
+            </RelativeLayout>
+
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="34dp"-->
+            <!--android:layout_marginTop="6dp"-->
+            <!--android:background="@color/home_common_FFFFFF">-->
+
+            <!--<TextView-->
+            <!--style="@style/home_tv_new_meeting"-->
+            <!--android:text="@string/home_meeting_supervisor" />-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/edt_home_meeting_supervisor"-->
+            <!--style="@style/home_edt_new_meeting"-->
+            <!--android:focusable="false"-->
+            <!--android:hint="@string/home_meeting_supervisor" />-->
+            <!--</RelativeLayout>-->
+
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="34dp"-->
+            <!--android:layout_marginTop="6dp"-->
+            <!--android:background="@color/home_common_FFFFFF">-->
+
+            <!--<TextView-->
+            <!--style="@style/home_tv_new_meeting"-->
+            <!--android:text="@string/home_meeting_executor" />-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/edt_home_meeting_executor"-->
+            <!--style="@style/home_edt_new_meeting"-->
+            <!--android:focusable="false"-->
+            <!--android:hint="@string/home_meeting_executor" />-->
+            <!--</RelativeLayout>-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="添加会议问题" />
+
+                <View
+                    style="@style/home_meeting_line"
+                    android:layout_marginStart="116dp" />
+
+                <Button
+                    android:id="@+id/btn_new_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="120dp"
+                    android:text="新增问题" />
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

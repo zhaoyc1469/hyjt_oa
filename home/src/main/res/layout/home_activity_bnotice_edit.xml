@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home_bg_table"
+    android:orientation="vertical">
+
+
+    <include
+        android:id="@+id/icld_bnotice"
+        layout="@layout/home_include_back_title" />
+
+    <LinearLayout
+        android:id="@+id/ll_bottom_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_edit_bnotice"
+            android:layout_width="110dp"
+            android:layout_height="29dp"
+            android:background="@drawable/home_bg_new_meeting"
+            android:text="@string/home_meeting_save" />
+
+        <Button
+            android:id="@+id/btn_del_bnotice"
+            android:layout_width="110dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/home_bg_new_meeting"
+            android:text="删除" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/slv_bnotice"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ll_bottom_btn"
+        android:layout_below="@id/icld_bnotice">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="标题" />
+
+                <EditText
+                    android:id="@+id/edt_title"
+                    style="@style/home_edt_new_meeting" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    android:layout_marginTop="6dp"
+                    style="@style/home_tv_new_meeting"
+                    android:text="内容" />
+
+                <EditText
+                    android:id="@+id/edt_content"
+                    style="@style/home_edt_new_meeting" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="86dp"
+                    android:background="#000000" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="86dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="#000000" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignTop="@id/edt_content"
+                    android:layout_alignBottom="@id/edt_content"
+                    android:layout_marginStart="86dp"
+                    android:background="#000000" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="创建人" />
+
+                <EditText
+                    android:id="@+id/edt_create_man"
+                    android:focusable="false"
+                    style="@style/home_edt_new_meeting" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="创建日期" />
+
+                <EditText
+                    android:id="@+id/edt_create_date"
+                    android:focusable="false"
+                    style="@style/home_edt_new_meeting" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_add_file"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:layout_width='wrap_content'
+                    android:layout_height='match_parent'
+                    android:layout_marginLeft='16dp'
+                    android:layout_centerInParent='true'
+                    android:text="公告附件,点击蓝色部分下载"
+                    android:textSize="16sp"
+                    android:textColor='@color/home_common_000000' />
+
+                <Button
+                    android:id="@+id/btn_del_file"
+                    android:layout_width='70dp'
+                    android:layout_height='wrap_content'
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:text="添加"
+                    android:textSize="12sp"
+                    android:textColor='@color/home_common_FFFFFF' />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_file_pack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

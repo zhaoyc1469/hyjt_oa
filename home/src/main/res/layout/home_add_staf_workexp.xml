@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp">
+
+        <TextView
+            android:layout_width='wrap_content'
+            android:layout_height='match_parent'
+            android:layout_marginLeft='16dp'
+            android:layout_centerInParent='true'
+            android:text="工作经历"
+            android:textSize="20sp"
+            android:textColor='@color/home_common_000000' />
+
+
+        <Button
+            android:id="@+id/btn_del_workexp"
+            android:layout_width='70dp'
+            android:layout_height='wrap_content'
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="删除"
+            android:textSize="12sp"
+            android:textColor='@color/home_common_FFFFFF' />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="公司名称" />
+
+        <View
+            style="@style/home_meeting_line"/>
+        <EditText
+            android:id="@+id/edt_company"
+            style="@style/home_edt_new_meeting"
+            android:hint="请输入公司名称" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="工作岗位" />
+
+        <View
+            style="@style/home_meeting_line"/>
+        <EditText
+            android:id="@+id/edt_work_post"
+            style="@style/home_edt_new_meeting"
+            android:hint="请填写工作岗位"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="起始时间" />
+
+        <View
+            style="@style/home_meeting_line"/>
+        <EditText
+            android:id="@+id/edt_start_time"
+            style="@style/home_edt_new_meeting"
+            android:focusable="false"
+            android:hint="请选择"  />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="结束时间" />
+
+        <View
+            style="@style/home_meeting_line"/>
+        <EditText
+            android:id="@+id/edt_end_time"
+            style="@style/home_edt_new_meeting"
+            android:focusable="false"
+            android:hint="请选择"  />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:layout_marginTop="6dp"
+            android:text="工作描述" />
+        <EditText
+            android:id="@+id/edt_work_describe"
+            android:layout_marginTop="6dp"
+            style="@style/home_edt_new_meeting"
+            android:hint="请输入工作描述"  />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="86dp"
+            android:background="#000000" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="86dp"
+            android:layout_alignParentBottom="true"
+            android:background="#000000" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@id/edt_work_describe"
+            android:layout_alignBottom="@id/edt_work_describe"
+            android:layout_marginStart="86dp"
+            android:background="#000000" />
+    </RelativeLayout>
+
+
+
+</LinearLayout>

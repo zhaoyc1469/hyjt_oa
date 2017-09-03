@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp">
+
+        <TextView
+            android:layout_width='wrap_content'
+            android:layout_height='match_parent'
+            android:layout_marginStart='16dp'
+            android:layout_centerInParent='true'
+            android:text="教育经历"
+            android:textSize="20sp"
+            android:textColor='@color/home_common_000000' />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="学校名称" />
+
+        <View
+            style="@style/home_meeting_line"/>
+        <EditText
+            android:id="@+id/edt_question_department"
+            style="@style/home_edt_new_meeting"
+            android:hint="执行部门" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="@string/home_meeting_executor" />
+
+        <View
+            style="@style/home_meeting_line"/>
+        <EditText
+            android:id="@+id/edt_question_executor"
+            style="@style/home_edt_new_meeting"
+            android:focusable="false"
+            android:hint="@string/home_meeting_executor" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="要求时间" />
+
+        <View
+            style="@style/home_meeting_line"/>
+        <EditText
+            android:id="@+id/edt_question_predict_time"
+            style="@style/home_edt_new_meeting"
+            android:hint="要求时间" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="解决时间" />
+
+        <View
+            style="@style/home_meeting_line"/>
+        <EditText
+            android:id="@+id/edt_question_finish_time"
+            style="@style/home_edt_new_meeting"
+            android:hint="解决时间" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="督办人" />
+
+        <View
+            style="@style/home_meeting_line"/>
+        <EditText
+            android:id="@+id/edt_question_supervisor"
+            android:focusable="false"
+            style="@style/home_edt_new_meeting"
+            android:hint="督办人" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="督办时间" />
+
+        <View
+            style="@style/home_meeting_line"/>
+
+        <EditText
+            android:id="@+id/edt_supervise_time"
+            style="@style/home_edt_new_meeting"
+            android:hint="督办时间" />
+    </RelativeLayout>
+
+</LinearLayout>

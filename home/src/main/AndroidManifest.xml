@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hyjt.home">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity
+            android:name=".mvp.ui.activity.MeetingLogActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.MeetingListActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- glide配置 -->
+        <!-- <meta-data -->
+        <!-- android:name="com.hyjt.frame.widget.imageloader.glide.GlideConfiguration" -->
+        <!-- android:value="GlideModule" /> -->
+
+
+        <!-- GlobalConfiguration -->
+        <meta-data
+            android:name="com.hyjt.home.GlobalConfiguration"
+            android:value="ConfigModule" />
+
+        <activity
+            android:name=".mvp.ui.activity.MeetingEditActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.WaitSolveListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.LongSolveListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.SuperviseSolveListActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".mvp.ui.activity.CreateMtActivity" />
+        <activity
+            android:name=".mvp.ui.activity.ImageViewerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.StaffListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.CreateStaffActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.StaffMsgActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.AddressBookActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.BlocNoticeListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.BNoticeEditActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.EmailListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.BNoticeCreateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.EmailDetailsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.EmailCreateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity android:name=".mvp.ui.activity.SkipReportListActivity" />
+        <activity android:name=".mvp.ui.activity.SkipReportDetailActivity" />
+        <activity android:name=".mvp.ui.activity.SkipReportCreateActivity"></activity>
+    </application>
+
+</manifest>
