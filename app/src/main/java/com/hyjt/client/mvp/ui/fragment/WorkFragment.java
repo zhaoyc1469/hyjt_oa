@@ -104,6 +104,8 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
     private RelativeLayout mRlNbyj;
     private TextView mTvNbyjNum;
     private RelativeLayout mRlNbyjNum;
+    private RelativeLayout mRlHbsj;
+    private RelativeLayout mRlPjxs;
 
     public static WorkFragment newInstance() {
         WorkFragment fragment = new WorkFragment();
@@ -201,6 +203,8 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         mRlHt = (RelativeLayout) inflate.findViewById(R.id.rl_ht);
         mRlQt = (RelativeLayout) inflate.findViewById(R.id.rl_qt);
         mRlNbyj = (RelativeLayout) inflate.findViewById(R.id.rl_nbyj);
+        mRlHbsj = (RelativeLayout) inflate.findViewById(R.id.rl_hbsj);
+        mRlPjxs = (RelativeLayout) inflate.findViewById(R.id.rl_pjxs);
 
         mRlGsjg.setOnClickListener(this);
         mRlGszl.setOnClickListener(this);
@@ -242,6 +246,8 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         mRlHt.setOnClickListener(this);
         mRlQt.setOnClickListener(this);
         mRlNbyj.setOnClickListener(this);
+        mRlHbsj.setOnClickListener(this);
+        mRlPjxs.setOnClickListener(this);
 
         tvDepartment = (TextView) inflate.findViewById(R.id.tv_department);
         tvPosition = (TextView) inflate.findViewById(R.id.tv_position);
@@ -451,7 +457,6 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
                 break;
             }
             case R.id.rl_nbyj: {
-
                 EmailPop emailPop = new EmailPop(getActivity());
                 emailPop.setOnItemClickListener(box -> {
                     ARouter.getInstance().build("/home/EmailListActivity")
@@ -460,7 +465,18 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
                 });
                 emailPop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
                         Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
-
+                break;
+            }
+            case R.id.rl_hbsj: {
+                ARouter.getInstance().build("/home/ReportTopListActivity").navigation(getActivity(), Api.WorkStartCode);
+                break;
+            }
+            case R.id.rl_pjxs: {
+                ARouter.getInstance().build("/home/SLConsultListActivity").navigation(getActivity(), Api.WorkStartCode);
+                break;
+            }
+            case R.id.rl_yjhb: {
+                ARouter.getInstance().build("/home/SkipReportListActivity").navigation(getActivity(), Api.WorkStartCode);
                 break;
             }
         }

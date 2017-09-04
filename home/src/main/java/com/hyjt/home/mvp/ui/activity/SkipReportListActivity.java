@@ -3,6 +3,7 @@ package com.hyjt.home.mvp.ui.activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.utils.UiUtils;
@@ -14,7 +15,7 @@ import com.hyjt.home.mvp.presenter.SkipReportListPresenter;
 
 import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 
-
+@Route(path = "/home/SkipReportListActivity")
 public class SkipReportListActivity extends BaseActivity<SkipReportListPresenter> implements SkipReportListContract.View {
 
 

@@ -587,7 +587,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="fitXY"
-                        android:src="@mipmap/h_lfxx" />
+                        android:src="@mipmap/h_nbyj" />
 
                     <RelativeLayout
                         android:id="@+id/rl_nbyj_num"
@@ -606,44 +606,61 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_hbsj"
                 style="@style/home_ll_org_top_btn"
-                android:visibility="invisible">
+                android:visibility="visible">
 
-                <RelativeLayout style="@style/home_rl_org_top_btn">
+                <RelativeLayout
+                    android:id="@+id/rl_hbsj"
+                    style="@style/home_rl_org_top_btn">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="fitXY" />
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_hbsj" />
 
-                    <RelativeLayout style="@style/rlWorkMsg">
+                    <RelativeLayout
+                        android:id="@+id/rl_hbsj_num"
+                        style="@style/rlWorkMsg">
 
-                        <TextView style="@style/tvWorkMsg"/>
+                        <TextView
+                            android:id="@+id/tv_hbsj_num"
+                            style="@style/tvWorkMsg"/>
                     </RelativeLayout>
                 </RelativeLayout>
 
-                <TextView style="@style/home_tv_org_top_btn_name" />
+                <TextView
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="汇报上级"/>
 
             </LinearLayout>
 
             <LinearLayout
-                style="@style/home_ll_org_top_btn"
-                android:visibility="invisible">
+                android:id="@+id/ll_pjxs"
+                style="@style/home_ll_org_top_btn">
 
-                <RelativeLayout style="@style/home_rl_org_top_btn">
+                <RelativeLayout
+                    android:id="@+id/rl_pjxs"
+                    style="@style/home_rl_org_top_btn">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="fitXY" />
 
-                    <RelativeLayout style="@style/rlWorkMsg">
+                    <RelativeLayout
+                        android:id="@+id/rl_pjxs_num"
+                        style="@style/rlWorkMsg">
 
-                        <TextView style="@style/tvWorkMsg"/>
+                        <TextView
+                            android:id="@+id/tv_pjxs_num"
+                            style="@style/tvWorkMsg"/>
                     </RelativeLayout>
                 </RelativeLayout>
 
-                <TextView style="@style/home_tv_org_top_btn_name" />
+                <TextView style="@style/home_tv_org_top_btn_name"
+                    android:text="平级协商"/>
 
             </LinearLayout>
 

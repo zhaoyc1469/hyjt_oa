@@ -1,23 +1,21 @@
 package com.hyjt.home.mvp.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.utils.UiUtils;
-
+import com.hyjt.home.R;
 import com.hyjt.home.di.component.DaggerSLConsultListComponent;
 import com.hyjt.home.di.module.SLConsultListModule;
 import com.hyjt.home.mvp.contract.SLConsultListContract;
 import com.hyjt.home.mvp.presenter.SLConsultListPresenter;
 
-import com.hyjt.home.R;
-
 import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 
-
+@Route(path = "/home/SLConsultListActivity")
 public class SLConsultListActivity extends BaseActivity<SLConsultListPresenter> implements SLConsultListContract.View {
 
 

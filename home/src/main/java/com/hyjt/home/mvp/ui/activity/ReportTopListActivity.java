@@ -8,30 +8,30 @@ import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.R;
-import com.hyjt.home.di.component.DaggerSLConsultEditComponent;
-import com.hyjt.home.di.module.SLConsultEditModule;
-import com.hyjt.home.mvp.contract.SLConsultEditContract;
-import com.hyjt.home.mvp.presenter.SLConsultEditPresenter;
+import com.hyjt.home.di.component.DaggerReportTopListComponent;
+import com.hyjt.home.di.module.ReportTopListModule;
+import com.hyjt.home.mvp.contract.ReportTopListContract;
+import com.hyjt.home.mvp.presenter.ReportTopListPresenter;
 
 import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 
-@Route(path = "/home/SLConsultEditActivity")
-public class SLConsultEditActivity extends BaseActivity<SLConsultEditPresenter> implements SLConsultEditContract.View {
+@Route(path = "/home/ReportTopListActivity")
+public class ReportTopListActivity extends BaseActivity<ReportTopListPresenter> implements ReportTopListContract.View {
 
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
-        DaggerSLConsultEditComponent //如找不到该类,请编译一下项目
+        DaggerReportTopListComponent //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
-                .sLConsultEditModule(new SLConsultEditModule(this))
+                .reportTopListModule(new ReportTopListModule(this))
                 .build()
                 .inject(this);
     }
 
     @Override
     public int initView(Bundle savedInstanceState) {
-        return R.layout.home_activity_slconsult_edit; //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
+        return R.layout.home_activity_report_top_list; //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
     }
 
     @Override
@@ -51,4 +51,13 @@ public class SLConsultEditActivity extends BaseActivity<SLConsultEditPresenter> 
     }
 
 
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
 }
