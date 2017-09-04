@@ -33,7 +33,6 @@ public class EmailItemHolder extends BaseHolder<CEmailListResp.RowsBean> {
     @Override
     public void setData(CEmailListResp.RowsBean data, int position) {
         emTitle.setText(data.getTheme());
-        emCreater.setText(data.getSender());
         emDate.setText(data.getCreateTime());
 
         if (!"已读".equals(data.getOpened()) && !"SendBox".equals(type)){
@@ -41,6 +40,13 @@ public class EmailItemHolder extends BaseHolder<CEmailListResp.RowsBean> {
         } else {
             emTitle.setTextColor(ContextCompat.getColor(BaseApplication.getContext(), R.color.home_common_000000));
         }
+
+        if( "SendBox".equals(type)){
+            emCreater.setText(data.getName());
+        } else {
+            emCreater.setText(data.getSender());
+        }
     }
+
 
 }
