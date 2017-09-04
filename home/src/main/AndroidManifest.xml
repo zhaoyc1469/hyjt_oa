@@ -89,7 +89,9 @@
         <activity android:name=".mvp.ui.activity.SLConsultListActivity" />
         <activity android:name=".mvp.ui.activity.SLConsultCreateActivity" />
         <activity android:name=".mvp.ui.activity.SLConsultEditActivity" />
-        <activity android:name=".mvp.ui.activity.ReportTopListActivity"></activity>
+        <activity android:name=".mvp.ui.activity.ReportTopListActivity" />
+        <activity android:name=".mvp.ui.activity.ReportTopDetailActivity" />
+        <activity android:name=".mvp.ui.activity.ReportTopCreateActivity"></activity>
     </application>
 
 </manifest>

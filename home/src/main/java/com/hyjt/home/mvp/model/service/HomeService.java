@@ -4,6 +4,7 @@ import com.hyjt.frame.api.BaseJson;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CEmailSendReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.EmailListReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.ReportTopListReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.StaffNameIdKey;
 import com.hyjt.home.mvp.model.entity.Resp.BNoticeDetailsResp;
 import com.hyjt.home.mvp.model.entity.Resp.BlocNoticeListResp;
@@ -14,6 +15,8 @@ import com.hyjt.home.mvp.model.entity.Resp.ImgUploadResp;
 import com.hyjt.home.mvp.model.entity.Resp.LinkManResp;
 import com.hyjt.home.mvp.model.entity.Resp.MeetingListResp;
 import com.hyjt.home.mvp.model.entity.Resp.MeetingMsgResp;
+import com.hyjt.home.mvp.model.entity.Resp.ReportTDetailResp;
+import com.hyjt.home.mvp.model.entity.Resp.ReportTListResp;
 import com.hyjt.home.mvp.model.entity.Resp.StaffListResp;
 import com.hyjt.home.mvp.model.entity.Resp.StaffMsgResp;
 
@@ -248,17 +251,17 @@ public interface HomeService {
     Observable<BaseJson<Object>> sendEmail(@Body CEmailSendReqs cEmailSendReqs);
 
     @POST("/APIWorkingConference/GetData")
-    Observable<BaseJson<Object>> skipReportList(@Body CEmailSendReqs cEmailSendReqs);
+    Observable<BaseJson<ReportTListResp>> reportTopList(@Body ReportTopListReqs reportTopListReqs);
 
     @POST("/APIWorkingConference/Details")
-    Observable<BaseJson<Object>> skipReportDetail(@Body CEmailSendReqs cEmailSendReqs);
+    Observable<BaseJson<ReportTDetailResp>> reportTopDetail(@Body BaseIdReqs baseIdReqs);
 
     @POST("/APIWorkingConference/Create")
-    Observable<BaseJson<Object>> skipReportCreate(@Body CEmailSendReqs cEmailSendReqs);
+    Observable<BaseJson<Object>> reportTopCreate(@Body CEmailSendReqs cEmailSendReqs);
 
     @POST("/APIWorkingConference/Edit")
-    Observable<BaseJson<Object>> skipReportEdit(@Body CEmailSendReqs cEmailSendReqs);
+    Observable<BaseJson<Object>> reportTopEdit(@Body ReportTDetailResp reportTDetail);
 
     @POST("/APIWorkingConference/Delete")
-    Observable<BaseJson<Object>> skipReportDelete(@Body CEmailSendReqs cEmailSendReqs);
+    Observable<BaseJson<Object>> reportTopDelete(@Body BaseIdReqs baseIdReqs);
 }

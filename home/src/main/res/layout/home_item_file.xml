@@ -7,7 +7,7 @@
 
 
     <TextView
-        android:id="@+id/tv_cm_name"
+        android:id="@+id/tv_rt_name"
         android:layout_centerVertical="true"
         android:layout_marginStart="18dp"
         android:layout_width="wrap_content"

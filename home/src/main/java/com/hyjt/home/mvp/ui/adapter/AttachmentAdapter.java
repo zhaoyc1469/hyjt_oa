@@ -70,7 +70,7 @@ public class AttachmentAdapter extends RecyclerView.Adapter<AttachmentAdapter.VH
 
         VH(View itemView) {
             super(itemView);
-            fileName = (TextView) itemView.findViewById(R.id.tv_cm_name);
+            fileName = (TextView) itemView.findViewById(R.id.tv_rt_name);
             delFile = (Button) itemView.findViewById(R.id.btn_del_file);
         }
     }

@@ -22,7 +22,7 @@ public class MeetingItemHolder extends BaseHolder<MeetingListResp.RowsBean> {
     public MeetingItemHolder(View v) {
         super(v);
         cmNum = (TextView) v.findViewById(R.id.tv_cm_num);
-        cmName = (TextView) v.findViewById(R.id.tv_cm_name);
+        cmName = (TextView) v.findViewById(R.id.tv_rt_name);
         cmTime = (TextView) v.findViewById(R.id.tv_cm_time);
         department = (TextView) v.findViewById(R.id.tv_cm_department);
     }

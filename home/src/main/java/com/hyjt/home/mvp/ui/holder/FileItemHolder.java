@@ -19,7 +19,7 @@ public class FileItemHolder extends BaseHolder<String> {
 
     public FileItemHolder(View v) {
         super(v);
-        cmName = (TextView) v.findViewById(R.id.tv_cm_name);
+        cmName = (TextView) v.findViewById(R.id.tv_rt_name);
         btnFile = (Button) v.findViewById(R.id.btn_del_file);
     }
 

@@ -3,13 +3,18 @@ package com.hyjt.home.mvp.model;
 import android.app.Application;
 
 import com.google.gson.Gson;
+import com.hyjt.frame.api.BaseJson;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.integration.IRepositoryManager;
 import com.hyjt.frame.mvp.BaseModel;
+import com.hyjt.home.mvp.contract.ReportTopListContract;
+import com.hyjt.home.mvp.model.entity.Reqs.ReportTopListReqs;
+import com.hyjt.home.mvp.model.entity.Resp.ReportTListResp;
+import com.hyjt.home.mvp.model.service.HomeService;
 
 import javax.inject.Inject;
 
-import com.hyjt.home.mvp.contract.ReportTopListContract;
+import io.reactivex.Observable;
 
 
 @ActivityScope
@@ -31,4 +36,10 @@ public class ReportTopListModel extends BaseModel implements ReportTopListContra
         this.mApplication = null;
     }
 
+    @Override
+    public Observable<BaseJson<ReportTListResp>> getReportTopList(ReportTopListReqs reportTopListReqs) {
+        Observable<BaseJson<ReportTListResp>> reportList = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .reportTopList(reportTopListReqs);
+        return reportList;
+    }
 }
