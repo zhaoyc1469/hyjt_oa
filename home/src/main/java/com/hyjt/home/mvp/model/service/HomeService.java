@@ -257,7 +257,7 @@ public interface HomeService {
     Observable<BaseJson<ReportTDetailResp>> reportTopDetail(@Body BaseIdReqs baseIdReqs);
 
     @POST("/APIWorkingConference/Create")
-    Observable<BaseJson<Object>> reportTopCreate(@Body CEmailSendReqs cEmailSendReqs);
+    Observable<BaseJson<Object>> reportTopCreate(@Body ReportTDetailResp reportTDetail);
 
     @POST("/APIWorkingConference/Edit")
     Observable<BaseJson<Object>> reportTopEdit(@Body ReportTDetailResp reportTDetail);
