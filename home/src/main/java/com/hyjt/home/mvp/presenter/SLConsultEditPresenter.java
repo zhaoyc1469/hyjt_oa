@@ -47,7 +47,12 @@ public class SLConsultEditPresenter extends BasePresenter<SLConsultEditContract.
         this.mApplication = null;
     }
 
-    public void consultEdit(String Id){
+    public void consultEdit(SLConsultDetailResp consultDetail){
+
+
+    }
+
+    public void consultDetail(String Id){
 
         mModel.slconsultDetail(new BaseIdReqs(Id))
                 .map(new parseResponse<>())
@@ -64,12 +69,22 @@ public class SLConsultEditPresenter extends BasePresenter<SLConsultEditContract.
                 });
     }
 
-    public void consultDetail(String Id){
-
-    }
-
     public void consultDel(String Id){
 
+        mModel.slconsultDel(new BaseIdReqs(Id))
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object obj) {
+                        mRootView.showMessage("删除成功");
+                        mRootView.killMyself();
+                    }
+                });
     }
 
 

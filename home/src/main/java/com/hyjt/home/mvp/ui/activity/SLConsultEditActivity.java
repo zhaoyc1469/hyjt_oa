@@ -1,5 +1,6 @@
 package com.hyjt.home.mvp.ui.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -45,6 +46,7 @@ public class SLConsultEditActivity extends BaseActivity<SLConsultEditPresenter> 
     private android.widget.EditText mEdtLeaderIdea;
     private android.widget.ImageView mIvLeaderSignature;
     private String slcId;
+    private ProgressDialog progressDialog;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -85,6 +87,10 @@ public class SLConsultEditActivity extends BaseActivity<SLConsultEditPresenter> 
         mEdtLeaderIdea = (EditText) findViewById(R.id.edt_leader_idea);
         mIvLeaderSignature = (ImageView) findViewById(R.id.iv_leader_signature);
 
+        mBtnDelReport.setOnClickListener(v -> {
+            progressDialog = ProgressDialog.show(this, null, "协商删除中…");
+            mPresenter.consultDel(slcId);});
+
         mPresenter.consultDetail(slcId);
     }
 
@@ -101,7 +107,8 @@ public class SLConsultEditActivity extends BaseActivity<SLConsultEditPresenter> 
 
     @Override
     public void hideLoading() {
-
+        if (progressDialog != null)
+            progressDialog.dismiss();
     }
 
     @Override
