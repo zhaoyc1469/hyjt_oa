@@ -1,6 +1,7 @@
 package com.hyjt.home.mvp.model;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.hyjt.frame.api.BaseJson;
@@ -38,6 +39,8 @@ public class ReportTopListModel extends BaseModel implements ReportTopListContra
 
     @Override
     public Observable<BaseJson<ReportTListResp>> getReportTopList(ReportTopListReqs reportTopListReqs) {
+        Log.e("http_rtList",reportTopListReqs.toString());
+
         Observable<BaseJson<ReportTListResp>> reportList = mRepositoryManager.obtainRetrofitService(HomeService.class)
                 .reportTopList(reportTopListReqs);
         return reportList;

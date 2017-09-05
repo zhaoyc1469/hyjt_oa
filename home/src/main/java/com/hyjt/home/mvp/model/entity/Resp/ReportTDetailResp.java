@@ -24,6 +24,7 @@ public class ReportTDetailResp {
      * BossSign : /Upload/20170509033410580.jpg
      */
 
+    private String Id;
     private String CreatePerson;
     private String State;
     private String Boss;
@@ -36,6 +37,14 @@ public class ReportTDetailResp {
     private String BossTime;
     private String CreatePersonSign;
     private String BossSign;
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
+    }
 
     public String getCreatePerson() {
         return CreatePerson;
@@ -137,7 +146,8 @@ public class ReportTDetailResp {
     @Override
     public String toString() {
         return "ReportTDetailResp{" +
-                "CreatePerson='" + CreatePerson + '\'' +
+                "Id='" + Id + '\'' +
+                ", CreatePerson='" + CreatePerson + '\'' +
                 ", State='" + State + '\'' +
                 ", Boss='" + Boss + '\'' +
                 ", BossId='" + BossId + '\'' +

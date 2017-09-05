@@ -46,4 +46,13 @@ public class ReportTopListReqs {
     public void setRows(String rows) {
         Rows = rows;
     }
+
+    @Override
+    public String toString() {
+        return "ReportTopListReqs{" +
+                "Page='" + Page + '\'' +
+                ", Rows='" + Rows + '\'' +
+                ", Type='" + Type + '\'' +
+                '}';
+    }
 }

@@ -141,34 +141,54 @@ public class ReportTopDetailActivity extends BaseActivity<ReportTopDetailPresent
         mEdtRpLeader.setText(rtDetail.getBoss());
         mEdtContent.setText(rtDetail.getContent());
         mEdtIdeaExpect.setText(rtDetail.getMind());
-        mEdtApproveTime.setText(rtDetail.getBossTime());
+
+        if (!"待审核".equals(rtDetail.getState())) {
+            mEdtApproveTime.setText(rtDetail.getBossTime());
+        }
+
         mEdtLeaderIdea.setText(rtDetail.getBossMind());
 
-        if (!TextUtils.isEmpty(rtDetail.getCreatePersonSign())){
+        if (!TextUtils.isEmpty(rtDetail.getCreatePersonSign())) {
             mIvRpNameSignature.setVisibility(View.VISIBLE);
             Glide.with(this).load(getString(R.string.home_base_url) + rtDetail.getCreatePersonSign())
                     .into(mIvRpNameSignature);
         }
-        if (!TextUtils.isEmpty(rtDetail.getBossSign())){
+        if (!TextUtils.isEmpty(rtDetail.getBossSign())) {
             mIvLeaderSignature.setVisibility(View.VISIBLE);
             Glide.with(this).load(getString(R.string.home_base_url) + rtDetail.getBossSign())
                     .into(mIvLeaderSignature);
         }
 
+        if ("待审核".equals(rtDetail.getState())){
+            if (getUserName().equals(rtDetail.getCreatePerson())) {
+                mBtnEditReport.setText("保存");
+                mEdtLeaderIdea.setFocusable(false);
+                mEdtLeaderIdea.setEnabled(false);
 
-        if (getUserName().equals(rtDetail.getCreatePerson())){
-            mBtnEditReport.setText("保存");
-            mEdtLeaderIdea.setFocusable(false);
-            mEdtLeaderIdea.setEnabled(false);
+            } else if (getUserName().equals(rtDetail.getBoss())) {
+                mBtnEditReport.setText("审批");
+                mBtnDelReport.setVisibility(View.GONE);
 
-        } else if (getUserName().equals(rtDetail.getCreatePerson())){
-            mBtnEditReport.setText("审批");
-            mBtnDelReport.setVisibility(View.GONE);
+                mReportTopDetail.setState("已审核");
+
+                mEdtContent.setFocusable(false);
+                mEdtContent.setEnabled(false);
+                mEdtIdeaExpect.setFocusable(false);
+                mEdtIdeaExpect.setEnabled(false);
+            }
+            mReportTopDetail.setBossTime("");
+        } else {
 
             mEdtContent.setFocusable(false);
             mEdtContent.setEnabled(false);
             mEdtIdeaExpect.setFocusable(false);
             mEdtIdeaExpect.setEnabled(false);
+            mEdtLeaderIdea.setFocusable(false);
+            mEdtLeaderIdea.setEnabled(false);
+
+            mLlBottomBtn.setVisibility(View.GONE);
         }
+
+
     }
 }

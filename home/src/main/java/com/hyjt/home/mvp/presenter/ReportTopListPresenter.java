@@ -63,8 +63,7 @@ public class ReportTopListPresenter extends BasePresenter<ReportTopListContract.
             pageId++;
 
 
-//        mModel.getReportTopList(new ReportTopListReqs("" + pageId, "10", Type))
-        mModel.getReportTopList(new ReportTopListReqs("" + pageId, "10", "Mine"))
+        mModel.getReportTopList(new ReportTopListReqs("" + pageId, "10", Type))
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .retryWhen(new RetryWithDelay(3, 2))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔

@@ -1,10 +1,12 @@
 package com.hyjt.home.mvp.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,7 +40,7 @@ public class ReportTopListActivity extends BaseActivity<ReportTopListPresenter> 
     private android.widget.TextView mTvTitle;
     private android.widget.ImageView mIvTopSelect;
     private android.widget.LinearLayout mLlReportType;
-    private android.widget.Button mBtnAllType;
+    private Button mBtnWaitType;
     private android.widget.Button mBtnReadedType;
     private android.widget.Button mBtnNewReport;
     private android.support.v4.widget.SwipeRefreshLayout mSrlReportList;
@@ -66,12 +68,20 @@ public class ReportTopListActivity extends BaseActivity<ReportTopListPresenter> 
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        Intent intent = getIntent();
+        type = intent.getStringExtra("type");
+
+
         mRlReportTopList = (RelativeLayout) findViewById(R.id.rl_report_top_list);
         mIvTopBack = (ImageView) findViewById(R.id.iv_top_back);
+        mIvTopBack.setOnClickListener(v -> finish());
         mTvTitle = (TextView) findViewById(R.id.tv_title);
+        mTvTitle.setOnClickListener(v -> finish());
+        mTvTitle.setText("汇报列表");
         mIvTopSelect = (ImageView) findViewById(R.id.iv_top_select);
+        mIvTopSelect.setVisibility(View.GONE);
         mLlReportType = (LinearLayout) findViewById(R.id.ll_report_type);
-        mBtnAllType = (Button) findViewById(R.id.btn_all_type);
+        mBtnWaitType = (Button) findViewById(R.id.btn_wait_type);
         mBtnReadedType = (Button) findViewById(R.id.btn_readed_type);
         mBtnNewReport = (Button) findViewById(R.id.btn_new_report);
         mSrlReportList = (SwipeRefreshLayout) findViewById(R.id.srl_report_list);
@@ -80,8 +90,21 @@ public class ReportTopListActivity extends BaseActivity<ReportTopListPresenter> 
         mBtnNewReport.setOnClickListener(v -> ARouter.getInstance().build("/home/ReportTopCreateActivity")
                 .navigation());
 
+        mBtnWaitType.setOnClickListener(v -> {
+            this.type = "UnRead";
+            mPresenter.getReportList(true, "UnRead");
+        });
 
-        mPresenter.getReportList(true, "Mine");
+        mBtnReadedType.setOnClickListener(v -> {
+            this.type = "Opened";
+            mPresenter.getReportList(true, "Opened");
+        });
+
+        if ("Mine".equals(type)){
+            mLlReportType.setVisibility(View.GONE);
+        }
+
+        mPresenter.getReportList(true, type);
     }
 
     @Override
@@ -163,6 +186,12 @@ public class ReportTopListActivity extends BaseActivity<ReportTopListPresenter> 
 
     @Override
     public void onRefresh() {
+        mPresenter.getReportList(true, type);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         mPresenter.getReportList(true, type);
     }
 }

@@ -1,6 +1,7 @@
 package com.hyjt.home.mvp.model;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.hyjt.frame.api.BaseJson;
@@ -53,6 +54,8 @@ public class ReportTopDetailModel extends BaseModel implements ReportTopDetailCo
 
     @Override
     public Observable<BaseJson<Object>> reportTopEdit(ReportTDetailResp reportDetail) {
+        Log.e("http_rpt_edit", reportDetail.toString());
+
         Observable<BaseJson<Object>> reportTEdit = mRepositoryManager.obtainRetrofitService(HomeService.class)
                 .reportTopEdit(reportDetail);
         return reportTEdit;
