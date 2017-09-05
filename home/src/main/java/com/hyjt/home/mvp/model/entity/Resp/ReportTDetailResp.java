@@ -132,4 +132,23 @@ public class ReportTDetailResp {
     public void setBossSign(String BossSign) {
         this.BossSign = BossSign;
     }
+
+
+    @Override
+    public String toString() {
+        return "ReportTDetailResp{" +
+                "CreatePerson='" + CreatePerson + '\'' +
+                ", State='" + State + '\'' +
+                ", Boss='" + Boss + '\'' +
+                ", BossId='" + BossId + '\'' +
+                ", CreateTime='" + CreateTime + '\'' +
+                ", PID='" + PID + '\'' +
+                ", Content='" + Content + '\'' +
+                ", Mind='" + Mind + '\'' +
+                ", BossMind='" + BossMind + '\'' +
+                ", BossTime='" + BossTime + '\'' +
+                ", CreatePersonSign='" + CreatePersonSign + '\'' +
+                ", BossSign='" + BossSign + '\'' +
+                '}';
+    }
 }

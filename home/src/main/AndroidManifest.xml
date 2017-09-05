@@ -83,15 +83,39 @@
             android:name=".mvp.ui.activity.EmailCreateActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
-        <activity android:name=".mvp.ui.activity.SkipReportListActivity" />
-        <activity android:name=".mvp.ui.activity.SkipReportDetailActivity" />
-        <activity android:name=".mvp.ui.activity.SkipReportCreateActivity" />
-        <activity android:name=".mvp.ui.activity.SLConsultListActivity" />
-        <activity android:name=".mvp.ui.activity.SLConsultCreateActivity" />
-        <activity android:name=".mvp.ui.activity.SLConsultEditActivity" />
-        <activity android:name=".mvp.ui.activity.ReportTopListActivity" />
-        <activity android:name=".mvp.ui.activity.ReportTopDetailActivity" />
-        <activity android:name=".mvp.ui.activity.ReportTopCreateActivity"></activity>
+        <activity
+            android:name=".mvp.ui.activity.SkipReportListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.SkipReportDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.SkipReportCreateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.SLConsultListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.SLConsultCreateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.SLConsultEditActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.ReportTopListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.ReportTopDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.ReportTopCreateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
     </application>
 
 </manifest>

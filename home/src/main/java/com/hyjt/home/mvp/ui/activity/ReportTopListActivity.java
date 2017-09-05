@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.utils.UiUtils;
@@ -75,6 +76,10 @@ public class ReportTopListActivity extends BaseActivity<ReportTopListPresenter> 
         mBtnNewReport = (Button) findViewById(R.id.btn_new_report);
         mSrlReportList = (SwipeRefreshLayout) findViewById(R.id.srl_report_list);
         mRecyReportList = (RecyclerView) findViewById(R.id.recy_report_list);
+
+        mBtnNewReport.setOnClickListener(v -> ARouter.getInstance().build("/home/ReportTopCreateActivity")
+                .navigation());
+
 
         mPresenter.getReportList(true, "Mine");
     }

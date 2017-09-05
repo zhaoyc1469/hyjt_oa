@@ -1,6 +1,7 @@
 package com.hyjt.home.mvp.presenter;
 
 import android.app.Application;
+import android.widget.EditText;
 
 import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
@@ -8,7 +9,11 @@ import com.hyjt.frame.integration.AppManager;
 import com.hyjt.frame.mvp.BasePresenter;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 import com.hyjt.home.mvp.contract.ReportTopCreateContract;
+import com.hyjt.home.mvp.model.entity.Reqs.StaffNameIdKey;
+import com.hyjt.home.mvp.model.entity.Resp.LinkManResp;
 import com.hyjt.home.mvp.model.entity.Resp.ReportTDetailResp;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -62,7 +67,33 @@ public class ReportTopCreatePresenter extends BasePresenter<ReportTopCreateContr
                         mRootView.killMyself();
                     }
                 });
+    }
 
+    public void getLinkmanMsg(String SysDepartment, EditText selEdit, StaffNameIdKey staffNameId, boolean moreCheck) {
+        mModel.getLinkman("1", "9999", SysDepartment)
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ErrorHandleSubscriber<LinkManResp>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull LinkManResp linkManResp) {
+                        LinkManResp.DataBean.RowsBean[] linkman = linkManResp.getData().getRows().toArray
+                                (new LinkManResp.DataBean.RowsBean[linkManResp.getData().getRows().size()]);
+
+                        String[] nameAry = new String[linkman.length];
+                        String[] nameSendAry = new String[linkman.length];
+
+//                        ^员工唯一码|姓名^
+                        for (int i = 0; i < linkman.length; i++) {
+                            LinkManResp.DataBean.RowsBean item = linkman[i];
+                            List<String> cell = item.getCell();
+                            nameAry[i] = cell.get(1);
+                            nameSendAry[i] = cell.get(0);
+                        }
+
+                        mRootView.getLinkmanOk(nameAry, nameSendAry, selEdit, staffNameId, moreCheck);
+                    }
+                });
     }
 
 }

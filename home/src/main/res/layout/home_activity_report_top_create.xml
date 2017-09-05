@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/rl_rpt_create"
     android:background="@drawable/home_bg_table">
 
     <include
@@ -148,7 +149,7 @@
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:layout_alignTop="@id/edt_idea_expect"
-                    android:layout_alignBottom="@id/iv_rp_name_signature"
+                    android:layout_alignBottom="@id/edt_idea_expect"
                     android:layout_marginStart="86dp"
                     android:background="#000000" />
             </RelativeLayout>
