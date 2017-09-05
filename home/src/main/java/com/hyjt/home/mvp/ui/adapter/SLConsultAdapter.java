@@ -5,8 +5,8 @@ import android.view.View;
 import com.hyjt.frame.base.BaseHolder;
 import com.hyjt.frame.base.DefaultAdapter;
 import com.hyjt.home.R;
-import com.hyjt.home.mvp.model.entity.Resp.ReportTListResp;
-import com.hyjt.home.mvp.ui.holder.ReportTopItemHolder;
+import com.hyjt.home.mvp.model.entity.Resp.SLConsultListResp;
+import com.hyjt.home.mvp.ui.holder.SLConsultItemHolder;
 
 import java.util.List;
 
@@ -16,22 +16,22 @@ import java.util.List;
  * @desc ${TODO}
  */
 
-public class SLConsultAdapter extends DefaultAdapter<ReportTListResp.RowsBean> {
+public class SLConsultAdapter extends DefaultAdapter<SLConsultListResp.RowsBean> {
 
     private String type;
 
-    public SLConsultAdapter(List<ReportTListResp.RowsBean> infos, String type) {
+    public SLConsultAdapter(List<SLConsultListResp.RowsBean> infos, String type) {
         super(infos);
         this.type = type;
     }
 
     @Override
-    public BaseHolder<ReportTListResp.RowsBean> getHolder(View v, int viewType) {
-        return new ReportTopItemHolder(v, type);
+    public BaseHolder<SLConsultListResp.RowsBean> getHolder(View v, int viewType) {
+        return new SLConsultItemHolder(v, type);
     }
 
     @Override
     public int getLayoutId(int viewType) {
-        return R.layout.home_item_report_top;
+        return R.layout.home_item_slconsult;
     }
 }

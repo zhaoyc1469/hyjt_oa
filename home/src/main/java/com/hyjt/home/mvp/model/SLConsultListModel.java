@@ -1,6 +1,7 @@
 package com.hyjt.home.mvp.model;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.hyjt.frame.api.BaseJson;
@@ -39,6 +40,9 @@ public class SLConsultListModel extends BaseModel implements SLConsultListContra
 
     @Override
     public Observable<BaseJson<SLConsultListResp>> SLConsultList(SLConsultListReqs sLConsultListReqs) {
+
+        Log.e("http_SLConsultListReqs", sLConsultListReqs.toString());
+
         Observable<BaseJson<SLConsultListResp>> SLConsultList = mRepositoryManager.obtainRetrofitService(HomeService.class)
                 .SLConsultList(sLConsultListReqs);
         return SLConsultList;

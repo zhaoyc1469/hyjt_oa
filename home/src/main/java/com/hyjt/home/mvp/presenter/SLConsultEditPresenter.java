@@ -2,15 +2,22 @@ package com.hyjt.home.mvp.presenter;
 
 import android.app.Application;
 
+import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.integration.AppManager;
 import com.hyjt.frame.mvp.BasePresenter;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 import com.hyjt.home.mvp.contract.SLConsultEditContract;
+import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
+import com.hyjt.home.mvp.model.entity.Resp.SLConsultDetailResp;
 
 import javax.inject.Inject;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.schedulers.Schedulers;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
+import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
 
 
 @ActivityScope
@@ -39,5 +46,31 @@ public class SLConsultEditPresenter extends BasePresenter<SLConsultEditContract.
         this.mImageLoader = null;
         this.mApplication = null;
     }
+
+    public void consultEdit(String Id){
+
+        mModel.slconsultDetail(new BaseIdReqs(Id))
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ErrorHandleSubscriber<SLConsultDetailResp>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull SLConsultDetailResp sLConsult) {
+                        mRootView.setSLCDetail(sLConsult);
+                    }
+                });
+    }
+
+    public void consultDetail(String Id){
+
+    }
+
+    public void consultDel(String Id){
+
+    }
+
 
 }
