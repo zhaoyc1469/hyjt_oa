@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,6 +14,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.bumptech.glide.Glide;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.utils.UiUtils;
@@ -47,6 +50,7 @@ public class SLConsultEditActivity extends BaseActivity<SLConsultEditPresenter> 
     private android.widget.ImageView mIvLeaderSignature;
     private String slcId;
     private ProgressDialog progressDialog;
+    private SLConsultDetailResp mSLConsultDetail;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -91,6 +95,15 @@ public class SLConsultEditActivity extends BaseActivity<SLConsultEditPresenter> 
             progressDialog = ProgressDialog.show(this, null, "协商删除中…");
             mPresenter.consultDel(slcId);});
 
+        mBtnEditReport.setOnClickListener(v -> {
+            progressDialog = ProgressDialog.show(this, null, "报告编辑中…");
+
+            mSLConsultDetail.setContent(mEdtContent.getText().toString());
+            mSLConsultDetail.setMind(mEdtIdeaExpect.getText().toString());
+            mSLConsultDetail.setWorkerMind(mEdtLeaderIdea.getText().toString());
+            mPresenter.consultEdit(mSLConsultDetail);
+        });
+
         mPresenter.consultDetail(slcId);
     }
 
@@ -114,5 +127,60 @@ public class SLConsultEditActivity extends BaseActivity<SLConsultEditPresenter> 
     @Override
     public void setSLCDetail(SLConsultDetailResp sLConsult) {
 
+        mSLConsultDetail = sLConsult;
+
+        mEdtRpNum.setText(sLConsult.getPID());
+        mEdtRpName.setText(sLConsult.getCreatePerson());
+        mEdtRpTime.setText(sLConsult.getCreateTime());
+        mEdtRpLeader.setText(sLConsult.getWorker());
+        mEdtContent.setText(sLConsult.getContent());
+        mEdtIdeaExpect.setText(sLConsult.getMind());
+        mEdtLeaderIdea.setText(sLConsult.getWorkerMind());
+
+        if (!"待回复".equals(sLConsult.getState())) {
+            mEdtApproveTime.setText(sLConsult.getWorkerTime());
+        }
+
+        if (!TextUtils.isEmpty(sLConsult.getCreatePersonSign())) {
+            mIvRpNameSignature.setVisibility(View.VISIBLE);
+            Glide.with(this).load(getString(R.string.home_base_url) + sLConsult.getCreatePersonSign())
+                    .into(mIvRpNameSignature);
+        }
+        if (!TextUtils.isEmpty(sLConsult.getWorkerMind())) {
+            mIvLeaderSignature.setVisibility(View.VISIBLE);
+            Glide.with(this).load(getString(R.string.home_base_url) + sLConsult.getWorkerMind())
+                    .into(mIvLeaderSignature);
+        }
+
+
+        if ("待回复".equals(sLConsult.getState())){
+            if (getUserName().equals(sLConsult.getCreatePerson())) {
+                mBtnEditReport.setText("保存");
+                mEdtLeaderIdea.setFocusable(false);
+                mEdtLeaderIdea.setEnabled(false);
+
+            } else if (getUserName().equals(sLConsult.getWorker())) {
+                mBtnEditReport.setText("回复");
+                mBtnDelReport.setVisibility(View.GONE);
+
+                mSLConsultDetail.setState("已回复");
+
+                mEdtContent.setFocusable(false);
+                mEdtContent.setEnabled(false);
+                mEdtIdeaExpect.setFocusable(false);
+                mEdtIdeaExpect.setEnabled(false);
+            }
+            mSLConsultDetail.setWorkerTime("");
+        } else {
+
+            mEdtContent.setFocusable(false);
+            mEdtContent.setEnabled(false);
+            mEdtIdeaExpect.setFocusable(false);
+            mEdtIdeaExpect.setEnabled(false);
+            mEdtLeaderIdea.setFocusable(false);
+            mEdtLeaderIdea.setEnabled(false);
+
+            mLlBottomBtn.setVisibility(View.GONE);
+        }
     }
 }

@@ -128,6 +128,7 @@
 
                 <TextView
                     android:layout_marginTop="6dp"
+                    android:layout_marginEnd="4dp"
                     style="@style/home_tv_new_meeting"
                     android:text="汇报内容" />
 
@@ -165,6 +166,7 @@
 
                 <TextView
                     android:layout_marginTop="6dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_width="50dp"
                     style="@style/home_tv_new_meeting"
                     android:text="汇报人想法及诉求" />
@@ -234,6 +236,7 @@
 
                 <TextView
                     android:layout_marginTop="6dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_width="50dp"
                     style="@style/home_tv_new_meeting"
                     android:text="汇报领导批准意见" />
