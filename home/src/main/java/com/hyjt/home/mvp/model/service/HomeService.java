@@ -5,6 +5,7 @@ import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CEmailSendReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.EmailListReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.ReportTopListReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.SLConsultListReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.StaffNameIdKey;
 import com.hyjt.home.mvp.model.entity.Resp.BNoticeDetailsResp;
 import com.hyjt.home.mvp.model.entity.Resp.BlocNoticeListResp;
@@ -17,6 +18,7 @@ import com.hyjt.home.mvp.model.entity.Resp.MeetingListResp;
 import com.hyjt.home.mvp.model.entity.Resp.MeetingMsgResp;
 import com.hyjt.home.mvp.model.entity.Resp.ReportTDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.ReportTListResp;
+import com.hyjt.home.mvp.model.entity.Resp.SLConsultListResp;
 import com.hyjt.home.mvp.model.entity.Resp.StaffListResp;
 import com.hyjt.home.mvp.model.entity.Resp.StaffMsgResp;
 
@@ -264,4 +266,19 @@ public interface HomeService {
 
     @POST("/APIWorkingConference/Delete")
     Observable<BaseJson<Object>> reportTopDelete(@Body BaseIdReqs baseIdReqs);
+
+    @POST("/APIWorkingConsult/GetData")
+    Observable<BaseJson<SLConsultListResp>> SLConsultList(@Body SLConsultListReqs sLConsultListReqs);
+
+    @POST("/APIWorkingConsult/GetData")
+    Observable<BaseJson<SLConsultListResp>> SLConsultDetail(@Body SLConsultListReqs sLConsultListReqs);
+
+    @POST("/APIWorkingConsult/GetData")
+    Observable<BaseJson<SLConsultListResp>> SLConsultEdit(@Body SLConsultListReqs sLConsultListReqs);
+
+    @POST("/APIWorkingConsult/GetData")
+    Observable<BaseJson<SLConsultListResp>> SLConsultDel(@Body SLConsultListReqs sLConsultListReqs);
+
+    @POST("/APIWorkingConsult/GetData")
+    Observable<BaseJson<SLConsultListResp>> SLConsultCreate(@Body SLConsultListReqs sLConsultListReqs);
 }

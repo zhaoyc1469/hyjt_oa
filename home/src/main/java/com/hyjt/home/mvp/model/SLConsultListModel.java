@@ -3,13 +3,18 @@ package com.hyjt.home.mvp.model;
 import android.app.Application;
 
 import com.google.gson.Gson;
+import com.hyjt.frame.api.BaseJson;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.integration.IRepositoryManager;
 import com.hyjt.frame.mvp.BaseModel;
+import com.hyjt.home.mvp.contract.SLConsultListContract;
+import com.hyjt.home.mvp.model.entity.Reqs.SLConsultListReqs;
+import com.hyjt.home.mvp.model.entity.Resp.SLConsultListResp;
+import com.hyjt.home.mvp.model.service.HomeService;
 
 import javax.inject.Inject;
 
-import com.hyjt.home.mvp.contract.SLConsultListContract;
+import io.reactivex.Observable;
 
 
 @ActivityScope
@@ -31,4 +36,11 @@ public class SLConsultListModel extends BaseModel implements SLConsultListContra
         this.mApplication = null;
     }
 
+
+    @Override
+    public Observable<BaseJson<SLConsultListResp>> SLConsultList(SLConsultListReqs sLConsultListReqs) {
+        Observable<BaseJson<SLConsultListResp>> SLConsultList = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .SLConsultList(sLConsultListReqs);
+        return SLConsultList;
+    }
 }

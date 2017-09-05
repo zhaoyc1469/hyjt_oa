@@ -26,6 +26,7 @@ import com.hyjt.client.mvp.model.entity.WorkMission;
 import com.hyjt.client.mvp.presenter.WorkPresenter;
 import com.hyjt.client.mvp.ui.view.EmailPop;
 import com.hyjt.client.mvp.ui.view.ReportTopPop;
+import com.hyjt.client.mvp.ui.view.SLConsultPop;
 import com.hyjt.frame.api.Api;
 import com.hyjt.frame.base.BaseFragment;
 import com.hyjt.frame.di.component.AppComponent;
@@ -480,7 +481,14 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
                 break;
             }
             case R.id.rl_pjxs: {
-                ARouter.getInstance().build("/home/SLConsultListActivity").navigation(getActivity(), Api.WorkStartCode);
+                SLConsultPop sLConsultPop = new SLConsultPop(getActivity());
+                sLConsultPop.setOnItemClickListener(box -> {
+                    ARouter.getInstance().build("/home/SLConsultListActivity")
+                            .withString("type", box).navigation(getActivity(), Api.WorkStartCode);
+                    sLConsultPop.dismiss();
+                });
+                sLConsultPop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
+                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
                 break;
             }
             case R.id.rl_yjhb: {

@@ -79,8 +79,12 @@ public class ReportTopListPresenter extends BasePresenter<ReportTopListContract.
                         if (mRootView != null) {
                             mRootView.hideLoading();//隐藏上拉刷新的进度条
                         }
-                    } else
-                        mRootView.endLoadMore();//隐藏下拉加载更多的进度条
+                    } else{
+                        if (mRootView != null) {
+                            mRootView.endLoadMore();//隐藏下拉加载更多的进度条
+                        }
+                    }
+
                 })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<ReportTListResp>(mErrorHandler) {
