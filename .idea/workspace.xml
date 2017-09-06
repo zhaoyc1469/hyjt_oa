@@ -11,20 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58545980-12d8-4824-9ee9-7948b17b5c1f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/SLConsultCreateContract.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/SLConsultCreateContract.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/SLConsultCreateModel.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/SLConsultCreateModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/service/HomeService.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/service/HomeService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ReportTopCreatePresenter.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ReportTopCreatePresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/SLConsultCreatePresenter.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/SLConsultCreatePresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/SLConsultEditPresenter.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/SLConsultEditPresenter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ReportTopCreateActivity.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ReportTopCreateActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ReportTopDetailActivity.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ReportTopDetailActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SLConsultCreateActivity.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SLConsultCreateActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SLConsultEditActivity.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SLConsultEditActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/res/layout/home_activity_slconsult_create.xml" afterPath="$PROJECT_DIR$/home/src/main/res/layout/home_activity_slconsult_create.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/res/layout/home_activity_slconsult_edit.xml" afterPath="$PROJECT_DIR$/home/src/main/res/layout/home_activity_slconsult_edit.xml" />
     </list>
     <ignored path="hyjt_oa.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,21 +54,58 @@
       <file leaf-file-name="SLConsultEditActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SLConsultEditActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-613">
-              <caret line="100" column="68" selection-start-line="100" selection-start-column="68" selection-end-line="100" selection-end-column="68" />
+            <state relative-caret-position="878">
+              <caret line="141" column="31" selection-start-line="141" selection-start-column="31" selection-end-line="143" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home_activity_slconsult_edit.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_slconsult_edit.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
+      <file leaf-file-name="ReportTopDetailActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ReportTopDetailActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="772">
-              <caret line="172" column="44" selection-start-line="172" selection-start-column="44" selection-end-line="172" selection-end-column="44" />
+            <state relative-caret-position="89">
+              <caret line="100" column="12" selection-start-line="100" selection-start-column="12" selection-end-line="109" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReportTopCreateActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ReportTopCreateActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="99" column="12" selection-start-line="99" selection-start-column="12" selection-end-line="112" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EmailCreateActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/EmailCreateActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1136">
+              <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StaffMsgActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/StaffMsgActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="158" column="46" selection-start-line="158" selection-start-column="46" selection-end-line="167" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EmailDetailsActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/EmailDetailsActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-992">
+              <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -86,48 +114,18 @@
       <file leaf-file-name="SLConsultCreateActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SLConsultCreateActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="631">
-              <caret line="200" column="68" selection-start-line="200" selection-start-column="68" selection-end-line="200" selection-end-column="68" />
+            <state relative-caret-position="536">
+              <caret line="131" column="31" selection-start-line="131" selection-start-column="31" selection-end-line="131" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SLConsultCreatePresenter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/SLConsultCreatePresenter.java">
+      <file leaf-file-name="SLConsultListActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SLConsultListActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="57" column="26" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SLConsultCreateContract.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/SLConsultCreateContract.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReportTopDetailModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ReportTopDetailModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-53">
-              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReportTopCreateModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ReportTopCreateModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="53" selection-end-column="5" />
+            <state relative-caret-position="95">
+              <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -153,16 +151,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/service/HomeService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="707">
-              <caret line="283" column="88" selection-start-line="283" selection-start-column="88" selection-end-line="283" selection-end-column="88" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -173,8 +161,9 @@
     </option>
   </component>
   <component name="GenerateSignedApkSettings">
-    <option name="KEY_STORE_PATH" value="C:\Users\hasee\Desktop\管理平台\hyjtoakey.jks" />
+    <option name="KEY_STORE_PATH" value="D:\download\BaiduNetdiskDownload\workcp\workcp\管理平台\hyjtoakey.jks" />
     <option name="KEY_ALIAS" value="hyjt1234" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -3985,16 +3974,16 @@
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/holder/MeetingItemHolder.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/SLConsultEditPresenter.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ReportTopCreateActivity.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ReportTopDetailActivity.java" />
         <option value="$PROJECT_DIR$/home/src/main/res/layout/home_activity_slconsult_create.xml" />
         <option value="$PROJECT_DIR$/home/src/main/res/layout/home_activity_slconsult_edit.xml" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ReportTopCreatePresenter.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/SLConsultCreatePresenter.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/SLConsultCreateContract.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SLConsultEditActivity.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/service/HomeService.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/SLConsultCreateModel.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SLConsultEditActivity.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ReportTopDetailActivity.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ReportTopCreateActivity.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SLConsultCreateActivity.java" />
       </list>
     </option>
@@ -4622,12 +4611,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="android.sdk.path" value="E:/software/developSoftware/AndroidSDK/newsdk" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="D:/download/BaiduNetdiskDownload/workcp/workcp/git/huanyujt/oa" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/apk" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="device.picker.selection" value="TWGDU16C20005986" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
-    <property name="ExportApk.ApkPath" value="C:\Users\hasee\Desktop\管理平台" />
+    <property name="ExportApk.ApkPath" value="C:\Users\Administrator\Desktop\apk" />
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.BuildType" value="release" />
   </component>
@@ -5121,7 +5110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1504674606558</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="test">
+      <created>1504678246199</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1504678246199</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -5210,34 +5206,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_login_input.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="11" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ImageViewerActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.alibaba/arouter-api/1.2.1.1/9bbb7c0795292e70a1c741edc100a39cc9a0ee73/arouter-api-1.2.1.1-sources.jar!/com/alibaba/android/arouter/launcher/ARouter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/app-release.apk">
       <provider selected="true" editor-type-id="apk-viewer">
         <state />
@@ -5447,14 +5415,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ReportTopDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1805">
-          <caret line="120" column="28" selection-start-line="120" selection-start-column="28" selection-end-line="120" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/home/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
@@ -5517,14 +5477,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ReportTopCreateActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="57" column="45" selection-start-line="57" selection-start-column="45" selection-end-line="58" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_slconsult_edit.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="772">
@@ -5534,14 +5486,6 @@
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SLConsultEditActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-613">
-          <caret line="100" column="68" selection-start-line="100" selection-start-column="68" selection-end-line="100" selection-end-column="68" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/SLConsultCreatePresenter.java">
@@ -5600,10 +5544,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SLConsultListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/EmailDetailsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-992">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/StaffMsgActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="158" column="46" selection-start-line="158" selection-start-column="46" selection-end-line="167" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/EmailCreateActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1136">
+          <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ReportTopDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="100" column="12" selection-start-line="100" selection-start-column="12" selection-end-line="109" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ReportTopCreateActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="99" column="12" selection-start-line="99" selection-start-column="12" selection-end-line="112" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SLConsultEditActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="878">
+          <caret line="141" column="31" selection-start-line="141" selection-start-column="31" selection-end-line="143" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SLConsultCreateActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="631">
-          <caret line="200" column="68" selection-start-line="200" selection-start-column="68" selection-end-line="200" selection-end-column="68" />
+        <state relative-caret-position="536">
+          <caret line="131" column="31" selection-start-line="131" selection-start-column="31" selection-end-line="131" selection-end-column="31" />
           <folding />
         </state>
       </provider>

@@ -1,5 +1,6 @@
 package com.hyjt.home.mvp.ui.activity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -94,16 +95,32 @@ public class SLConsultEditActivity extends BaseActivity<SLConsultEditPresenter> 
         mIvLeaderSignature = (ImageView) findViewById(R.id.iv_leader_signature);
 
         mBtnDelReport.setOnClickListener(v -> {
-            progressDialog = ProgressDialog.show(mContext, null, "协商删除中…");
-            mPresenter.consultDel(slcId);});
+            AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                    .setTitle("删除协商")
+                    .setMessage("确定删除该条协商信息?")
+                    .setPositiveButton("确定", (dialog, which) -> {
+                        progressDialog = ProgressDialog.show(mContext, null, "协商删除中…");
+                        mPresenter.consultDel(slcId);
+                    }).setNegativeButton("返回", (dialog, which) -> {
+                        dialog.dismiss();
+                    });
+            builder.show();
+        });
 
         mBtnEditReport.setOnClickListener(v -> {
-            progressDialog = ProgressDialog.show(mContext, null, "协商编辑中…");
-
-            mSLConsultDetail.setContent(mEdtContent.getText().toString());
-            mSLConsultDetail.setMind(mEdtIdeaExpect.getText().toString());
-            mSLConsultDetail.setWorkerMind(mEdtLeaderIdea.getText().toString());
-            mPresenter.consultEdit(mSLConsultDetail);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                    .setTitle("协商编辑")
+                    .setMessage("确定编辑该条协商信息?")
+                    .setPositiveButton("确定", (dialog, which) -> {
+                        progressDialog = ProgressDialog.show(mContext, null, "协商编辑中…");
+                        mSLConsultDetail.setContent(mEdtContent.getText().toString());
+                        mSLConsultDetail.setMind(mEdtIdeaExpect.getText().toString());
+                        mSLConsultDetail.setWorkerMind(mEdtLeaderIdea.getText().toString());
+                        mPresenter.consultEdit(mSLConsultDetail);
+                    }).setNegativeButton("返回", (dialog, which) -> {
+                        dialog.dismiss();
+                    });
+            builder.show();
         });
 
         mPresenter.consultDetail(slcId);
@@ -156,7 +173,7 @@ public class SLConsultEditActivity extends BaseActivity<SLConsultEditPresenter> 
         }
 
 
-        if ("待回复".equals(sLConsult.getState())){
+        if ("待回复".equals(sLConsult.getState())) {
             if (getUserName().equals(sLConsult.getCreatePerson())) {
                 mBtnEditReport.setText("保存");
                 mEdtLeaderIdea.setFocusable(false);

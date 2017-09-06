@@ -96,12 +96,20 @@ public class SLConsultCreateActivity extends BaseActivity<SLConsultCreatePresent
         edtRpName.setText(getUserName());
 
         btnEditConsult.setOnClickListener(v -> {
-            progressDialog = ProgressDialog.show(this, null, "协商创建中…");
-            SLConsultDetailResp slConsultDetailResp = new SLConsultDetailResp();
-            slConsultDetailResp.setWorkerId(receiver.getSendKey());
-            slConsultDetailResp.setContent(edtContent.getText().toString());
-            slConsultDetailResp.setMind(edtIdeaExpect.getText().toString());
-            mPresenter.createConsult(slConsultDetailResp);
+            android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
+                    .setTitle("创建协商")
+                    .setMessage("确定创建该条协商信息?")
+                    .setPositiveButton("确定", (dialog, which) -> {
+                        progressDialog = ProgressDialog.show(this, null, "协商创建中…");
+                        SLConsultDetailResp slConsultDetailResp = new SLConsultDetailResp();
+                        slConsultDetailResp.setWorkerId(receiver.getSendKey());
+                        slConsultDetailResp.setContent(edtContent.getText().toString());
+                        slConsultDetailResp.setMind(edtIdeaExpect.getText().toString());
+                        mPresenter.createConsult(slConsultDetailResp);
+                    }).setNegativeButton("返回", (dialog, which) -> {
+                        dialog.dismiss();
+                    });
+            builder.show();
         });
 
         edtRpLeader.setOnClickListener(v -> selStaff(mContext, edtRpLeader, receiver, false));
@@ -122,7 +130,8 @@ public class SLConsultCreateActivity extends BaseActivity<SLConsultCreatePresent
 
     @Override
     public void hideLoading() {
-
+        if (progressDialog != null)
+            progressDialog.dismiss();
     }
 
     @Override

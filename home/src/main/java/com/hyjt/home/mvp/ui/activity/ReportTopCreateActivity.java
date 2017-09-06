@@ -97,12 +97,20 @@ public class ReportTopCreateActivity extends BaseActivity<ReportTopCreatePresent
         mEdtRpName.setText(getUserName());
 
         mBtnEditReport.setOnClickListener(v -> {
-            progressDialog = ProgressDialog.show(this, null, "报告创建中…");
-            ReportTDetailResp reportTDetailResp = new ReportTDetailResp();
-            reportTDetailResp.setBossId(receiver.getSendKey());
-            reportTDetailResp.setContent(mEdtContent.getText().toString());
-            reportTDetailResp.setMind(mEdtIdeaExpect.getText().toString());
-            mPresenter.createReport(reportTDetailResp);
+            android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
+                    .setTitle("创建报告")
+                    .setMessage("确定创建该条报告信息?")
+                    .setPositiveButton("确定", (dialog, which) -> {
+                        progressDialog = ProgressDialog.show(this, null, "报告创建中…");
+                        ReportTDetailResp reportTDetailResp = new ReportTDetailResp();
+                        reportTDetailResp.setBossId(receiver.getSendKey());
+                        reportTDetailResp.setContent(mEdtContent.getText().toString());
+                        reportTDetailResp.setMind(mEdtIdeaExpect.getText().toString());
+                        mPresenter.createReport(reportTDetailResp);
+                    }).setNegativeButton("返回", (dialog, which) -> {
+                        dialog.dismiss();
+                    });
+            builder.show();
         });
 
         mEdtRpLeader.setOnClickListener(v -> selStaff(mContext, mEdtRpLeader, receiver, false));

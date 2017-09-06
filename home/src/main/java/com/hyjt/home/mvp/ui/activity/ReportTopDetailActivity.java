@@ -1,5 +1,6 @@
 package com.hyjt.home.mvp.ui.activity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -97,17 +98,32 @@ public class ReportTopDetailActivity extends BaseActivity<ReportTopDetailPresent
 
 
         mBtnDelReport.setOnClickListener(v -> {
-            progressDialog = ProgressDialog.show(this, null, "报告删除中…");
-            mPresenter.getReportDel(reportId);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                    .setTitle("删除报告")
+                    .setMessage("确定删除该条报告信息?")
+                    .setPositiveButton("确定", (dialog, which) -> {
+                        progressDialog = ProgressDialog.show(this, null, "报告删除中…");
+                        mPresenter.getReportDel(reportId);
+                    }).setNegativeButton("返回", (dialog, which) -> {
+                        dialog.dismiss();
+                    });
+            builder.show();
         });
 
         mBtnEditReport.setOnClickListener(v -> {
-            progressDialog = ProgressDialog.show(this, null, "报告编辑中…");
-
-            mReportTopDetail.setContent(mEdtContent.getText().toString());
-            mReportTopDetail.setMind(mEdtIdeaExpect.getText().toString());
-            mReportTopDetail.setBossMind(mEdtLeaderIdea.getText().toString());
-            mPresenter.getReportEdit(mReportTopDetail);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                    .setTitle("报告编辑")
+                    .setMessage("确定编辑该条报告信息?")
+                    .setPositiveButton("确定", (dialog, which) -> {
+                        progressDialog = ProgressDialog.show(this, null, "报告编辑中…");
+                        mReportTopDetail.setContent(mEdtContent.getText().toString());
+                        mReportTopDetail.setMind(mEdtIdeaExpect.getText().toString());
+                        mReportTopDetail.setBossMind(mEdtLeaderIdea.getText().toString());
+                        mPresenter.getReportEdit(mReportTopDetail);
+                    }).setNegativeButton("返回", (dialog, which) -> {
+                        dialog.dismiss();
+                    });
+            builder.show();
         });
 
         progressDialog = ProgressDialog.show(this, null, "报告内容加载中…");
