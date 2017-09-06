@@ -18,14 +18,14 @@ import com.hyjt.home.R;
  * @desc ${TODO}
  */
 
-public class SLConsultPop extends PopupWindow {
+public class SkipReportPop extends PopupWindow {
     private View mMenuView; // PopupWindow 菜单布局
     private Context context; // 上下文参数
 
     private TextView outbox;
     private TextView inbox;
 
-    public SLConsultPop(Context context) {
+    public SkipReportPop(Context context) {
         super(context);
         this.context = context;
         Init();
@@ -35,7 +35,7 @@ public class SLConsultPop extends PopupWindow {
         // PopupWindow 导入
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mMenuView = inflater.inflate(R.layout.home_slconsult_sel, null);
+        mMenuView = inflater.inflate(R.layout.home_skip_report_sel, null);
         inbox = (TextView) mMenuView.findViewById(R.id.tv_inbox);
         outbox = (TextView) mMenuView.findViewById(R.id.tv_outbox);
 
