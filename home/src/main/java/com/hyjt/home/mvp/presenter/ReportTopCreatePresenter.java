@@ -63,7 +63,7 @@ public class ReportTopCreatePresenter extends BasePresenter<ReportTopCreateContr
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull Object obj) {
-                        mRootView.showMessage("删除成功");
+                        mRootView.showMessage("创建成功");
                         mRootView.killMyself();
                     }
                 });

@@ -131,6 +131,7 @@
                 <EditText
                     android:id="@+id/edt_content"
                     android:layout_marginTop="6dp"
+                    android:minWidth="200dp"
                     style="@style/home_edt_new_meeting" />
 
                 <View
@@ -169,6 +170,7 @@
                 <EditText
                     android:id="@+id/edt_idea_expect"
                     android:layout_marginTop="6dp"
+                    android:minWidth="200dp"
                     style="@style/home_edt_new_meeting" />
 
                 <ImageView

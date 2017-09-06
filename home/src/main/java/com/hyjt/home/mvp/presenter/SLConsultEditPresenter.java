@@ -49,6 +49,20 @@ public class SLConsultEditPresenter extends BasePresenter<SLConsultEditContract.
 
     public void consultEdit(SLConsultDetailResp consultDetail){
 
+        mModel.slconsultEdit(consultDetail)
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object reportTDetail) {
+                        mRootView.showMessage("编辑成功");
+                        mRootView.killMyself();
+                    }
+                });
 
     }
 

@@ -98,7 +98,7 @@ public class SLConsultEditActivity extends BaseActivity<SLConsultEditPresenter> 
             mPresenter.consultDel(slcId);});
 
         mBtnEditReport.setOnClickListener(v -> {
-            progressDialog = ProgressDialog.show(mContext, null, "报告编辑中…");
+            progressDialog = ProgressDialog.show(mContext, null, "协商编辑中…");
 
             mSLConsultDetail.setContent(mEdtContent.getText().toString());
             mSLConsultDetail.setMind(mEdtIdeaExpect.getText().toString());
@@ -113,6 +113,7 @@ public class SLConsultEditActivity extends BaseActivity<SLConsultEditPresenter> 
     public void showMessage(@NonNull String message) {
         checkNotNull(message);
         UiUtils.snackbarText(message);
+        shortToast(message);
     }
 
     @Override

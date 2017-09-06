@@ -113,6 +113,7 @@ public class ReportTopCreateActivity extends BaseActivity<ReportTopCreatePresent
     public void showMessage(@NonNull String message) {
         checkNotNull(message);
         UiUtils.snackbarText(message);
+        shortToast(message);
     }
 
 

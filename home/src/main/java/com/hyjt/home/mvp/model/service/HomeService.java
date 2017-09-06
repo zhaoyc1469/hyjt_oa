@@ -281,5 +281,5 @@ public interface HomeService {
     Observable<BaseJson<Object>> SLConsultDel(@Body BaseIdReqs baseIdReqs);
 
     @POST("/APIWorkingConsult/Create")
-    Observable<BaseJson<Object>> SLConsultCreate(@Body SLConsultListReqs sLConsultListReqs);
+    Observable<BaseJson<Object>> SLConsultCreate(@Body SLConsultDetailResp consultDetail);
 }
