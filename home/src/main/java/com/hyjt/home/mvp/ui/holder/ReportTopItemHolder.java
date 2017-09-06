@@ -1,8 +1,10 @@
 package com.hyjt.home.mvp.ui.holder;
 
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
 
+import com.hyjt.frame.base.BaseApplication;
 import com.hyjt.frame.base.BaseHolder;
 import com.hyjt.home.R;
 import com.hyjt.home.mvp.model.entity.Resp.ReportTListResp;
@@ -34,8 +36,13 @@ public class ReportTopItemHolder extends BaseHolder<ReportTListResp.RowsBean> {
     public void setData(ReportTListResp.RowsBean data, int position) {
         rtNum.setText(data.getPID());
         rtType.setText(data.getState());
-        rtName.setText(data.getCreatePerson());
         rtTime.setText(data.getCreateTime());
+
+        if ("Mine".equals(type)){
+            rtName.setText(data.getBoss());
+        } else {
+            rtName.setText(data.getCreatePerson());
+        }
 
     }
 

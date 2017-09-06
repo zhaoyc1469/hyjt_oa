@@ -44,6 +44,18 @@ public class InformReceiver extends BroadcastReceiver {
                                 .withString("ForbidEdit", "0")
                                 .navigation();
                     }
+                } else if ("WorkingConference".equals(pushExtraResp.getType())){
+                    if (!TextUtils.isEmpty(pushExtraResp.getId())) {
+                        ARouter.getInstance().build("/home/ReportTopDetailActivity")
+                                .withString("Id", pushExtraResp.getId())
+                                .navigation();
+                    }
+                } else if ("WorkingConsult".equals(pushExtraResp.getType())){
+                    if (!TextUtils.isEmpty(pushExtraResp.getId())) {
+                        ARouter.getInstance().build("/home/SLConsultEditActivity")
+                                .withString("Id", pushExtraResp.getId())
+                                .navigation();
+                    }
                 }
             }
         }

@@ -34,8 +34,13 @@ public class SLConsultItemHolder extends BaseHolder<SLConsultListResp.RowsBean> 
     public void setData(SLConsultListResp.RowsBean data, int position) {
         rtNum.setText(data.getPID());
         rtType.setText(data.getState());
-        rtName.setText(data.getCreatePerson());
         rtTime.setText(data.getCreateTime());
+
+        if ("Mine".equals(type)){
+            rtName.setText(data.getWorker());
+        } else {
+            rtName.setText(data.getCreatePerson());
+        }
 
     }
 

@@ -182,8 +182,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="11dp"
                     android:scaleType="fitXY"
-                    android:layout_marginBottom="4dp"
-                    android:src="@drawable/home_iv_logo"/>
+                    android:layout_marginBottom="4dp"/>
 
                 <View
                     android:layout_width="1dp"
@@ -203,25 +202,6 @@
                     android:layout_alignBottom="@id/iv_rp_name_signature"
                     android:layout_marginStart="86dp"
                     android:background="#000000" />
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="34dp"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/home_bg_white_table">
-
-                <TextView
-                    style="@style/home_tv_new_meeting"
-                    android:text="回复时间" />
-
-                <EditText
-                    android:id="@+id/edt_approve_time"
-                    android:focusable="false"
-                    style="@style/home_edt_new_meeting" />
-
-                <View style="@style/home_meeting_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -251,8 +231,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="11dp"
                     android:layout_marginBottom="4dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/home_iv_logo"/>
+                    android:scaleType="fitXY"/>
 
                 <View
                     android:layout_width="1dp"
@@ -273,6 +252,26 @@
                     android:layout_marginStart="86dp"
                     android:background="#000000" />
             </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="回复时间" />
+
+                <EditText
+                    android:id="@+id/edt_approve_time"
+                    android:focusable="false"
+                    style="@style/home_edt_new_meeting" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
         </LinearLayout>
     </ScrollView>
 

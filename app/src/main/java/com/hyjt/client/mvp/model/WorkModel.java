@@ -41,4 +41,11 @@ public class WorkModel extends BaseModel implements WorkContract.Model {
                 .getMdMsgNum();
         return MsgNum;
     }
+
+    @Override
+    public Observable<BaseJson<Object>> outLogin() {
+        Observable<BaseJson<Object>> outLogin = mRepositoryManager.obtainRetrofitService(AppService.class)
+                .outLogin();
+        return outLogin;
+    }
 }

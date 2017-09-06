@@ -108,6 +108,10 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
     private RelativeLayout mRlNbyjNum;
     private RelativeLayout mRlHbsj;
     private RelativeLayout mRlPjxs;
+    private RelativeLayout mRlHbsjNum;
+    private TextView mTvHbsjNum;
+    private RelativeLayout mRlPjxsNum;
+    private TextView mTvPjxsNum;
 
     public static WorkFragment newInstance() {
         WorkFragment fragment = new WorkFragment();
@@ -163,6 +167,10 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         mTvDbrwNum = (TextView) inflate.findViewById(R.id.tv_dbrw_num);
         mRlNbyjNum = (RelativeLayout) inflate.findViewById(R.id.rl_nbyj_num);
         mTvNbyjNum = (TextView) inflate.findViewById(R.id.tv_nbyj_num);
+        mRlHbsjNum = (RelativeLayout) inflate.findViewById(R.id.rl_hbsj_num);
+        mTvHbsjNum = (TextView) inflate.findViewById(R.id.tv_hbsj_num);
+        mRlPjxsNum = (RelativeLayout) inflate.findViewById(R.id.rl_pjxs_num);
+        mTvPjxsNum = (TextView) inflate.findViewById(R.id.tv_pjxs_num);
 
         //设置模块点击事件
         mRlGsjg = (RelativeLayout) inflate.findViewById(R.id.rl_gsjg);
@@ -414,6 +422,18 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
             mTvNbyjNum.setText(workMission.getSysLetter());
         } else {
             mRlNbyjNum.setVisibility(View.GONE);
+        }
+        if (Integer.parseInt(workMission.getWorkingConference()) > 0) {
+            mRlHbsjNum.setVisibility(View.VISIBLE);
+            mTvHbsjNum.setText(workMission.getWorkingConference());
+        } else {
+            mRlHbsjNum.setVisibility(View.GONE);
+        }
+        if (Integer.parseInt(workMission.getWorkingConsult()) > 0) {
+            mRlPjxsNum.setVisibility(View.VISIBLE);
+            mTvPjxsNum.setText(workMission.getWorkingConsult());
+        } else {
+            mRlPjxsNum.setVisibility(View.GONE);
         }
     }
 

@@ -19,5 +19,7 @@ public interface WorkContract {
     interface Model extends IModel {
 
         Observable<BaseJson<WorkMission>> getMdMsgNum();
+
+        Observable<BaseJson<Object>> outLogin();
     }
 }

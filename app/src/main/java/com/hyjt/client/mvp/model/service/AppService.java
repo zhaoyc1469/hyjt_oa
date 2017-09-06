@@ -22,4 +22,7 @@ public interface AppService {
 
     @GET("/APIConferencemanage/GetMission")
     Observable<BaseJson<WorkMission>> getMdMsgNum();
+
+    @GET("/APIAccount/LogOff")
+    Observable<BaseJson<Object>> outLogin();
 }

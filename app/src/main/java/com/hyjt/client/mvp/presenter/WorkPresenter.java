@@ -62,6 +62,30 @@ public class WorkPresenter extends BasePresenter<WorkContract.Model, WorkContrac
 
 
     public void ExitLogin() {
-        EventBus.getDefault().post(new OutLoginEvent(), "Exit_Login");
+        mModel.getMdMsgNum()
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<WorkMission>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull WorkMission workMission) {
+                        EventBus.getDefault().post(new OutLoginEvent(), "Exit_Login");
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 }

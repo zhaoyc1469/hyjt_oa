@@ -10,15 +10,24 @@ public class WorkMission {
 
 
     /**
-     * Record : 6
-     * RecordL : 1
-     * RecordDb : 0
+     * Record : 2
+     * RecordL : 0
+     * RecordDb : 21
+     * SysLetter : 6
+     * WorkingConference : 0
+     * WorkingConsult : 1
+     * LeapfrogReport : 0
+     * Yuangongxianji : 0
      */
 
     private String Record;
     private String RecordL;
     private String RecordDb;
     private String SysLetter;
+    private String WorkingConference;
+    private String WorkingConsult;
+    private String LeapfrogReport;
+    private String Yuangongxianji;
 
     public String getRecord() {
         return Record;
@@ -48,7 +57,39 @@ public class WorkMission {
         return SysLetter;
     }
 
-    public void setSysLetter(String sysLetter) {
-        SysLetter = sysLetter;
+    public void setSysLetter(String SysLetter) {
+        this.SysLetter = SysLetter;
+    }
+
+    public String getWorkingConference() {
+        return WorkingConference;
+    }
+
+    public void setWorkingConference(String WorkingConference) {
+        this.WorkingConference = WorkingConference;
+    }
+
+    public String getWorkingConsult() {
+        return WorkingConsult;
+    }
+
+    public void setWorkingConsult(String WorkingConsult) {
+        this.WorkingConsult = WorkingConsult;
+    }
+
+    public String getLeapfrogReport() {
+        return LeapfrogReport;
+    }
+
+    public void setLeapfrogReport(String LeapfrogReport) {
+        this.LeapfrogReport = LeapfrogReport;
+    }
+
+    public String getYuangongxianji() {
+        return Yuangongxianji;
+    }
+
+    public void setYuangongxianji(String Yuangongxianji) {
+        this.Yuangongxianji = Yuangongxianji;
     }
 }
