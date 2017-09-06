@@ -51,6 +51,7 @@ public class SLConsultEditActivity extends BaseActivity<SLConsultEditPresenter> 
     private String slcId;
     private ProgressDialog progressDialog;
     private SLConsultDetailResp mSLConsultDetail;
+    private SLConsultEditActivity mContext;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -72,6 +73,7 @@ public class SLConsultEditActivity extends BaseActivity<SLConsultEditPresenter> 
 
         Intent intent = getIntent();
         slcId = intent.getStringExtra("Id");
+        mContext = this;
 
         mIvTopBack = (ImageView) findViewById(R.id.iv_top_back);
         mTvTitle = (TextView) findViewById(R.id.tv_title);
@@ -92,11 +94,11 @@ public class SLConsultEditActivity extends BaseActivity<SLConsultEditPresenter> 
         mIvLeaderSignature = (ImageView) findViewById(R.id.iv_leader_signature);
 
         mBtnDelReport.setOnClickListener(v -> {
-            progressDialog = ProgressDialog.show(this, null, "协商删除中…");
+            progressDialog = ProgressDialog.show(mContext, null, "协商删除中…");
             mPresenter.consultDel(slcId);});
 
         mBtnEditReport.setOnClickListener(v -> {
-            progressDialog = ProgressDialog.show(this, null, "报告编辑中…");
+            progressDialog = ProgressDialog.show(mContext, null, "报告编辑中…");
 
             mSLConsultDetail.setContent(mEdtContent.getText().toString());
             mSLConsultDetail.setMind(mEdtIdeaExpect.getText().toString());
