@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.util.Log;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.hyjt.app.R;
 import com.hyjt.client.di.component.DaggerHomeComponent;
 import com.hyjt.client.di.module.HomeModule;
@@ -56,7 +57,8 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
     public void initData(Bundle savedInstanceState) {
         //组件模式在此初始化
 //        ARouter.init(getApplication());
-//        ARouter.openDebug();
+        ARouter.openLog();
+        ARouter.openDebug();
 
 
 

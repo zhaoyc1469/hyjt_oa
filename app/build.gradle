@@ -52,7 +52,6 @@ dependencies {
         compile project(':frame')
     } else {
         compile project(':home')
-//        compile project(':goods')
     }
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
