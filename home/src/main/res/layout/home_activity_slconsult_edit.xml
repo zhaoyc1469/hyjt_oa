@@ -57,7 +57,7 @@
                 <EditText
                     android:id="@+id/edt_rp_num"
                     android:focusable="false"
-                    style="@style/home_edt_new_meeting" />
+                    style="@style/home_edt_send_consult" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
@@ -75,7 +75,7 @@
                 <EditText
                     android:id="@+id/edt_rp_name"
                     android:focusable="false"
-                    style="@style/home_edt_new_meeting" />
+                    style="@style/home_edt_send_consult" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
@@ -93,7 +93,7 @@
                 <EditText
                     android:id="@+id/edt_rp_time"
                     android:focusable="false"
-                    style="@style/home_edt_new_meeting" />
+                    style="@style/home_edt_send_consult" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
@@ -111,7 +111,7 @@
                 <EditText
                     android:id="@+id/edt_rp_leader"
                     android:focusable="false"
-                    style="@style/home_edt_new_meeting" />
+                    style="@style/home_edt_send_consult" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
@@ -132,7 +132,7 @@
                     android:id="@+id/edt_content"
                     android:layout_marginTop="6dp"
                     android:minWidth="200dp"
-                    style="@style/home_edt_new_meeting" />
+                    style="@style/home_edt_send_consult" />
 
                 <View
                     android:layout_width="1dp"
@@ -171,7 +171,7 @@
                     android:id="@+id/edt_idea_expect"
                     android:layout_marginTop="6dp"
                     android:minWidth="200dp"
-                    style="@style/home_edt_new_meeting" />
+                    style="@style/home_edt_send_consult" />
 
                 <ImageView
                     android:visibility="gone"
@@ -186,7 +186,7 @@
 
                 <View
                     android:layout_width="1dp"
-                    android:layout_height="20dp"
+                    android:layout_height="50dp"
                     android:layout_marginStart="86dp"
                     android:background="#000000" />
                 <View
@@ -220,7 +220,7 @@
                 <EditText
                     android:id="@+id/edt_leader_idea"
                     android:layout_marginTop="6dp"
-                    style="@style/home_edt_new_meeting" />
+                    style="@style/home_edt_send_consult" />
 
                 <ImageView
                     android:visibility="gone"
@@ -235,12 +235,12 @@
 
                 <View
                     android:layout_width="1dp"
-                    android:layout_height="20dp"
+                    android:layout_height="50dp"
                     android:layout_marginStart="86dp"
                     android:background="#000000" />
                 <View
                     android:layout_width="1dp"
-                    android:layout_height="40dp"
+                    android:layout_height="69dp"
                     android:layout_marginStart="86dp"
                     android:layout_alignParentBottom="true"
                     android:background="#000000" />
@@ -248,7 +248,7 @@
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:layout_alignTop="@id/edt_leader_idea"
-                    android:layout_alignBottom="@id/iv_leader_signature"
+                    android:layout_alignBottom="@id/edt_leader_idea"
                     android:layout_marginStart="86dp"
                     android:background="#000000" />
             </RelativeLayout>
@@ -267,7 +267,7 @@
                 <EditText
                     android:id="@+id/edt_approve_time"
                     android:focusable="false"
-                    style="@style/home_edt_new_meeting" />
+                    style="@style/home_edt_send_consult" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>

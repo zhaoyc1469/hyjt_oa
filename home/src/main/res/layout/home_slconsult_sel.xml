@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@color/home_common_000000"
-                android:text="所发协商" />
+                android:text="发送" />
 
             <View
                 android:layout_width="0.5dp"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@color/home_common_000000"
-                android:text="所收协商" />
+                android:text="接收" />
 
         </LinearLayout>
 

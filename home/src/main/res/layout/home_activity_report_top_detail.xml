@@ -136,12 +136,11 @@
                 <EditText
                     android:id="@+id/edt_content"
                     android:layout_marginTop="6dp"
-                    android:minWidth="240dp"
-                    style="@style/home_edt_new_meeting" />
+                    style="@style/home_edt_send_consult" />
 
                 <View
                     android:layout_width="1dp"
-                    android:layout_height="20dp"
+                    android:layout_height="50dp"
                     android:layout_marginStart="86dp"
                     android:background="#000000" />
                 <View
@@ -177,8 +176,7 @@
                 <EditText
                     android:id="@+id/edt_idea_expect"
                     android:layout_marginTop="6dp"
-                    android:minWidth="240dp"
-                    style="@style/home_edt_new_meeting" />
+                    style="@style/home_edt_send_consult" />
 
                 <ImageView
                     android:visibility="gone"
@@ -193,7 +191,7 @@
 
                 <View
                     android:layout_width="1dp"
-                    android:layout_height="20dp"
+                    android:layout_height="50dp"
                     android:layout_marginStart="86dp"
                     android:background="#000000" />
                 <View
@@ -229,8 +227,7 @@
                 <EditText
                     android:id="@+id/edt_leader_idea"
                     android:layout_marginTop="6dp"
-                    android:minWidth="240dp"
-                    style="@style/home_edt_new_meeting" />
+                    style="@style/home_edt_send_consult" />
 
                 <ImageView
                     android:visibility="gone"
@@ -245,7 +242,7 @@
 
                 <View
                     android:layout_width="1dp"
-                    android:layout_height="20dp"
+                    android:layout_height="50dp"
                     android:layout_marginStart="86dp"
                     android:background="#000000" />
                 <View

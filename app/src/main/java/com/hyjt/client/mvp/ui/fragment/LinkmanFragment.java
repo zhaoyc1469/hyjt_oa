@@ -108,15 +108,12 @@ public class LinkmanFragment extends BaseFragment<LinkmanPresenter> implements L
 
     @Override
     public void startLoadMore() {
-        Observable.just(1)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(integer -> mSrlAddressBook.setRefreshing(true));
-
+        isLoadingMore = true;
     }
 
     @Override
     public void endLoadMore() {
-        mSrlAddressBook.setRefreshing(false);
+        isLoadingMore = false;
     }
 
     @Override
@@ -148,12 +145,15 @@ public class LinkmanFragment extends BaseFragment<LinkmanPresenter> implements L
 
     @Override
     public void showLoading() {
+        Observable.just(1)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(integer -> mSrlAddressBook.setRefreshing(true));
         isLoadingMore = true;
     }
 
     @Override
     public void hideLoading() {
-        isLoadingMore = false;
+        mSrlAddressBook.setRefreshing(false);
     }
 
     /**

@@ -421,18 +421,27 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         if (Integer.parseInt(workMission.getSysLetter()) > 0) {
             mRlNbyjNum.setVisibility(View.VISIBLE);
             mTvNbyjNum.setText(workMission.getSysLetter());
+            if (View.GONE == mLlYwglChild.getVisibility()){
+                setExpand(mLlYwglChild);
+            }
         } else {
             mRlNbyjNum.setVisibility(View.GONE);
         }
         if (Integer.parseInt(workMission.getWorkingConference()) > 0) {
             mRlHbsjNum.setVisibility(View.VISIBLE);
             mTvHbsjNum.setText(workMission.getWorkingConference());
+            if (View.GONE == mLlYwglChild.getVisibility()){
+                setExpand(mLlYwglChild);
+            }
         } else {
             mRlHbsjNum.setVisibility(View.GONE);
         }
         if (Integer.parseInt(workMission.getWorkingConsult()) > 0) {
             mRlPjxsNum.setVisibility(View.VISIBLE);
             mTvPjxsNum.setText(workMission.getWorkingConsult());
+            if (View.GONE == mLlYwglChild.getVisibility()){
+                setExpand(mLlYwglChild);
+            }
         } else {
             mRlPjxsNum.setVisibility(View.GONE);
         }

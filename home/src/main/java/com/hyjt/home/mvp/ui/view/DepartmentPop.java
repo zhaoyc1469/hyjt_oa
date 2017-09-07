@@ -36,8 +36,17 @@ public class DepartmentPop extends PopupWindow {
     private TextView financeDepartment;
     private TextView recordDepartment;
     private TextView personnelDepartment;
+    private TextView mTvBlocDepartment;
+    private TextView mTvMiningIndustry;
+    private TextView mTvEngineeringDepartment;
+    private TextView mTvCostDepartment;
+    private TextView mTvAffairDepartment;
+    private TextView mTvAnshanDepartment;
+    private TextView mTvCallbidsDepartment;
+    private TextView mTvDriverDepartment;
+    private TextView mTvJimeiDepartment;
 
-    public  DepartmentPop(Context context, EditText editText, StaffNameIdKey StaffNameIdKey, boolean moreCheck) {
+    public DepartmentPop(Context context, EditText editText, StaffNameIdKey StaffNameIdKey, boolean moreCheck) {
         super(context);
         this.context = context;
         this.editText = editText;
@@ -61,6 +70,16 @@ public class DepartmentPop extends PopupWindow {
         financeDepartment = (TextView) mMenuView.findViewById(R.id.tv_finance_department);
         recordDepartment = (TextView) mMenuView.findViewById(R.id.tv_record_department);
         personnelDepartment = (TextView) mMenuView.findViewById(R.id.tv_personnel_department);
+
+        mTvBlocDepartment = (TextView) mMenuView.findViewById(R.id.tv_bloc_department);
+        mTvMiningIndustry = (TextView) mMenuView.findViewById(R.id.tv_mining_industry);
+        mTvEngineeringDepartment = (TextView) mMenuView.findViewById(R.id.tv_engineering_department);
+        mTvCostDepartment = (TextView) mMenuView.findViewById(R.id.tv_cost_department);
+        mTvAffairDepartment = (TextView) mMenuView.findViewById(R.id.tv_affair_department);
+        mTvAnshanDepartment = (TextView) mMenuView.findViewById(R.id.tv_anshan_department);
+        mTvCallbidsDepartment = (TextView) mMenuView.findViewById(R.id.tv_callbids_department);
+        mTvDriverDepartment = (TextView) mMenuView.findViewById(R.id.tv_driver_department);
+        mTvJimeiDepartment = (TextView) mMenuView.findViewById(R.id.tv_jimei_department);
 
         //全体部门
         allDepartment.setOnClickListener(v -> {
@@ -114,6 +133,61 @@ public class DepartmentPop extends PopupWindow {
         personnelDepartment.setOnClickListener(v -> {
             if (OnClickSelEditListener != null) {
                 OnClickSelEditListener.onItemClick("人事", editText, StaffNameIdKey, moreCheck);
+            }
+        });
+
+        //集团
+        mTvBlocDepartment.setOnClickListener(v -> {
+            if (OnClickSelEditListener != null) {
+                OnClickSelEditListener.onItemClick("集团", editText, StaffNameIdKey, moreCheck);
+            }
+        });
+        //矿业
+        mTvMiningIndustry.setOnClickListener(v -> {
+            if (OnClickSelEditListener != null) {
+                OnClickSelEditListener.onItemClick("矿业", editText, StaffNameIdKey, moreCheck);
+            }
+        });
+        //工程
+        mTvEngineeringDepartment.setOnClickListener(v -> {
+            if (OnClickSelEditListener != null) {
+                OnClickSelEditListener.onItemClick("工程", editText, StaffNameIdKey, moreCheck);
+            }
+        });
+        //造价
+        mTvCostDepartment.setOnClickListener(v -> {
+            if (OnClickSelEditListener != null) {
+                OnClickSelEditListener.onItemClick("造价", editText, StaffNameIdKey, moreCheck);
+            }
+        });
+        //事务部
+        mTvAffairDepartment.setOnClickListener(v -> {
+            if (OnClickSelEditListener != null) {
+                OnClickSelEditListener.onItemClick("事务部", editText, StaffNameIdKey, moreCheck);
+            }
+        });
+        //鞍山
+        mTvAnshanDepartment.setOnClickListener(v -> {
+            if (OnClickSelEditListener != null) {
+                OnClickSelEditListener.onItemClick("鞍山", editText, StaffNameIdKey, moreCheck);
+            }
+        });
+        //招标
+        mTvCallbidsDepartment.setOnClickListener(v -> {
+            if (OnClickSelEditListener != null) {
+                OnClickSelEditListener.onItemClick("招标", editText, StaffNameIdKey, moreCheck);
+            }
+        });
+        //司机
+        mTvDriverDepartment.setOnClickListener(v -> {
+            if (OnClickSelEditListener != null) {
+                OnClickSelEditListener.onItemClick("司机", editText, StaffNameIdKey, moreCheck);
+            }
+        });
+        //集美
+        mTvJimeiDepartment.setOnClickListener(v -> {
+            if (OnClickSelEditListener != null) {
+                OnClickSelEditListener.onItemClick("集美", editText, StaffNameIdKey, moreCheck);
             }
         });
 

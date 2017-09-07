@@ -63,6 +63,7 @@
     </style>
 
 
+
     <style name="home_popwindow_anim_style">
         <item name="android:windowEnterAnimation">@anim/home_anim_enter_bottom</item>
         <!-- 指定显示的动画xml -->
@@ -97,6 +98,23 @@
         <item name="android:layout_marginTop">1dp</item>
         <item name="android:layout_marginBottom">1dp</item>
         <item name="android:textColor">@color/home_common_000000</item>
+    </style>
+
+
+
+
+
+    <style name="home_edt_send_consult">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:minHeight">60dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">89dp</item>
+        <item name="android:layout_marginRight">14dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/home_common_434242</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColorHint">@color/home_common_9CA0A4</item>
     </style>
 
 </resources>

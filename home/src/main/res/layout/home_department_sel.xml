@@ -103,6 +103,7 @@
             android:layout_gravity="center_horizontal"
             android:background="#a8a8a8" />
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="42dp"
@@ -139,6 +140,143 @@
                 android:gravity="center"
                 android:textColor="@color/home_common_000000"
                 android:text="人事" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="320dp"
+            android:layout_height="0.5dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#a8a8a8" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_bloc_department"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/home_common_000000"
+                android:text="集团" />
+
+            <TextView
+                android:id="@+id/tv_mining_industry"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/home_common_000000"
+                android:text="矿业" />
+
+            <TextView
+                android:id="@+id/tv_engineering_department"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/home_common_000000"
+                android:text="工程" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="320dp"
+            android:layout_height="0.5dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#a8a8a8" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_cost_department"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/home_common_000000"
+                android:text="造价" />
+
+            <TextView
+                android:id="@+id/tv_affair_department"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/home_common_000000"
+                android:text="事务部" />
+
+            <TextView
+                android:id="@+id/tv_anshan_department"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/home_common_000000"
+                android:text="鞍山" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="320dp"
+            android:layout_height="0.5dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#a8a8a8" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_callbids_department"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/home_common_000000"
+                android:text="招标" />
+
+            <TextView
+                android:id="@+id/tv_driver_department"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/home_common_000000"
+                android:text="司机" />
+
+            <TextView
+                android:id="@+id/tv_jimei_department"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/home_common_000000"
+                android:text="集美" />
 
         </LinearLayout>
 
