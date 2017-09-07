@@ -58,7 +58,7 @@ public class SkipReportListPresenter extends BasePresenter<SkipReportListContrac
             mRootView.setAdapter(mAdapter);
             mAdapter.setOnItemClickListener((view, viewType, data, position) -> {
                 String id = srList.get(position).getId();
-                ARouter.getInstance().build("/home/ReportTopDetailActivity")
+                ARouter.getInstance().build("/home/SkipReportDetailActivity")
                         .withString("Id", id)
 //                        .withString("Type", Type)
                         .navigation();

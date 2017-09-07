@@ -1,5 +1,7 @@
 package com.hyjt.home.mvp.ui.activity;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
@@ -11,6 +13,7 @@ import com.hyjt.home.R;
 import com.hyjt.home.di.component.DaggerSkipReportDetailComponent;
 import com.hyjt.home.di.module.SkipReportDetailModule;
 import com.hyjt.home.mvp.contract.SkipReportDetailContract;
+import com.hyjt.home.mvp.model.entity.Resp.SReportDetailResp;
 import com.hyjt.home.mvp.presenter.SkipReportDetailPresenter;
 
 import static com.hyjt.frame.utils.Preconditions.checkNotNull;
@@ -18,6 +21,10 @@ import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 @Route(path = "/home/SkipReportDetailActivity")
 public class SkipReportDetailActivity extends BaseActivity<SkipReportDetailPresenter> implements SkipReportDetailContract.View {
 
+
+    private String srId;
+    private SkipReportDetailActivity mContext;
+    private ProgressDialog progressDialog;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -36,7 +43,13 @@ public class SkipReportDetailActivity extends BaseActivity<SkipReportDetailPrese
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        mContext = this;
+        Intent intent = getIntent();
+        srId = intent.getStringExtra("Id");
 
+
+        progressDialog = ProgressDialog.show(mContext, null, "汇报内容加载中…");
+        mPresenter.sReportDetail(srId);
     }
 
     @Override
@@ -51,4 +64,14 @@ public class SkipReportDetailActivity extends BaseActivity<SkipReportDetailPrese
     }
 
 
+    @Override
+    public void hideLoading() {
+        if (progressDialog != null)
+            progressDialog.dismiss();
+    }
+
+    @Override
+    public void setSRDetail(SReportDetailResp sReport) {
+
+    }
 }

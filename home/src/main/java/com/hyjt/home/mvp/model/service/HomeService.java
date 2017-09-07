@@ -21,6 +21,7 @@ import com.hyjt.home.mvp.model.entity.Resp.ReportTDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.ReportTListResp;
 import com.hyjt.home.mvp.model.entity.Resp.SLConsultDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.SLConsultListResp;
+import com.hyjt.home.mvp.model.entity.Resp.SReportDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.SReportListResp;
 import com.hyjt.home.mvp.model.entity.Resp.StaffListResp;
 import com.hyjt.home.mvp.model.entity.Resp.StaffMsgResp;
@@ -291,13 +292,13 @@ public interface HomeService {
     Observable<BaseJson<SReportListResp>> skipReportList(@Body SReportListReqs sReportListReqs);
 
     @POST("/APILeapfrogReport/Details")
-    Observable<BaseJson<ReportTDetailResp>> skipReportDetail(@Body BaseIdReqs baseIdReqs);
+    Observable<BaseJson<SReportDetailResp>> skipReportDetail(@Body BaseIdReqs baseIdReqs);
 
     @POST("/APILeapfrogReport/Create")
-    Observable<BaseJson<Object>> skipReportCreate(@Body ReportTDetailResp reportTDetail);
+    Observable<BaseJson<Object>> skipReportCreate(@Body SReportDetailResp reportDetail);
 
     @POST("/APILeapfrogReport/Edit")
-    Observable<BaseJson<Object>> skipReportEdit(@Body ReportTDetailResp reportTDetail);
+    Observable<BaseJson<Object>> skipReportEdit(@Body SReportDetailResp reportDetail);
 
     @POST("/APILeapfrogReport/Delete")
     Observable<BaseJson<Object>> skipReportDelete(@Body BaseIdReqs baseIdReqs);

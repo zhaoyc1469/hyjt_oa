@@ -123,6 +123,7 @@ public class SLConsultEditActivity extends BaseActivity<SLConsultEditPresenter> 
             builder.show();
         });
 
+        progressDialog = ProgressDialog.show(mContext, null, "协商内容加载中…");
         mPresenter.consultDetail(slcId);
     }
 
