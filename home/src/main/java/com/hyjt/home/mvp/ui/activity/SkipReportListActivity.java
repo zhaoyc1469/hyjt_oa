@@ -72,8 +72,12 @@ public class SkipReportListActivity extends BaseActivity<SkipReportListPresenter
 
         rlReportSkipList = (RelativeLayout) findViewById(R.id.rl_report_skip_list);
         ivTopBack = (ImageView) findViewById(R.id.iv_top_back);
+        ivTopBack.setOnClickListener(v -> finish());
         tvTitle = (TextView) findViewById(R.id.tv_title);
+        tvTitle.setOnClickListener(v -> finish());
+        tvTitle.setText("越级汇报");
         ivTopSelect = (ImageView) findViewById(R.id.iv_top_select);
+        ivTopSelect.setVisibility(View.GONE);
         llReportType = (LinearLayout) findViewById(R.id.ll_report_type);
         btnWaitType = (Button) findViewById(R.id.btn_wait_type);
         btnReadedType = (Button) findViewById(R.id.btn_readed_type);
