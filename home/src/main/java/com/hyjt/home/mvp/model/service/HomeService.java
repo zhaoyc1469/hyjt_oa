@@ -1,6 +1,8 @@
 package com.hyjt.home.mvp.model.service;
 
 import com.hyjt.frame.api.BaseJson;
+import com.hyjt.home.mvp.model.entity.Reqs.LUReqsListReqs;
+import com.hyjt.home.mvp.model.entity.Resp.CIdeaDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.CIdeaListResp;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CEmailSendReqs;
@@ -16,6 +18,8 @@ import com.hyjt.home.mvp.model.entity.Resp.CEmailDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.CEmailListResp;
 import com.hyjt.home.mvp.model.entity.Resp.ChildrenBean;
 import com.hyjt.home.mvp.model.entity.Resp.ImgUploadResp;
+import com.hyjt.home.mvp.model.entity.Resp.LUReqsDetailResp;
+import com.hyjt.home.mvp.model.entity.Resp.LUReqsListResp;
 import com.hyjt.home.mvp.model.entity.Resp.LinkManResp;
 import com.hyjt.home.mvp.model.entity.Resp.MeetingListResp;
 import com.hyjt.home.mvp.model.entity.Resp.MeetingMsgResp;
@@ -311,14 +315,30 @@ public interface HomeService {
     Observable<BaseJson<CIdeaListResp>> contributeIdeaList(@Body CIdeaListReqs cIdeaListReqs);
 
     @POST("/APIYuangongxianji/Details")
-    Observable<BaseJson<SReportDetailResp>> contributeIdeaDetail(@Body BaseIdReqs baseIdReqs);
+    Observable<BaseJson<CIdeaDetailResp>> contributeIdeaDetail(@Body BaseIdReqs baseIdReqs);
 
     @POST("/APIYuangongxianji/Create")
-    Observable<BaseJson<Object>> contributeIdeaCreate(@Body SReportDetailResp reportDetail);
+    Observable<BaseJson<Object>> contributeIdeaCreate(@Body CIdeaDetailResp cIdeaDetail);
 
     @POST("/APIYuangongxianji/Edit")
-    Observable<BaseJson<Object>> contributeIdeaEdit(@Body SReportDetailResp reportDetail);
+    Observable<BaseJson<Object>> contributeIdeaEdit(@Body CIdeaDetailResp cIdeaDetail);
 
     @POST("/APIYuangongxianji/Delete")
     Observable<BaseJson<Object>> contributeIdeaDelete(@Body BaseIdReqs baseIdReqs);
+
+
+    @POST("/APIUnionAppeal/GetData")
+    Observable<BaseJson<LUReqsListResp>> laborUnionReqsList(@Body LUReqsListReqs LUReqsListReqs);
+
+    @POST("/APIUnionAppeal/Details")
+    Observable<BaseJson<LUReqsDetailResp>> laborUnionReqsDetail(@Body BaseIdReqs baseIdReqs);
+
+    @POST("/APIUnionAppeal/Create")
+    Observable<BaseJson<Object>> laborUnionReqsCreate(@Body LUReqsDetailResp LUReqsDetail);
+
+    @POST("/APIUnionAppeal/Edit")
+    Observable<BaseJson<Object>> laborUnionReqsEdit(@Body LUReqsDetailResp LUReqsDetail);
+
+    @POST("/APIUnionAppeal/Delete")
+    Observable<BaseJson<Object>> laborUnionReqsDelete(@Body BaseIdReqs baseIdReqs);
 }
