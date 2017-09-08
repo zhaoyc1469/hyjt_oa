@@ -199,6 +199,7 @@ public class SkipReportDetailActivity extends BaseActivity<SkipReportDetailPrese
             mRbAgree.setClickable(false);
             mRbRefuse.setClickable(false);
             mLlBottomBtn.setVisibility(View.GONE);
+            mEdtRpTime.setText(sReport.getReportTime());
         }
 
         if ("同意".equals(sReport.getAgree())) {

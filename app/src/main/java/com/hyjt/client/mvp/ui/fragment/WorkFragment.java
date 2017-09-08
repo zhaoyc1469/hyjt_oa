@@ -25,6 +25,7 @@ import com.hyjt.client.mvp.contract.WorkContract;
 import com.hyjt.client.mvp.model.entity.WorkMission;
 import com.hyjt.client.mvp.presenter.WorkPresenter;
 import com.hyjt.client.mvp.ui.view.EmailPop;
+import com.hyjt.client.mvp.ui.view.ReAndSePop;
 import com.hyjt.client.mvp.ui.view.ReportTopPop;
 import com.hyjt.client.mvp.ui.view.SLConsultPop;
 import com.hyjt.client.mvp.ui.view.SkipReportPop;
@@ -113,6 +114,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
     private TextView mTvHbsjNum;
     private RelativeLayout mRlPjxsNum;
     private TextView mTvPjxsNum;
+    private RelativeLayout mRlGhsq;
 
     public static WorkFragment newInstance() {
         WorkFragment fragment = new WorkFragment();
@@ -216,6 +218,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         mRlNbyj = (RelativeLayout) inflate.findViewById(R.id.rl_nbyj);
         mRlHbsj = (RelativeLayout) inflate.findViewById(R.id.rl_hbsj);
         mRlPjxs = (RelativeLayout) inflate.findViewById(R.id.rl_pjxs);
+        mRlGhsq = (RelativeLayout) inflate.findViewById(R.id.rl_ghsq);
 
         mRlGsjg.setOnClickListener(this);
         mRlGszl.setOnClickListener(this);
@@ -259,6 +262,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         mRlNbyj.setOnClickListener(this);
         mRlHbsj.setOnClickListener(this);
         mRlPjxs.setOnClickListener(this);
+        mRlGhsq.setOnClickListener(this);
 
         tvDepartment = (TextView) inflate.findViewById(R.id.tv_department);
         tvPosition = (TextView) inflate.findViewById(R.id.tv_position);
@@ -529,6 +533,28 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
                     skipReportPop.dismiss();
                 });
                 skipReportPop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
+                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+                break;
+            }
+            case R.id.rl_xjxc: {
+                ReAndSePop reAndSePop = new ReAndSePop(getActivity());
+                reAndSePop.setOnItemClickListener(box -> {
+                    ARouter.getInstance().build("/home/ContributeIdeaListActivity")
+                            .withString("type", box).navigation(getActivity(), Api.WorkStartCode);
+                    reAndSePop.dismiss();
+                });
+                reAndSePop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
+                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+                break;
+            }
+            case R.id.rl_ghsq: {
+                ReAndSePop reAndSePop = new ReAndSePop(getActivity());
+                reAndSePop.setOnItemClickListener(box -> {
+                    ARouter.getInstance().build("/home/LaborUnionReqsListActivity")
+                            .withString("type", box).navigation(getActivity(), Api.WorkStartCode);
+                    reAndSePop.dismiss();
+                });
+                reAndSePop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
                         Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
                 break;
             }

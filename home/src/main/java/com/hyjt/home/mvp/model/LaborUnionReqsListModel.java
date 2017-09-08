@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.google.gson.Gson;
 
+import com.hyjt.frame.api.BaseJson;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.integration.IRepositoryManager;
 import com.hyjt.frame.mvp.BaseModel;
@@ -11,6 +12,12 @@ import com.hyjt.frame.mvp.BaseModel;
 import javax.inject.Inject;
 
 import com.hyjt.home.mvp.contract.LaborUnionReqsListContract;
+import com.hyjt.home.mvp.model.entity.Reqs.LUReqsListReqs;
+import com.hyjt.home.mvp.model.entity.Resp.CIdeaListResp;
+import com.hyjt.home.mvp.model.entity.Resp.LUReqsListResp;
+import com.hyjt.home.mvp.model.service.HomeService;
+
+import io.reactivex.Observable;
 
 
 @ActivityScope
@@ -32,4 +39,12 @@ public class LaborUnionReqsListModel extends BaseModel implements LaborUnionReqs
         this.mApplication = null;
     }
 
+    @Override
+    public Observable<BaseJson<LUReqsListResp>> getLuList(LUReqsListReqs LUReqsListReqs) {
+
+
+        Observable<BaseJson<LUReqsListResp>> LUReqsList = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .laborUnionReqsList(LUReqsListReqs);
+        return LUReqsList;
+    }
 }

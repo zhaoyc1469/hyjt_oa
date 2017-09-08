@@ -292,6 +292,29 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_ghsq"
+                style="@style/home_ll_org_top_btn">
+
+                <RelativeLayout
+                    android:id="@+id/rl_ghsq"
+                    style="@style/home_rl_org_top_btn">
+
+                    <ImageView
+                        android:id="@+id/iv_ghsq"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/h_xjxc"  />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_ghsq"
+                    style="@style/home_tv_org_top_btn_name"
+                    android:text="工会诉求" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/ll_txl"
                 style="@style/home_ll_org_top_btn">
 
@@ -317,24 +340,6 @@
                     android:id="@+id/tv_txl"
                     style="@style/home_tv_org_top_btn_name"
                     android:text="@string/work_txl" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/home_ll_org_top_btn"
-                android:visibility="invisible">
-
-                <RelativeLayout style="@style/home_rl_org_top_btn">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="fitXY" />
-                </RelativeLayout>
-
-                <TextView
-                    style="@style/home_tv_org_top_btn_name"
-                    android:text="@string/app_name" />
 
             </LinearLayout>
         </LinearLayout>

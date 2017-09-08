@@ -144,7 +144,8 @@ public class SkipReportCreateActivity extends BaseActivity<SkipReportCreatePrese
 
     @Override
     public void hideLoading() {
-
+        if (progressDialog != null)
+            progressDialog.dismiss();
     }
 
     @Override

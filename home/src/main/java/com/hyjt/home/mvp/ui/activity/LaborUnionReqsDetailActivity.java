@@ -1,9 +1,9 @@
 package com.hyjt.home.mvp.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.utils.UiUtils;
@@ -19,6 +19,7 @@ import com.hyjt.home.R;
 import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 
 
+@Route(path = "/home/LaborUnionReqsDetailActivity")
 public class LaborUnionReqsDetailActivity extends BaseActivity<LaborUnionReqsDetailPresenter> implements LaborUnionReqsDetailContract.View {
 
 
@@ -34,7 +35,7 @@ public class LaborUnionReqsDetailActivity extends BaseActivity<LaborUnionReqsDet
 
     @Override
     public int initView(Bundle savedInstanceState) {
-        return R.layout.activity_labor_union_reqs_detail;
+        return R.layout.home_activity_labor_union_reqs_detail;
     }
 
     @Override
