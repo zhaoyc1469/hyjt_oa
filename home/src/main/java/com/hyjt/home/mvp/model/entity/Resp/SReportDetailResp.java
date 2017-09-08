@@ -140,4 +140,23 @@ public class SReportDetailResp {
     public void setState(String State) {
         this.State = State;
     }
+
+    @Override
+    public String toString() {
+        return "SReportDetailResp{" +
+                "Id='" + Id + '\'' +
+                ", Number='" + Number + '\'' +
+                ", ReportPerson='" + ReportPerson + '\'' +
+                ", ReportPersonId='" + ReportPersonId + '\'' +
+                ", Boss='" + Boss + '\'' +
+                ", BossId='" + BossId + '\'' +
+                ", Title='" + Title + '\'' +
+                ", ReportContent='" + ReportContent + '\'' +
+                ", ReportTime='" + ReportTime + '\'' +
+                ", ReplyContent='" + ReplyContent + '\'' +
+                ", ReplyTime='" + ReplyTime + '\'' +
+                ", Agree='" + Agree + '\'' +
+                ", State='" + State + '\'' +
+                '}';
+    }
 }

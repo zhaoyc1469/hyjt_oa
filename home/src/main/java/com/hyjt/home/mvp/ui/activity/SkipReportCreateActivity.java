@@ -95,22 +95,36 @@ public class SkipReportCreateActivity extends BaseActivity<SkipReportCreatePrese
         mEdtRpLeader.setOnClickListener(v -> selStaff(this, mEdtRpLeader, receiver, false));
 
         mBtnEditReport.setOnClickListener(v -> {
-            android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
-                    .setTitle("创建汇报")
-                    .setMessage("确定创建该条汇报信息?")
-                    .setPositiveButton("确定", (dialog, which) -> {
-                        progressDialog = ProgressDialog.show(this, null, "汇报创建中…");
-                        SReportDetailResp sReportDetail = new SReportDetailResp();
-                        sReportDetail.setBossId(receiver.getSendKey());
-                        sReportDetail.setTitle(mEdtRpTitle.getText().toString());
-                        sReportDetail.setReportContent(mEdtContent.getText().toString());
-                        mPresenter.createReport(sReportDetail);
-                    }).setNegativeButton("返回", (dialog, which) -> {
-                        dialog.dismiss();
-                    });
-            builder.show();
+            if (checkStr()){
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
+                        .setTitle("创建汇报")
+                        .setMessage("确定创建该条汇报信息?")
+                        .setPositiveButton("确定", (dialog, which) -> {
+                            progressDialog = ProgressDialog.show(this, null, "汇报创建中…");
+                            SReportDetailResp sReportDetail = new SReportDetailResp();
+                            sReportDetail.setBossId(receiver.getSendKey());
+                            sReportDetail.setTitle(mEdtRpTitle.getText().toString());
+                            sReportDetail.setReportContent(mEdtContent.getText().toString());
+                            mPresenter.createReport(sReportDetail);
+                        }).setNegativeButton("返回", (dialog, which) -> {
+                            dialog.dismiss();
+                        });
+                builder.show();
+            }
         });
 
+    }
+
+    private boolean checkStr() {
+        if (getUserName().equals(mEdtRpLeader)){
+            shortToast("您不能向自己发起汇报");
+            return false;
+        }
+        if ("".equals(mEdtRpTitle.getText().toString())){
+            shortToast("请你填写汇报标题");
+            return false;
+        }
+        return true;
     }
 
 

@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/home_common_F8F8F8"
-    android:id="@+id/rl_report_skip_list">
-
-
+    android:layout_height="match_parent">
+    
     <include
-        android:id="@+id/icld_report_list"
+        android:id="@+id/icld_contribute_list"
         layout="@layout/home_include_back_title" />
 
     <LinearLayout
-        android:id="@+id/ll_report_type"
-        android:layout_below="@id/icld_report_list"
+        android:id="@+id/ll_contribute_type"
+        android:layout_below="@id/icld_contribute_list"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
         android:layout_width="match_parent"
@@ -46,20 +43,18 @@
         android:layout_marginBottom="19dp"/>
 
     <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/srl_report_list"
+        android:id="@+id/srl_contribute_list"
         android:layout_above="@id/btn_new_report"
-        android:layout_below="@id/ll_report_type"
+        android:layout_below="@id/ll_contribute_type"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="11dp">
 
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recy_report_list"
+            android:id="@+id/recy_contribute_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>
-
-
 </RelativeLayout>

@@ -68,7 +68,38 @@ public class SkipReportDetailPresenter extends BasePresenter<SkipReportDetailCon
 
     public void sReportEdit(SReportDetailResp sReportDetailResp){
 
+        mModel.sReportEdit(sReportDetailResp)
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object reportTDetail) {
+                        mRootView.showMessage("编辑成功");
+                        mRootView.killMyself();
+                    }
+                });
+    }
 
+    public void sReportDel(String Id){
+
+        mModel.sReportDel(new BaseIdReqs(Id))
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object obj) {
+                        mRootView.showMessage("删除成功");
+                        mRootView.killMyself();
+                    }
+                });
     }
 
 }

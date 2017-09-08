@@ -50,11 +50,10 @@ public class SkipReportListPresenter extends BasePresenter<SkipReportListContrac
     }
 
 
-
-    public void getReportList(boolean pullToRefresh, String Type){
+    public void getReportList(boolean pullToRefresh, String Type) {
 
         if (mAdapter == null) {
-            mAdapter = new SkipReportAdapter(srList,Type);
+            mAdapter = new SkipReportAdapter(srList, Type);
             mRootView.setAdapter(mAdapter);
             mAdapter.setOnItemClickListener((view, viewType, data, position) -> {
                 String id = srList.get(position).getId();
@@ -88,7 +87,7 @@ public class SkipReportListPresenter extends BasePresenter<SkipReportListContrac
                         if (mRootView != null) {
                             mRootView.hideLoading();//隐藏上拉刷新的进度条
                         }
-                    } else{
+                    } else {
                         if (mRootView != null) {
                             mRootView.endLoadMore();//隐藏下拉加载更多的进度条
                         }
@@ -108,11 +107,12 @@ public class SkipReportListPresenter extends BasePresenter<SkipReportListContrac
                             mAdapter.notifyDataSetChanged();
                         }
                         if (reportListResp.getRows().size() == 0) {
-                            mRootView.endLoad();
+                            if (mRootView != null)
+                                mRootView.endLoad();
                         }
                     }
                 });
     }
-    
-    
+
+
 }

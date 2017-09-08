@@ -1,8 +1,10 @@
 package com.hyjt.home.mvp.model.service;
 
 import com.hyjt.frame.api.BaseJson;
+import com.hyjt.home.mvp.model.entity.Resp.CIdeaListResp;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CEmailSendReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.CIdeaListReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.EmailListReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.ReportTopListReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.SLConsultListReqs;
@@ -302,4 +304,21 @@ public interface HomeService {
 
     @POST("/APILeapfrogReport/Delete")
     Observable<BaseJson<Object>> skipReportDelete(@Body BaseIdReqs baseIdReqs);
+
+
+
+    @POST("/APIYuangongxianji/GetData")
+    Observable<BaseJson<CIdeaListResp>> contributeIdeaList(@Body CIdeaListReqs cIdeaListReqs);
+
+    @POST("/APIYuangongxianji/Details")
+    Observable<BaseJson<SReportDetailResp>> contributeIdeaDetail(@Body BaseIdReqs baseIdReqs);
+
+    @POST("/APIYuangongxianji/Create")
+    Observable<BaseJson<Object>> contributeIdeaCreate(@Body SReportDetailResp reportDetail);
+
+    @POST("/APIYuangongxianji/Edit")
+    Observable<BaseJson<Object>> contributeIdeaEdit(@Body SReportDetailResp reportDetail);
+
+    @POST("/APIYuangongxianji/Delete")
+    Observable<BaseJson<Object>> contributeIdeaDelete(@Body BaseIdReqs baseIdReqs);
 }

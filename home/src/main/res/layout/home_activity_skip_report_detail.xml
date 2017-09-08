@@ -73,10 +73,10 @@
 
                 <TextView
                     style="@style/home_tv_new_meeting"
-                    android:text="汇报时间" />
+                    android:text="汇报人" />
 
                 <EditText
-                    android:id="@+id/edt_rp_time"
+                    android:id="@+id/edt_rp_person"
                     android:focusable="false"
                     style="@style/home_edt_new_meeting" />
 
@@ -96,6 +96,23 @@
                 <EditText
                     android:id="@+id/edt_rp_leader"
                     android:focusable="false"
+                    style="@style/home_edt_new_meeting" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="标题" />
+
+                <EditText
+                    android:id="@+id/edt_rp_title"
                     style="@style/home_edt_new_meeting" />
 
                 <View style="@style/home_meeting_line" />
@@ -142,53 +159,20 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="40dp"
+                android:layout_height="34dp"
                 android:layout_marginTop="6dp"
                 android:background="@drawable/home_bg_white_table">
 
                 <TextView
-                    android:layout_marginTop="6dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_width="50dp"
-                    android:layout_marginStart="15dp"
                     style="@style/home_tv_new_meeting"
-                    android:text="汇报人想法及诉求" />
+                    android:text="汇报时间" />
 
                 <EditText
-                    android:id="@+id/edt_idea_expect"
-                    android:layout_marginTop="6dp"
-                    style="@style/home_edt_send_consult" />
+                    android:id="@+id/edt_rp_time"
+                    android:focusable="false"
+                    style="@style/home_edt_new_meeting" />
 
-                <ImageView
-                    android:visibility="gone"
-                    android:id="@+id/iv_rp_name_signature"
-                    android:layout_below="@id/edt_idea_expect"
-                    android:layout_width="140dp"
-                    android:layout_height="60dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="11dp"
-                    android:scaleType="fitXY"
-                    android:layout_marginBottom="4dp"/>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="86dp"
-                    android:background="#000000" />
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="86dp"
-                    android:layout_alignParentBottom="true"
-                    android:background="#000000" />
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignTop="@id/edt_idea_expect"
-                    android:layout_alignBottom="@id/iv_rp_name_signature"
-                    android:layout_marginStart="86dp"
-                    android:background="#000000" />
+                <View style="@style/home_meeting_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -201,26 +185,15 @@
                 <TextView
                     android:layout_marginTop="6dp"
                     android:layout_marginEnd="4dp"
-                    android:layout_width="50dp"
                     android:layout_marginStart="15dp"
+                    android:layout_width="56dp"
                     style="@style/home_tv_new_meeting"
-                    android:text="汇报领导批准意见" />
+                    android:text="汇报对象回复意见" />
 
                 <EditText
                     android:id="@+id/edt_leader_idea"
                     android:layout_marginTop="6dp"
                     style="@style/home_edt_send_consult" />
-
-                <ImageView
-                    android:visibility="gone"
-                    android:id="@+id/iv_leader_signature"
-                    android:layout_below="@id/edt_leader_idea"
-                    android:layout_width="140dp"
-                    android:layout_height="60dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="11dp"
-                    android:layout_marginBottom="4dp"
-                    android:scaleType="fitXY"/>
 
                 <View
                     android:layout_width="1dp"
@@ -229,7 +202,7 @@
                     android:background="#000000" />
                 <View
                     android:layout_width="1dp"
-                    android:layout_height="40dp"
+                    android:layout_height="20dp"
                     android:layout_marginStart="86dp"
                     android:layout_alignParentBottom="true"
                     android:background="#000000" />
@@ -237,13 +210,10 @@
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:layout_alignTop="@id/edt_leader_idea"
-                    android:layout_alignBottom="@id/iv_leader_signature"
+                    android:layout_alignBottom="@id/edt_leader_idea"
                     android:layout_marginStart="86dp"
                     android:background="#000000" />
             </RelativeLayout>
-
-
-
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -253,7 +223,43 @@
 
                 <TextView
                     style="@style/home_tv_new_meeting"
-                    android:text="审批时间" />
+                    android:text="是否同意" />
+                <View
+                    style="@style/home_meeting_line"/>
+
+                <RadioGroup
+                    android:id="@+id/rg_question_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/rb_agree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="同意"
+                        android:textColor="@color/home_common_000000"/>
+                    <RadioButton
+                        android:id="@+id/rb_refuse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="不同意"
+                        android:textColor="@color/home_common_000000"/>
+                </RadioGroup>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="回复时间" />
 
                 <EditText
                     android:id="@+id/edt_approve_time"
