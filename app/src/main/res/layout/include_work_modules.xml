@@ -248,10 +248,13 @@
                         android:scaleType="fitXY"
                         android:src="@mipmap/h_yjhb" />
 
-                    <RelativeLayout style="@style/rlWorkMsg">
+                    <RelativeLayout
+                        android:id="@+id/rl_yjhb_num"
+                        style="@style/rlWorkMsg">
 
                         <TextView
-                            android:id="@+id/tv_yjhb_num" style="@style/tvWorkMsg"/>
+                            android:id="@+id/tv_yjhb_num"
+                            style="@style/tvWorkMsg"/>
                     </RelativeLayout>
                 </RelativeLayout>
 
@@ -277,10 +280,13 @@
                         android:scaleType="fitXY"
                         android:src="@mipmap/h_xjxc" />
 
-                    <RelativeLayout style="@style/rlWorkMsg">
+                    <RelativeLayout
+                        android:id="@+id/rl_xjxc_num"
+                        style="@style/rlWorkMsg">
 
                         <TextView
-                            android:id="@+id/tv_xjxc_num" style="@style/tvWorkMsg"/>
+                            android:id="@+id/tv_xjxc_num"
+                            style="@style/tvWorkMsg"/>
                     </RelativeLayout>
                 </RelativeLayout>
 
@@ -305,6 +311,16 @@
                         android:layout_height="match_parent"
                         android:scaleType="fitXY"
                         android:src="@mipmap/h_xjxc"  />
+
+
+                    <RelativeLayout
+                        android:id="@+id/rl_ghsq_num"
+                        style="@style/rlWorkMsg">
+
+                        <TextView
+                            android:id="@+id/tv_ghsq_num"
+                            style="@style/tvWorkMsg"/>
+                    </RelativeLayout>
                 </RelativeLayout>
 
                 <TextView

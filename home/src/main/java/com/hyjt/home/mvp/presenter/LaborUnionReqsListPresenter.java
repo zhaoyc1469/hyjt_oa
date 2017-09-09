@@ -70,11 +70,11 @@ public class LaborUnionReqsListPresenter extends BasePresenter<LaborUnionReqsLis
             mAdapter = new LUAppealAdapter(srList, Type);
             mRootView.setAdapter(mAdapter);
             mAdapter.setOnItemClickListener((view, viewType, data, position) -> {
-//                String id = srList.get(position).getId();
-//                ARouter.getInstance().build("/home/ContributeIdeaDetailActivity")
-//                        .withString("Id", id)
-////                        .withString("Type", Type)
-//                        .navigation();
+                String id = srList.get(position).getId();
+                ARouter.getInstance().build("/home/LaborUnionReqsDetailActivity")
+                        .withString("Id", id)
+//                        .withString("Type", Type)
+                        .navigation();
             });
         }
 
@@ -112,18 +112,18 @@ public class LaborUnionReqsListPresenter extends BasePresenter<LaborUnionReqsLis
                 .subscribe(new ErrorHandleSubscriber<LUReqsListResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull LUReqsListResp cideaList) {
-//                        if (pullToRefresh) {
-//                            srList.clear();
-//                            srList.addAll(cideaList.getRows());
-//                            mAdapter.notifyDataSetChanged();
-//                        } else {
-//                            srList.addAll(cideaList.getRows());
-//                            mAdapter.notifyDataSetChanged();
-//                        }
-//                        if (cideaList.getRows().size() == 0) {
-//                            if (mRootView != null)
-//                                mRootView.endLoad();
-//                        }
+                        if (pullToRefresh) {
+                            srList.clear();
+                            srList.addAll(cideaList.getRows());
+                            mAdapter.notifyDataSetChanged();
+                        } else {
+                            srList.addAll(cideaList.getRows());
+                            mAdapter.notifyDataSetChanged();
+                        }
+                        if (cideaList.getRows().size() == 0) {
+                            if (mRootView != null)
+                                mRootView.endLoad();
+                        }
                     }
                 });
     }

@@ -32,6 +32,6 @@ public class LUAppealAdapter extends DefaultAdapter<LUReqsListResp.RowsBean> {
 
     @Override
     public int getLayoutId(int viewType) {
-        return R.layout.home_item_contribute_i;
+        return R.layout.home_item_lu_reqs;
     }
 }

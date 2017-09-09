@@ -56,6 +56,24 @@ public class InformReceiver extends BroadcastReceiver {
                                 .withString("Id", pushExtraResp.getId())
                                 .navigation();
                     }
+                } else if ("LeapfrogReport".equals(pushExtraResp.getType())){
+                    if (!TextUtils.isEmpty(pushExtraResp.getId())) {
+                        ARouter.getInstance().build("/home/SkipReportDetailActivity")
+                                .withString("Id", pushExtraResp.getId())
+                                .navigation();
+                    }
+                } else if ("Yuangongxianji".equals(pushExtraResp.getType())){
+                    if (!TextUtils.isEmpty(pushExtraResp.getId())) {
+                        ARouter.getInstance().build("/home/ContributeIdeaDetailActivity")
+                                .withString("Id", pushExtraResp.getId())
+                                .navigation();
+                    }
+                } else if ("UnionAppeal".equals(pushExtraResp.getType())){
+                    if (!TextUtils.isEmpty(pushExtraResp.getId())) {
+                        ARouter.getInstance().build("/home/LaborUnionReqsDetailActivity")
+                                .withString("Id", pushExtraResp.getId())
+                                .navigation();
+                    }
                 }
             }
         }

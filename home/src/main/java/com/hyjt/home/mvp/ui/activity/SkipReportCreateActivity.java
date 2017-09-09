@@ -124,6 +124,10 @@ public class SkipReportCreateActivity extends BaseActivity<SkipReportCreatePrese
             shortToast("请你填写汇报标题");
             return false;
         }
+        if ("".equals(mEdtRpLeader.getText().toString())){
+            shortToast("请选择汇报领导");
+            return false;
+        }
         return true;
     }
 

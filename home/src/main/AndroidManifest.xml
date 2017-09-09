@@ -116,12 +116,28 @@
             android:name=".mvp.ui.activity.ReportTopCreateActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
-        <activity android:name=".mvp.ui.activity.ContributeIdeaListActivity" />
-        <activity android:name=".mvp.ui.activity.ContributeIdeaDetailActivity" />
-        <activity android:name=".mvp.ui.activity.ContributeIdeaCreateActivity" />
-        <activity android:name=".mvp.ui.activity.LaborUnionReqsListActivity" />
-        <activity android:name=".mvp.ui.activity.LaborUnionReqsDetailActivity" />
-        <activity android:name=".mvp.ui.activity.LaborUnionReqsCreateActivity"></activity>
+        <activity
+            android:name=".mvp.ui.activity.ContributeIdeaListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.ContributeIdeaDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.ContributeIdeaCreateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.LaborUnionReqsListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.LaborUnionReqsDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.LaborUnionReqsCreateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
     </application>
 
 </manifest>

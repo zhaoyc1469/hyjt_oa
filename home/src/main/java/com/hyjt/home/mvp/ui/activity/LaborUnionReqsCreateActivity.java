@@ -107,7 +107,7 @@ public class LaborUnionReqsCreateActivity extends BaseActivity<LaborUnionReqsCre
                             LUReqsDetailResp detail = new LUReqsDetailResp();
                             detail.setBossId(receiver.getSendKey());
                             detail.setTitle(mEdtRpTitle.getText().toString());
-                            detail.setReportContent(mEdtContent.getText().toString());
+                            detail.setAppealContent(mEdtContent.getText().toString());
                             mPresenter.createLUappeal(detail);
                         }).setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
                 builder.show();
@@ -125,7 +125,7 @@ public class LaborUnionReqsCreateActivity extends BaseActivity<LaborUnionReqsCre
 
     private boolean checkStr() {
         if (getUserName().equals(mEdtRpLeader)){
-            shortToast("您不能向自己发起献策");
+            shortToast("您不能向自己发起诉求");
             return false;
         }
         if ("".equals(mEdtRpTitle.getText().toString())){
@@ -220,7 +220,7 @@ public class LaborUnionReqsCreateActivity extends BaseActivity<LaborUnionReqsCre
             departmentPop.dismiss();
             mPresenter.getLinkmanMsg(Department, editText, meetingPerson, moreCheck);
         });
-        departmentPop.showAtLocation(findViewById(R.id.rl_contribute),
+        departmentPop.showAtLocation(findViewById(R.id.rl_lu_appeal),
                 Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
     }
 

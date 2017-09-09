@@ -10,14 +10,15 @@ public class WorkMission {
 
 
     /**
-     * Record : 2
+     * Record : 6
      * RecordL : 0
-     * RecordDb : 21
-     * SysLetter : 6
+     * RecordDb : 2
+     * SysLetter : 4
      * WorkingConference : 0
-     * WorkingConsult : 1
+     * WorkingConsult : 0
      * LeapfrogReport : 0
-     * Yuangongxianji : 0
+     * Yuangongxianji : 1
+     * UnionAppeal : 0
      */
 
     private String Record;
@@ -28,6 +29,7 @@ public class WorkMission {
     private String WorkingConsult;
     private String LeapfrogReport;
     private String Yuangongxianji;
+    private String UnionAppeal;
 
     public String getRecord() {
         return Record;
@@ -91,5 +93,13 @@ public class WorkMission {
 
     public void setYuangongxianji(String Yuangongxianji) {
         this.Yuangongxianji = Yuangongxianji;
+    }
+
+    public String getUnionAppeal() {
+        return UnionAppeal;
+    }
+
+    public void setUnionAppeal(String UnionAppeal) {
+        this.UnionAppeal = UnionAppeal;
     }
 }

@@ -179,15 +179,15 @@ public class SkipReportDetailActivity extends BaseActivity<SkipReportDetailPrese
                 mEdtRpTitle.setEnabled(false);
                 mEdtContent.setFocusable(false);
                 mEdtContent.setEnabled(false);
-                mBtnEditReport.setText("编辑");
+                mBtnEditReport.setText("批示");
                 this.sReport.setState("已批示");
+                mBtnDelReport.setVisibility(View.GONE);
             } else if (getUserName().equals(sReport.getReportPerson())){
                 mEdtLeaderIdea.setFocusable(false);
                 mEdtLeaderIdea.setEnabled(false);
                 mRbAgree.setClickable(false);
                 mRbRefuse.setClickable(false);
-                mBtnEditReport.setText("批示");
-                mBtnDelReport.setVisibility(View.GONE);
+                mBtnEditReport.setText("编辑");
             }
         } else if ("已批示".equals(sReport.getState())) {
             mEdtRpTitle.setFocusable(false);
@@ -199,7 +199,7 @@ public class SkipReportDetailActivity extends BaseActivity<SkipReportDetailPrese
             mRbAgree.setClickable(false);
             mRbRefuse.setClickable(false);
             mLlBottomBtn.setVisibility(View.GONE);
-            mEdtRpTime.setText(sReport.getReportTime());
+            mEdtRpTime.setText(sReport.getReplyTime());
         }
 
         if ("同意".equals(sReport.getAgree())) {

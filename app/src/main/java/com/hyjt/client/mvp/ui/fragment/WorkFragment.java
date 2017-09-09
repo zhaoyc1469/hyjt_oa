@@ -115,6 +115,12 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
     private RelativeLayout mRlPjxsNum;
     private TextView mTvPjxsNum;
     private RelativeLayout mRlGhsq;
+    private TextView mTvYjhbNum;
+    private TextView mTvGhsqNum;
+    private RelativeLayout mRlGhsqNum;
+    private TextView mTvXjxcNum;
+    private RelativeLayout mRlXjxcNum;
+    private RelativeLayout mRlYjhbNum;
 
     public static WorkFragment newInstance() {
         WorkFragment fragment = new WorkFragment();
@@ -174,6 +180,12 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         mTvHbsjNum = (TextView) inflate.findViewById(R.id.tv_hbsj_num);
         mRlPjxsNum = (RelativeLayout) inflate.findViewById(R.id.rl_pjxs_num);
         mTvPjxsNum = (TextView) inflate.findViewById(R.id.tv_pjxs_num);
+        mRlYjhbNum = (RelativeLayout) inflate.findViewById(R.id.rl_yjhb_num);
+        mTvYjhbNum = (TextView) inflate.findViewById(R.id.tv_yjhb_num);
+        mRlXjxcNum = (RelativeLayout) inflate.findViewById(R.id.rl_xjxc_num);
+        mTvXjxcNum = (TextView) inflate.findViewById(R.id.tv_xjxc_num);
+        mRlGhsqNum = (RelativeLayout) inflate.findViewById(R.id.rl_ghsq_num);
+        mTvGhsqNum = (TextView) inflate.findViewById(R.id.tv_ghsq_num);
 
         //设置模块点击事件
         mRlGsjg = (RelativeLayout) inflate.findViewById(R.id.rl_gsjg);
@@ -448,6 +460,33 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
             }
         } else {
             mRlPjxsNum.setVisibility(View.GONE);
+        }
+        if (Integer.parseInt(workMission.getLeapfrogReport()) > 0) {
+            mRlYjhbNum.setVisibility(View.VISIBLE);
+            mTvYjhbNum.setText(workMission.getLeapfrogReport());
+            if (View.GONE == mLlGsglChild.getVisibility()){
+                setExpand(mLlGsglChild);
+            }
+        } else {
+            mRlYjhbNum.setVisibility(View.GONE);
+        }
+        if (Integer.parseInt(workMission.getYuangongxianji()) > 0) {
+            mRlXjxcNum.setVisibility(View.VISIBLE);
+            mTvXjxcNum.setText(workMission.getYuangongxianji());
+            if (View.GONE == mLlGsglChild.getVisibility()){
+                setExpand(mLlGsglChild);
+            }
+        } else {
+            mRlXjxcNum.setVisibility(View.GONE);
+        }
+        if (Integer.parseInt(workMission.getUnionAppeal()) > 0) {
+            mRlGhsqNum.setVisibility(View.VISIBLE);
+            mTvGhsqNum.setText(workMission.getUnionAppeal());
+            if (View.GONE == mLlGsglChild.getVisibility()){
+                setExpand(mLlGsglChild);
+            }
+        } else {
+            mRlGhsqNum.setVisibility(View.GONE);
         }
     }
 

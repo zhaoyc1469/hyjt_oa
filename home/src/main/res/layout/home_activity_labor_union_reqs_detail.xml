@@ -1,7 +1,275 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/home_bg_table">
 
+    <include
+        android:id="@+id/icld_lu_idea"
+        layout="@layout/home_include_back_title" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_bottom_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_edit_report"
+            android:layout_width="110dp"
+            android:layout_height="29dp"
+            android:background="@drawable/home_bg_new_meeting"
+            android:text="@string/home_meeting_save" />
+
+        <Button
+            android:id="@+id/btn_del_report"
+            android:layout_width="110dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/home_bg_new_meeting"
+            android:text="删除" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/slv_report"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_bottom_btn"
+        android:layout_below="@id/icld_lu_idea">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="诉求编号" />
+
+                <EditText
+                    android:id="@+id/edt_rp_num"
+                    android:focusable="false"
+                    style="@style/home_edt_new_meeting" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="发起人" />
+
+                <EditText
+                    android:id="@+id/edt_lu_person"
+                    android:focusable="false"
+                    style="@style/home_edt_new_meeting" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="工会领导" />
+
+                <EditText
+                    android:id="@+id/edt_rp_leader"
+                    android:focusable="false"
+                    style="@style/home_edt_new_meeting" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="标题" />
+
+                <EditText
+                    android:id="@+id/edt_rp_title"
+                    style="@style/home_edt_new_meeting" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginStart="15dp"
+                    style="@style/home_tv_new_meeting"
+                    android:text="诉求内容" />
+
+                <EditText
+                    android:id="@+id/edt_content"
+                    android:layout_marginTop="6dp"
+                    style="@style/home_edt_send_consult" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="86dp"
+                    android:background="#000000" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="86dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="#000000" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignTop="@id/edt_content"
+                    android:layout_alignBottom="@id/edt_content"
+                    android:layout_marginStart="86dp"
+                    android:background="#000000" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="提交时间" />
+
+                <EditText
+                    android:id="@+id/edt_lu_time"
+                    android:focusable="false"
+                    style="@style/home_edt_new_meeting" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_width="56dp"
+                    style="@style/home_tv_new_meeting"
+                    android:text="领导批示意见" />
+
+                <EditText
+                    android:id="@+id/edt_leader_idea"
+                    android:layout_marginTop="6dp"
+                    style="@style/home_edt_send_consult" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="86dp"
+                    android:background="#000000" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="86dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="#000000" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignTop="@id/edt_leader_idea"
+                    android:layout_alignBottom="@id/edt_leader_idea"
+                    android:layout_marginStart="86dp"
+                    android:background="#000000" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="是否同意" />
+                <View
+                    style="@style/home_meeting_line"/>
+
+                <RadioGroup
+                    android:id="@+id/rg_question_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/rb_agree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="同意"
+                        android:textColor="@color/home_common_000000"/>
+                    <RadioButton
+                        android:id="@+id/rb_refuse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="不同意"
+                        android:textColor="@color/home_common_000000"/>
+                </RadioGroup>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_new_meeting"
+                    android:text="批示时间" />
+
+                <EditText
+                    android:id="@+id/edt_approve_time"
+                    android:focusable="false"
+                    style="@style/home_edt_new_meeting" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

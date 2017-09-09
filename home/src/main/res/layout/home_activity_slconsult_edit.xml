@@ -57,7 +57,7 @@
                 <EditText
                     android:id="@+id/edt_rp_num"
                     android:focusable="false"
-                    style="@style/home_edt_send_consult" />
+                    style="@style/home_edt_new_meeting" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
@@ -75,7 +75,7 @@
                 <EditText
                     android:id="@+id/edt_rp_name"
                     android:focusable="false"
-                    style="@style/home_edt_send_consult" />
+                    style="@style/home_edt_new_meeting" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
@@ -93,7 +93,7 @@
                 <EditText
                     android:id="@+id/edt_rp_time"
                     android:focusable="false"
-                    style="@style/home_edt_send_consult" />
+                    style="@style/home_edt_new_meeting" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
@@ -111,7 +111,7 @@
                 <EditText
                     android:id="@+id/edt_rp_leader"
                     android:focusable="false"
-                    style="@style/home_edt_send_consult" />
+                    style="@style/home_edt_new_meeting" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
@@ -267,7 +267,7 @@
                 <EditText
                     android:id="@+id/edt_approve_time"
                     android:focusable="false"
-                    style="@style/home_edt_send_consult" />
+                    style="@style/home_edt_new_meeting" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
