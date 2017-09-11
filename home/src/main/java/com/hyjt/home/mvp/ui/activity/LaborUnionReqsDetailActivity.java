@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -58,6 +59,7 @@ public class LaborUnionReqsDetailActivity extends BaseActivity<LaborUnionReqsDet
     private android.widget.EditText edtApproveTime;
     private ProgressDialog progressDialog;
     private LUReqsDetailResp LUDetail;
+    private RelativeLayout mRlIsAgree;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -100,11 +102,14 @@ public class LaborUnionReqsDetailActivity extends BaseActivity<LaborUnionReqsDet
         edtContent = (EditText) findViewById(R.id.edt_content);
         edtLuTime = (EditText) findViewById(R.id.edt_lu_time);
         edtLeaderIdea = (EditText) findViewById(R.id.edt_leader_idea);
+        mRlIsAgree = (RelativeLayout) findViewById(R.id.rl_is_agree);
         rgQuestionState = (RadioGroup) findViewById(R.id.rg_question_state);
         rbAgree = (RadioButton) findViewById(R.id.rb_agree);
         rbRefuse = (RadioButton) findViewById(R.id.rb_refuse);
         edtApproveTime = (EditText) findViewById(R.id.edt_approve_time);
 
+        // 此页面去除此功能
+        mRlIsAgree.setVisibility(View.GONE);
 
         progressDialog = ProgressDialog.show(mContext, null, "诉求内容加载中…");
         mPresenter.LUDetail(LUId);
