@@ -23,17 +23,15 @@ public class StaffStatePop extends PopupWindow {
 
     private View mMenuView; // PopupWindow 菜单布局
     private Context context; // 上下文参数
-    private View.OnClickListener listener;
     private LinearLayout mLlOnJob;
     private LinearLayout mLlPractice;
     private LinearLayout mLlPartJob;
     private LinearLayout mLlHoliday;
     private LinearLayout mLlLeaveOffice;
 
-    public StaffStatePop(Activity context, View.OnClickListener listener) {
+    public StaffStatePop(Activity context) {
         super(context);
         this.context = context;
-        this.listener = listener;
         Init();
     }
 
@@ -49,11 +47,27 @@ public class StaffStatePop extends PopupWindow {
         mLlHoliday = (LinearLayout) mMenuView.findViewById(R.id.ll_holiday);
         mLlLeaveOffice = (LinearLayout) mMenuView.findViewById(R.id.ll_leave_office);
 
-        mLlOnJob.setOnClickListener(listener);
-        mLlPractice.setOnClickListener(listener);
-        mLlPartJob.setOnClickListener(listener);
-        mLlHoliday.setOnClickListener(listener);
-        mLlLeaveOffice.setOnClickListener(listener);
+//        mLlOnJob.setOnClickListener(listener);
+//        mLlPractice.setOnClickListener(listener);
+//        mLlPartJob.setOnClickListener(listener);
+//        mLlHoliday.setOnClickListener(listener);
+//        mLlLeaveOffice.setOnClickListener(listener);
+
+        mLlOnJob.setOnClickListener(v -> {
+            mSelStafListener.onSelStafClick("在职");
+        });
+        mLlPractice.setOnClickListener(v -> {
+            mSelStafListener.onSelStafClick("实习");
+        });
+        mLlPartJob.setOnClickListener(v -> {
+            mSelStafListener.onSelStafClick("兼职");
+        });
+        mLlHoliday.setOnClickListener(v -> {
+            mSelStafListener.onSelStafClick("休假");
+        });
+        mLlLeaveOffice.setOnClickListener(v -> {
+            mSelStafListener.onSelStafClick("离职");
+        });
 
 
         // 导入布局
@@ -81,5 +95,16 @@ public class StaffStatePop extends PopupWindow {
             }
             return true;
         });
+    }
+
+
+    private SelStafListener mSelStafListener = null;
+
+    public void setSelStafListener(SelStafListener listener) {
+        this.mSelStafListener = listener;
+    }
+
+    public interface SelStafListener {
+        void onSelStafClick(String type);
     }
 }

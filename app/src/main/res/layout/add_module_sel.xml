@@ -50,10 +50,5 @@
                 android:text="接收" />
 
         </LinearLayout>
-
-
-
-
-
     </LinearLayout>
 </RelativeLayout>

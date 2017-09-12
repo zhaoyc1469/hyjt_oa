@@ -44,7 +44,7 @@ import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkContract.View, View.OnClickListener {
 
     private BlocPop meetingLog;
-    private StaffStatePop staffStatePop;
+    //    private StaffStatePop staffStatePop;
     private TranslateAnimation mShowAction;
     private TranslateAnimation mHiddenAction;
     private android.widget.TextView mTvGsglExpand;
@@ -121,6 +121,8 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
     private TextView mTvXjxcNum;
     private RelativeLayout mRlXjxcNum;
     private RelativeLayout mRlYjhbNum;
+    private TextView mTvManageGsgl;
+    private LinearLayout mLlGsgl;
 
     public static WorkFragment newInstance() {
         WorkFragment fragment = new WorkFragment();
@@ -158,6 +160,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         mHiddenAlpha.setDuration(500);
 
         mTvGsglExpand = (TextView) inflate.findViewById(R.id.tv_gsgl_expand);
+        mLlGsgl = (LinearLayout) inflate.findViewById(R.id.ll_gsgl);
         mLlGsglChild = (LinearLayout) inflate.findViewById(R.id.ll_gsgl_child);
         mTvYwglExpand = (TextView) inflate.findViewById(R.id.tv_ywgl_expand);
         mLlYwglChild = (LinearLayout) inflate.findViewById(R.id.ll_ywgl_child);
@@ -232,6 +235,8 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         mRlPjxs = (RelativeLayout) inflate.findViewById(R.id.rl_pjxs);
         mRlGhsq = (RelativeLayout) inflate.findViewById(R.id.rl_ghsq);
 
+
+
         mRlGsjg.setOnClickListener(this);
         mRlGszl.setOnClickListener(this);
         mRlBmzl.setOnClickListener(this);
@@ -299,6 +304,8 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
             mPresenter.ExitLogin();
         });
 
+
+
         return inflate;
     }
 
@@ -360,55 +367,6 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         }
     };
 
-
-    /**
-     * 员工选择
-     */
-    private View.OnClickListener staffStateOnClick = v -> {
-        staffStatePop.dismiss();
-        int i = v.getId();
-        if (i == R.id.ll_on_job) {
-            //在职
-            ARouter.getInstance().build("/home/StaffListActivity").withString("state", "在职").navigation(getActivity(), Api.WorkStartCode);
-        } else if (i == R.id.ll_practice) {
-            //实习
-            ARouter.getInstance().build("/home/StaffListActivity").withString("state", "实习").navigation(getActivity(), Api.WorkStartCode);
-        } else if (i == R.id.ll_part_job) {
-            //兼职
-            ARouter.getInstance().build("/home/StaffListActivity").withString("state", "兼职").navigation(getActivity(), Api.WorkStartCode);
-        } else if (i == R.id.ll_holiday) {
-            //休假
-            ARouter.getInstance().build("/home/StaffListActivity").withString("state", "休假").navigation(getActivity(), Api.WorkStartCode);
-        } else if (i == R.id.ll_leave_office) {
-            //离职
-            ARouter.getInstance().build("/home/StaffListActivity").withString("state", "离职").navigation(getActivity(), Api.WorkStartCode);
-        }
-    };
-
-    /**
-     * 通讯录员工选择
-     */
-    private View.OnClickListener addressBookOnClick = v -> {
-        staffStatePop.dismiss();
-        int i = v.getId();
-        if (i == R.id.ll_on_job) {
-            //在职
-            ARouter.getInstance().build("/home/AddressBookActivity").withString("state", "在职").navigation(getActivity(), Api.WorkStartCode);
-        } else if (i == R.id.ll_practice) {
-            //实习
-            ARouter.getInstance().build("/home/AddressBookActivity").withString("state", "实习").navigation(getActivity(), Api.WorkStartCode);
-        } else if (i == R.id.ll_part_job) {
-            //兼职
-            ARouter.getInstance().build("/home/AddressBookActivity").withString("state", "兼职").navigation(getActivity(), Api.WorkStartCode);
-        } else if (i == R.id.ll_holiday) {
-            //休假
-            ARouter.getInstance().build("/home/AddressBookActivity").withString("state", "休假").navigation(getActivity(), Api.WorkStartCode);
-        } else if (i == R.id.ll_leave_office) {
-            //离职
-            ARouter.getInstance().build("/home/AddressBookActivity").withString("state", "离职").navigation(getActivity(), Api.WorkStartCode);
-        }
-    };
-
     /**
      * 展示消息个数
      *
@@ -437,7 +395,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         if (Integer.parseInt(workMission.getSysLetter()) > 0) {
             mRlNbyjNum.setVisibility(View.VISIBLE);
             mTvNbyjNum.setText(workMission.getSysLetter());
-            if (View.GONE == mLlYwglChild.getVisibility()){
+            if (View.GONE == mLlYwglChild.getVisibility()) {
                 setExpand(mLlYwglChild);
             }
         } else {
@@ -446,7 +404,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         if (Integer.parseInt(workMission.getWorkingConference()) > 0) {
             mRlHbsjNum.setVisibility(View.VISIBLE);
             mTvHbsjNum.setText(workMission.getWorkingConference());
-            if (View.GONE == mLlYwglChild.getVisibility()){
+            if (View.GONE == mLlYwglChild.getVisibility()) {
                 setExpand(mLlYwglChild);
             }
         } else {
@@ -455,7 +413,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         if (Integer.parseInt(workMission.getWorkingConsult()) > 0) {
             mRlPjxsNum.setVisibility(View.VISIBLE);
             mTvPjxsNum.setText(workMission.getWorkingConsult());
-            if (View.GONE == mLlYwglChild.getVisibility()){
+            if (View.GONE == mLlYwglChild.getVisibility()) {
                 setExpand(mLlYwglChild);
             }
         } else {
@@ -464,7 +422,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         if (Integer.parseInt(workMission.getLeapfrogReport()) > 0) {
             mRlYjhbNum.setVisibility(View.VISIBLE);
             mTvYjhbNum.setText(workMission.getLeapfrogReport());
-            if (View.GONE == mLlGsglChild.getVisibility()){
+            if (View.GONE == mLlGsglChild.getVisibility()) {
                 setExpand(mLlGsglChild);
             }
         } else {
@@ -473,7 +431,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         if (Integer.parseInt(workMission.getYuangongxianji()) > 0) {
             mRlXjxcNum.setVisibility(View.VISIBLE);
             mTvXjxcNum.setText(workMission.getYuangongxianji());
-            if (View.GONE == mLlGsglChild.getVisibility()){
+            if (View.GONE == mLlGsglChild.getVisibility()) {
                 setExpand(mLlGsglChild);
             }
         } else {
@@ -482,7 +440,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         if (Integer.parseInt(workMission.getUnionAppeal()) > 0) {
             mRlGhsqNum.setVisibility(View.VISIBLE);
             mTvGhsqNum.setText(workMission.getUnionAppeal());
-            if (View.GONE == mLlGsglChild.getVisibility()){
+            if (View.GONE == mLlGsglChild.getVisibility()) {
                 setExpand(mLlGsglChild);
             }
         } else {
@@ -494,7 +452,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.rl_hyjy: {
-                meetingLog = new BlocPop(getActivity(), meetingLogOnClick);
+                BlocPop meetingLog = new BlocPop(getActivity(), meetingLogOnClick);
                 meetingLog.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
                         Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
                 break;
@@ -512,7 +470,12 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
                 break;
             }
             case R.id.rl_txl: {
-                staffStatePop = new StaffStatePop(getActivity(), addressBookOnClick);
+                StaffStatePop staffStatePop = new StaffStatePop(getActivity());
+                staffStatePop.setSelStafListener(type -> {
+                    ARouter.getInstance().build("/home/AddressBookActivity")
+                            .withString("state", type).navigation(getActivity(), Api.WorkStartCode);
+                    staffStatePop.dismiss();
+                });
                 staffStatePop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
                         Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
                 break;
@@ -522,7 +485,12 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
                 break;
             }
             case R.id.rl_ygxx: {
-                staffStatePop = new StaffStatePop(getActivity(), staffStateOnClick);
+                StaffStatePop staffStatePop = new StaffStatePop(getActivity());
+                staffStatePop.setSelStafListener(type -> {
+                    ARouter.getInstance().build("/home/StaffListActivity")
+                            .withString("state", type).navigation(getActivity(), Api.WorkStartCode);
+                    staffStatePop.dismiss();
+                });
                 staffStatePop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
                         Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
                 break;
@@ -603,7 +571,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Api.WorkStartCode){
+        if (requestCode == Api.WorkStartCode) {
             mPresenter.getMsgNum();
         }
     }

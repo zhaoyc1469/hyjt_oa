@@ -32,9 +32,9 @@ android {
         }
 
         manifestPlaceholders = [
-                JPUSH_PKGNAME : applicationId,
+                JPUSH_PKGNAME: applicationId,
                 JPUSH_APPKEY : "b18d63e7bd5d87d025718680", //JPush上注册的包名对应的appkey.
-                JPUSH_CHANNEL : "developer-default", //用户渠道统计的渠道名称
+                JPUSH_CHANNEL: "developer-default", //用户渠道统计的渠道名称
         ]
     }
     buildTypes {
@@ -65,4 +65,5 @@ dependencies {
 
     compile 'cn.jiguang.sdk:jpush:3.0.5'
     compile 'cn.jiguang.sdk:jcore:1.1.2'
+    compile 'com.android.support:support-v4:25.3.1'
 }

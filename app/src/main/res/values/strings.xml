@@ -63,4 +63,7 @@
     <string name="work_ht">合同</string>
     <string name="work_qt">其他</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
