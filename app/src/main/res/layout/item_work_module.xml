@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        style="@style/home_rl_org_top_btn">
+
+        <ImageView
+            android:id="@+id/iv_module_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+
+        <RelativeLayout
+            android:id="@+id/rl_module_msg"
+            style="@style/rlWorkMsg">
+
+            <TextView
+                android:id="@+id/tv_module_msg"
+                style="@style/tvWorkMsg" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_module_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:textSize="12sp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/common_000000"
+        android:text="公司架构" />
+
+</LinearLayout>

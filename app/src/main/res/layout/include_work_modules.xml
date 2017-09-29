@@ -63,7 +63,8 @@
                     <RelativeLayout style="@style/rlWorkMsg">
 
                         <TextView
-                            android:id="@+id/tv_gsjg_num" style="@style/tvWorkMsg"/>
+                            android:id="@+id/tv_gsjg_num"
+                            style="@style/tvWorkMsg" />
                     </RelativeLayout>
 
                 </RelativeLayout>
