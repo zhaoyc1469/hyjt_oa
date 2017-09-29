@@ -105,6 +105,9 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineCon
         View inflate = inflater.inflate(R.layout.fragment_mine, container, false);
         mTvTitle = (TextView) inflate.findViewById(R.id.tv_title);
         mIvTopSelect = (ImageView) inflate.findViewById(R.id.iv_top_select);
+//        mIvTopSelect.setOnClickListener(v -> {
+//            getActivity().startActivity(new Intent(getContext(), ChannelActivity.class));
+//        });
 
         //
         mRlGsgl = (RelativeLayout) inflate.findViewById(R.id.rl_gsgl);

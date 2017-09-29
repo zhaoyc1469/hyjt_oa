@@ -53,6 +53,8 @@ public class MsgFragment extends BaseFragment<MsgPresenter> implements MsgContra
         mRecyMsg.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
+
+
         return inflate;
     }
 
