@@ -2,6 +2,7 @@ package com.hyjt.client.mvp.ui.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.hyjt.app.R;
@@ -11,10 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dagger.Module;
-
-/**
- * Created by Administrator on 2017/9/29.
- */
 
 public class ModuleAdapter extends RecyclerView.Adapter {
 
@@ -27,9 +24,12 @@ public class ModuleAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == 0){
-            LayoutInflater.from(parent.getContext()).inflate(R.layout.item_work_title, parent, false);
+            return new TitleHolder(LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_work_title, parent, false));
+        } else {
+            return new ModuleHolder(LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_work_title, parent, false));
         }
-        return null;
     }
 
     @Override
@@ -39,11 +39,24 @@ public class ModuleAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return moduleBeen.size();
     }
 
     @Override
     public int getItemViewType(int position) {
         return moduleBeen.get(position).getType();
     }
+
+    private class TitleHolder extends RecyclerView.ViewHolder {
+        TitleHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
+    private class ModuleHolder extends RecyclerView.ViewHolder {
+        ModuleHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
 }

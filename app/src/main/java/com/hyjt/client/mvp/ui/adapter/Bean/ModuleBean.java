@@ -15,4 +15,7 @@ public class ModuleBean {
     public void setType(int type) {
         this.type = type;
     }
+
+
+//    private
 }
