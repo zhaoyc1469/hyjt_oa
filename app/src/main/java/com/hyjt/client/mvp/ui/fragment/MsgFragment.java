@@ -2,6 +2,8 @@ package com.hyjt.client.mvp.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,7 @@ public class MsgFragment extends BaseFragment<MsgPresenter> implements MsgContra
 
     private TextView mTvTitle;
     private ImageView mIvTopSelect;
+    private RecyclerView mRecyMsg;
 
     public static MsgFragment newInstance() {
         MsgFragment fragment = new MsgFragment();
@@ -46,6 +49,10 @@ public class MsgFragment extends BaseFragment<MsgPresenter> implements MsgContra
         View inflate = inflater.inflate(R.layout.fragment_msg, container, false);
         mTvTitle = (TextView) inflate.findViewById(R.id.tv_title);
         mIvTopSelect = (ImageView) inflate.findViewById(R.id.iv_top_select);
+        mRecyMsg = (RecyclerView) inflate.findViewById(R.id.recy_msg);
+        mRecyMsg.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
         return inflate;
     }
 
