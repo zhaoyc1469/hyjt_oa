@@ -130,4 +130,6 @@ dependencies {
     //test
     compile rootProject.ext.dependencies["timber"]
     testCompile rootProject.ext.dependencies["junit"]
+
+//    compile project(':db')
 }

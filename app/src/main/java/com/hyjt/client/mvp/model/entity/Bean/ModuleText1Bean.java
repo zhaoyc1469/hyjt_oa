@@ -1,4 +1,4 @@
-package com.hyjt.client.mvp.ui.adapter.Bean;
+package com.hyjt.client.mvp.model.entity.Bean;
 
 /**
  * Created by Administrator on 2017/9/29.

@@ -6,12 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hyjt.app.R;
-import com.hyjt.client.mvp.ui.adapter.Bean.ModuleBean;
+import com.hyjt.client.mvp.model.entity.Bean.ModuleBean;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import dagger.Module;
 
 public class ModuleText1Adapter extends RecyclerView.Adapter {
 

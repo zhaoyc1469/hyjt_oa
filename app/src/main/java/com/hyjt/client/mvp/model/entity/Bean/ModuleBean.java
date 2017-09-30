@@ -1,13 +1,16 @@
-package com.hyjt.client.mvp.ui.adapter.Bean;
+package com.hyjt.client.mvp.model.entity.Bean;
 
-/**
- * Created by Administrator on 2017/9/29.
- */
 
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+
+//@Entity
 public class ModuleBean {
 
-    private String img;
+//    @Id
     private String name;
+
+    private String img;
     private Integer Msg;
 
 

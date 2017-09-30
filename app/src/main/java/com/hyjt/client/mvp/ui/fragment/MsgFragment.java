@@ -16,8 +16,12 @@ import com.hyjt.client.di.component.DaggerMsgComponent;
 import com.hyjt.client.di.module.MsgModule;
 import com.hyjt.client.mvp.contract.MsgContract;
 import com.hyjt.client.mvp.presenter.MsgPresenter;
-import com.hyjt.client.mvp.ui.adapter.Bean.ModuleBean;
+import com.hyjt.client.mvp.model.entity.Bean.ModuleBean;
 import com.hyjt.client.mvp.ui.adapter.ModuleAdapter;
+import com.hyjt.db.DbHelper;
+import com.hyjt.db.bean.ModuleBeanDb;
+import com.hyjt.db.gen.DaoSession;
+import com.hyjt.db.gen.ModuleBeanDbDao;
 import com.hyjt.frame.base.BaseFragment;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.utils.UiUtils;
@@ -34,18 +38,28 @@ public class MsgFragment extends BaseFragment<MsgPresenter> implements MsgContra
     private TextView mTvTitle;
     private ImageView mIvTopSelect;
     private RecyclerView mRecyGsgl;
-    private RecyclerView recyYwgl;
-    private RecyclerView recyYwsq;
-    private RecyclerView recyRsgl;
-    private RecyclerView recyXmgl;
-    private RecyclerView recyCwgl;
-    private RecyclerView recyZlgl;
     private RecyclerView mRecyYwgl;
     private RecyclerView mRecyYwsq;
     private RecyclerView mRecyRsgl;
     private RecyclerView mRecyXmgl;
     private RecyclerView mRecyCwgl;
     private RecyclerView mRecyZlgl;
+    private DaoSession daoSession;
+    private ModuleBeanDbDao moduleBeanDbDao;
+    private List<ModuleBean> moduleGsgl;
+    private List<ModuleBean> moduleYwgl;
+    private List<ModuleBean> moduleYwsq;
+    private List<ModuleBean> moduleRsgl;
+    private List<ModuleBean> moduleXmgl;
+    private List<ModuleBean> moduleCwgl;
+    private List<ModuleBean> moduleZlgl;
+    private ModuleAdapter GsglAdapter;
+    private ModuleAdapter YwglAdapter;
+    private ModuleAdapter YwsqAdapter;
+    private ModuleAdapter RsglAdapter;
+    private ModuleAdapter XmglAdapter;
+    private ModuleAdapter CwglAdapter;
+    private ModuleAdapter ZlglAdapter;
 
     public static MsgFragment newInstance() {
         MsgFragment fragment = new MsgFragment();
@@ -69,36 +83,48 @@ public class MsgFragment extends BaseFragment<MsgPresenter> implements MsgContra
         mIvTopSelect = (ImageView) inflate.findViewById(R.id.iv_top_select);
 
         mRecyGsgl = (RecyclerView) inflate.findViewById(R.id.recy_gsgl);
-        mRecyGsgl.setLayoutManager(new GridLayoutManager(getContext(),5));
+        mRecyGsgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
         mRecyYwgl = (RecyclerView) inflate.findViewById(R.id.recy_ywgl);
-        mRecyYwgl.setLayoutManager(new GridLayoutManager(getContext(),5));
+        mRecyYwgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
         mRecyYwsq = (RecyclerView) inflate.findViewById(R.id.recy_ywsq);
-        mRecyYwsq.setLayoutManager(new GridLayoutManager(getContext(),5));
+        mRecyYwsq.setLayoutManager(new GridLayoutManager(getContext(), 5));
         mRecyRsgl = (RecyclerView) inflate.findViewById(R.id.recy_rsgl);
-        mRecyRsgl.setLayoutManager(new GridLayoutManager(getContext(),5));
+        mRecyRsgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
         mRecyXmgl = (RecyclerView) inflate.findViewById(R.id.recy_xmgl);
-        mRecyXmgl.setLayoutManager(new GridLayoutManager(getContext(),5));
+        mRecyXmgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
         mRecyCwgl = (RecyclerView) inflate.findViewById(R.id.recy_cwgl);
-        mRecyCwgl.setLayoutManager(new GridLayoutManager(getContext(),5));
+        mRecyCwgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
         mRecyZlgl = (RecyclerView) inflate.findViewById(R.id.recy_zlgl);
-        mRecyZlgl.setLayoutManager(new GridLayoutManager(getContext(),5));
+        mRecyZlgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
 
-        List<ModuleBean> moduleBeanList = new ArrayList<>();
-        moduleBeanList.add(new ModuleBean("h_gszl", "公司干了"));
-        moduleBeanList.add(new ModuleBean("h_gszl", "公司干了"));
-        moduleBeanList.add(new ModuleBean("h_gszl", "公司干了"));
-        moduleBeanList.add(new ModuleBean("h_gszl", "公司干了"));
-        moduleBeanList.add(new ModuleBean("h_gszl", "公司干了"));
-        moduleBeanList.add(new ModuleBean("h_gszl", "公司干了"));
-        moduleBeanList.add(new ModuleBean("h_gszl", "公司干了"));
-        moduleBeanList.add(new ModuleBean("h_gszl", "公司干了"));
-        mRecyGsgl.setAdapter(new ModuleAdapter(moduleBeanList, getActivity()));
-        mRecyYwgl.setAdapter(new ModuleAdapter(moduleBeanList, getActivity()));
-        mRecyYwsq.setAdapter(new ModuleAdapter(moduleBeanList, getActivity()));
-        mRecyRsgl.setAdapter(new ModuleAdapter(moduleBeanList, getActivity()));
-        mRecyXmgl.setAdapter(new ModuleAdapter(moduleBeanList, getActivity()));
-        mRecyCwgl.setAdapter(new ModuleAdapter(moduleBeanList, getActivity()));
-        mRecyZlgl.setAdapter(new ModuleAdapter(moduleBeanList, getActivity()));
+        daoSession = DbHelper.getInstance().getDaoSession();
+        moduleBeanDbDao = daoSession.getModuleBeanDbDao();
+
+        moduleGsgl = new ArrayList<>();
+        moduleYwgl = new ArrayList<>();
+        moduleYwsq = new ArrayList<>();
+        moduleRsgl = new ArrayList<>();
+        moduleXmgl = new ArrayList<>();
+        moduleCwgl = new ArrayList<>();
+        moduleZlgl = new ArrayList<>();
+
+        loadModuleList();
+
+        GsglAdapter = new ModuleAdapter(moduleGsgl, getActivity());
+        YwglAdapter = new ModuleAdapter(moduleYwgl, getActivity());
+        YwsqAdapter = new ModuleAdapter(moduleYwsq, getActivity());
+        RsglAdapter = new ModuleAdapter(moduleRsgl, getActivity());
+        XmglAdapter = new ModuleAdapter(moduleXmgl, getActivity());
+        CwglAdapter = new ModuleAdapter(moduleCwgl, getActivity());
+        ZlglAdapter = new ModuleAdapter(moduleZlgl, getActivity());
+
+        mRecyGsgl.setAdapter(GsglAdapter);
+        mRecyYwgl.setAdapter(YwglAdapter);
+        mRecyYwsq.setAdapter(YwsqAdapter);
+        mRecyRsgl.setAdapter(RsglAdapter);
+        mRecyXmgl.setAdapter(XmglAdapter);
+        mRecyCwgl.setAdapter(CwglAdapter);
+        mRecyZlgl.setAdapter(ZlglAdapter);
 
         mRecyGsgl.setNestedScrollingEnabled(false);
         mRecyYwgl.setNestedScrollingEnabled(false);
@@ -108,8 +134,38 @@ public class MsgFragment extends BaseFragment<MsgPresenter> implements MsgContra
         mRecyCwgl.setNestedScrollingEnabled(false);
         mRecyZlgl.setNestedScrollingEnabled(false);
 
-
         return inflate;
+    }
+
+    private void loadModuleList() {
+        List<ModuleBeanDb> moduleBeanDbs = moduleBeanDbDao.loadAll();
+        for (ModuleBeanDb moduleBeanDb : moduleBeanDbs) {
+            if (moduleBeanDb.getIsShow()) {
+                switch (moduleBeanDb.getType()) {
+                    case 1:
+                        moduleGsgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()));
+                        break;
+                    case 2:
+                        moduleYwgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()));
+                        break;
+                    case 3:
+                        moduleYwsq.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()));
+                        break;
+                    case 4:
+                        moduleRsgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()));
+                        break;
+                    case 5:
+                        moduleXmgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()));
+                        break;
+                    case 6:
+                        moduleCwgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()));
+                        break;
+                    case 7:
+                        moduleZlgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()));
+                        break;
+                }
+            }
+        }
     }
 
     @Override

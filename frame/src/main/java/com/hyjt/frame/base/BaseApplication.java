@@ -21,6 +21,7 @@ public class BaseApplication extends Application implements App {
     private AppDelegate mAppDelegate;
 
     private static Context context;
+//    private DaoSession daoSession;
 
     public static Context getContext() {
         return context;

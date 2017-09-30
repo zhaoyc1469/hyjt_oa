@@ -55,15 +55,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     public void initData(Bundle savedInstanceState) {
 
-//        DaemonEnv.startServiceSafely(new Intent(this, TraceServiceImpl.class));
-//        IntentWrapper.whiteListMatters(this, "轨迹跟踪服务的持续运行");
-
-        //初始化推送
-        JPushInterface.init(getApplicationContext());
-        JPushInterface.resumePush(getApplicationContext());
         //RegistrationID
         registrationID = JPushInterface.getRegistrationID(getApplicationContext());
-
 
         mEdtUsername = (EditText) findViewById(R.id.edt_username);
         mEdtPassword = (EditText) findViewById(R.id.edt_password);

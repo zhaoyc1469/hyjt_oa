@@ -11,8 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hyjt.app.R;
-import com.hyjt.client.mvp.ui.adapter.Bean.ModuleBean;
-import com.hyjt.frame.base.BaseApplication;
+import com.hyjt.client.mvp.model.entity.Bean.ModuleBean;
 
 import java.util.List;
 

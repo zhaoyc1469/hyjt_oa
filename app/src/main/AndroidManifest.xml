@@ -39,7 +39,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name="com.hyjt.client.mvp.ui.activity.LoginActivity"
+            android:name="com.hyjt.client.mvp.ui.activity.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -229,17 +229,19 @@
             android:process=":watch" />
 
         <activity
-            android:name="com.hyjt.client.mvp.ui.activity.SplashActivity"
+            android:name="com.hyjt.client.mvp.ui.activity.LoginActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.hyjt.client.mvp.ui.activity.HomeActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 
-        <!--<receiver-->
-            <!--android:name="com.hyjt.client.mvp.ui.receiver.InformReceiver"-->
-            <!--android:enabled="true"-->
-            <!--android:exported="true"/>-->
+        <!-- <receiver -->
+        <!-- android:name="com.hyjt.client.mvp.ui.receiver.InformReceiver" -->
+        <!-- android:enabled="true" -->
+        <!-- android:exported="true"/> -->
+        <activity android:name="com.hyjt.client.mvp.ui.activity.MdManageActivity"></activity>
     </application>
 
 </manifest>
