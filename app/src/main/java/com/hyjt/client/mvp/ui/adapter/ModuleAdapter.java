@@ -69,4 +69,16 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleVH> 
         int resId = ctx.getResources().getIdentifier(imageName, "mipmap", ctx.getPackageName());
         return resId;
     }
+
+    //声明一个接口
+    private OnItemClickListener mOnItemClickListener = null;
+
+    //提供一个方法去赋值
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mOnItemClickListener = listener;
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(View itemView, int position, String name);
+    }
 }

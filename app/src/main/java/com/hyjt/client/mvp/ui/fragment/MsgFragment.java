@@ -183,10 +183,4 @@ public class MsgFragment extends BaseFragment<MsgPresenter> implements MsgContra
     public void killMyself() {
     }
 
-    public int getImageId(String imageName) {
-        Context ctx = getActivity().getBaseContext();
-        int resId = getResources().getIdentifier(imageName, "mipmap", ctx.getPackageName());
-        return resId;
-    }
-
 }

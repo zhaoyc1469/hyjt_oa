@@ -59,10 +59,15 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
         moduleBeanDbDao = daoSession.getModuleBeanDbDao();
         if (moduleBeanDbDao.loadAll().size() <= 0) {
             moduleBeanDbDao.insert(new ModuleBeanDb("公司架构", 1, true, "h_gsjg", 0));
-            moduleBeanDbDao.insert(new ModuleBeanDb("公司治理", 1, true, "h_gsjg", 0));
-            moduleBeanDbDao.insert(new ModuleBeanDb("部门治理", 1, true, "h_gsjg", 0));
-            moduleBeanDbDao.insert(new ModuleBeanDb("政府网站", 1, true, "h_gsjg", 0));
+            moduleBeanDbDao.insert(new ModuleBeanDb("公司治理", 1, true, "h_gszl", 0));
+            moduleBeanDbDao.insert(new ModuleBeanDb("部门治理", 1, true, "h_bmzl", 0));
+            moduleBeanDbDao.insert(new ModuleBeanDb("政府网站", 1, true, "h_zfwz", 0));
             moduleBeanDbDao.insert(new ModuleBeanDb("公司网站", 1, true, "h_gswz", 0));
+            moduleBeanDbDao.insert(new ModuleBeanDb("环宇论坛", 1, true, "h_hylt", 0));
+            moduleBeanDbDao.insert(new ModuleBeanDb("献计献策", 1, true, "h_xjxc", 0));
+            moduleBeanDbDao.insert(new ModuleBeanDb("越级汇报", 1, true, "h_yjhb", 0));
+            moduleBeanDbDao.insert(new ModuleBeanDb("工会诉求", 1, true, "h_xjxc", 0));
+            moduleBeanDbDao.insert(new ModuleBeanDb("通讯录", 1, true, "h_txl", 0));
 
             moduleBeanDbDao.insert(new ModuleBeanDb("会议纪要", 2, true, "h_hyjy", 0));
             moduleBeanDbDao.insert(new ModuleBeanDb("待解决任务", 2, true, "h_djjrw", 0));
@@ -70,8 +75,16 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
             moduleBeanDbDao.insert(new ModuleBeanDb("督办任务", 2, true, "h_dbrw", 0));
             moduleBeanDbDao.insert(new ModuleBeanDb("客户关系", 2, true, "h_khgx", 0));
             moduleBeanDbDao.insert(new ModuleBeanDb("来访消息", 2, true, "h_lfxx", 0));
+            moduleBeanDbDao.insert(new ModuleBeanDb("内部邮件", 2, true, "h_nbyj", 0));
+            moduleBeanDbDao.insert(new ModuleBeanDb("汇报上级", 2, true, "h_hbsj", 0));
+            moduleBeanDbDao.insert(new ModuleBeanDb("评级协商", 2, true, "h_pjxs", 0));
 
             moduleBeanDbDao.insert(new ModuleBeanDb("借款申请", 3, true, "h_jksq", 0));
+            moduleBeanDbDao.insert(new ModuleBeanDb("报销申请", 3, true, "h_bxsq", 0));
+            moduleBeanDbDao.insert(new ModuleBeanDb("用车申请", 3, true, "h_ycsq", 0));
+            moduleBeanDbDao.insert(new ModuleBeanDb("物品领用", 3, true, "h_wply", 0));
+            moduleBeanDbDao.insert(new ModuleBeanDb("用印申请", 3, true, "h_yysq", 0));
+            moduleBeanDbDao.insert(new ModuleBeanDb("采购申请", 3, true, "h_cgsq", 0));
             moduleBeanDbDao.insert(new ModuleBeanDb("招聘", 4, true, "h_jksq", 0));
             moduleBeanDbDao.insert(new ModuleBeanDb("项目档案", 5, true, "h_jksq", 0));
             moduleBeanDbDao.insert(new ModuleBeanDb("借款审批", 6, true, "h_jksq", 0));
