@@ -24,7 +24,12 @@ import com.hyjt.db.gen.DaoSession;
 import com.hyjt.db.gen.ModuleBeanDbDao;
 import com.hyjt.frame.base.BaseFragment;
 import com.hyjt.frame.di.component.AppComponent;
+import com.hyjt.frame.event.OutLoginEvent;
+import com.hyjt.frame.event.RefModuleEvent;
 import com.hyjt.frame.utils.UiUtils;
+
+import org.simple.eventbus.Subscriber;
+import org.simple.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,8 +113,6 @@ public class MsgFragment extends BaseFragment<MsgPresenter> implements MsgContra
         moduleCwgl = new ArrayList<>();
         moduleZlgl = new ArrayList<>();
 
-        loadModuleList();
-
         GsglAdapter = new ModuleAdapter(moduleGsgl, getActivity());
         YwglAdapter = new ModuleAdapter(moduleYwgl, getActivity());
         YwsqAdapter = new ModuleAdapter(moduleYwsq, getActivity());
@@ -134,11 +137,20 @@ public class MsgFragment extends BaseFragment<MsgPresenter> implements MsgContra
         mRecyCwgl.setNestedScrollingEnabled(false);
         mRecyZlgl.setNestedScrollingEnabled(false);
 
+        loadModuleList();
+
         return inflate;
     }
 
     private void loadModuleList() {
         List<ModuleBeanDb> moduleBeanDbs = moduleBeanDbDao.loadAll();
+        moduleGsgl.clear();
+        moduleYwgl.clear();
+        moduleYwsq.clear();
+        moduleRsgl.clear();
+        moduleXmgl.clear();
+        moduleCwgl.clear();
+        moduleZlgl.clear();
         for (ModuleBeanDb moduleBeanDb : moduleBeanDbs) {
             if (moduleBeanDb.getIsShow()) {
                 switch (moduleBeanDb.getType()) {
@@ -166,6 +178,13 @@ public class MsgFragment extends BaseFragment<MsgPresenter> implements MsgContra
                 }
             }
         }
+        GsglAdapter.notifyDataSetChanged();
+        YwglAdapter.notifyDataSetChanged();
+        YwsqAdapter.notifyDataSetChanged();
+        RsglAdapter.notifyDataSetChanged();
+        XmglAdapter.notifyDataSetChanged();
+        CwglAdapter.notifyDataSetChanged();
+        ZlglAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -183,4 +202,8 @@ public class MsgFragment extends BaseFragment<MsgPresenter> implements MsgContra
     public void killMyself() {
     }
 
+    @Subscriber(tag = "Ref_Module", mode = ThreadMode.MAIN)
+    public void refModule(RefModuleEvent RefModuleEvent){
+        loadModuleList();
+    }
 }

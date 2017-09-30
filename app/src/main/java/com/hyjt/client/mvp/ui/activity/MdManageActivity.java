@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 
 import com.hyjt.app.R;
 import com.hyjt.client.mvp.ui.adapter.ModuleEditAdapter;
@@ -14,6 +15,8 @@ import com.hyjt.db.gen.DaoSession;
 import com.hyjt.db.gen.ModuleBeanDbDao;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
+import com.hyjt.frame.event.OutLoginEvent;
+import com.hyjt.frame.event.RefModuleEvent;
 import com.hyjt.frame.utils.UiUtils;
 
 import com.hyjt.client.di.component.DaggerMdManageComponent;
@@ -21,6 +24,8 @@ import com.hyjt.client.di.module.MdManageModule;
 import com.hyjt.client.mvp.contract.MdManageContract;
 import com.hyjt.client.mvp.presenter.MdManagePresenter;
 
+
+import org.simple.eventbus.EventBus;
 
 import java.util.List;
 
@@ -34,6 +39,7 @@ public class MdManageActivity extends BaseActivity<MdManagePresenter> implements
     private DaoSession daoSession;
     private ModuleBeanDbDao moduleBeanDbDao;
     private ModuleEditAdapter manageAdapter;
+    private android.widget.Button mBtnEditCommit;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -54,6 +60,7 @@ public class MdManageActivity extends BaseActivity<MdManagePresenter> implements
     public void initData(Bundle savedInstanceState) {
 
         mRecyMdManage = (RecyclerView) findViewById(R.id.recy_md_manage);
+        mBtnEditCommit = (Button) findViewById(R.id.btn_edit_commit);
         mRecyMdManage.setLayoutManager(new LinearLayoutManager(this));
 
         daoSession = DbHelper.getInstance().getDaoSession();
@@ -66,6 +73,8 @@ public class MdManageActivity extends BaseActivity<MdManagePresenter> implements
             moduleBeanDbDao.update(moduleBeanDb);
         });
         mRecyMdManage.setAdapter(manageAdapter);
+
+        mBtnEditCommit.setOnClickListener(v -> EventBus.getDefault().post(new RefModuleEvent(), "Ref_Module"));
     }
 
 
@@ -81,6 +90,5 @@ public class MdManageActivity extends BaseActivity<MdManagePresenter> implements
     public void killMyself() {
         finish();
     }
-
 
 }
