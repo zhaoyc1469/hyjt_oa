@@ -1,17 +1,14 @@
 package com.hyjt.client.mvp.model.entity.Bean;
 
 
-import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
 
-//@Entity
 public class ModuleBean {
 
-//    @Id
     private String name;
 
     private String img;
     private Integer Msg;
+    private Integer clickId;
 
 
 
@@ -24,6 +21,13 @@ public class ModuleBean {
         this.img = img;
         this.name = name;
         Msg = msg;
+    }
+
+    public ModuleBean(String name, String img, Integer msg, Integer clickId) {
+        this.name = name;
+        this.img = img;
+        Msg = msg;
+        this.clickId = clickId;
     }
 
     public String getImg() {
@@ -48,5 +52,13 @@ public class ModuleBean {
 
     public void setMsg(Integer msg) {
         Msg = msg;
+    }
+
+    public Integer getClickId() {
+        return clickId;
+    }
+
+    public void setClickId(Integer clickId) {
+        this.clickId = clickId;
     }
 }

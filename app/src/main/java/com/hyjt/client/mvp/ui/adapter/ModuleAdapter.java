@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,9 +16,6 @@ import com.hyjt.client.mvp.model.entity.Bean.ModuleBean;
 
 import java.util.List;
 
-/**
- * Created by Administrator on 2017/9/29/029.
- */
 
 public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleVH> {
 
@@ -41,6 +39,15 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleVH> 
         ModuleBean moduleBean = moduleBeanList.get(position);
         holder.tvModuleName.setText(moduleBean.getName());
         holder.ivModuleIcon.setBackgroundResource(getImageId(moduleBean.getImg()));
+        if (moduleBean.getMsg() != null && moduleBean.getMsg() > 0) {
+            holder.rlModuleMsg.setVisibility(View.VISIBLE);
+            holder.tvModuleMsg.setText(String.valueOf(moduleBean.getMsg()));
+        }
+        holder.llModule.setOnClickListener(v -> {
+            if (mOnItemClickListener != null) {
+                mOnItemClickListener.onItemClick(v, holder.getAdapterPosition(), moduleBean);
+            }
+        });
     }
 
     @Override
@@ -50,35 +57,36 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleVH> 
 
 
     class ModuleVH extends RecyclerView.ViewHolder {
-        private ImageView ivModuleIcon;
+        private LinearLayout llModule;
         private RelativeLayout rlModuleMsg;
+        private ImageView ivModuleIcon;
         private TextView tvModuleMsg;
         private TextView tvModuleName;
 
-        public ModuleVH(View itemView) {
+        ModuleVH(View itemView) {
             super(itemView);
             ivModuleIcon = (ImageView) itemView.findViewById(R.id.iv_module_icon);
             rlModuleMsg = (RelativeLayout) itemView.findViewById(R.id.rl_module_msg);
             tvModuleMsg = (TextView) itemView.findViewById(R.id.tv_module_msg);
+            llModule = (LinearLayout) itemView.findViewById(R.id.ll_module);
             tvModuleName = (TextView) itemView.findViewById(R.id.tv_module_name);
         }
     }
 
-    public int getImageId(String imageName) {
+    private int getImageId(String imageName) {
         Context ctx = context.getBaseContext();
-        int resId = ctx.getResources().getIdentifier(imageName, "mipmap", ctx.getPackageName());
-        return resId;
+        return ctx.getResources().getIdentifier(imageName, "mipmap", ctx.getPackageName());
     }
 
     //声明一个接口
     private OnItemClickListener mOnItemClickListener = null;
 
     //提供一个方法去赋值
-    public void setOnItemClickListener(OnItemClickListener listener){
+    public void setOnItemClickListener(OnItemClickListener listener) {
         this.mOnItemClickListener = listener;
     }
 
-    public interface OnItemClickListener{
-        void onItemClick(View itemView, int position, String name);
+    public interface OnItemClickListener {
+        void onItemClick(View itemView, int position, ModuleBean moduleBean);
     }
 }

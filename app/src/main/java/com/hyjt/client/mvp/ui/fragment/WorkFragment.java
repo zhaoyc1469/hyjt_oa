@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,19 +24,32 @@ import com.hyjt.app.R;
 import com.hyjt.client.di.component.DaggerWorkComponent;
 import com.hyjt.client.di.module.WorkModule;
 import com.hyjt.client.mvp.contract.WorkContract;
+import com.hyjt.client.mvp.model.entity.Bean.ModuleBean;
 import com.hyjt.client.mvp.model.entity.WorkMission;
 import com.hyjt.client.mvp.presenter.WorkPresenter;
+import com.hyjt.client.mvp.ui.adapter.ModuleAdapter;
 import com.hyjt.client.mvp.ui.view.EmailPop;
 import com.hyjt.client.mvp.ui.view.ReAndSePop;
 import com.hyjt.client.mvp.ui.view.ReportTopPop;
 import com.hyjt.client.mvp.ui.view.SLConsultPop;
 import com.hyjt.client.mvp.ui.view.SkipReportPop;
+import com.hyjt.db.DbHelper;
+import com.hyjt.db.bean.ModuleBeanDb;
+import com.hyjt.db.gen.DaoSession;
+import com.hyjt.db.gen.ModuleBeanDbDao;
 import com.hyjt.frame.api.Api;
 import com.hyjt.frame.base.BaseFragment;
 import com.hyjt.frame.di.component.AppComponent;
+import com.hyjt.frame.event.RefModuleEvent;
 import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.mvp.ui.view.BlocPop;
 import com.hyjt.home.mvp.ui.view.StaffStatePop;
+
+import org.simple.eventbus.Subscriber;
+import org.simple.eventbus.ThreadMode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.hyjt.app.R.id.tv_out_login;
@@ -43,86 +58,41 @@ import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 
 public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkContract.View, View.OnClickListener {
 
-    private BlocPop meetingLog;
-    //    private StaffStatePop staffStatePop;
-    private TranslateAnimation mShowAction;
-    private TranslateAnimation mHiddenAction;
-    private android.widget.TextView mTvGsglExpand;
-    private android.widget.LinearLayout mLlGsglChild;
-    private android.widget.TextView mTvYwglExpand;
-    private android.widget.LinearLayout mLlYwglChild;
-    private AlphaAnimation mHiddenAlpha;
-    private AlphaAnimation mShowAlpha;
-    private TextView mTvYwsqExpand;
-    private LinearLayout mLlYwsqChild;
-    private android.widget.RelativeLayout mRlDjjrwNum;
-    private TextView mTvDjjrwNum;
-    private android.widget.RelativeLayout mRlCqdjjNum;
-    private TextView mTvCqdjjNum;
-    private android.widget.RelativeLayout mRlDbrwNum;
-    private TextView mTvDbrwNum;
-    private RelativeLayout mRlGsjg;
-    private RelativeLayout mRlGszl;
-    private RelativeLayout mRlBmzl;
-    private RelativeLayout mRlZfwz;
-    private RelativeLayout mRlGswz;
-    private RelativeLayout mRlHylt;
-    private RelativeLayout mRlYjhb;
-    private RelativeLayout mRlXjxc;
-    private RelativeLayout mRlTxl;
-    private RelativeLayout mRlHyjy;
-    private RelativeLayout mRlDjjrw;
-    private RelativeLayout mRlCqdjj;
-    private RelativeLayout mRlDbrw;
-    private RelativeLayout mRlKhgx;
-    private RelativeLayout mRlLfxx;
-    private RelativeLayout mRlJtgg;
-    private RelativeLayout mRlJksq;
-    private RelativeLayout mRlBxsq;
-    private RelativeLayout mRlYcsq;
-    private RelativeLayout mRlWply;
-    private RelativeLayout mRlYysq;
-    private RelativeLayout mRlCgsq;
-    private RelativeLayout mRlDysq;
-    private RelativeLayout mRlSjsq;
-    private RelativeLayout mRlFwsq;
-    private RelativeLayout mRlHtsq;
-    private RelativeLayout mRlZp;
-    private RelativeLayout mRlDgsqd;
-    private RelativeLayout mRlLzsqd;
-    private RelativeLayout mRlYgxx;
-    private RelativeLayout mRlXmda;
-    private RelativeLayout mRlXmhb;
-    private RelativeLayout mRlXmzl;
-    private RelativeLayout mRlJksp;
-    private RelativeLayout mRlFysp;
-    private RelativeLayout mRlBxsp;
-    private RelativeLayout mRlBg;
-    private RelativeLayout mRlHt;
-    private RelativeLayout mRlQt;
     private TextView tvDepartment;
     private TextView tvPosition;
     private TextView tvName;
     private ImageView tvHead;
     private TextView tvOutLogin;
-    private RelativeLayout mRlNbyj;
-    private TextView mTvNbyjNum;
-    private RelativeLayout mRlNbyjNum;
-    private RelativeLayout mRlHbsj;
-    private RelativeLayout mRlPjxs;
-    private RelativeLayout mRlHbsjNum;
-    private TextView mTvHbsjNum;
-    private RelativeLayout mRlPjxsNum;
-    private TextView mTvPjxsNum;
-    private RelativeLayout mRlGhsq;
-    private TextView mTvYjhbNum;
-    private TextView mTvGhsqNum;
-    private RelativeLayout mRlGhsqNum;
-    private TextView mTvXjxcNum;
-    private RelativeLayout mRlXjxcNum;
-    private RelativeLayout mRlYjhbNum;
-    private TextView mTvManageGsgl;
+    private ModuleBeanDbDao moduleBeanDbDao;
+    private DaoSession daoSession;
+    private RecyclerView mRecyGsgl;
+    private RecyclerView mRecyYwgl;
+    private RecyclerView mRecyYwsq;
+    private RecyclerView mRecyRsgl;
+    private RecyclerView mRecyXmgl;
+    private RecyclerView mRecyCwgl;
+    private RecyclerView mRecyZlgl;
+    private List<ModuleBean> moduleGsgl;
+    private List<ModuleBean> moduleYwgl;
+    private List<ModuleBean> moduleYwsq;
+    private List<ModuleBean> moduleRsgl;
+    private List<ModuleBean> moduleXmgl;
+    private List<ModuleBean> moduleCwgl;
+    private List<ModuleBean> moduleZlgl;
+    private ModuleAdapter GsglAdapter;
+    private ModuleAdapter YwglAdapter;
+    private ModuleAdapter YwsqAdapter;
+    private ModuleAdapter RsglAdapter;
+    private ModuleAdapter XmglAdapter;
+    private ModuleAdapter CwglAdapter;
+    private ModuleAdapter ZlglAdapter;
     private LinearLayout mLlGsgl;
+    private LinearLayout mLlYwgl;
+    private LinearLayout mLlYwsq;
+    private LinearLayout mLlRsgl;
+    private LinearLayout mLlXmgl;
+    private LinearLayout mLlCwgl;
+    private LinearLayout mLlZlgl;
 
     public static WorkFragment newInstance() {
         WorkFragment fragment = new WorkFragment();
@@ -143,143 +113,6 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
     public View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View inflate = inflater.inflate(R.layout.fragment_work, container, false);
 
-        // 设置展开
-        mShowAction = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
-                Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
-                -1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
-        mShowAction.setDuration(500);
-        mShowAlpha = new AlphaAnimation(0, 1);
-        mShowAlpha.setDuration(500);
-
-        mHiddenAction = new TranslateAnimation(Animation.RELATIVE_TO_SELF,
-                0.0f, Animation.RELATIVE_TO_SELF, 0.0f,
-                Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
-                -1.0f);
-        mHiddenAction.setDuration(500);
-        mHiddenAlpha = new AlphaAnimation(1, 0);
-        mHiddenAlpha.setDuration(500);
-
-        mTvGsglExpand = (TextView) inflate.findViewById(R.id.tv_gsgl_expand);
-        mLlGsgl = (LinearLayout) inflate.findViewById(R.id.ll_gsgl);
-        mLlGsglChild = (LinearLayout) inflate.findViewById(R.id.ll_gsgl_child);
-        mTvYwglExpand = (TextView) inflate.findViewById(R.id.tv_ywgl_expand);
-        mLlYwglChild = (LinearLayout) inflate.findViewById(R.id.ll_ywgl_child);
-        mTvYwsqExpand = (TextView) inflate.findViewById(R.id.tv_ywsq_expand);
-        mLlYwsqChild = (LinearLayout) inflate.findViewById(R.id.ll_ywsq_child);
-        mTvGsglExpand.setOnClickListener(v -> setExpand(mLlGsglChild));
-        mTvYwglExpand.setOnClickListener(v -> setExpand(mLlYwglChild));
-        mTvYwsqExpand.setOnClickListener(v -> setExpand(mLlYwsqChild));
-
-        //设置消息数量
-        mRlDjjrwNum = (RelativeLayout) inflate.findViewById(R.id.rl_djjrw_num);
-        mTvDjjrwNum = (TextView) inflate.findViewById(R.id.tv_djjrw_num);
-        mRlCqdjjNum = (RelativeLayout) inflate.findViewById(R.id.rl_cqdjj_num);
-        mTvCqdjjNum = (TextView) inflate.findViewById(R.id.tv_cqdjj_num);
-        mRlDbrwNum = (RelativeLayout) inflate.findViewById(R.id.rl_dbrw_num);
-        mTvDbrwNum = (TextView) inflate.findViewById(R.id.tv_dbrw_num);
-        mRlNbyjNum = (RelativeLayout) inflate.findViewById(R.id.rl_nbyj_num);
-        mTvNbyjNum = (TextView) inflate.findViewById(R.id.tv_nbyj_num);
-        mRlHbsjNum = (RelativeLayout) inflate.findViewById(R.id.rl_hbsj_num);
-        mTvHbsjNum = (TextView) inflate.findViewById(R.id.tv_hbsj_num);
-        mRlPjxsNum = (RelativeLayout) inflate.findViewById(R.id.rl_pjxs_num);
-        mTvPjxsNum = (TextView) inflate.findViewById(R.id.tv_pjxs_num);
-        mRlYjhbNum = (RelativeLayout) inflate.findViewById(R.id.rl_yjhb_num);
-        mTvYjhbNum = (TextView) inflate.findViewById(R.id.tv_yjhb_num);
-        mRlXjxcNum = (RelativeLayout) inflate.findViewById(R.id.rl_xjxc_num);
-        mTvXjxcNum = (TextView) inflate.findViewById(R.id.tv_xjxc_num);
-        mRlGhsqNum = (RelativeLayout) inflate.findViewById(R.id.rl_ghsq_num);
-        mTvGhsqNum = (TextView) inflate.findViewById(R.id.tv_ghsq_num);
-
-        //设置模块点击事件
-        mRlGsjg = (RelativeLayout) inflate.findViewById(R.id.rl_gsjg);
-        mRlGszl = (RelativeLayout) inflate.findViewById(R.id.rl_gszl);
-        mRlBmzl = (RelativeLayout) inflate.findViewById(R.id.rl_bmzl);
-        mRlZfwz = (RelativeLayout) inflate.findViewById(R.id.rl_zfwz);
-        mRlGswz = (RelativeLayout) inflate.findViewById(R.id.rl_gswz);
-        mRlHylt = (RelativeLayout) inflate.findViewById(R.id.rl_hylt);
-        mRlYjhb = (RelativeLayout) inflate.findViewById(R.id.rl_yjhb);
-        mRlXjxc = (RelativeLayout) inflate.findViewById(R.id.rl_xjxc);
-        mRlTxl = (RelativeLayout) inflate.findViewById(R.id.rl_txl);
-        mRlHyjy = (RelativeLayout) inflate.findViewById(R.id.rl_hyjy);
-        mRlDjjrw = (RelativeLayout) inflate.findViewById(R.id.rl_djjrw);
-        mRlCqdjj = (RelativeLayout) inflate.findViewById(R.id.rl_cqdjj);
-        mRlDbrw = (RelativeLayout) inflate.findViewById(R.id.rl_dbrw);
-        mRlKhgx = (RelativeLayout) inflate.findViewById(R.id.rl_khgx);
-        mRlLfxx = (RelativeLayout) inflate.findViewById(R.id.rl_lfxx);
-        mRlJtgg = (RelativeLayout) inflate.findViewById(R.id.rl_jtgg);
-        mRlJksq = (RelativeLayout) inflate.findViewById(R.id.rl_jksq);
-        mRlBxsq = (RelativeLayout) inflate.findViewById(R.id.rl_bxsq);
-        mRlYcsq = (RelativeLayout) inflate.findViewById(R.id.rl_ycsq);
-        mRlWply = (RelativeLayout) inflate.findViewById(R.id.rl_wply);
-        mRlYysq = (RelativeLayout) inflate.findViewById(R.id.rl_yysq);
-        mRlCgsq = (RelativeLayout) inflate.findViewById(R.id.rl_cgsq);
-        mRlDysq = (RelativeLayout) inflate.findViewById(R.id.rl_dysq);
-        mRlSjsq = (RelativeLayout) inflate.findViewById(R.id.rl_sjsq);
-        mRlFwsq = (RelativeLayout) inflate.findViewById(R.id.rl_fwsq);
-        mRlHtsq = (RelativeLayout) inflate.findViewById(R.id.rl_htsq);
-        mRlZp = (RelativeLayout) inflate.findViewById(R.id.rl_zp);
-        mRlDgsqd = (RelativeLayout) inflate.findViewById(R.id.rl_dgsqd);
-        mRlLzsqd = (RelativeLayout) inflate.findViewById(R.id.rl_lzsqd);
-        mRlYgxx = (RelativeLayout) inflate.findViewById(R.id.rl_ygxx);
-        mRlXmda = (RelativeLayout) inflate.findViewById(R.id.rl_xmda);
-        mRlXmhb = (RelativeLayout) inflate.findViewById(R.id.rl_xmhb);
-        mRlXmzl = (RelativeLayout) inflate.findViewById(R.id.rl_xmzl);
-        mRlJksp = (RelativeLayout) inflate.findViewById(R.id.rl_jksp);
-        mRlFysp = (RelativeLayout) inflate.findViewById(R.id.rl_fysp);
-        mRlBxsp = (RelativeLayout) inflate.findViewById(R.id.rl_bxsp);
-        mRlBg = (RelativeLayout) inflate.findViewById(R.id.rl_bg);
-        mRlHt = (RelativeLayout) inflate.findViewById(R.id.rl_ht);
-        mRlQt = (RelativeLayout) inflate.findViewById(R.id.rl_qt);
-        mRlNbyj = (RelativeLayout) inflate.findViewById(R.id.rl_nbyj);
-        mRlHbsj = (RelativeLayout) inflate.findViewById(R.id.rl_hbsj);
-        mRlPjxs = (RelativeLayout) inflate.findViewById(R.id.rl_pjxs);
-        mRlGhsq = (RelativeLayout) inflate.findViewById(R.id.rl_ghsq);
-
-
-
-        mRlGsjg.setOnClickListener(this);
-        mRlGszl.setOnClickListener(this);
-        mRlBmzl.setOnClickListener(this);
-        mRlZfwz.setOnClickListener(this);
-        mRlGswz.setOnClickListener(this);
-        mRlHylt.setOnClickListener(this);
-        mRlYjhb.setOnClickListener(this);
-        mRlXjxc.setOnClickListener(this);
-        mRlTxl.setOnClickListener(this);
-        mRlHyjy.setOnClickListener(this);
-        mRlDjjrw.setOnClickListener(this);
-        mRlCqdjj.setOnClickListener(this);
-        mRlDbrw.setOnClickListener(this);
-        mRlKhgx.setOnClickListener(this);
-        mRlLfxx.setOnClickListener(this);
-        mRlJtgg.setOnClickListener(this);
-        mRlJksq.setOnClickListener(this);
-        mRlBxsq.setOnClickListener(this);
-        mRlYcsq.setOnClickListener(this);
-        mRlWply.setOnClickListener(this);
-        mRlYysq.setOnClickListener(this);
-        mRlCgsq.setOnClickListener(this);
-        mRlDysq.setOnClickListener(this);
-        mRlSjsq.setOnClickListener(this);
-        mRlFwsq.setOnClickListener(this);
-        mRlHtsq.setOnClickListener(this);
-        mRlZp.setOnClickListener(this);
-        mRlDgsqd.setOnClickListener(this);
-        mRlLzsqd.setOnClickListener(this);
-        mRlYgxx.setOnClickListener(this);
-        mRlXmda.setOnClickListener(this);
-        mRlXmhb.setOnClickListener(this);
-        mRlXmzl.setOnClickListener(this);
-        mRlJksp.setOnClickListener(this);
-        mRlFysp.setOnClickListener(this);
-        mRlBxsp.setOnClickListener(this);
-        mRlBg.setOnClickListener(this);
-        mRlHt.setOnClickListener(this);
-        mRlQt.setOnClickListener(this);
-        mRlNbyj.setOnClickListener(this);
-        mRlHbsj.setOnClickListener(this);
-        mRlPjxs.setOnClickListener(this);
-        mRlGhsq.setOnClickListener(this);
 
         tvDepartment = (TextView) inflate.findViewById(R.id.tv_department);
         tvPosition = (TextView) inflate.findViewById(R.id.tv_position);
@@ -306,24 +139,77 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
 
 
 
-        return inflate;
-    }
+        mLlGsgl = (LinearLayout) inflate.findViewById(R.id.ll_gsgl);
+        mLlYwgl = (LinearLayout) inflate.findViewById(R.id.ll_ywgl);
+        mLlYwsq = (LinearLayout) inflate.findViewById(R.id.ll_ywsq);
+        mLlRsgl = (LinearLayout) inflate.findViewById(R.id.ll_rsgl);
+        mLlXmgl = (LinearLayout) inflate.findViewById(R.id.ll_xmgl);
+        mLlCwgl = (LinearLayout) inflate.findViewById(R.id.ll_cwgl);
+        mLlZlgl = (LinearLayout) inflate.findViewById(R.id.ll_zlgl);
 
-    /**
-     * 展开收起
-     *
-     * @param mLlChild
-     */
-    private void setExpand(LinearLayout mLlChild) {
-        if (mLlChild.getVisibility() == View.GONE) {
-            mLlChild.startAnimation(mShowAction);
-            mLlChild.startAnimation(mShowAlpha);
-            mLlChild.setVisibility(View.VISIBLE);
-        } else {
-            mLlChild.startAnimation(mHiddenAction);
-            mLlChild.startAnimation(mHiddenAlpha);
-            mLlChild.setVisibility(View.GONE);
-        }
+        mRecyGsgl = (RecyclerView) inflate.findViewById(R.id.recy_gsgl);
+        mRecyGsgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
+        mRecyYwgl = (RecyclerView) inflate.findViewById(R.id.recy_ywgl);
+        mRecyYwgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
+        mRecyYwsq = (RecyclerView) inflate.findViewById(R.id.recy_ywsq);
+        mRecyYwsq.setLayoutManager(new GridLayoutManager(getContext(), 5));
+        mRecyRsgl = (RecyclerView) inflate.findViewById(R.id.recy_rsgl);
+        mRecyRsgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
+        mRecyXmgl = (RecyclerView) inflate.findViewById(R.id.recy_xmgl);
+        mRecyXmgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
+        mRecyCwgl = (RecyclerView) inflate.findViewById(R.id.recy_cwgl);
+        mRecyCwgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
+        mRecyZlgl = (RecyclerView) inflate.findViewById(R.id.recy_zlgl);
+        mRecyZlgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
+
+        daoSession = DbHelper.getInstance().getDaoSession();
+        moduleBeanDbDao = daoSession.getModuleBeanDbDao();
+
+        moduleGsgl = new ArrayList<>();
+        moduleYwgl = new ArrayList<>();
+        moduleYwsq = new ArrayList<>();
+        moduleRsgl = new ArrayList<>();
+        moduleXmgl = new ArrayList<>();
+        moduleCwgl = new ArrayList<>();
+        moduleZlgl = new ArrayList<>();
+
+        GsglAdapter = new ModuleAdapter(moduleGsgl, getActivity());
+        YwglAdapter = new ModuleAdapter(moduleYwgl, getActivity());
+        YwsqAdapter = new ModuleAdapter(moduleYwsq, getActivity());
+        RsglAdapter = new ModuleAdapter(moduleRsgl, getActivity());
+        XmglAdapter = new ModuleAdapter(moduleXmgl, getActivity());
+        CwglAdapter = new ModuleAdapter(moduleCwgl, getActivity());
+        ZlglAdapter = new ModuleAdapter(moduleZlgl, getActivity());
+
+        mRecyGsgl.setAdapter(GsglAdapter);
+        mRecyYwgl.setAdapter(YwglAdapter);
+        mRecyYwsq.setAdapter(YwsqAdapter);
+        mRecyRsgl.setAdapter(RsglAdapter);
+        mRecyXmgl.setAdapter(XmglAdapter);
+        mRecyCwgl.setAdapter(CwglAdapter);
+        mRecyZlgl.setAdapter(ZlglAdapter);
+
+
+        GsglAdapter.setOnItemClickListener((itemView, position, moduleBean) -> arountModule(moduleBean.getClickId()));
+        YwglAdapter.setOnItemClickListener((itemView, position, moduleBean) -> arountModule(moduleBean.getClickId()));
+        YwsqAdapter.setOnItemClickListener((itemView, position, moduleBean) -> arountModule(moduleBean.getClickId()));
+        RsglAdapter.setOnItemClickListener((itemView, position, moduleBean) -> arountModule(moduleBean.getClickId()));
+        XmglAdapter.setOnItemClickListener((itemView, position, moduleBean) -> arountModule(moduleBean.getClickId()));
+        CwglAdapter.setOnItemClickListener((itemView, position, moduleBean) -> arountModule(moduleBean.getClickId()));
+        ZlglAdapter.setOnItemClickListener((itemView, position, moduleBean) -> arountModule(moduleBean.getClickId()));
+
+        mRecyGsgl.setNestedScrollingEnabled(false);
+        mRecyYwgl.setNestedScrollingEnabled(false);
+        mRecyYwsq.setNestedScrollingEnabled(false);
+        mRecyRsgl.setNestedScrollingEnabled(false);
+        mRecyXmgl.setNestedScrollingEnabled(false);
+        mRecyCwgl.setNestedScrollingEnabled(false);
+        mRecyZlgl.setNestedScrollingEnabled(false);
+
+        loadModuleList();
+
+
+        return inflate;
     }
 
 
@@ -345,118 +231,123 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
 
     }
 
-
-    /**
-     * 集团选择
-     */
-    private View.OnClickListener meetingLogOnClick = v -> {
-        meetingLog.dismiss();
-        int i = v.getId();
-        if (i == R.id.ll_bloc) {
-            //集团
-            ARouter.getInstance().build("/home/MeetingListActivity").withString("bloc", "集团").navigation(getActivity(), Api.WorkStartCode);
-        } else if (i == R.id.ll_mining) {
-            //矿业
-            ARouter.getInstance().build("/home/MeetingListActivity").withString("bloc", "矿业").navigation(getActivity(), Api.WorkStartCode);
-        } else if (i == R.id.ll_project) {
-            //工程
-            ARouter.getInstance().build("/home/MeetingListActivity").withString("bloc", "工程").navigation(getActivity(), Api.WorkStartCode);
-        } else if (i == R.id.ll_bloc_heating) {
-            //集美
-            ARouter.getInstance().build("/home/MeetingListActivity").withString("bloc", "集美").navigation(getActivity(), Api.WorkStartCode);
-        }
-    };
-
-    /**
-     * 展示消息个数
-     *
-     * @param workMission
-     */
-    @Override
-    public void showMission(WorkMission workMission) {
-        if (Integer.parseInt(workMission.getRecord()) > 0) {
-            mRlDjjrwNum.setVisibility(View.VISIBLE);
-            mTvDjjrwNum.setText(workMission.getRecord());
-        } else {
-            mRlDjjrwNum.setVisibility(View.GONE);
-        }
-        if (Integer.parseInt(workMission.getRecordL()) > 0) {
-            mRlCqdjjNum.setVisibility(View.VISIBLE);
-            mTvCqdjjNum.setText(workMission.getRecordL());
-        } else {
-            mRlCqdjjNum.setVisibility(View.GONE);
-        }
-        if (Integer.parseInt(workMission.getRecordDb()) > 0) {
-            mRlDbrwNum.setVisibility(View.VISIBLE);
-            mTvDbrwNum.setText(workMission.getRecordDb());
-        } else {
-            mRlDbrwNum.setVisibility(View.GONE);
-        }
-        if (Integer.parseInt(workMission.getSysLetter()) > 0) {
-            mRlNbyjNum.setVisibility(View.VISIBLE);
-            mTvNbyjNum.setText(workMission.getSysLetter());
-            if (View.GONE == mLlYwglChild.getVisibility()) {
-                setExpand(mLlYwglChild);
+    private void loadModuleList() {
+        List<ModuleBeanDb> moduleBeanDbs = moduleBeanDbDao.loadAll();
+        moduleGsgl.clear();
+        moduleYwgl.clear();
+        moduleYwsq.clear();
+        moduleRsgl.clear();
+        moduleXmgl.clear();
+        moduleCwgl.clear();
+        moduleZlgl.clear();
+        for (ModuleBeanDb moduleBeanDb : moduleBeanDbs) {
+            if (moduleBeanDb.getIsShow()) {
+                switch (moduleBeanDb.getType()) {
+                    case 1:
+                        moduleGsgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName(), moduleBeanDb.getMessage_nub()));
+                        break;
+                    case 2:
+                        moduleYwgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName(), moduleBeanDb.getMessage_nub()));
+                        break;
+                    case 3:
+                        moduleYwsq.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName(), moduleBeanDb.getMessage_nub()));
+                        break;
+                    case 4:
+                        moduleRsgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName(), moduleBeanDb.getMessage_nub()));
+                        break;
+                    case 5:
+                        moduleXmgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName(), moduleBeanDb.getMessage_nub()));
+                        break;
+                    case 6:
+                        moduleCwgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName(), moduleBeanDb.getMessage_nub()));
+                        break;
+                    case 7:
+                        moduleZlgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName(), moduleBeanDb.getMessage_nub()));
+                        break;
+                }
             }
-        } else {
-            mRlNbyjNum.setVisibility(View.GONE);
         }
-        if (Integer.parseInt(workMission.getWorkingConference()) > 0) {
-            mRlHbsjNum.setVisibility(View.VISIBLE);
-            mTvHbsjNum.setText(workMission.getWorkingConference());
-            if (View.GONE == mLlYwglChild.getVisibility()) {
-                setExpand(mLlYwglChild);
-            }
+        if (moduleGsgl.size() == 0) {
+            mLlGsgl.setVisibility(View.GONE);
         } else {
-            mRlHbsjNum.setVisibility(View.GONE);
+            mLlGsgl.setVisibility(View.VISIBLE);
+            GsglAdapter.notifyDataSetChanged();
         }
-        if (Integer.parseInt(workMission.getWorkingConsult()) > 0) {
-            mRlPjxsNum.setVisibility(View.VISIBLE);
-            mTvPjxsNum.setText(workMission.getWorkingConsult());
-            if (View.GONE == mLlYwglChild.getVisibility()) {
-                setExpand(mLlYwglChild);
-            }
+        if (moduleYwgl.size() == 0) {
+            mLlYwgl.setVisibility(View.GONE);
         } else {
-            mRlPjxsNum.setVisibility(View.GONE);
+            mLlYwgl.setVisibility(View.VISIBLE);
+            YwglAdapter.notifyDataSetChanged();
         }
-        if (Integer.parseInt(workMission.getLeapfrogReport()) > 0) {
-            mRlYjhbNum.setVisibility(View.VISIBLE);
-            mTvYjhbNum.setText(workMission.getLeapfrogReport());
-            if (View.GONE == mLlGsglChild.getVisibility()) {
-                setExpand(mLlGsglChild);
-            }
+        if (moduleYwsq.size() == 0) {
+            mLlYwsq.setVisibility(View.GONE);
         } else {
-            mRlYjhbNum.setVisibility(View.GONE);
+            mLlYwsq.setVisibility(View.VISIBLE);
+            YwsqAdapter.notifyDataSetChanged();
         }
-        if (Integer.parseInt(workMission.getYuangongxianji()) > 0) {
-            mRlXjxcNum.setVisibility(View.VISIBLE);
-            mTvXjxcNum.setText(workMission.getYuangongxianji());
-            if (View.GONE == mLlGsglChild.getVisibility()) {
-                setExpand(mLlGsglChild);
-            }
+        if (moduleRsgl.size() == 0) {
+            mLlRsgl.setVisibility(View.GONE);
         } else {
-            mRlXjxcNum.setVisibility(View.GONE);
+            mLlRsgl.setVisibility(View.VISIBLE);
+            RsglAdapter.notifyDataSetChanged();
         }
-        if (Integer.parseInt(workMission.getUnionAppeal()) > 0) {
-            mRlGhsqNum.setVisibility(View.VISIBLE);
-            mTvGhsqNum.setText(workMission.getUnionAppeal());
-            if (View.GONE == mLlGsglChild.getVisibility()) {
-                setExpand(mLlGsglChild);
-            }
+        if (moduleXmgl.size() == 0) {
+            mLlXmgl.setVisibility(View.GONE);
         } else {
-            mRlGhsqNum.setVisibility(View.GONE);
+            mLlXmgl.setVisibility(View.VISIBLE);
+            XmglAdapter.notifyDataSetChanged();
+        }
+        if (moduleCwgl.size() == 0) {
+            mLlCwgl.setVisibility(View.GONE);
+        } else {
+            mLlCwgl.setVisibility(View.VISIBLE);
+            CwglAdapter.notifyDataSetChanged();
+        }
+        if (moduleZlgl.size() == 0) {
+            mLlZlgl.setVisibility(View.GONE);
+        } else {
+            mLlZlgl.setVisibility(View.VISIBLE);
+            ZlglAdapter.notifyDataSetChanged();
         }
     }
+
+    @Subscriber(tag = "Ref_Module", mode = ThreadMode.MAIN)
+    public void refModule(RefModuleEvent RefModuleEvent) {
+        loadModuleList();
+    }
+
+
+//    /**
+//     * 集团选择
+//     */
+//    private View.OnClickListener meetingLogOnClick = v -> {
+//        meetingLog.dismiss();
+//        int i = v.getId();
+//        if (i == R.id.ll_bloc) {
+//            //集团
+//            ARouter.getInstance().build("/home/MeetingListActivity").withString("bloc", "集团").navigation(getActivity(), Api.WorkStartCode);
+//        } else if (i == R.id.ll_mining) {
+//            //矿业
+//            ARouter.getInstance().build("/home/MeetingListActivity").withString("bloc", "矿业").navigation(getActivity(), Api.WorkStartCode);
+//        } else if (i == R.id.ll_project) {
+//            //工程
+//            ARouter.getInstance().build("/home/MeetingListActivity").withString("bloc", "工程").navigation(getActivity(), Api.WorkStartCode);
+//        } else if (i == R.id.ll_bloc_heating) {
+//            //集美
+//            ARouter.getInstance().build("/home/MeetingListActivity").withString("bloc", "集美").navigation(getActivity(), Api.WorkStartCode);
+//        }
+//    };
+
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.rl_hyjy: {
-                BlocPop meetingLog = new BlocPop(getActivity(), meetingLogOnClick);
-                meetingLog.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
-                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
-                break;
-            }
+//            case R.id.rl_hyjy: {
+//                BlocPop meetingLog = new BlocPop(getActivity(), meetingLogOnClick);
+//                meetingLog.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
+//                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+//                break;
+//            }
             case R.id.rl_djjrw: {
                 ARouter.getInstance().build("/home/WaitSolveListActivity").navigation(getActivity(), Api.WorkStartCode);
                 break;
@@ -575,4 +466,65 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
             mPresenter.getMsgNum();
         }
     }
+
+    @Override
+    public void showMission(WorkMission workMission) {
+        if (Integer.parseInt(workMission.getRecord()) > 0) {
+            ModuleBeanDb moduleBean = moduleBeanDbDao.load("待解决任务");
+            moduleBean.setMessage_nub(Integer.parseInt(workMission.getRecord()));
+            moduleBeanDbDao.update(moduleBean);
+        }
+        if (Integer.parseInt(workMission.getRecordL()) > 0) {
+            ModuleBeanDb moduleBean = moduleBeanDbDao.load("长期待解决");
+            moduleBean.setMessage_nub(Integer.parseInt(workMission.getRecordL()));
+            moduleBeanDbDao.update(moduleBean);
+        }
+        if (Integer.parseInt(workMission.getRecordDb()) > 0) {
+            ModuleBeanDb moduleBean = moduleBeanDbDao.load("督办任务");
+            moduleBean.setMessage_nub(Integer.parseInt(workMission.getRecordDb()));
+            moduleBeanDbDao.update(moduleBean);
+        }
+        if (Integer.parseInt(workMission.getSysLetter()) > 0) {
+            ModuleBeanDb moduleBean = moduleBeanDbDao.load("内部邮件");
+            moduleBean.setMessage_nub(Integer.parseInt(workMission.getSysLetter()));
+            moduleBeanDbDao.update(moduleBean);
+        }
+        if (Integer.parseInt(workMission.getWorkingConference()) > 0) {
+            ModuleBeanDb moduleBean = moduleBeanDbDao.load("汇报上级");
+            moduleBean.setMessage_nub(Integer.parseInt(workMission.getWorkingConference()));
+            moduleBeanDbDao.update(moduleBean);
+        }
+        if (Integer.parseInt(workMission.getWorkingConsult()) > 0) {
+            ModuleBeanDb moduleBean = moduleBeanDbDao.load("平级协商");
+            moduleBean.setMessage_nub(Integer.parseInt(workMission.getWorkingConsult()));
+            moduleBeanDbDao.update(moduleBean);
+        }
+        if (Integer.parseInt(workMission.getLeapfrogReport()) > 0) {
+            ModuleBeanDb moduleBean = moduleBeanDbDao.load("越级汇报");
+            moduleBean.setMessage_nub(Integer.parseInt(workMission.getLeapfrogReport()));
+            moduleBeanDbDao.update(moduleBean);
+        }
+        if (Integer.parseInt(workMission.getYuangongxianji()) > 0) {
+            ModuleBeanDb moduleBean = moduleBeanDbDao.load("献计献策");
+            moduleBean.setMessage_nub(Integer.parseInt(workMission.getYuangongxianji()));
+            moduleBeanDbDao.update(moduleBean);
+        }
+        if (Integer.parseInt(workMission.getUnionAppeal()) > 0) {
+            ModuleBeanDb moduleBean = moduleBeanDbDao.load("工会诉求");
+            moduleBean.setMessage_nub(Integer.parseInt(workMission.getUnionAppeal()));
+            moduleBeanDbDao.update(moduleBean);
+        }
+        loadModuleList();
+    }
+
+    private void arountModule(Integer moduleId){
+        switch (moduleId){
+            case 1:break;
+            case 2:break;
+        }
+
+
+
+    }
+
 }

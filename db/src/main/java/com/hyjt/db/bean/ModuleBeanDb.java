@@ -13,6 +13,7 @@ public class ModuleBeanDb {
     private int type;
     private boolean isShow;
     private String img;
+    private int clickId;
     private Integer message_nub;
     public Integer getMessage_nub() {
         return this.message_nub;
@@ -44,13 +45,20 @@ public class ModuleBeanDb {
     public int getType() {
         return this.type;
     }
-    @Generated(hash = 1985639085)
+    public int getClickId() {
+        return this.clickId;
+    }
+    public void setClickId(int clickId) {
+        this.clickId = clickId;
+    }
+    @Generated(hash = 637425569)
     public ModuleBeanDb(String name, int type, boolean isShow, String img,
-            Integer message_nub) {
+            int clickId, Integer message_nub) {
         this.name = name;
         this.type = type;
         this.isShow = isShow;
         this.img = img;
+        this.clickId = clickId;
         this.message_nub = message_nub;
     }
     @Generated(hash = 1073315082)

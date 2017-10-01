@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/common_FFFFFF">
+
+    <include android:id="@+id/icld_md_manage_top" layout="@layout/home_include_back_title"/>
+
     <Button
         android:id="@+id/btn_edit_commit"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="定义我的工作模块"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recy_md_manage"
         android:layout_above="@id/btn_edit_commit"
+        android:layout_below="@id/icld_md_manage_top"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

@@ -40,7 +40,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -58,13 +58,14 @@ dependencies {
     testCompile rootProject.ext.dependencies["junit"]
     if (isModule.toBoolean()) {
         compile project(':frame')
+        compile project(':db')
     } else {
         compile project(':home')
+        compile project(':db')
     }
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 
     compile 'cn.jiguang.sdk:jpush:3.0.5'
     compile 'cn.jiguang.sdk:jcore:1.1.2'
-    compile project(':db')
 }

@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.hyjt.app.R;
 import com.hyjt.client.mvp.ui.adapter.ModuleEditAdapter;
@@ -15,7 +17,6 @@ import com.hyjt.db.gen.DaoSession;
 import com.hyjt.db.gen.ModuleBeanDbDao;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
-import com.hyjt.frame.event.OutLoginEvent;
 import com.hyjt.frame.event.RefModuleEvent;
 import com.hyjt.frame.utils.UiUtils;
 
@@ -40,6 +41,9 @@ public class MdManageActivity extends BaseActivity<MdManagePresenter> implements
     private ModuleBeanDbDao moduleBeanDbDao;
     private ModuleEditAdapter manageAdapter;
     private android.widget.Button mBtnEditCommit;
+    private TextView mTvTitle;
+    private ImageView mIvTopSelect;
+    private ImageView mIvTopBack;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -58,6 +62,13 @@ public class MdManageActivity extends BaseActivity<MdManagePresenter> implements
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        mTvTitle = (TextView) findViewById(R.id.tv_title);
+        mTvTitle.setText("模块编辑");
+        mTvTitle.setOnClickListener(v -> finish());
+        mIvTopBack = (ImageView) findViewById(R.id.iv_top_back);
+        mIvTopBack.setOnClickListener(v -> finish());
+        mIvTopSelect = (ImageView) findViewById(R.id.iv_top_select);
+        mIvTopSelect.setVisibility(View.GONE);
 
         mRecyMdManage = (RecyclerView) findViewById(R.id.recy_md_manage);
         mBtnEditCommit = (Button) findViewById(R.id.btn_edit_commit);
