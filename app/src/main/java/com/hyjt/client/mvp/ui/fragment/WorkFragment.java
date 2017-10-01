@@ -138,7 +138,6 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         });
 
 
-
         mLlGsgl = (LinearLayout) inflate.findViewById(R.id.ll_gsgl);
         mLlYwgl = (LinearLayout) inflate.findViewById(R.id.ll_ywgl);
         mLlYwsq = (LinearLayout) inflate.findViewById(R.id.ll_ywsq);
@@ -244,25 +243,32 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
             if (moduleBeanDb.getIsShow()) {
                 switch (moduleBeanDb.getType()) {
                     case 1:
-                        moduleGsgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName(), moduleBeanDb.getMessage_nub()));
+                        moduleGsgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
+                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId()));
                         break;
                     case 2:
-                        moduleYwgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName(), moduleBeanDb.getMessage_nub()));
+                        moduleYwgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
+                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId()));
                         break;
                     case 3:
-                        moduleYwsq.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName(), moduleBeanDb.getMessage_nub()));
+                        moduleYwsq.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
+                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId()));
                         break;
                     case 4:
-                        moduleRsgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName(), moduleBeanDb.getMessage_nub()));
+                        moduleRsgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
+                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId()));
                         break;
                     case 5:
-                        moduleXmgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName(), moduleBeanDb.getMessage_nub()));
+                        moduleXmgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
+                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId()));
                         break;
                     case 6:
-                        moduleCwgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName(), moduleBeanDb.getMessage_nub()));
+                        moduleCwgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
+                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId()));
                         break;
                     case 7:
-                        moduleZlgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName(), moduleBeanDb.getMessage_nub()));
+                        moduleZlgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
+                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId()));
                         break;
                 }
             }
@@ -517,12 +523,56 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         loadModuleList();
     }
 
-    private void arountModule(Integer moduleId){
-        switch (moduleId){
-            case 1:break;
-            case 2:break;
+    private void arountModule(Integer moduleId) {
+        switch (moduleId) {
+            case 1:
+                break;
+            case 9: {
+                ReAndSePop reAndSePop = new ReAndSePop(getActivity());
+                reAndSePop.setOnItemClickListener(box -> {
+                    ARouter.getInstance().build("/home/LaborUnionReqsListActivity")
+                            .withString("type", box).navigation(getActivity(), Api.WorkStartCode);
+                    reAndSePop.dismiss();
+                });
+                reAndSePop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
+                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+                break;
+            }
+            case 10: {
+                StaffStatePop staffStatePop = new StaffStatePop(getActivity());
+                staffStatePop.setSelStafListener(type -> {
+                    ARouter.getInstance().build("/home/AddressBookActivity")
+                            .withString("state", type).navigation(getActivity(), Api.WorkStartCode);
+                    staffStatePop.dismiss();
+                });
+                staffStatePop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
+                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+                break;
+            }
+            case 27: {
+                EmailPop emailPop = new EmailPop(getActivity());
+                emailPop.setOnItemClickListener(box -> {
+                    ARouter.getInstance().build("/home/EmailListActivity")
+                            .withString("type", box).navigation(getActivity(), Api.WorkStartCode);
+                    emailPop.dismiss();
+                });
+                emailPop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
+                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+                break;
+            }
+            case 28:break;
+            case 29: {
+                SLConsultPop sLConsultPop = new SLConsultPop(getActivity());
+                sLConsultPop.setOnItemClickListener(box -> {
+                    ARouter.getInstance().build("/home/SLConsultListActivity")
+                            .withString("type", box).navigation(getActivity(), Api.WorkStartCode);
+                    sLConsultPop.dismiss();
+                });
+                sLConsultPop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
+                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+                break;
+            }
         }
-
 
 
     }
