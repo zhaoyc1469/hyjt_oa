@@ -48,6 +48,14 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleVH> 
                 mOnItemClickListener.onItemClick(v, holder.getAdapterPosition(), moduleBean);
             }
         });
+        if (moduleBean.isShow_del()){
+            holder.rlModuleDel.setVisibility(View.VISIBLE);
+        }
+        holder.rlModuleDel.setOnClickListener(v -> {
+//            if (mOnItemClickListener != null) {
+//                mOnItemClickListener.onItemClick(v, holder.getAdapterPosition(), moduleBean);
+//            }
+        });
     }
 
     @Override
@@ -59,6 +67,7 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleVH> 
     class ModuleVH extends RecyclerView.ViewHolder {
         private LinearLayout llModule;
         private RelativeLayout rlModuleMsg;
+        private RelativeLayout rlModuleDel;
         private ImageView ivModuleIcon;
         private TextView tvModuleMsg;
         private TextView tvModuleName;
@@ -67,6 +76,7 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleVH> 
             super(itemView);
             ivModuleIcon = (ImageView) itemView.findViewById(R.id.iv_module_icon);
             rlModuleMsg = (RelativeLayout) itemView.findViewById(R.id.rl_module_msg);
+            rlModuleDel = (RelativeLayout) itemView.findViewById(R.id.rl_module_del);
             tvModuleMsg = (TextView) itemView.findViewById(R.id.tv_module_msg);
             llModule = (LinearLayout) itemView.findViewById(R.id.ll_module);
             tvModuleName = (TextView) itemView.findViewById(R.id.tv_module_name);

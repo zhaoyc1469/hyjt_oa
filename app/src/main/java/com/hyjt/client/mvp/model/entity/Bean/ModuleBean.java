@@ -9,8 +9,23 @@ public class ModuleBean {
     private String img;
     private Integer Msg;
     private Integer clickId;
+    private boolean show_del;
 
+    public boolean isShow_del() {
+        return show_del;
+    }
 
+    public void setShow_del(boolean show_del) {
+        this.show_del = show_del;
+    }
+
+    public ModuleBean(String img, String name, Integer msg, Integer clickId, boolean show_del) {
+        this.img = img;
+        this.name = name;
+        Msg = msg;
+        this.clickId = clickId;
+        this.show_del = show_del;
+    }
 
     public ModuleBean(String img, String name) {
         this.img = img;
@@ -23,9 +38,9 @@ public class ModuleBean {
         Msg = msg;
     }
 
-    public ModuleBean(String name, String img, Integer msg, Integer clickId) {
-        this.name = name;
+    public ModuleBean(String img, String name, Integer msg, Integer clickId) {
         this.img = img;
+        this.name = name;
         Msg = msg;
         this.clickId = clickId;
     }

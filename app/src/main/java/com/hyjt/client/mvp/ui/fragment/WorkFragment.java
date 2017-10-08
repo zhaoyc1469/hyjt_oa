@@ -45,6 +45,7 @@ import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.mvp.ui.view.BlocPop;
 import com.hyjt.home.mvp.ui.view.StaffStatePop;
 
+import org.greenrobot.greendao.query.QueryBuilder;
 import org.simple.eventbus.Subscriber;
 import org.simple.eventbus.ThreadMode;
 
@@ -56,7 +57,7 @@ import static com.hyjt.app.R.id.tv_out_login;
 import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 
 
-public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkContract.View, View.OnClickListener {
+public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkContract.View {
 
     private TextView tvDepartment;
     private TextView tvPosition;
@@ -93,6 +94,8 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
     private LinearLayout mLlXmgl;
     private LinearLayout mLlCwgl;
     private LinearLayout mLlZlgl;
+    private BlocPop meetingLog;
+    private TextView mTvGsglManage;
 
     public static WorkFragment newInstance() {
         WorkFragment fragment = new WorkFragment();
@@ -133,7 +136,6 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
 
         tvOutLogin.setOnClickListener(v -> {
             ARouter.getInstance().build("/app/LoginActivity").navigation();
-
             mPresenter.ExitLogin();
         });
 
@@ -160,6 +162,10 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         mRecyCwgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
         mRecyZlgl = (RecyclerView) inflate.findViewById(R.id.recy_zlgl);
         mRecyZlgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
+
+        mTvGsglManage = (TextView) inflate.findViewById(R.id.tv_gsgl_manage);
+        mTvGsglManage.setOnClickListener(v -> gsglDel());
+
 
         daoSession = DbHelper.getInstance().getDaoSession();
         moduleBeanDbDao = daoSession.getModuleBeanDbDao();
@@ -188,7 +194,6 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         mRecyCwgl.setAdapter(CwglAdapter);
         mRecyZlgl.setAdapter(ZlglAdapter);
 
-
         GsglAdapter.setOnItemClickListener((itemView, position, moduleBean) -> arountModule(moduleBean.getClickId()));
         YwglAdapter.setOnItemClickListener((itemView, position, moduleBean) -> arountModule(moduleBean.getClickId()));
         YwsqAdapter.setOnItemClickListener((itemView, position, moduleBean) -> arountModule(moduleBean.getClickId()));
@@ -207,7 +212,6 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
 
         loadModuleList();
 
-
         return inflate;
     }
 
@@ -224,9 +228,24 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         UiUtils.snackbarText(message);
     }
 
-
     @Override
     public void killMyself() {
+
+    }
+
+    private void gsglDel() {
+
+        moduleGsgl.clear();
+        QueryBuilder<ModuleBeanDb> gsglDb1 = moduleBeanDbDao.queryBuilder()
+                .where(ModuleBeanDbDao.Properties.Type.eq(1));
+        for (ModuleBeanDb moduleBeanDb : gsglDb1.list()) {
+            moduleBeanDb.setShowDel(!moduleBeanDb.getShowDel());
+            moduleBeanDbDao.update(moduleBeanDb);
+        }
+        QueryBuilder<ModuleBeanDb> gsglDb2 = moduleBeanDbDao.queryBuilder()
+                .where(ModuleBeanDbDao.Properties.Type.eq(1));
+        Db2Bean(gsglDb2.list());
+        GsglAdapter.notifyDataSetChanged();
 
     }
 
@@ -239,40 +258,9 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         moduleXmgl.clear();
         moduleCwgl.clear();
         moduleZlgl.clear();
-        for (ModuleBeanDb moduleBeanDb : moduleBeanDbs) {
-            if (moduleBeanDb.getIsShow()) {
-                switch (moduleBeanDb.getType()) {
-                    case 1:
-                        moduleGsgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
-                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId()));
-                        break;
-                    case 2:
-                        moduleYwgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
-                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId()));
-                        break;
-                    case 3:
-                        moduleYwsq.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
-                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId()));
-                        break;
-                    case 4:
-                        moduleRsgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
-                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId()));
-                        break;
-                    case 5:
-                        moduleXmgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
-                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId()));
-                        break;
-                    case 6:
-                        moduleCwgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
-                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId()));
-                        break;
-                    case 7:
-                        moduleZlgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
-                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId()));
-                        break;
-                }
-            }
-        }
+
+        Db2Bean(moduleBeanDbs);
+
         if (moduleGsgl.size() == 0) {
             mLlGsgl.setVisibility(View.GONE);
         } else {
@@ -317,153 +305,69 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         }
     }
 
+    private void Db2Bean(List<ModuleBeanDb> moduleBeanDbs) {
+        for (ModuleBeanDb moduleBeanDb : moduleBeanDbs) {
+            if (moduleBeanDb.getIsShow()) {
+                switch (moduleBeanDb.getType()) {
+                    case 1:
+                        moduleGsgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
+                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId(), moduleBeanDb.getShowDel()));
+                        break;
+                    case 2:
+                        moduleYwgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
+                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId(), moduleBeanDb.getShowDel()));
+                        break;
+                    case 3:
+                        moduleYwsq.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
+                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId(), moduleBeanDb.getShowDel()));
+                        break;
+                    case 4:
+                        moduleRsgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
+                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId(), moduleBeanDb.getShowDel()));
+                        break;
+                    case 5:
+                        moduleXmgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
+                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId(), moduleBeanDb.getShowDel()));
+                        break;
+                    case 6:
+                        moduleCwgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
+                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId(), moduleBeanDb.getShowDel()));
+                        break;
+                    case 7:
+                        moduleZlgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()
+                                , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId(), moduleBeanDb.getShowDel()));
+                        break;
+                }
+            }
+        }
+    }
+
     @Subscriber(tag = "Ref_Module", mode = ThreadMode.MAIN)
     public void refModule(RefModuleEvent RefModuleEvent) {
         loadModuleList();
     }
 
 
-//    /**
-//     * 集团选择
-//     */
-//    private View.OnClickListener meetingLogOnClick = v -> {
-//        meetingLog.dismiss();
-//        int i = v.getId();
-//        if (i == R.id.ll_bloc) {
-//            //集团
-//            ARouter.getInstance().build("/home/MeetingListActivity").withString("bloc", "集团").navigation(getActivity(), Api.WorkStartCode);
-//        } else if (i == R.id.ll_mining) {
-//            //矿业
-//            ARouter.getInstance().build("/home/MeetingListActivity").withString("bloc", "矿业").navigation(getActivity(), Api.WorkStartCode);
-//        } else if (i == R.id.ll_project) {
-//            //工程
-//            ARouter.getInstance().build("/home/MeetingListActivity").withString("bloc", "工程").navigation(getActivity(), Api.WorkStartCode);
-//        } else if (i == R.id.ll_bloc_heating) {
-//            //集美
-//            ARouter.getInstance().build("/home/MeetingListActivity").withString("bloc", "集美").navigation(getActivity(), Api.WorkStartCode);
-//        }
-//    };
-
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-//            case R.id.rl_hyjy: {
-//                BlocPop meetingLog = new BlocPop(getActivity(), meetingLogOnClick);
-//                meetingLog.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
-//                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
-//                break;
-//            }
-            case R.id.rl_djjrw: {
-                ARouter.getInstance().build("/home/WaitSolveListActivity").navigation(getActivity(), Api.WorkStartCode);
-                break;
-            }
-            case R.id.rl_cqdjj: {
-                ARouter.getInstance().build("/home/LongSolveListActivity").navigation(getActivity(), Api.WorkStartCode);
-                break;
-            }
-            case R.id.rl_dbrw: {
-                ARouter.getInstance().build("/home/SuperviseSolveListActivity").navigation(getActivity(), Api.WorkStartCode);
-                break;
-            }
-            case R.id.rl_txl: {
-                StaffStatePop staffStatePop = new StaffStatePop(getActivity());
-                staffStatePop.setSelStafListener(type -> {
-                    ARouter.getInstance().build("/home/AddressBookActivity")
-                            .withString("state", type).navigation(getActivity(), Api.WorkStartCode);
-                    staffStatePop.dismiss();
-                });
-                staffStatePop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
-                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
-                break;
-            }
-            case R.id.rl_gszl: {
-                ARouter.getInstance().build("/home/CreateMtActivity").navigation(getActivity(), Api.WorkStartCode);
-                break;
-            }
-            case R.id.rl_ygxx: {
-                StaffStatePop staffStatePop = new StaffStatePop(getActivity());
-                staffStatePop.setSelStafListener(type -> {
-                    ARouter.getInstance().build("/home/StaffListActivity")
-                            .withString("state", type).navigation(getActivity(), Api.WorkStartCode);
-                    staffStatePop.dismiss();
-                });
-                staffStatePop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
-                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
-                break;
-            }
-            case R.id.rl_jtgg: {
-                ARouter.getInstance().build("/home/BlocNoticeListActivity").navigation(getActivity(), Api.WorkStartCode);
-                break;
-            }
-            case R.id.rl_nbyj: {
-                EmailPop emailPop = new EmailPop(getActivity());
-                emailPop.setOnItemClickListener(box -> {
-                    ARouter.getInstance().build("/home/EmailListActivity")
-                            .withString("type", box).navigation(getActivity(), Api.WorkStartCode);
-                    emailPop.dismiss();
-                });
-                emailPop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
-                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
-                break;
-            }
-            case R.id.rl_hbsj: {
-                ReportTopPop reportTopPop = new ReportTopPop(getActivity());
-                reportTopPop.setOnItemClickListener(box -> {
-                    ARouter.getInstance().build("/home/ReportTopListActivity")
-                            .withString("type", box).navigation(getActivity(), Api.WorkStartCode);
-                    reportTopPop.dismiss();
-                });
-                reportTopPop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
-                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
-                break;
-            }
-            case R.id.rl_pjxs: {
-                SLConsultPop sLConsultPop = new SLConsultPop(getActivity());
-                sLConsultPop.setOnItemClickListener(box -> {
-                    ARouter.getInstance().build("/home/SLConsultListActivity")
-                            .withString("type", box).navigation(getActivity(), Api.WorkStartCode);
-                    sLConsultPop.dismiss();
-                });
-                sLConsultPop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
-                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
-                break;
-            }
-            case R.id.rl_yjhb: {
-                SkipReportPop skipReportPop = new SkipReportPop(getActivity());
-                skipReportPop.setOnItemClickListener(box -> {
-                    ARouter.getInstance().build("/home/SkipReportListActivity")
-                            .withString("type", box).navigation(getActivity(), Api.WorkStartCode);
-                    skipReportPop.dismiss();
-                });
-                skipReportPop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
-                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
-                break;
-            }
-            case R.id.rl_xjxc: {
-                ReAndSePop reAndSePop = new ReAndSePop(getActivity());
-                reAndSePop.setOnItemClickListener(box -> {
-                    ARouter.getInstance().build("/home/ContributeIdeaListActivity")
-                            .withString("type", box).navigation(getActivity(), Api.WorkStartCode);
-                    reAndSePop.dismiss();
-                });
-                reAndSePop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
-                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
-                break;
-            }
-            case R.id.rl_ghsq: {
-                ReAndSePop reAndSePop = new ReAndSePop(getActivity());
-                reAndSePop.setOnItemClickListener(box -> {
-                    ARouter.getInstance().build("/home/LaborUnionReqsListActivity")
-                            .withString("type", box).navigation(getActivity(), Api.WorkStartCode);
-                    reAndSePop.dismiss();
-                });
-                reAndSePop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
-                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
-                break;
-            }
+    /**
+     * 集团选择
+     */
+    private View.OnClickListener meetingLogOnClick = v -> {
+        meetingLog.dismiss();
+        int i = v.getId();
+        if (i == R.id.ll_bloc) {
+            //集团
+            ARouter.getInstance().build("/home/MeetingListActivity").withString("bloc", "集团").navigation(getActivity(), Api.WorkStartCode);
+        } else if (i == R.id.ll_mining) {
+            //矿业
+            ARouter.getInstance().build("/home/MeetingListActivity").withString("bloc", "矿业").navigation(getActivity(), Api.WorkStartCode);
+        } else if (i == R.id.ll_project) {
+            //工程
+            ARouter.getInstance().build("/home/MeetingListActivity").withString("bloc", "工程").navigation(getActivity(), Api.WorkStartCode);
+        } else if (i == R.id.ll_bloc_heating) {
+            //集美
+            ARouter.getInstance().build("/home/MeetingListActivity").withString("bloc", "集美").navigation(getActivity(), Api.WorkStartCode);
         }
-    }
+    };
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -527,6 +431,28 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         switch (moduleId) {
             case 1:
                 break;
+            case 7: {
+                ReAndSePop reAndSePop = new ReAndSePop(getActivity());
+                reAndSePop.setOnItemClickListener(box -> {
+                    ARouter.getInstance().build("/home/ContributeIdeaListActivity")
+                            .withString("type", box).navigation(getActivity(), Api.WorkStartCode);
+                    reAndSePop.dismiss();
+                });
+                reAndSePop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
+                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+                break;
+            }
+            case 8: {
+                SkipReportPop skipReportPop = new SkipReportPop(getActivity());
+                skipReportPop.setOnItemClickListener(box -> {
+                    ARouter.getInstance().build("/home/SkipReportListActivity")
+                            .withString("type", box).navigation(getActivity(), Api.WorkStartCode);
+                    skipReportPop.dismiss();
+                });
+                skipReportPop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
+                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+                break;
+            }
             case 9: {
                 ReAndSePop reAndSePop = new ReAndSePop(getActivity());
                 reAndSePop.setOnItemClickListener(box -> {
@@ -549,6 +475,21 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
                         Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
                 break;
             }
+            case 21: {
+                meetingLog = new BlocPop(getActivity(), meetingLogOnClick);
+                meetingLog.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
+                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+                break;
+            }
+            case 22:
+                ARouter.getInstance().build("/home/WaitSolveListActivity").navigation(getActivity(), Api.WorkStartCode);
+                break;
+            case 23:
+                ARouter.getInstance().build("/home/LongSolveListActivity").navigation(getActivity(), Api.WorkStartCode);
+                break;
+            case 24:
+                ARouter.getInstance().build("/home/SuperviseSolveListActivity").navigation(getActivity(), Api.WorkStartCode);
+                break;
             case 27: {
                 EmailPop emailPop = new EmailPop(getActivity());
                 emailPop.setOnItemClickListener(box -> {
@@ -560,7 +501,17 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
                         Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
                 break;
             }
-            case 28:break;
+            case 28: {
+                ReportTopPop reportTopPop = new ReportTopPop(getActivity());
+                reportTopPop.setOnItemClickListener(box -> {
+                    ARouter.getInstance().build("/home/ReportTopListActivity")
+                            .withString("type", box).navigation(getActivity(), Api.WorkStartCode);
+                    reportTopPop.dismiss();
+                });
+                reportTopPop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
+                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+                break;
+            }
             case 29: {
                 SLConsultPop sLConsultPop = new SLConsultPop(getActivity());
                 sLConsultPop.setOnItemClickListener(box -> {
@@ -572,9 +523,22 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
                         Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
                 break;
             }
+            case 64: {
+                StaffStatePop staffStatePop = new StaffStatePop(getActivity());
+                staffStatePop.setSelStafListener(type -> {
+                    ARouter.getInstance().build("/home/StaffListActivity")
+                            .withString("state", type).navigation(getActivity(), Api.WorkStartCode);
+                    staffStatePop.dismiss();
+                });
+                staffStatePop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
+                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+                break;
+            }
+            case 65: {
+                ARouter.getInstance().build("/home/BlocNoticeListActivity").navigation(getActivity(), Api.WorkStartCode);
+                break;
+            }
         }
-
-
     }
 
 }
