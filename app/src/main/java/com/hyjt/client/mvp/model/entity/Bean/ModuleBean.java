@@ -10,13 +10,15 @@ public class ModuleBean {
     private Integer Msg;
     private Integer clickId;
     private boolean show_del;
+    private Integer type;
 
-    public boolean isShow_del() {
-        return show_del;
-    }
-
-    public void setShow_del(boolean show_del) {
+    public ModuleBean(String name, String img, Integer msg, Integer clickId, boolean show_del, Integer type) {
+        this.name = name;
+        this.img = img;
+        Msg = msg;
+        this.clickId = clickId;
         this.show_del = show_del;
+        this.type = type;
     }
 
     public ModuleBean(String img, String name, Integer msg, Integer clickId, boolean show_del) {
@@ -43,6 +45,14 @@ public class ModuleBean {
         this.name = name;
         Msg = msg;
         this.clickId = clickId;
+    }
+
+    public boolean isShow_del() {
+        return show_del;
+    }
+
+    public void setShow_del(boolean show_del) {
+        this.show_del = show_del;
     }
 
     public String getImg() {
@@ -75,5 +85,17 @@ public class ModuleBean {
 
     public void setClickId(Integer clickId) {
         this.clickId = clickId;
+    }
+
+    @Override
+    public String toString() {
+        return "ModuleBean{" +
+                "name='" + name + '\'' +
+                ", img='" + img + '\'' +
+                ", Msg=" + Msg +
+                ", clickId=" + clickId +
+                ", show_del=" + show_del +
+                ", type=" + type +
+                '}';
     }
 }

@@ -14,6 +14,7 @@ import com.hyjt.app.R;
 import com.hyjt.client.di.component.DaggerLoginComponent;
 import com.hyjt.client.di.module.LoginModule;
 import com.hyjt.client.mvp.contract.LoginContract;
+import com.hyjt.client.mvp.model.entity.Bean.ModuleBean;
 import com.hyjt.client.mvp.model.entity.LoginResp;
 import com.hyjt.client.mvp.presenter.LoginPresenter;
 import com.hyjt.db.DbHelper;
@@ -25,8 +26,10 @@ import com.hyjt.db.gen.StaffBeanDbDao;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.event.OutLoginEvent;
+import com.hyjt.frame.utils.JsonUtils;
 import com.hyjt.frame.utils.UiUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.jpush.android.api.JPushInterface;
@@ -75,6 +78,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
         daoSession = DbHelper.getInstance().getDaoSession();
         moduleBeanDbDao = daoSession.getModuleBeanDbDao();
+        staffBeanDbDao = daoSession.getStaffBeanDbDao();
+
         if (moduleBeanDbDao.loadAll().size() <= 0) {
             moduleBeanDbDao.insert(new ModuleBeanDb("公司架构", 1, true, false, "h_gsjg", 1, 0, -1));
             moduleBeanDbDao.insert(new ModuleBeanDb("公司治理", 1, true, false, "h_gszl", 2, 0, -1));
@@ -183,17 +188,17 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             editor.commit();
         }
 
-        DaoSession daoSession = DbHelper.getInstance().getDaoSession();
-        staffBeanDbDao = daoSession.getStaffBeanDbDao();
-        List<StaffBeanDb> staffBeanDbs = staffBeanDbDao.loadAll();
-        int i = staffBeanDbs.size();
-        staffBeanDbDao.insert(new StaffBeanDb("1","1","1"));
-        StaffBeanDb staffBean = staffBeanDbDao.load("1");
-        if (staffBean != null){
-            String str = staffBean.getModuleList();
-        } else {
+        StaffBeanDb staffBean = staffBeanDbDao.load(loginResp.getId());
+        if (staffBean == null) {
+//            List<String> moduleList = new ArrayList<>();
+            StringBuffer stringBuffer = new StringBuffer();
+            for (ModuleBeanDb moduleBean : moduleBeanDbDao.loadAll()) {
+                stringBuffer.append(JsonUtils.beanToJson(new ModuleBean(moduleBean.getImg(), moduleBean.getName()
+                        , moduleBean.getMessage_nub(), moduleBean.getClickId(), moduleBean.getShowDel(), moduleBean.getType())));
+                stringBuffer.append("|");
+            }
             StaffBeanDb insertStaffBean = new StaffBeanDb(loginResp.getId(),
-                    loginResp.getName(), moduleBeanDbDao.loadAll().toString());
+                    loginResp.getName(), stringBuffer.toString());
             staffBeanDbDao.insert(insertStaffBean);
         }
 

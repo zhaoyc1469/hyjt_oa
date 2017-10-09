@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,7 @@ import com.hyjt.client.di.component.DaggerWorkComponent;
 import com.hyjt.client.di.module.WorkModule;
 import com.hyjt.client.mvp.contract.WorkContract;
 import com.hyjt.client.mvp.model.entity.Bean.ModuleBean;
+import com.hyjt.client.mvp.model.entity.Bean.ModuleListBean;
 import com.hyjt.client.mvp.model.entity.WorkMission;
 import com.hyjt.client.mvp.presenter.WorkPresenter;
 import com.hyjt.client.mvp.ui.adapter.ModuleAdapter;
@@ -43,6 +45,7 @@ import com.hyjt.frame.api.Api;
 import com.hyjt.frame.base.BaseFragment;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.event.RefModuleEvent;
+import com.hyjt.frame.utils.JsonUtils;
 import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.mvp.ui.view.BlocPop;
 import com.hyjt.home.mvp.ui.view.StaffStatePop;
@@ -99,7 +102,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
     private BlocPop meetingLog;
     private TextView mTvGsglManage;
     private StaffBeanDbDao staffBeanDbDao;
-
+    private StaffBeanDb staffBeanDb;
     public static WorkFragment newInstance() {
         WorkFragment fragment = new WorkFragment();
         return fragment;
@@ -175,9 +178,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         daoSession = DbHelper.getInstance().getDaoSession();
         moduleBeanDbDao = daoSession.getModuleBeanDbDao();
         staffBeanDbDao = daoSession.getStaffBeanDbDao();
-
-        StaffBeanDb load = staffBeanDbDao.load(Id);
-        String moduleList = load.getModuleList();
+        staffBeanDb = staffBeanDbDao.load(Id);
 
         moduleGsgl = new ArrayList<>();
         moduleYwgl = new ArrayList<>();
@@ -259,6 +260,12 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
     }
 
     private void loadModuleList() {
+        Log.e("嘎嘎嘎", staffBeanDb.getModuleList());
+        String StaffJson = staffBeanDb.getModuleList().replace("\\","");
+        String[] strAry = StaffJson.split("\\|");
+        int i = strAry.length;
+        Log.e("嘎嘎嘎",""+i);
+//        ModuleListBean moduleListBean = JsonUtils.parseJson(StaffJson, ModuleListBean.class);
         List<ModuleBeanDb> moduleBeanDbs = moduleBeanDbDao.loadAll();
         moduleGsgl.clear();
         moduleYwgl.clear();
@@ -269,6 +276,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         moduleZlgl.clear();
 
         Db2Bean(moduleBeanDbs);
+//        moduleGsgl.addAll(moduleListBean.getModuleBeanList());
 
         if (moduleGsgl.size() == 0) {
             mLlGsgl.setVisibility(View.GONE);

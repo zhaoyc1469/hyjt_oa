@@ -6,16 +6,5 @@ package com.hyjt.client.mvp.model.entity.Bean;
 
 public class ModuleText1Bean {
 
-    private int type;
 
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-
-//    private
 }
