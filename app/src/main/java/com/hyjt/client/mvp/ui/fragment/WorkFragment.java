@@ -103,6 +103,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
     private TextView mTvGsglManage;
     private StaffBeanDbDao staffBeanDbDao;
     private StaffBeanDb staffBeanDb;
+
     public static WorkFragment newInstance() {
         WorkFragment fragment = new WorkFragment();
         return fragment;
@@ -261,11 +262,6 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
 
     private void loadModuleList() {
         Log.e("嘎嘎嘎", staffBeanDb.getModuleList());
-        String StaffJson = staffBeanDb.getModuleList().replace("\\","");
-        String[] strAry = StaffJson.split("\\|");
-        int i = strAry.length;
-        Log.e("嘎嘎嘎",""+i);
-//        ModuleListBean moduleListBean = JsonUtils.parseJson(StaffJson, ModuleListBean.class);
         List<ModuleBeanDb> moduleBeanDbs = moduleBeanDbDao.loadAll();
         moduleGsgl.clear();
         moduleYwgl.clear();
@@ -275,8 +271,14 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         moduleCwgl.clear();
         moduleZlgl.clear();
 
-        Db2Bean(moduleBeanDbs);
-//        moduleGsgl.addAll(moduleListBean.getModuleBeanList());
+//        Db2Bean(moduleBeanDbs);
+        String StaffJson = staffBeanDb.getModuleList().replace("\\", "");
+        String[] strAry = StaffJson.split("\\|");
+        Bean2List(strAry);
+        for (String staff : strAry) {
+            ModuleBean moduleBean = JsonUtils.parseJson(staff, ModuleBean.class);
+            moduleGsgl.add(moduleBean);
+        }
 
         if (moduleGsgl.size() == 0) {
             mLlGsgl.setVisibility(View.GONE);
@@ -355,6 +357,35 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
                                 , moduleBeanDb.getMessage_nub(), moduleBeanDb.getClickId(), moduleBeanDb.getShowDel()));
                         break;
                 }
+            }
+        }
+    }
+
+    private void Bean2List(String[] moduleBeanDbs) {
+        for (String moduleBeanStr : moduleBeanDbs) {
+            ModuleBean moduleBean = JsonUtils.parseJson(moduleBeanStr, ModuleBean.class);
+            switch (moduleBean.getType()) {
+                case 1:
+                    moduleGsgl.add(moduleBean);
+                    break;
+                case 2:
+                    moduleYwgl.add(moduleBean);
+                    break;
+                case 3:
+                    moduleYwsq.add(moduleBean);
+                    break;
+                case 4:
+                    moduleRsgl.add(moduleBean);
+                    break;
+                case 5:
+                    moduleXmgl.add(moduleBean);
+                    break;
+                case 6:
+                    moduleCwgl.add(moduleBean);
+                    break;
+                case 7:
+                    moduleZlgl.add(moduleBean);
+                    break;
             }
         }
     }
