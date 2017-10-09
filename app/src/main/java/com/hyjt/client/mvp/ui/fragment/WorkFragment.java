@@ -103,6 +103,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
     private TextView mTvGsglManage;
     private StaffBeanDbDao staffBeanDbDao;
     private StaffBeanDb staffBeanDb;
+
     public static WorkFragment newInstance() {
         WorkFragment fragment = new WorkFragment();
         return fragment;
@@ -261,10 +262,6 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
 
     private void loadModuleList() {
         Log.e("嘎嘎嘎", staffBeanDb.getModuleList());
-        String StaffJson = staffBeanDb.getModuleList().replace("\\","");
-        String[] strAry = StaffJson.split("\\|");
-        int i = strAry.length;
-        Log.e("嘎嘎嘎",""+i);
 //        ModuleListBean moduleListBean = JsonUtils.parseJson(StaffJson, ModuleListBean.class);
         List<ModuleBeanDb> moduleBeanDbs = moduleBeanDbDao.loadAll();
         moduleGsgl.clear();
@@ -275,7 +272,12 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         moduleCwgl.clear();
         moduleZlgl.clear();
 
-        Db2Bean(moduleBeanDbs);
+//        Db2Bean(moduleBeanDbs);
+
+
+        String StaffJson = staffBeanDb.getModuleList().replace("\\", "");
+        String[] strAry = StaffJson.split("\\|");
+        Bean2List(strAry);
 //        moduleGsgl.addAll(moduleListBean.getModuleBeanList());
 
         if (moduleGsgl.size() == 0) {
@@ -319,6 +321,35 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         } else {
             mLlZlgl.setVisibility(View.VISIBLE);
             ZlglAdapter.notifyDataSetChanged();
+        }
+    }
+
+    private void Bean2List(String[] strAry) {
+        for (String str : strAry) {
+            ModuleBean moduleBean = JsonUtils.parseJson(str, ModuleBean.class);
+            switch (moduleBean.getType()) {
+                case 1:
+                    moduleGsgl.add(moduleBean);
+                    break;
+                case 2:
+                    moduleYwgl.add(moduleBean);
+                    break;
+                case 3:
+                    moduleYwsq.add(moduleBean);
+                    break;
+                case 4:
+                    moduleRsgl.add(moduleBean);
+                    break;
+                case 5:
+                    moduleXmgl.add(moduleBean);
+                    break;
+                case 6:
+                    moduleCwgl.add(moduleBean);
+                    break;
+                case 7:
+                    moduleZlgl.add(moduleBean);
+                    break;
+            }
         }
     }
 

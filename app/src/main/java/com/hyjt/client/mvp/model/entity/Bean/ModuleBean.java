@@ -47,6 +47,15 @@ public class ModuleBean {
         this.clickId = clickId;
     }
 
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
     public boolean isShow_del() {
         return show_del;
     }

@@ -190,10 +190,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
         StaffBeanDb staffBean = staffBeanDbDao.load(loginResp.getId());
         if (staffBean == null) {
-//            List<String> moduleList = new ArrayList<>();
             StringBuffer stringBuffer = new StringBuffer();
             for (ModuleBeanDb moduleBean : moduleBeanDbDao.loadAll()) {
-                stringBuffer.append(JsonUtils.beanToJson(new ModuleBean(moduleBean.getImg(), moduleBean.getName()
+                stringBuffer.append(JsonUtils.beanToJson(new ModuleBean(moduleBean.getName(), moduleBean.getImg()
                         , moduleBean.getMessage_nub(), moduleBean.getClickId(), moduleBean.getShowDel(), moduleBean.getType())));
                 stringBuffer.append("|");
             }
