@@ -42,29 +42,6 @@ public class MsgFragment extends BaseFragment<MsgPresenter> implements MsgContra
 
     private TextView mTvTitle;
     private ImageView mIvTopSelect;
-    private RecyclerView mRecyGsgl;
-    private RecyclerView mRecyYwgl;
-    private RecyclerView mRecyYwsq;
-    private RecyclerView mRecyRsgl;
-    private RecyclerView mRecyXmgl;
-    private RecyclerView mRecyCwgl;
-    private RecyclerView mRecyZlgl;
-    private DaoSession daoSession;
-    private ModuleBeanDbDao moduleBeanDbDao;
-    private List<ModuleBean> moduleGsgl;
-    private List<ModuleBean> moduleYwgl;
-    private List<ModuleBean> moduleYwsq;
-    private List<ModuleBean> moduleRsgl;
-    private List<ModuleBean> moduleXmgl;
-    private List<ModuleBean> moduleCwgl;
-    private List<ModuleBean> moduleZlgl;
-    private ModuleAdapter GsglAdapter;
-    private ModuleAdapter YwglAdapter;
-    private ModuleAdapter YwsqAdapter;
-    private ModuleAdapter RsglAdapter;
-    private ModuleAdapter XmglAdapter;
-    private ModuleAdapter CwglAdapter;
-    private ModuleAdapter ZlglAdapter;
 
     public static MsgFragment newInstance() {
         MsgFragment fragment = new MsgFragment();
@@ -87,104 +64,7 @@ public class MsgFragment extends BaseFragment<MsgPresenter> implements MsgContra
         mTvTitle = (TextView) inflate.findViewById(R.id.tv_title);
         mIvTopSelect = (ImageView) inflate.findViewById(R.id.iv_top_select);
 
-        mRecyGsgl = (RecyclerView) inflate.findViewById(R.id.recy_gsgl);
-        mRecyGsgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
-        mRecyYwgl = (RecyclerView) inflate.findViewById(R.id.recy_ywgl);
-        mRecyYwgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
-        mRecyYwsq = (RecyclerView) inflate.findViewById(R.id.recy_ywsq);
-        mRecyYwsq.setLayoutManager(new GridLayoutManager(getContext(), 5));
-        mRecyRsgl = (RecyclerView) inflate.findViewById(R.id.recy_rsgl);
-        mRecyRsgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
-        mRecyXmgl = (RecyclerView) inflate.findViewById(R.id.recy_xmgl);
-        mRecyXmgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
-        mRecyCwgl = (RecyclerView) inflate.findViewById(R.id.recy_cwgl);
-        mRecyCwgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
-        mRecyZlgl = (RecyclerView) inflate.findViewById(R.id.recy_zlgl);
-        mRecyZlgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
-
-        daoSession = DbHelper.getInstance().getDaoSession();
-        moduleBeanDbDao = daoSession.getModuleBeanDbDao();
-
-        moduleGsgl = new ArrayList<>();
-        moduleYwgl = new ArrayList<>();
-        moduleYwsq = new ArrayList<>();
-        moduleRsgl = new ArrayList<>();
-        moduleXmgl = new ArrayList<>();
-        moduleCwgl = new ArrayList<>();
-        moduleZlgl = new ArrayList<>();
-
-        GsglAdapter = new ModuleAdapter(moduleGsgl, getActivity());
-        YwglAdapter = new ModuleAdapter(moduleYwgl, getActivity());
-        YwsqAdapter = new ModuleAdapter(moduleYwsq, getActivity());
-        RsglAdapter = new ModuleAdapter(moduleRsgl, getActivity());
-        XmglAdapter = new ModuleAdapter(moduleXmgl, getActivity());
-        CwglAdapter = new ModuleAdapter(moduleCwgl, getActivity());
-        ZlglAdapter = new ModuleAdapter(moduleZlgl, getActivity());
-
-        mRecyGsgl.setAdapter(GsglAdapter);
-        mRecyYwgl.setAdapter(YwglAdapter);
-        mRecyYwsq.setAdapter(YwsqAdapter);
-        mRecyRsgl.setAdapter(RsglAdapter);
-        mRecyXmgl.setAdapter(XmglAdapter);
-        mRecyCwgl.setAdapter(CwglAdapter);
-        mRecyZlgl.setAdapter(ZlglAdapter);
-
-        mRecyGsgl.setNestedScrollingEnabled(false);
-        mRecyYwgl.setNestedScrollingEnabled(false);
-        mRecyYwsq.setNestedScrollingEnabled(false);
-        mRecyRsgl.setNestedScrollingEnabled(false);
-        mRecyXmgl.setNestedScrollingEnabled(false);
-        mRecyCwgl.setNestedScrollingEnabled(false);
-        mRecyZlgl.setNestedScrollingEnabled(false);
-
-        loadModuleList();
-
         return inflate;
-    }
-
-    private void loadModuleList() {
-        List<ModuleBeanDb> moduleBeanDbs = moduleBeanDbDao.loadAll();
-        moduleGsgl.clear();
-        moduleYwgl.clear();
-        moduleYwsq.clear();
-        moduleRsgl.clear();
-        moduleXmgl.clear();
-        moduleCwgl.clear();
-        moduleZlgl.clear();
-        for (ModuleBeanDb moduleBeanDb : moduleBeanDbs) {
-            if (moduleBeanDb.getIsShow()) {
-                switch (moduleBeanDb.getType()) {
-                    case 1:
-                        moduleGsgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()));
-                        break;
-                    case 2:
-                        moduleYwgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()));
-                        break;
-                    case 3:
-                        moduleYwsq.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()));
-                        break;
-                    case 4:
-                        moduleRsgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()));
-                        break;
-                    case 5:
-                        moduleXmgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()));
-                        break;
-                    case 6:
-                        moduleCwgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()));
-                        break;
-                    case 7:
-                        moduleZlgl.add(new ModuleBean(moduleBeanDb.getImg(), moduleBeanDb.getName()));
-                        break;
-                }
-            }
-        }
-        GsglAdapter.notifyDataSetChanged();
-        YwglAdapter.notifyDataSetChanged();
-        YwsqAdapter.notifyDataSetChanged();
-        RsglAdapter.notifyDataSetChanged();
-        XmglAdapter.notifyDataSetChanged();
-        CwglAdapter.notifyDataSetChanged();
-        ZlglAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -200,10 +80,5 @@ public class MsgFragment extends BaseFragment<MsgPresenter> implements MsgContra
 
     @Override
     public void killMyself() {
-    }
-
-    @Subscriber(tag = "Ref_Module", mode = ThreadMode.MAIN)
-    public void refModule(RefModuleEvent RefModuleEvent){
-        loadModuleList();
     }
 }

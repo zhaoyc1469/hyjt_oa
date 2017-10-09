@@ -35,8 +35,10 @@ import com.hyjt.client.mvp.ui.view.SLConsultPop;
 import com.hyjt.client.mvp.ui.view.SkipReportPop;
 import com.hyjt.db.DbHelper;
 import com.hyjt.db.bean.ModuleBeanDb;
+import com.hyjt.db.bean.StaffBeanDb;
 import com.hyjt.db.gen.DaoSession;
 import com.hyjt.db.gen.ModuleBeanDbDao;
+import com.hyjt.db.gen.StaffBeanDbDao;
 import com.hyjt.frame.api.Api;
 import com.hyjt.frame.base.BaseFragment;
 import com.hyjt.frame.di.component.AppComponent;
@@ -96,6 +98,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
     private LinearLayout mLlZlgl;
     private BlocPop meetingLog;
     private TextView mTvGsglManage;
+    private StaffBeanDbDao staffBeanDbDao;
 
     public static WorkFragment newInstance() {
         WorkFragment fragment = new WorkFragment();
@@ -128,6 +131,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         String part = sharedPre.getString("part", "");
         String job = sharedPre.getString("job", "");
         String pic = sharedPre.getString("pic", "");
+        String Id = sharedPre.getString("Id", "");
 
         tvDepartment.setText("部门:" + part);
         tvPosition.setText("职位:" + job);
@@ -164,11 +168,16 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         mRecyZlgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
 
         mTvGsglManage = (TextView) inflate.findViewById(R.id.tv_gsgl_manage);
-        mTvGsglManage.setOnClickListener(v -> gsglDel());
+        mTvGsglManage.setVisibility(View.GONE);
+//        mTvGsglManage.setOnClickListener(v -> gsglDel());
 
 
         daoSession = DbHelper.getInstance().getDaoSession();
         moduleBeanDbDao = daoSession.getModuleBeanDbDao();
+        staffBeanDbDao = daoSession.getStaffBeanDbDao();
+
+        StaffBeanDb load = staffBeanDbDao.load(Id);
+        String moduleList = load.getModuleList();
 
         moduleGsgl = new ArrayList<>();
         moduleYwgl = new ArrayList<>();
@@ -405,7 +414,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
             moduleBeanDbDao.update(moduleBean);
         }
         if (Integer.parseInt(workMission.getWorkingConsult()) > 0) {
-            ModuleBeanDb moduleBean = moduleBeanDbDao.load("平级协商");
+            ModuleBeanDb moduleBean = moduleBeanDbDao.load("评级协商");
             moduleBean.setMessage_nub(Integer.parseInt(workMission.getWorkingConsult()));
             moduleBeanDbDao.update(moduleBean);
         }

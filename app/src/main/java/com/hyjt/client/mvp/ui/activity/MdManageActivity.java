@@ -64,9 +64,15 @@ public class MdManageActivity extends BaseActivity<MdManagePresenter> implements
     public void initData(Bundle savedInstanceState) {
         mTvTitle = (TextView) findViewById(R.id.tv_title);
         mTvTitle.setText("模块编辑");
-        mTvTitle.setOnClickListener(v -> finish());
+        mTvTitle.setOnClickListener(v -> {
+            EventBus.getDefault().post(new RefModuleEvent(), "Ref_Module");
+            finish();
+        });
         mIvTopBack = (ImageView) findViewById(R.id.iv_top_back);
-        mIvTopBack.setOnClickListener(v -> finish());
+        mIvTopBack.setOnClickListener(v -> {
+            EventBus.getDefault().post(new RefModuleEvent(), "Ref_Module");
+            finish();
+        });
         mIvTopSelect = (ImageView) findViewById(R.id.iv_top_select);
         mIvTopSelect.setVisibility(View.GONE);
 
@@ -85,6 +91,7 @@ public class MdManageActivity extends BaseActivity<MdManagePresenter> implements
         });
         mRecyMdManage.setAdapter(manageAdapter);
 
+        mBtnEditCommit.setVisibility(View.GONE);
         mBtnEditCommit.setOnClickListener(v -> EventBus.getDefault().post(new RefModuleEvent(), "Ref_Module"));
     }
 
@@ -102,4 +109,9 @@ public class MdManageActivity extends BaseActivity<MdManagePresenter> implements
         finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        EventBus.getDefault().post(new RefModuleEvent(), "Ref_Module");
+    }
 }

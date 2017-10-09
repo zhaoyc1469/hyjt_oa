@@ -18,12 +18,16 @@ import com.hyjt.client.mvp.model.entity.LoginResp;
 import com.hyjt.client.mvp.presenter.LoginPresenter;
 import com.hyjt.db.DbHelper;
 import com.hyjt.db.bean.ModuleBeanDb;
+import com.hyjt.db.bean.StaffBeanDb;
 import com.hyjt.db.gen.DaoSession;
 import com.hyjt.db.gen.ModuleBeanDbDao;
+import com.hyjt.db.gen.StaffBeanDbDao;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.event.OutLoginEvent;
 import com.hyjt.frame.utils.UiUtils;
+
+import java.util.List;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -42,6 +46,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     private String registrationID;
     private DaoSession daoSession;
     private ModuleBeanDbDao moduleBeanDbDao;
+    private StaffBeanDbDao staffBeanDbDao;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -172,10 +177,26 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             editor.putString("password", mEdtPassword.getText().toString().trim());
             editor.putString("part", loginResp.getPart());
             editor.putString("job", loginResp.getJob());
+            editor.putString("Id", loginResp.getId());
             editor.putString("pic", getString(com.hyjt.home.R.string.home_base_url) + loginResp.getPic());
             editor.putString("sessionid", loginResp.getSessionId());
             editor.commit();
         }
+
+        DaoSession daoSession = DbHelper.getInstance().getDaoSession();
+        staffBeanDbDao = daoSession.getStaffBeanDbDao();
+        List<StaffBeanDb> staffBeanDbs = staffBeanDbDao.loadAll();
+        int i = staffBeanDbs.size();
+        staffBeanDbDao.insert(new StaffBeanDb("1","1","1"));
+        StaffBeanDb staffBean = staffBeanDbDao.load("1");
+        if (staffBean != null){
+            String str = staffBean.getModuleList();
+        } else {
+            StaffBeanDb insertStaffBean = new StaffBeanDb(loginResp.getId(),
+                    loginResp.getName(), moduleBeanDbDao.loadAll().toString());
+            staffBeanDbDao.insert(insertStaffBean);
+        }
+
 
         String sessionId = loginResp.getSessionId();
         Log.e("sessionId", sessionId);

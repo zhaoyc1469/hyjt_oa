@@ -40,7 +40,6 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
             android:name="com.hyjt.client.mvp.ui.activity.LoginActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -213,7 +212,6 @@
 
         <activity
             android:name="com.hyjt.client.mvp.ui.activity.SplashActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.hyjt.client.mvp.ui.activity.HomeActivity"

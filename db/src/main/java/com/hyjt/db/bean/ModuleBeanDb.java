@@ -10,16 +10,24 @@ import org.greenrobot.greendao.annotation.Property;
 public class ModuleBeanDb {
 
     @Id
+    //模块名称
     private String name;
 
     @Property
+    //所属展示
     private int type;
+    //是否展示
     private boolean isShow;
+    //是否展示删除
     private boolean showDel;
 
+    //图标名称
     private String img;
+    //点击事件
     private int clickId;
+    //消息数量
     private Integer message_nub;
+    //排序
     private Integer row_nub;
     public Integer getRow_nub() {
         return this.row_nub;
