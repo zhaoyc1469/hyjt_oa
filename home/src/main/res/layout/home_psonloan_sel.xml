@@ -37,7 +37,7 @@
                 android:layout_width="240dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/home_common_000000"
-                android:layout_marginStart="25dp"/>
+                android:layout_marginStart="20dp"/>
         </LinearLayout>
 
         <View
@@ -98,9 +98,9 @@
             <EditText
                 android:id="@+id/edt_end_time"
                 android:layout_width="240dp"
-                android:textColor="@color/home_common_000000"
                 android:layout_height="match_parent"
-                android:layout_marginStart="35dp"/>
+                android:layout_marginStart="35dp"
+                android:textColor="@color/home_common_000000" />
         </LinearLayout>
 
         <View

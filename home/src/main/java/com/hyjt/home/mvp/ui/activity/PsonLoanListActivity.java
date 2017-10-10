@@ -86,9 +86,14 @@ public class PsonLoanListActivity extends BaseActivity<PsonLoanListPresenter> im
     private void popSel() {
 
         psonLoanSelPop = new PsonLoanSelPop(this);
-        psonLoanSelPop.setSelCmListener((meetingNum, meetingName, meetingTime) ->
-                mPresenter.getPsonLoanList(true, CwPnum, Start, End));
-        psonLoanSelPop.showAtLocation(findViewById(R.id.rl_meeting_list),
+        psonLoanSelPop.setSelCmListener((num, start, end) -> {
+                    CwPnum = num;
+                    Start = start;
+                    End = end;
+                    mPresenter.getPsonLoanList(true, CwPnum, Start, End);
+                }
+        );
+        psonLoanSelPop.showAtLocation(findViewById(R.id.rl_psonloan),
                 Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
     }
 

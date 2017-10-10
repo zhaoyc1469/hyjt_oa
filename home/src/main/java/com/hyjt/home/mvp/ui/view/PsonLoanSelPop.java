@@ -43,7 +43,7 @@ public class PsonLoanSelPop extends PopupWindow {
         // PopupWindow 导入
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mMenuView = inflater.inflate(R.layout.home_psonLoan_sel, null);
+        mMenuView = inflater.inflate(R.layout.home_psonloan_sel, null);
         mPopLayout = (LinearLayout) mMenuView.findViewById(R.id.pop_layout);
         mEdtPsonloanNum = (EditText) mMenuView.findViewById(R.id.edt_psonloan_num);
         mEdtStartTime = (EditText) mMenuView.findViewById(R.id.edt_start_time);
@@ -111,6 +111,6 @@ public class PsonLoanSelPop extends PopupWindow {
     }
 
     public interface SelCmListener {
-        void onSelCmClick(String meetingNum, String meetingName, String meetingTime);
+        void onSelCmClick(String num, String start, String end);
     }
 }
