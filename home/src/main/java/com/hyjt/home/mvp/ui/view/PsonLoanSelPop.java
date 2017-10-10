@@ -15,6 +15,8 @@ import android.widget.PopupWindow;
 
 import com.hyjt.home.R;
 
+import java.util.Calendar;
+
 /**
  * @author 赵宇驰
  * @time 2017/7/20  13:54
@@ -45,7 +47,9 @@ public class PsonLoanSelPop extends PopupWindow {
         mPopLayout = (LinearLayout) mMenuView.findViewById(R.id.pop_layout);
         mEdtPsonloanNum = (EditText) mMenuView.findViewById(R.id.edt_psonloan_num);
         mEdtStartTime = (EditText) mMenuView.findViewById(R.id.edt_start_time);
+        setTimeEdit(mEdtStartTime);
         mEdtEndTime = (EditText) mMenuView.findViewById(R.id.edt_end_time);
+        setTimeEdit(mEdtEndTime);
         mBtnSel = (Button) mMenuView.findViewById(R.id.btn_sel);
         mBtnSel.setOnClickListener(v -> {
             dismiss();
@@ -84,12 +88,27 @@ public class PsonLoanSelPop extends PopupWindow {
         });
     }
 
+    private void setTimeEdit(EditText finishTime) {
+        finishTime.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                Calendar c = Calendar.getInstance();
+                new DatePickDialog(context, c).setOnDateTimeSetListener((dp, year, monthOfYear, dayOfMonth) -> {
+                    finishTime.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                    // 保存选择后时间
+                    c.set(Calendar.YEAR, year);
+                    c.set(Calendar.MONTH, monthOfYear);
+                    c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                });
+            }
+            return true;
+        });
+    }
+
     private SelCmListener mSelCmListener = null;
 
     public void setSelCmListener(SelCmListener listener) {
         this.mSelCmListener = listener;
     }
-
 
     public interface SelCmListener {
         void onSelCmClick(String meetingNum, String meetingName, String meetingTime);

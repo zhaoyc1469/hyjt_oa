@@ -16,45 +16,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58545980-12d8-4824-9ee9-7948b17b5c1f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/di/component/PsonLoanCreateComponent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/di/component/PsonLoanEditComponent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/di/component/PsonLoanListComponent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/di/module/PsonLoanCreateModule.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/di/module/PsonLoanEditModule.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/di/module/PsonLoanListModule.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/PsonLoanCreateContract.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/PsonLoanEditContract.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/PsonLoanListContract.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/PsonLoanCreateModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/PsonLoanEditModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/PsonLoanListModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Reqs/PsonLoanListReqs.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/PsonLoanListResp.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanCreatePresenter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanEditPresenter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanListPresenter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanCreateActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanListActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/adapter/PsonLoanAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/holder/PsonLoanItemHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/view/PsonLoanSelPop.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/res/layout/home_activity_pson_loan_create.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/res/layout/home_activity_pson_loan_edit.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/res/layout/home_activity_pson_loan_list.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/res/layout/home_item_psonloan.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/home/src/main/res/layout/home_psonLoan_sel.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/activity/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/activity/LoginActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/activity/SplashActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/activity/SplashActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/fragment/WorkFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/fragment/WorkFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/fragment/WorkFragmentCopy.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/fragment/WorkFragmentCopy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/include_work_modules.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/include_work_modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/home/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/service/HomeService.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/service/HomeService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/home/src/main/res/values/colors.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/h_jksp.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/h_grjk.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/view/PsonLoanSelPop.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/view/PsonLoanSelPop.java" />
     </list>
     <ignored path="hyjt_oa.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -116,7 +79,7 @@
       <file leaf-file-name="MeetingSelPop.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/view/MeetingSelPop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
+            <state relative-caret-position="-311">
               <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
               <folding />
             </state>
@@ -126,8 +89,28 @@
       <file leaf-file-name="PsonLoanSelPop.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/view/PsonLoanSelPop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+            <state relative-caret-position="176">
+              <caret line="47" column="81" selection-start-line="47" selection-start-column="81" selection-end-line="47" selection-end-column="81" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StaffMsgPop.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/view/StaffMsgPop.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StaffSelPop.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/view/StaffSelPop.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="73" column="75" selection-start-line="73" selection-start-column="75" selection-end-line="74" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -169,16 +152,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PsonLoanListContract.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/PsonLoanListContract.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-11">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PsonLoanListPresenter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanListPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -194,16 +167,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-451">
               <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PsonLoanEditPresenter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanEditPresenter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -6294,7 +6257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1507621501226</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="test">
+      <created>1507629260300</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1507629260301</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -6469,25 +6439,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/release/com/hyjt/app/R.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="3236" column="35" selection-start-line="3236" selection-start-column="35" selection-end-line="3236" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/include_work_modules.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="1470" column="50" selection-start-line="1470" selection-start-column="47" selection-end-line="1470" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/di/module/PsonLoanListModule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="451">
@@ -6946,14 +6897,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/view/MeetingSelPop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="263">
@@ -6975,10 +6918,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/view/MeetingSelPop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-311">
+          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/view/StaffMsgPop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/view/StaffSelPop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="73" column="75" selection-start-line="73" selection-start-column="75" selection-end-line="74" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/view/PsonLoanSelPop.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+        <state relative-caret-position="176">
+          <caret line="47" column="81" selection-start-line="47" selection-start-column="81" selection-end-line="47" selection-end-column="81" />
           <folding />
         </state>
       </provider>
