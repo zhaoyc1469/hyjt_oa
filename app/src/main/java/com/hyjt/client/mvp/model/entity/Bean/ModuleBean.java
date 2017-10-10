@@ -47,6 +47,7 @@ public class ModuleBean {
         this.clickId = clickId;
     }
 
+
     public Integer getType() {
         return type;
     }
