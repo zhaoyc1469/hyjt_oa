@@ -262,7 +262,6 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
 
     private void loadModuleList() {
         Log.e("嘎嘎嘎", staffBeanDb.getModuleList());
-//        ModuleListBean moduleListBean = JsonUtils.parseJson(StaffJson, ModuleListBean.class);
         List<ModuleBeanDb> moduleBeanDbs = moduleBeanDbDao.loadAll();
         moduleGsgl.clear();
         moduleYwgl.clear();
@@ -272,12 +271,11 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         moduleCwgl.clear();
         moduleZlgl.clear();
 
-//        Db2Bean(moduleBeanDbs);
+        Db2Bean(moduleBeanDbs);
 
-
-        String StaffJson = staffBeanDb.getModuleList().replace("\\", "");
-        String[] strAry = StaffJson.split("\\|");
-        Bean2List(strAry);
+//        String StaffJson = staffBeanDb.getModuleList().replace("\\", "");
+//        String[] strAry = StaffJson.split("\\|");
+//        Bean2List(strAry);
 //        moduleGsgl.addAll(moduleListBean.getModuleBeanList());
 
         if (moduleGsgl.size() == 0) {

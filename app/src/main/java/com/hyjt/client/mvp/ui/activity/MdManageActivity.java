@@ -100,7 +100,6 @@ public class MdManageActivity extends BaseActivity<MdManagePresenter> implements
         manageAdapter.setOnItemClickListener((itemView, position, moduleBeanDb) -> {
             moduleBeanDb.setIsShow(!moduleBeanDb.getIsShow());
             moduleBeanDbDao.update(moduleBeanDb);
-
             insertStaffModule(Id, username);
         });
         mRecyMdManage.setAdapter(manageAdapter);
@@ -109,16 +108,18 @@ public class MdManageActivity extends BaseActivity<MdManagePresenter> implements
         mBtnEditCommit.setOnClickListener(v -> EventBus.getDefault().post(new RefModuleEvent(), "Ref_Module"));
     }
 
+    /**
+     * 更新用户模块数据
+     */
     private void insertStaffModule(String id, String username) {
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuilder = new StringBuilder();
         for (ModuleBeanDb moduleBean : moduleBeanDbDao.loadAll()) {
-            if (moduleBean.getIsShow()) {
-                stringBuffer.append(JsonUtils.beanToJson(new ModuleBean(moduleBean.getName(), moduleBean.getImg()
-                        , moduleBean.getMessage_nub(), moduleBean.getClickId(), moduleBean.getShowDel(), moduleBean.getType())));
-                stringBuffer.append("|");
-            }
+                stringBuilder.append(JsonUtils.beanToJson(new ModuleBean(moduleBean.getName(), moduleBean.getImg()
+                        , moduleBean.getMessage_nub(), moduleBean.getClickId(), moduleBean.getShowDel()
+                        , moduleBean.getType(), moduleBean.getIsShow())));
+                stringBuilder.append("|");
         }
-        staffBeanDbDao.update(new StaffBeanDb(id, username, stringBuffer.toString()));
+        staffBeanDbDao.update(new StaffBeanDb(id, username, stringBuilder.toString()));
     }
 
 

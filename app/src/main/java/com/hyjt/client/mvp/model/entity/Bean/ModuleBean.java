@@ -11,6 +11,17 @@ public class ModuleBean {
     private Integer clickId;
     private boolean show_del;
     private Integer type;
+    private boolean isShow;
+
+    public ModuleBean(String name, String img, Integer msg, Integer clickId, boolean show_del, Integer type, boolean isShow) {
+        this.name = name;
+        this.img = img;
+        Msg = msg;
+        this.clickId = clickId;
+        this.show_del = show_del;
+        this.type = type;
+        this.isShow = isShow;
+    }
 
     public ModuleBean(String name, String img, Integer msg, Integer clickId, boolean show_del, Integer type) {
         this.name = name;
@@ -47,6 +58,13 @@ public class ModuleBean {
         this.clickId = clickId;
     }
 
+    public boolean isShow() {
+        return isShow;
+    }
+
+    public void setShow(boolean show) {
+        isShow = show;
+    }
 
     public Integer getType() {
         return type;
