@@ -50,11 +50,14 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleVH> 
         });
         if (moduleBean.isShow_del()){
             holder.rlModuleDel.setVisibility(View.VISIBLE);
+            holder.rlModuleMsg.setVisibility(View.GONE);
+        } else {
+            holder.rlModuleDel.setVisibility(View.GONE);
         }
         holder.rlModuleDel.setOnClickListener(v -> {
-//            if (mOnItemClickListener != null) {
-//                mOnItemClickListener.onItemClick(v, holder.getAdapterPosition(), moduleBean);
-//            }
+            if (mOnItemDelListener != null) {
+                mOnItemDelListener.onItemDel(v, holder.getAdapterPosition(), moduleBean);
+            }
         });
     }
 
@@ -98,5 +101,17 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleVH> 
 
     public interface OnItemClickListener {
         void onItemClick(View itemView, int position, ModuleBean moduleBean);
+    }
+
+    //声明一个接口
+    private OnItemDelListener mOnItemDelListener = null;
+
+    //提供一个方法去赋值
+    public void setOnItemDelListener(OnItemDelListener listener) {
+        this.mOnItemDelListener = listener;
+    }
+
+    public interface OnItemDelListener {
+        void onItemDel(View itemView, int position, ModuleBean moduleBean);
     }
 }

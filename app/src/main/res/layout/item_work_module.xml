@@ -25,7 +25,6 @@
 
             <TextView
                 android:text="X"
-                android:layout_marginTop="2dp"
                 style="@style/tvWorkMsg" />
         </RelativeLayout>
 

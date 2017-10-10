@@ -201,15 +201,29 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/work_ywgl"
-                        android:textColor="@color/home_common_000000"
-                        android:textSize="@dimen/home_common_14sp" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/work_ywgl"
+                            android:textColor="@color/home_common_000000"
+                            android:textSize="@dimen/home_common_14sp" />
 
+                        <TextView
+                            android:id="@+id/tv_ywgl_manage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_alignParentEnd="true"
+                            android:textColor="@color/home_common_000000"
+                            android:textSize="@dimen/home_common_14sp"
+                            android:text="管理"/>
+                    </RelativeLayout>
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recy_ywgl"
@@ -224,6 +238,7 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginStart="16dp"
                         android:background="@color/home_common_9CA0A4" />
+
                 </LinearLayout>
 
 
@@ -233,14 +248,29 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/work_ywsq"
-                        android:textColor="@color/home_common_000000"
-                        android:textSize="@dimen/home_common_14sp" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/work_ywsq"
+                            android:textColor="@color/home_common_000000"
+                            android:textSize="@dimen/home_common_14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_ywsq_manage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_alignParentEnd="true"
+                            android:textColor="@color/home_common_000000"
+                            android:textSize="@dimen/home_common_14sp"
+                            android:text="管理"/>
+                    </RelativeLayout>
 
 
                     <android.support.v7.widget.RecyclerView
@@ -265,14 +295,30 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/work_rsgl"
-                        android:textColor="@color/home_common_000000"
-                        android:textSize="@dimen/home_common_14sp" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/work_rsgl"
+                            android:textColor="@color/home_common_000000"
+                            android:textSize="@dimen/home_common_14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_rsgl_manage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_alignParentEnd="true"
+                            android:textColor="@color/home_common_000000"
+                            android:textSize="@dimen/home_common_14sp"
+                            android:text="管理"/>
+                    </RelativeLayout>
 
 
                     <android.support.v7.widget.RecyclerView
@@ -296,14 +342,29 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/work_xmgl"
-                        android:textColor="@color/home_common_000000"
-                        android:textSize="@dimen/home_common_14sp" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/work_xmgl"
+                            android:textColor="@color/home_common_000000"
+                            android:textSize="@dimen/home_common_14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_xmgl_manage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_alignParentEnd="true"
+                            android:textColor="@color/home_common_000000"
+                            android:textSize="@dimen/home_common_14sp"
+                            android:text="管理"/>
+                    </RelativeLayout>
 
 
                     <android.support.v7.widget.RecyclerView
@@ -327,15 +388,29 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/work_cwgl"
-                        android:textColor="@color/home_common_000000"
-                        android:textSize="@dimen/home_common_14sp" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/work_cwgl"
+                            android:textColor="@color/home_common_000000"
+                            android:textSize="@dimen/home_common_14sp" />
 
+                        <TextView
+                            android:id="@+id/tv_cwgl_manage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_alignParentEnd="true"
+                            android:textColor="@color/home_common_000000"
+                            android:textSize="@dimen/home_common_14sp"
+                            android:text="管理"/>
+                    </RelativeLayout>
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recy_cwgl"
@@ -360,14 +435,30 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/work_zlgl"
-                        android:textColor="@color/home_common_000000"
-                        android:textSize="@dimen/home_common_14sp" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/work_zlgl"
+                            android:textColor="@color/home_common_000000"
+                            android:textSize="@dimen/home_common_14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_zlgl_manage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_alignParentEnd="true"
+                            android:textColor="@color/home_common_000000"
+                            android:textSize="@dimen/home_common_14sp"
+                            android:text="管理"/>
+                    </RelativeLayout>
 
 
                     <android.support.v7.widget.RecyclerView

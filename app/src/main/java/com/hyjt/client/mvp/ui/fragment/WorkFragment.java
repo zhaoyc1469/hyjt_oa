@@ -11,12 +11,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -26,7 +22,6 @@ import com.hyjt.client.di.component.DaggerWorkComponent;
 import com.hyjt.client.di.module.WorkModule;
 import com.hyjt.client.mvp.contract.WorkContract;
 import com.hyjt.client.mvp.model.entity.Bean.ModuleBean;
-import com.hyjt.client.mvp.model.entity.Bean.ModuleListBean;
 import com.hyjt.client.mvp.model.entity.WorkMission;
 import com.hyjt.client.mvp.presenter.WorkPresenter;
 import com.hyjt.client.mvp.ui.adapter.ModuleAdapter;
@@ -103,6 +98,14 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
     private TextView mTvGsglManage;
     private StaffBeanDbDao staffBeanDbDao;
     private StaffBeanDb staffBeanDb;
+    private String username;
+    private String staffId;
+    private TextView mTvYwglManage;
+    private TextView mTvYwsqManage;
+    private TextView mTvRsglManage;
+    private TextView mTvXmglManage;
+    private TextView mTvCwglManage;
+    private TextView mTvZlglManage;
 
     public static WorkFragment newInstance() {
         WorkFragment fragment = new WorkFragment();
@@ -131,11 +134,11 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         tvOutLogin = (TextView) inflate.findViewById(tv_out_login);
 
         SharedPreferences sharedPre = getActivity().getSharedPreferences("config", MODE_PRIVATE);
-        String username = sharedPre.getString("username", "");
+        username = sharedPre.getString("username", "");
         String part = sharedPre.getString("part", "");
         String job = sharedPre.getString("job", "");
         String pic = sharedPre.getString("pic", "");
-        String Id = sharedPre.getString("Id", "");
+        staffId = sharedPre.getString("Id", "");
 
         tvDepartment.setText("部门:" + part);
         tvPosition.setText("职位:" + job);
@@ -172,14 +175,25 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         mRecyZlgl.setLayoutManager(new GridLayoutManager(getContext(), 5));
 
         mTvGsglManage = (TextView) inflate.findViewById(R.id.tv_gsgl_manage);
-        mTvGsglManage.setVisibility(View.GONE);
-//        mTvGsglManage.setOnClickListener(v -> gsglDel());
+        mTvGsglManage.setOnClickListener(v -> gsglDel());
+        mTvYwglManage = (TextView) inflate.findViewById(R.id.tv_ywgl_manage);
+        mTvYwglManage.setOnClickListener(v -> ywglDel());
+        mTvYwsqManage = (TextView) inflate.findViewById(R.id.tv_ywsq_manage);
+        mTvYwsqManage.setOnClickListener(v -> ywsqDel());
+        mTvRsglManage = (TextView) inflate.findViewById(R.id.tv_rsgl_manage);
+        mTvRsglManage.setOnClickListener(v -> rsglDel());
+        mTvXmglManage = (TextView) inflate.findViewById(R.id.tv_xmgl_manage);
+        mTvXmglManage.setOnClickListener(v -> xmglDel());
+        mTvCwglManage = (TextView) inflate.findViewById(R.id.tv_cwgl_manage);
+        mTvCwglManage.setOnClickListener(v -> cwglDel());
+        mTvZlglManage = (TextView) inflate.findViewById(R.id.tv_zlgl_manage);
+        mTvZlglManage.setOnClickListener(v -> zlglDel());
 
 
         daoSession = DbHelper.getInstance().getDaoSession();
         moduleBeanDbDao = daoSession.getModuleBeanDbDao();
         staffBeanDbDao = daoSession.getStaffBeanDbDao();
-        staffBeanDb = staffBeanDbDao.load(Id);
+        staffBeanDb = staffBeanDbDao.load(staffId);
 
         moduleGsgl = new ArrayList<>();
         moduleYwgl = new ArrayList<>();
@@ -213,6 +227,70 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         CwglAdapter.setOnItemClickListener((itemView, position, moduleBean) -> arountModule(moduleBean.getClickId()));
         ZlglAdapter.setOnItemClickListener((itemView, position, moduleBean) -> arountModule(moduleBean.getClickId()));
 
+        GsglAdapter.setOnItemDelListener((itemView, position, moduleBean) -> {
+            delModule(moduleBean);
+            List<ModuleBeanDb> moduleBeanDbs = moduleBeanDbDao.queryBuilder()
+                    .where(ModuleBeanDbDao.Properties.Type.eq(1)).list();
+            moduleGsgl.clear();
+            Db2Bean(moduleBeanDbs);
+            delMagText();
+            GsglAdapter.notifyDataSetChanged();
+        });
+        YwglAdapter.setOnItemDelListener((itemView, position, moduleBean) -> {
+            delModule(moduleBean);
+            List<ModuleBeanDb> moduleBeanDbs = moduleBeanDbDao.queryBuilder()
+                    .where(ModuleBeanDbDao.Properties.Type.eq(2)).list();
+            moduleYwgl.clear();
+            Db2Bean(moduleBeanDbs);
+            delMagText();
+            YwglAdapter.notifyDataSetChanged();
+        });
+        YwsqAdapter.setOnItemDelListener((itemView, position, moduleBean) -> {
+            delModule(moduleBean);
+            List<ModuleBeanDb> moduleBeanDbs = moduleBeanDbDao.queryBuilder()
+                    .where(ModuleBeanDbDao.Properties.Type.eq(3)).list();
+            moduleYwsq.clear();
+            Db2Bean(moduleBeanDbs);
+            delMagText();
+            YwsqAdapter.notifyDataSetChanged();
+        });
+        RsglAdapter.setOnItemDelListener((itemView, position, moduleBean) -> {
+            delModule(moduleBean);
+            List<ModuleBeanDb> moduleBeanDbs = moduleBeanDbDao.queryBuilder()
+                    .where(ModuleBeanDbDao.Properties.Type.eq(4)).list();
+            moduleRsgl.clear();
+            Db2Bean(moduleBeanDbs);
+            delMagText();
+            RsglAdapter.notifyDataSetChanged();
+        });
+        XmglAdapter.setOnItemDelListener((itemView, position, moduleBean) -> {
+            delModule(moduleBean);
+            List<ModuleBeanDb> moduleBeanDbs = moduleBeanDbDao.queryBuilder()
+                    .where(ModuleBeanDbDao.Properties.Type.eq(5)).list();
+            moduleXmgl.clear();
+            Db2Bean(moduleBeanDbs);
+            delMagText();
+            XmglAdapter.notifyDataSetChanged();
+        });
+        CwglAdapter.setOnItemDelListener((itemView, position, moduleBean) -> {
+            delModule(moduleBean);
+            List<ModuleBeanDb> moduleBeanDbs = moduleBeanDbDao.queryBuilder()
+                    .where(ModuleBeanDbDao.Properties.Type.eq(6)).list();
+            moduleCwgl.clear();
+            Db2Bean(moduleBeanDbs);
+            delMagText();
+            CwglAdapter.notifyDataSetChanged();
+        });
+        ZlglAdapter.setOnItemDelListener((itemView, position, moduleBean) -> {
+            delModule(moduleBean);
+            List<ModuleBeanDb> moduleBeanDbs = moduleBeanDbDao.queryBuilder()
+                    .where(ModuleBeanDbDao.Properties.Type.eq(7)).list();
+            moduleZlgl.clear();
+            Db2Bean(moduleBeanDbs);
+            delMagText();
+            ZlglAdapter.notifyDataSetChanged();
+        });
+
         mRecyGsgl.setNestedScrollingEnabled(false);
         mRecyYwgl.setNestedScrollingEnabled(false);
         mRecyYwsq.setNestedScrollingEnabled(false);
@@ -226,12 +304,31 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         return inflate;
     }
 
+    private void delModule(ModuleBean moduleBean) {
+        ModuleBeanDb moduleBeanDb = moduleBeanDbDao.load(moduleBean.getName());
+        moduleBeanDb.setIsShow(false);
+        moduleBeanDbDao.update(moduleBeanDb);
+        insertStaffModule(staffId, username);
+    }
+
+    /**
+     * 更新用户模块数据
+     */
+    private void insertStaffModule(String id, String username) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (ModuleBeanDb moduleBean : moduleBeanDbDao.loadAll()) {
+            stringBuilder.append(JsonUtils.beanToJson(new ModuleBean(moduleBean.getName(), moduleBean.getImg()
+                    , moduleBean.getMessage_nub(), moduleBean.getClickId(), moduleBean.getShowDel()
+                    , moduleBean.getType(), moduleBean.getIsShow())));
+            stringBuilder.append("|");
+        }
+        staffBeanDbDao.update(new StaffBeanDb(id, username, stringBuilder.toString()));
+    }
 
     @Override
     public void initData(Bundle savedInstanceState) {
         mPresenter.getMsgNum();
     }
-
 
     @Override
     public void showMessage(@NonNull String message) {
@@ -244,20 +341,112 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
 
     }
 
+    /**
+     * 公司管理删除展示
+     */
     private void gsglDel() {
-
-        moduleGsgl.clear();
         QueryBuilder<ModuleBeanDb> gsglDb1 = moduleBeanDbDao.queryBuilder()
                 .where(ModuleBeanDbDao.Properties.Type.eq(1));
         for (ModuleBeanDb moduleBeanDb : gsglDb1.list()) {
             moduleBeanDb.setShowDel(!moduleBeanDb.getShowDel());
             moduleBeanDbDao.update(moduleBeanDb);
         }
+        moduleGsgl.clear();
         QueryBuilder<ModuleBeanDb> gsglDb2 = moduleBeanDbDao.queryBuilder()
                 .where(ModuleBeanDbDao.Properties.Type.eq(1));
         Db2Bean(gsglDb2.list());
         GsglAdapter.notifyDataSetChanged();
+        insertStaffModule(staffId, username);
+    }
 
+    private void ywglDel() {
+        QueryBuilder<ModuleBeanDb> ywglDb1 = moduleBeanDbDao.queryBuilder()
+                .where(ModuleBeanDbDao.Properties.Type.eq(2));
+        for (ModuleBeanDb moduleBeanDb : ywglDb1.list()) {
+            moduleBeanDb.setShowDel(!moduleBeanDb.getShowDel());
+            moduleBeanDbDao.update(moduleBeanDb);
+        }
+        moduleYwgl.clear();
+        QueryBuilder<ModuleBeanDb> ywglDb2 = moduleBeanDbDao.queryBuilder()
+                .where(ModuleBeanDbDao.Properties.Type.eq(2));
+        Db2Bean(ywglDb2.list());
+        YwglAdapter.notifyDataSetChanged();
+        insertStaffModule(staffId, username);
+    }
+
+    private void ywsqDel() {
+        QueryBuilder<ModuleBeanDb> ywsqDb1 = moduleBeanDbDao.queryBuilder()
+                .where(ModuleBeanDbDao.Properties.Type.eq(3));
+        for (ModuleBeanDb moduleBeanDb : ywsqDb1.list()) {
+            moduleBeanDb.setShowDel(!moduleBeanDb.getShowDel());
+            moduleBeanDbDao.update(moduleBeanDb);
+        }
+        moduleYwsq.clear();
+        QueryBuilder<ModuleBeanDb> ywsqDb2 = moduleBeanDbDao.queryBuilder()
+                .where(ModuleBeanDbDao.Properties.Type.eq(3));
+        Db2Bean(ywsqDb2.list());
+        YwsqAdapter.notifyDataSetChanged();
+        insertStaffModule(staffId, username);
+    }
+
+    private void rsglDel() {
+        QueryBuilder<ModuleBeanDb> rsglDb1 = moduleBeanDbDao.queryBuilder()
+                .where(ModuleBeanDbDao.Properties.Type.eq(4));
+        for (ModuleBeanDb moduleBeanDb : rsglDb1.list()) {
+            moduleBeanDb.setShowDel(!moduleBeanDb.getShowDel());
+            moduleBeanDbDao.update(moduleBeanDb);
+        }
+        moduleRsgl.clear();
+        QueryBuilder<ModuleBeanDb> rsglDb2 = moduleBeanDbDao.queryBuilder()
+                .where(ModuleBeanDbDao.Properties.Type.eq(4));
+        Db2Bean(rsglDb2.list());
+        RsglAdapter.notifyDataSetChanged();
+        insertStaffModule(staffId, username);
+    }
+
+    private void xmglDel() {
+        QueryBuilder<ModuleBeanDb> xmglDb1 = moduleBeanDbDao.queryBuilder()
+                .where(ModuleBeanDbDao.Properties.Type.eq(5));
+        for (ModuleBeanDb moduleBeanDb : xmglDb1.list()) {
+            moduleBeanDb.setShowDel(!moduleBeanDb.getShowDel());
+            moduleBeanDbDao.update(moduleBeanDb);
+        }
+        moduleXmgl.clear();
+        QueryBuilder<ModuleBeanDb> xmglDb2 = moduleBeanDbDao.queryBuilder()
+                .where(ModuleBeanDbDao.Properties.Type.eq(5));
+        Db2Bean(xmglDb2.list());
+        XmglAdapter.notifyDataSetChanged();
+        insertStaffModule(staffId, username);
+    }
+
+    private void cwglDel() {
+        QueryBuilder<ModuleBeanDb> cwglDb1 = moduleBeanDbDao.queryBuilder()
+                .where(ModuleBeanDbDao.Properties.Type.eq(6));
+        for (ModuleBeanDb moduleBeanDb : cwglDb1.list()) {
+            moduleBeanDb.setShowDel(!moduleBeanDb.getShowDel());
+            moduleBeanDbDao.update(moduleBeanDb);
+        }
+        moduleCwgl.clear();
+        QueryBuilder<ModuleBeanDb> cwglDb2 = moduleBeanDbDao.queryBuilder()
+                .where(ModuleBeanDbDao.Properties.Type.eq(6));
+        Db2Bean(cwglDb2.list());
+        CwglAdapter.notifyDataSetChanged();
+        insertStaffModule(staffId, username);
+    }
+
+    private void zlglDel() {
+        QueryBuilder<ModuleBeanDb> zlglDb1 = moduleBeanDbDao.queryBuilder()
+                .where(ModuleBeanDbDao.Properties.Type.eq(7));
+        for (ModuleBeanDb moduleBeanDb : zlglDb1.list()) {
+            moduleBeanDb.setShowDel(!moduleBeanDb.getShowDel());
+            moduleBeanDbDao.update(moduleBeanDb);
+        }
+        moduleZlgl.clear();
+        QueryBuilder<ModuleBeanDb> zlglDb2 = moduleBeanDbDao.queryBuilder()
+                .where(ModuleBeanDbDao.Properties.Type.eq(7));
+        Db2Bean(zlglDb2.list());
+        ZlglAdapter.notifyDataSetChanged();
+        insertStaffModule(staffId, username);
     }
 
     private void loadModuleList() {
@@ -273,11 +462,10 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
 
         Db2Bean(moduleBeanDbs);
 
-//        String StaffJson = staffBeanDb.getModuleList().replace("\\", "");
-//        String[] strAry = StaffJson.split("\\|");
-//        Bean2List(strAry);
-//        moduleGsgl.addAll(moduleListBean.getModuleBeanList());
+        delMagText();
+    }
 
+    private void delMagText() {
         if (moduleGsgl.size() == 0) {
             mLlGsgl.setVisibility(View.GONE);
         } else {
@@ -319,35 +507,6 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         } else {
             mLlZlgl.setVisibility(View.VISIBLE);
             ZlglAdapter.notifyDataSetChanged();
-        }
-    }
-
-    private void Bean2List(String[] strAry) {
-        for (String str : strAry) {
-            ModuleBean moduleBean = JsonUtils.parseJson(str, ModuleBean.class);
-            switch (moduleBean.getType()) {
-                case 1:
-                    moduleGsgl.add(moduleBean);
-                    break;
-                case 2:
-                    moduleYwgl.add(moduleBean);
-                    break;
-                case 3:
-                    moduleYwsq.add(moduleBean);
-                    break;
-                case 4:
-                    moduleRsgl.add(moduleBean);
-                    break;
-                case 5:
-                    moduleXmgl.add(moduleBean);
-                    break;
-                case 6:
-                    moduleCwgl.add(moduleBean);
-                    break;
-                case 7:
-                    moduleZlgl.add(moduleBean);
-                    break;
-            }
         }
     }
 
@@ -587,4 +746,17 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         }
     }
 
+    @Override
+    public void onDestroy() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (ModuleBeanDb moduleBean : moduleBeanDbDao.loadAll()) {
+            stringBuilder.append(JsonUtils.beanToJson(new ModuleBean(moduleBean.getName(), moduleBean.getImg()
+                    , moduleBean.getMessage_nub(), moduleBean.getClickId(), false
+                    , moduleBean.getType(), moduleBean.getIsShow())));
+            stringBuilder.append("|");
+        }
+        staffBeanDbDao.update(new StaffBeanDb(staffId, username, stringBuilder.toString()));
+
+        super.onDestroy();
+    }
 }
