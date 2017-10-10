@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_common_F4F5F6"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/icld_ploan_list"
+        layout="@layout/home_include_back_title" />
+    <Button
+        android:id="@+id/btn_new_ploan"
+        android:layout_width="160dp"
+        android:layout_height="29dp"
+        android:background="@drawable/home_bg_new_meeting"
+        android:text="发起个人借款"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="19dp"/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_ploan_list"
+        android:layout_above="@id/btn_new_ploan"
+        android:layout_below="@id/icld_ploan_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="19dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy_ploan_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+</RelativeLayout>

@@ -743,6 +743,10 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
                 ARouter.getInstance().build("/home/BlocNoticeListActivity").navigation(getActivity(), Api.WorkStartCode);
                 break;
             }
+            case 101: {//个人借款
+                ARouter.getInstance().build("/home/PsonLoanListActivity").navigation(getActivity(), Api.WorkStartCode);
+                break;
+            }
         }
     }
 

@@ -1457,30 +1457,30 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/ll_jksp"
+                android:id="@+id/ll_grjk"
                 style="@style/home_ll_org_top_btn">
 
                 <RelativeLayout
-                    android:id="@+id/rl_jksp"
+                    android:id="@+id/rl_grjk"
                     style="@style/home_rl_org_top_btn">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="fitXY"
-                        android:src="@mipmap/h_jksp" />
+                        android:src="@mipmap/h_grjk" />
 
                     <RelativeLayout style="@style/rlWorkMsg">
 
                         <TextView
-                            android:id="@+id/tv_jksp_num" style="@style/tvWorkMsg"/>
+                            android:id="@+id/tv_grjk_num" style="@style/tvWorkMsg"/>
                     </RelativeLayout>
                 </RelativeLayout>
 
                 <TextView
-                    android:id="@+id/tv_jksp"
+                    android:id="@+id/tv_grjk"
                     style="@style/home_tv_org_top_btn_name"
-                    android:text="@string/work_jksp" />
+                    android:text="@string/work_grjk" />
 
             </LinearLayout>
 

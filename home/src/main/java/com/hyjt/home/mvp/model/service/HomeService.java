@@ -2,6 +2,7 @@ package com.hyjt.home.mvp.model.service;
 
 import com.hyjt.frame.api.BaseJson;
 import com.hyjt.home.mvp.model.entity.Reqs.LUReqsListReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanListReqs;
 import com.hyjt.home.mvp.model.entity.Resp.CIdeaDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.CIdeaListResp;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
@@ -23,6 +24,7 @@ import com.hyjt.home.mvp.model.entity.Resp.LUReqsListResp;
 import com.hyjt.home.mvp.model.entity.Resp.LinkManResp;
 import com.hyjt.home.mvp.model.entity.Resp.MeetingListResp;
 import com.hyjt.home.mvp.model.entity.Resp.MeetingMsgResp;
+import com.hyjt.home.mvp.model.entity.Resp.PsonLoanListResp;
 import com.hyjt.home.mvp.model.entity.Resp.ReportTDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.ReportTListResp;
 import com.hyjt.home.mvp.model.entity.Resp.SLConsultDetailResp;
@@ -341,4 +343,8 @@ public interface HomeService {
 
     @POST("/APIUnionAppeal/Delete")
     Observable<BaseJson<Object>> laborUnionReqsDelete(@Body BaseIdReqs baseIdReqs);
+
+
+    @POST("/APICwPersonalJK/GetData")
+    Observable<BaseJson<PsonLoanListResp>> psonLoanReqsList(@Body PsonLoanListReqs PsonLoanListReqs);
 }

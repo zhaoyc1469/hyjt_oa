@@ -100,7 +100,7 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
 //            moduleBeanDbDao.insert(new ModuleBeanDb("项目汇报", 5, true, "h_xmhb", 82, 0));
 //            moduleBeanDbDao.insert(new ModuleBeanDb("项目资料", 5, true, "h_xmzl", 83, 0));
 //
-//            moduleBeanDbDao.insert(new ModuleBeanDb("借款审批", 6, true, "h_jksp", 101, 0));
+//            moduleBeanDbDao.insert(new ModuleBeanDb("借款审批", 6, true, "h_grjk", 101, 0));
 //            moduleBeanDbDao.insert(new ModuleBeanDb("费用审批", 6, true, "h_fysp", 102, 0));
 //            moduleBeanDbDao.insert(new ModuleBeanDb("报销审批", 6, true, "h_bxsp", 103, 0));
 //

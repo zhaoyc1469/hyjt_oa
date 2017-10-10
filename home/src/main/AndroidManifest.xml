@@ -138,6 +138,9 @@
             android:name=".mvp.ui.activity.LaborUnionReqsCreateActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity android:name=".mvp.ui.activity.PsonLoanListActivity" />
+        <activity android:name=".mvp.ui.activity.PsonLoanCreateActivity" />
+        <activity android:name=".mvp.ui.activity.PsonLoanEditActivity"></activity>
     </application>
 
 </manifest>

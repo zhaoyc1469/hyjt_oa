@@ -158,7 +158,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         moduleBeanDbDao.insert(new ModuleBeanDb("项目汇报", 5, true, false, "h_xmhb", 82, 0, -1));
         moduleBeanDbDao.insert(new ModuleBeanDb("项目资料", 5, true, false, "h_xmzl", 83, 0, -1));
 
-        moduleBeanDbDao.insert(new ModuleBeanDb("借款审批", 6, true, false, "h_jksp", 101, 0, -1));
+        moduleBeanDbDao.insert(new ModuleBeanDb("个人借款", 6, true, false, "h_grjk", 101, 0, -1));
         moduleBeanDbDao.insert(new ModuleBeanDb("费用审批", 6, true, false, "h_fysp", 102, 0, -1));
         moduleBeanDbDao.insert(new ModuleBeanDb("报销审批", 6, true, false, "h_bxsp", 103, 0, -1));
 

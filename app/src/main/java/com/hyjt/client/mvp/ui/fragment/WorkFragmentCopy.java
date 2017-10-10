@@ -94,7 +94,7 @@
 //    private RelativeLayout mRlXmda;
 //    private RelativeLayout mRlXmhb;
 //    private RelativeLayout mRlXmzl;
-//    private RelativeLayout mRlJksp;
+//    private RelativeLayout mRlgrjk;
 //    private RelativeLayout mRlFysp;
 //    private RelativeLayout mRlBxsp;
 //    private RelativeLayout mRlBg;
@@ -224,7 +224,7 @@
 //        mRlXmda = (RelativeLayout) inflate.findViewById(R.id.rl_xmda);
 //        mRlXmhb = (RelativeLayout) inflate.findViewById(R.id.rl_xmhb);
 //        mRlXmzl = (RelativeLayout) inflate.findViewById(R.id.rl_xmzl);
-//        mRlJksp = (RelativeLayout) inflate.findViewById(R.id.rl_jksp);
+//        mRlgrjk = (RelativeLayout) inflate.findViewById(R.id.rl_grjk);
 //        mRlFysp = (RelativeLayout) inflate.findViewById(R.id.rl_fysp);
 //        mRlBxsp = (RelativeLayout) inflate.findViewById(R.id.rl_bxsp);
 //        mRlBg = (RelativeLayout) inflate.findViewById(R.id.rl_bg);
@@ -270,7 +270,7 @@
 //        mRlXmda.setOnClickListener(this);
 //        mRlXmhb.setOnClickListener(this);
 //        mRlXmzl.setOnClickListener(this);
-//        mRlJksp.setOnClickListener(this);
+//        mRlgrjk.setOnClickListener(this);
 //        mRlFysp.setOnClickListener(this);
 //        mRlBxsp.setOnClickListener(this);
 //        mRlBg.setOnClickListener(this);
