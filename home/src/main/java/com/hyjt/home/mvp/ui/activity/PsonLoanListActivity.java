@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.utils.UiUtils;
@@ -79,12 +80,12 @@ public class PsonLoanListActivity extends BaseActivity<PsonLoanListPresenter> im
         mBtnNewPloan = (Button) findViewById(R.id.btn_new_ploan);
         mSrlPloanList = (SwipeRefreshLayout) findViewById(R.id.srl_ploan_list);
         mRecyPloanList = (RecyclerView) findViewById(R.id.recy_ploan_list);
-
+        mBtnNewPloan.setOnClickListener(v -> ARouter.getInstance()
+                .build("/home/PsonLoanCreateActivity").navigation());
         mPresenter.getPsonLoanList(true, "", "", "");
     }
 
     private void popSel() {
-
         psonLoanSelPop = new PsonLoanSelPop(this);
         psonLoanSelPop.setSelCmListener((num, start, end) -> {
                     CwPnum = num;

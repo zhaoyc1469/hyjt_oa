@@ -3,6 +3,10 @@ package com.hyjt.home.mvp.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hyjt.frame.base.BaseActivity;
@@ -24,6 +28,11 @@ import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> implements PsonLoanEditContract.View {
 
 
+    private android.widget.RelativeLayout mRlPsonloan;
+    private android.widget.ImageView mIvTopBack;
+    private android.widget.TextView mTvTitle;
+    private android.widget.ImageView mIvTopSelect;
+
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
         DaggerPsonLoanEditComponent
@@ -41,7 +50,14 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
 
     @Override
     public void initData(Bundle savedInstanceState) {
-
+        mRlPsonloan = (RelativeLayout) findViewById(R.id.rl_psonloan);
+        mIvTopBack = (ImageView) findViewById(R.id.iv_top_back);
+        mIvTopBack.setOnClickListener(v -> finish());
+        mTvTitle = (TextView) findViewById(R.id.tv_title);
+        mTvTitle.setText("个人借款");
+        mTvTitle.setOnClickListener(v -> finish());
+        mIvTopSelect = (ImageView) findViewById(R.id.iv_top_select);
+        mIvTopSelect.setVisibility(View.GONE);
     }
 
 

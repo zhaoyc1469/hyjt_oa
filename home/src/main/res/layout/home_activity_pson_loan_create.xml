@@ -1,12 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_psonloan"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/rl_psonloan"
-    android:background="@color/home_common_F4F5F6">
+    android:background="@drawable/home_bg_table">
 
     <include
         android:id="@+id/icld_ploan_create"
         layout="@layout/home_include_back_title" />
 
+    <LinearLayout
+        android:id="@+id/ll_bottom_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_create_loan"
+            android:layout_width="110dp"
+            android:layout_height="29dp"
+            android:background="@drawable/home_bg_new_btn_common"
+            android:text="发起借款" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/slv_psonloan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ll_bottom_btn"
+        android:layout_below="@id/icld_ploan_create"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="申请人" />
+
+                <EditText
+                    android:id="@+id/edt_proposer"
+                    style="@style/home_edt_standard"
+                    android:focusable="false" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="公司名称" />
+
+                <EditText
+                    android:id="@+id/edt_company_name"
+                    style="@style/home_edt_standard"
+                    android:focusable="false" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="部门" />
+
+                <EditText
+                    android:id="@+id/edt_department"
+                    style="@style/home_edt_standard"
+                    android:focusable="false" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="首签领导" />
+
+                <EditText
+                    android:id="@+id/edt_frist_leader"
+                    style="@style/home_edt_standard"
+                    android:focusable="false" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="报销事由" />
+
+                <EditText
+                    android:id="@+id/edt_expense_reason"
+                    style="@style/home_edt_standard"
+                    android:focusable="false" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="报销金额" />
+
+                <EditText
+                    android:id="@+id/edt_expense_amount"
+                    style="@style/home_edt_standard"
+                    android:focusable="false" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="费用类型" />
+
+                <EditText
+                    android:id="@+id/edt_expense_type"
+                    style="@style/home_edt_standard"
+                    android:focusable="false" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rl_add_file"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="附件列表"
+                    android:textColor="@color/home_common_000000"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_add_file"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
+                    android:text="添加" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recy_accessory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
