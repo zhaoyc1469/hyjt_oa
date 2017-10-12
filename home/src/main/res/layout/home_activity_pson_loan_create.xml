@@ -121,7 +121,7 @@
 
                 <TextView
                     style="@style/home_tv_standard"
-                    android:text="报销事由" />
+                    android:text="借款事由" />
 
                 <EditText
                     android:id="@+id/edt_expense_reason"
@@ -139,7 +139,7 @@
 
                 <TextView
                     style="@style/home_tv_standard"
-                    android:text="报销金额" />
+                    android:text="借款金额" />
 
                 <EditText
                     android:id="@+id/edt_expense_amount"
@@ -157,7 +157,7 @@
 
                 <TextView
                     style="@style/home_tv_standard"
-                    android:text="费用类型" />
+                    android:text="收款方式" />
 
                 <EditText
                     android:id="@+id/edt_expense_type"

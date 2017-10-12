@@ -58,6 +58,8 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mTvTitle.setOnClickListener(v -> finish());
         mIvTopSelect = (ImageView) findViewById(R.id.iv_top_select);
         mIvTopSelect.setVisibility(View.GONE);
+
+//        mPresenter.
     }
 
 
