@@ -1,6 +1,7 @@
 package com.hyjt.home.mvp.model.service;
 
 import com.hyjt.frame.api.BaseJson;
+import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.LUReqsListReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanListReqs;
 import com.hyjt.home.mvp.model.entity.Resp.CIdeaDetailResp;
@@ -24,6 +25,10 @@ import com.hyjt.home.mvp.model.entity.Resp.LUReqsListResp;
 import com.hyjt.home.mvp.model.entity.Resp.LinkManResp;
 import com.hyjt.home.mvp.model.entity.Resp.MeetingListResp;
 import com.hyjt.home.mvp.model.entity.Resp.MeetingMsgResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
+import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanListResp;
 import com.hyjt.home.mvp.model.entity.Resp.ReportTDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.ReportTListResp;
@@ -347,4 +352,25 @@ public interface HomeService {
 
     @POST("/APICwPersonalJK/GetData")
     Observable<BaseJson<PsonLoanListResp>> psonLoanReqsList(@Body PsonLoanListReqs PsonLoanListReqs);
+
+
+    //获取银行账户
+    @POST("/APICwPersonalJK/GetBank")
+    Observable<BaseJson<PLBankAccountResp>> psonLoanBankAcount();
+
+    //获取流程节点
+    @POST("/APICwPersonalJK/GetFlowDetails")
+    Observable<BaseJson<PsonLoanListResp>> psonLoanFlowNode(@Body PsonLoanListReqs PsonLoanListReqs);
+
+    //首签领导
+    @POST("/APICwPersonalJK/GetFlowList")
+    Observable<BaseJson<PLFristLeaderResp>> psonLoanFlowLeader(@Body BaseTypeReqs baseTypeReqs);
+
+    //个人借款公司选择
+    @POST("/APICwPersonalJK/GetCompany")
+    Observable<BaseJson<PLCompanyResp>> psonLoanCompany();
+
+    //个人借款详情
+    @POST("/APICwPersonalJK/Details")
+    Observable<BaseJson<PsonLoanDetailResp>> psonLoanDetail(@Body BaseIdReqs PsonLoanReqs);
 }

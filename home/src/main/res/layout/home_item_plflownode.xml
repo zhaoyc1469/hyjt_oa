@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:background="@color/home_common_FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/home_bg_white_table">
+            <TextView
+                style="@style/home_tv_standard"
+                android:text="流程名称" />
+            <View style="@style/home_meeting_line" />
+            <EditText
+                android:id="@+id/edt_mailbox"
+                style="@style/home_edt_standard" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/home_bg_white_table">
+            <TextView
+                style="@style/home_tv_standard"
+                android:text="审批人" />
+            <View style="@style/home_meeting_line" />
+            <EditText
+                style="@style/home_edt_standard" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/home_bg_white_table">
+            <TextView
+                style="@style/home_tv_standard"
+                android:text="是否审批" />
+            <View style="@style/home_meeting_line" />
+            <EditText
+                style="@style/home_edt_standard" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:minHeight="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/home_bg_white_table">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="备注"
+                android:textColor="@color/home_common_000000" />
+            <EditText
+                android:id="@+id/edt_question_content"
+                android:layout_width="match_parent"
+                android:minHeight="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="14dp"
+                android:layout_marginStart="89dp"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:gravity="top"
+                android:textColor="@color/home_common_434242"
+                android:textColorHint="@color/home_common_9CA0A4"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="86dp"
+                android:background="#000000" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="86dp"
+                android:layout_alignParentBottom="true"
+                android:background="#000000" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_alignTop="@id/edt_question_content"
+                android:layout_alignBottom="@id/edt_question_content"
+                android:layout_marginStart="86dp"
+                android:background="#000000" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
