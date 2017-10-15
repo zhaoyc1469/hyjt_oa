@@ -1,13 +1,19 @@
 package com.hyjt.home.mvp.ui.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -19,12 +25,11 @@ import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.di.component.DaggerPsonLoanEditComponent;
 import com.hyjt.home.di.module.PsonLoanEditModule;
 import com.hyjt.home.mvp.contract.PsonLoanEditContract;
+import com.hyjt.home.mvp.model.entity.Resp.CEmailDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 import com.hyjt.home.mvp.presenter.PsonLoanEditPresenter;
 
 import com.hyjt.home.R;
-import com.hyjt.home.mvp.ui.adapter.PLFlowNodeAdapter;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,9 +59,9 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
     private android.widget.EditText mEdtBankAccount;
     private EditText mEdtLoanNum;
     private EditText mEdtLoanTime;
-    private RecyclerView mRecyFlowNode;
     private List<PsonLoanDetailResp.FlowPackBean> flowPack = new ArrayList<>();
-    private PLFlowNodeAdapter plFlowNodeAdapter;
+    private LinearLayout mLLFlowNode;
+    private String currentPerson;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -98,10 +103,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mEdtAccountName = (EditText) findViewById(R.id.edt_account_name);
         mEdtOpenactBank = (EditText) findViewById(R.id.edt_openact_bank);
         mEdtBankAccount = (EditText) findViewById(R.id.edt_bank_account);
-        mRecyFlowNode = (RecyclerView) findViewById(R.id.recy_flow_node);
-        mRecyFlowNode.setLayoutManager(new LinearLayoutManager(this));
-        plFlowNodeAdapter = new PLFlowNodeAdapter(flowPack);
-
+        mLLFlowNode = (LinearLayout) findViewById(R.id.ll_flow_node);
         mPresenter.getrPsonLoanDetail(psonLoanId);
     }
 
@@ -127,6 +129,16 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
 
     @Override
     public void showPLDetail(PsonLoanDetailResp psonLoanDetailResp) {
+        currentPerson = psonLoanDetailResp.getCurrentPerson().trim();
+
+//        if (!getUserName().equals(currentPerson) || !currentPerson.equals(psonLoanDetailResp.getCwJKState().trim())){
+//            mRbAgree.setClickable(false);
+//            mRbRefuse.setClickable(false);
+//            mEdtApprover.setEnabled(false);
+//            mEdtApprover.setFocusable(false);
+//            mEdtRemark.setEnabled(false);
+//            mEdtRemark.setFocusable(false);
+//        }
 
         mEdtLoanNum.setText(psonLoanDetailResp.getCwPnum());
         mEdtLoanTime.setText(psonLoanDetailResp.getSqDate());
@@ -141,12 +153,48 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mEdtOpenactBank.setText(psonLoanDetailResp.getCwRpbank());
         mEdtBankAccount.setText(psonLoanDetailResp.getCwRpnum());
 
+        flowPack.clear();
         flowPack.addAll(psonLoanDetailResp.getFlowPack());
-        plFlowNodeAdapter.notifyDataSetChanged();
-//        for (PsonLoanDetailResp.FlowPackBean flowPackBean : flowPack){
-//            flowPackBean.getNodeName()
-//        }
-//        flowPack.get()
+        for (int position = 0; position<flowPack.size(); position++){
+            setFilePack(position);
+        }
+
+
+
+    }
+
+    private void setFilePack(int position) {
+
+        View inflate = LayoutInflater.from(this).inflate(R.layout.home_add_plflownode, null);
+        PsonLoanDetailResp.FlowPackBean flowPackBean = flowPack.get(position);
+
+        TextView mTvNodeName = (TextView) inflate.findViewById(R.id.tv_node_name);
+        EditText mEdtApprover = (EditText) inflate.findViewById(R.id.edt_approver);
+        RadioGroup mRgAprState = (RadioGroup) inflate.findViewById(R.id.rg_apr_state);
+        RadioButton mRbAgree = (RadioButton) inflate.findViewById(R.id.rb_agree);
+        RadioButton mRbRefuse = (RadioButton) inflate.findViewById(R.id.rb_refuse);
+        EditText mEdtRemark = (EditText) inflate.findViewById(R.id.edt_remark);
+
+        mTvNodeName.setText(flowPackBean.getNodeName());
+        mEdtApprover.setText(flowPackBean.getNodePerson());
+
+        if (!getUserName().equals(currentPerson) || !currentPerson.equals(flowPackBean.getNodePerson().trim())){
+            mRbAgree.setClickable(false);
+            mRbRefuse.setClickable(false);
+            mEdtApprover.setEnabled(false);
+            mEdtApprover.setFocusable(false);
+            mEdtRemark.setEnabled(false);
+            mEdtRemark.setFocusable(false);
+        }
+
+        if ("同意".equals(flowPackBean.getNodeMemo())) {
+            mRbAgree.setChecked(true);
+        } else if ("不同意".equals(flowPackBean.getNodeMemo())) {
+            mRbRefuse.setChecked(true);
+        }
+        mEdtRemark.setText(flowPackBean.getNodeMemotext());
+
+        mLLFlowNode.addView(inflate);
     }
 
 }

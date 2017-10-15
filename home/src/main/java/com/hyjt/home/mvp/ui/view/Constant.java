@@ -15,4 +15,5 @@ public class Constant {
     public static final String[] isLiveArr = new String[]{"是", "否"};
     public static final String[] isInsuredArr = new String[]{"是", "否"};
     public static final String[] educationArr = new String[]{"高中", "中专", "大专", "本科", "硕士", "博士"};
+    public static final String[] payTypeArr = new String[]{"现金", "转账"};
 }

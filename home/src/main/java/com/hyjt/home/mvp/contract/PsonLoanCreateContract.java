@@ -6,9 +6,14 @@ import android.widget.EditText;
 import com.hyjt.frame.api.BaseJson;
 import com.hyjt.frame.mvp.IModel;
 import com.hyjt.frame.mvp.IView;
+import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.StaffNameIdKey;
 import com.hyjt.home.mvp.model.entity.Resp.ChildrenBean;
 import com.hyjt.home.mvp.model.entity.Resp.LinkManResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLFlowNodeResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.mvp.ui.view.treelistview.Node;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -23,15 +28,20 @@ public interface PsonLoanCreateContract {
 
         RxPermissions getRxPermissions();
 
-        void showDeptTree(List<Node> deptList);
+        void hideLoading();
 
-        void getLinkmanOk(String[] nameAry, String[] nameSendAry, EditText selEdit, StaffNameIdKey staffNameId, boolean moreCheck);
+        void loadFlowNode(PLFristLeaderResp plFristLeaderResp);
     }
 
     interface Model extends IModel {
 
-        Observable<BaseJson<List<ChildrenBean>>> reqsDeptList();
+        Observable<BaseJson<PLFristLeaderResp>> getFristLeader(BaseTypeReqs baseTypeReqs);
 
-        Observable<BaseJson<LinkManResp>> getLinkman(String Page, String RP, String SysDepartment);
+        Observable<BaseJson<PLBankAccountResp>> getBankAccount();
+
+        Observable<BaseJson<PLFlowNodeResp>> getFlowNode();
+
+        Observable<BaseJson<PLCompanyResp>> getPLCompany();
+
     }
 }

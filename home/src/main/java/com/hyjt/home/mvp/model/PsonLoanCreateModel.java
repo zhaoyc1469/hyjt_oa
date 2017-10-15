@@ -12,8 +12,13 @@ import com.hyjt.frame.mvp.BaseModel;
 import javax.inject.Inject;
 
 import com.hyjt.home.mvp.contract.PsonLoanCreateContract;
+import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
 import com.hyjt.home.mvp.model.entity.Resp.ChildrenBean;
 import com.hyjt.home.mvp.model.entity.Resp.LinkManResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLFlowNodeResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.mvp.model.service.HomeService;
 
 import java.util.List;
@@ -40,16 +45,31 @@ public class PsonLoanCreateModel extends BaseModel implements PsonLoanCreateCont
         this.mApplication = null;
     }
 
+
+
     @Override
-    public Observable<BaseJson<List<ChildrenBean>>> reqsDeptList() {
-        Observable<BaseJson<List<ChildrenBean>>> deptList = mRepositoryManager.obtainRetrofitService(HomeService.class)
-                .getDeptList();
-        return deptList;
+    public Observable<BaseJson<PLFristLeaderResp>> getFristLeader(BaseTypeReqs baseTypeReqs) {
+        Observable<BaseJson<PLFristLeaderResp>> fristLeader = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .psonLoanFlowLeader(baseTypeReqs);
+        return fristLeader;
     }
+
     @Override
-    public Observable<BaseJson<LinkManResp>> getLinkman(String Page, String RP, String SysDepartment) {
-        Observable<BaseJson<LinkManResp>> getLinkman = mRepositoryManager.obtainRetrofitService(HomeService.class)
-                .getLinkman(Page, RP, SysDepartment);
-        return getLinkman;
+    public Observable<BaseJson<PLBankAccountResp>> getBankAccount() {
+        Observable<BaseJson<PLBankAccountResp>> bankAccount = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .psonLoanBankAcount();
+        return bankAccount;
+    }
+
+    @Override
+    public Observable<BaseJson<PLFlowNodeResp>> getFlowNode() {
+        return null;
+    }
+
+    @Override
+    public Observable<BaseJson<PLCompanyResp>> getPLCompany() {
+        Observable<BaseJson<PLCompanyResp>> plCompany = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .psonLoanCompany();
+        return plCompany;
     }
 }

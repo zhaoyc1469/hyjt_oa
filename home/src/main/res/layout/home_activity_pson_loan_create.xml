@@ -85,24 +85,6 @@
 
                 <TextView
                     style="@style/home_tv_standard"
-                    android:text="部门" />
-
-                <EditText
-                    android:id="@+id/edt_department"
-                    style="@style/home_edt_standard"
-                    android:focusable="false" />
-
-                <View style="@style/home_meeting_line" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="34dp"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/home_bg_white_table">
-
-                <TextView
-                    style="@style/home_tv_standard"
                     android:text="首签领导" />
 
                 <EditText
@@ -166,6 +148,108 @@
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="户名" />
+
+                <EditText android:id="@+id/edt_account_name"
+                    style="@style/home_edt_standard"
+                    android:focusable="false" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="开户银行" />
+
+                <EditText android:id="@+id/edt_openact_bank"
+                    style="@style/home_edt_standard"
+                    android:focusable="false" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="银行账号" />
+
+                <EditText android:id="@+id/edt_bank_account"
+                    style="@style/home_edt_standard"
+                    android:focusable="false" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:minHeight="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="备注"
+                    android:textColor="@color/home_common_000000" />
+                <EditText
+                    android:id="@+id/edt_remark"
+                    android:layout_width="match_parent"
+                    android:minHeight="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="14dp"
+                    android:layout_marginStart="89dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:textColor="@color/home_common_434242"
+                    android:textColorHint="@color/home_common_9CA0A4"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="86dp"
+                    android:background="#000000" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="86dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="#000000" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignTop="@id/edt_remark"
+                    android:layout_alignBottom="@id/edt_remark"
+                    android:layout_marginStart="86dp"
+                    android:background="#000000" />
+            </RelativeLayout>
+
+
+
             <RelativeLayout
                 android:id="@+id/rl_add_file"
                 android:layout_width="match_parent"
