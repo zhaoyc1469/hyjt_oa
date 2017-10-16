@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl_item"
+    android:background="@color/home_common_F8F8F8"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_account_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:textSize="14sp"
+        android:textColor="@color/home_common_000000" />
+    <TextView
+        android:id="@+id/tv_account_bank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="3dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:textSize="14sp"
+        android:textColor="@color/home_common_000000" />
+
+
+    <TextView
+        android:id="@+id/tv_account_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_account_name"
+        android:layout_marginBottom="3dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:textSize="14sp"
+        android:textColor="@color/home_common_000000" />
+
+    <View
+        android:layout_marginTop="3dp"
+        android:layout_below="@id/tv_account_num"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/home_common_434242"/>
+</RelativeLayout>
+
+

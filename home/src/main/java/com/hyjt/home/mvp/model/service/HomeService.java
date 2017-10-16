@@ -3,6 +3,7 @@ package com.hyjt.home.mvp.model.service;
 import com.hyjt.frame.api.BaseJson;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.LUReqsListReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanListReqs;
 import com.hyjt.home.mvp.model.entity.Resp.CIdeaDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.CIdeaListResp;
@@ -373,4 +374,7 @@ public interface HomeService {
     //个人借款详情
     @POST("/APICwPersonalJK/Details")
     Observable<BaseJson<PsonLoanDetailResp>> psonLoanDetail(@Body BaseIdReqs PsonLoanReqs);
+    //个人借款详情
+    @POST("/APICwPersonalJK/CreateOnOnePage")
+    Observable<BaseJson<Object>> psonLoanCreate(@Body PsonLoanCreateReqs PsonLoanReqs);
 }

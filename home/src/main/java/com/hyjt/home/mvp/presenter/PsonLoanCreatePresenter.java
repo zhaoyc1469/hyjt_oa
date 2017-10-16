@@ -25,12 +25,15 @@ import javax.inject.Inject;
 
 import com.hyjt.home.mvp.contract.PsonLoanCreateContract;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.StaffNameIdKey;
 import com.hyjt.home.mvp.model.entity.Resp.ChildrenBean;
 import com.hyjt.home.mvp.model.entity.Resp.LinkManResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFlowNodeResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
+import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 import com.hyjt.home.mvp.ui.view.treelistview.Dept;
 import com.hyjt.home.mvp.ui.view.treelistview.Node;
 
@@ -86,7 +89,7 @@ public class PsonLoanCreatePresenter extends BasePresenter<PsonLoanCreateContrac
                 .subscribe(new ErrorHandleSubscriber<PLCompanyResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull PLCompanyResp plCompanyResp) {
-
+                        mRootView.showCompanyList(plCompanyResp);
                     }
                 });
     }
@@ -109,16 +112,32 @@ public class PsonLoanCreatePresenter extends BasePresenter<PsonLoanCreateContrac
 
 
     public void getOpenBank(){
-        mModel.getPLCompany()
+        mModel.getBankAccount()
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doAfterTerminate(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new ErrorHandleSubscriber<PLCompanyResp>(mErrorHandler) {
+                .subscribe(new ErrorHandleSubscriber<PLBankAccountResp>(mErrorHandler) {
                     @Override
-                    public void onNext(@NonNull PLCompanyResp plCompanyResp) {
+                    public void onNext(@NonNull PLBankAccountResp plBankAccountResp) {
+                        mRootView.showBankAccount(plBankAccountResp);
+                    }
+                });
+    }
+
+    public void createPsonLoan(PsonLoanCreateReqs psonLoanCreateReqs){
+        mModel.createPsonLoan(psonLoanCreateReqs)
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object object) {
 
                     }
                 });

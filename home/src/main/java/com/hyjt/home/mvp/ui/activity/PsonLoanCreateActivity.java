@@ -11,21 +11,18 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.Gravity;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.SimpleAdapter;
-import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -38,27 +35,28 @@ import com.hyjt.home.di.component.DaggerPsonLoanCreateComponent;
 import com.hyjt.home.di.module.PsonLoanCreateModule;
 import com.hyjt.home.mvp.contract.PsonLoanCreateContract;
 import com.hyjt.home.mvp.model.entity.AccessoryResq;
+import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.StaffNameIdKey;
+import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
+import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 import com.hyjt.home.mvp.presenter.PsonLoanCreatePresenter;
 
 import com.hyjt.home.R;
 import com.hyjt.home.mvp.ui.adapter.AccessoryAdapter;
+import com.hyjt.home.mvp.ui.adapter.BankAccountAdapter;
+import com.hyjt.home.mvp.ui.adapter.ComnStringAdapter;
 import com.hyjt.home.mvp.ui.adapter.FrstLdAdapter;
 import com.hyjt.home.mvp.ui.view.Constant;
-import com.hyjt.home.mvp.ui.view.DepartmentPop;
-import com.hyjt.home.mvp.ui.view.DeptTreePop;
 import com.hyjt.home.mvp.ui.view.GetSingleSelectItem;
-import com.hyjt.home.mvp.ui.view.treelistview.Node;
 import com.hyjt.home.utils.ImgUtil;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 
@@ -72,9 +70,6 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
     private ImageView mIvTopBack;
     private TextView mTvTitle;
     private ImageView mIvTopSelect;
-    private RecyclerView mRecyAccessory;
-    private List<AccessoryResq> accessoryResqsList = new ArrayList<>();
-    private AccessoryAdapter accessoryAdapter;
     private RelativeLayout mRlAddFile;
     private Button mBtnAddFile;
     private String username;
@@ -88,6 +83,14 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
     private Activity mContext;
     private ProgressDialog progressDialog;
     private PLFristLeaderResp.FlowDetailsBean flowDetailsBean;
+    private LinearLayout mLlTransferMsg;
+    private EditText mEdtBankAccount;
+    private EditText mEdtAccountName;
+    private EditText mEdtOpenactBank;
+    private EditText mEdtRemark;
+    private BankAccountAdapter bankAccountAdapter;
+    private Button mBtnSelBankAccount;
+    private Button mBtnCreateLoan;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -117,14 +120,18 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
         mTvTitle.setOnClickListener(v -> finish());
         mIvTopSelect = (ImageView) findViewById(R.id.iv_top_select);
         mIvTopSelect.setVisibility(View.GONE);
-
+        mLlTransferMsg = (LinearLayout) findViewById(R.id.ll_transfer_msg);
+        mLlTransferMsg.setVisibility(View.GONE);
         mEdtProposer = (EditText) findViewById(R.id.edt_proposer);
         mEdtProposer.setText(username);
         mEdtCompanyName = (EditText) findViewById(R.id.edt_company_name);
+        mEdtCompanyName.setOnClickListener(v -> {
+            progressDialog = ProgressDialog.show(this, null, "加载公司列表…");
+            mPresenter.getPLCompany();
+        });
         mEdtFristLeader = (EditText) findViewById(R.id.edt_frist_leader);
-
         mEdtFristLeader.setOnClickListener(v -> {
-            progressDialog = ProgressDialog.show(this, null, "加载审批流程…");
+            progressDialog = ProgressDialog.show(this, null, "加载首签领导…");
             mPresenter.getFristLeader("个人借款");
         });
 
@@ -135,6 +142,16 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
         mEdtExpenseType.setOnTouchListener(new GetSingleSelectItem(
                 this, mEdtExpenseType, "支付方式", Constant.payTypeArr, false));
 
+        mEdtBankAccount = (EditText) findViewById(R.id.edt_bank_account);
+        mEdtAccountName = (EditText) findViewById(R.id.edt_account_name);
+        mEdtOpenactBank = (EditText) findViewById(R.id.edt_openact_bank);
+        mEdtRemark = (EditText) findViewById(R.id.edt_remark);
+        mBtnSelBankAccount = (Button) findViewById(R.id.btn_sel_bank_account);
+        mBtnSelBankAccount.setVisibility(View.GONE);
+        mBtnSelBankAccount.setOnClickListener(v -> {
+            progressDialog = ProgressDialog.show(this, null, "加载银行列表…");
+            mPresenter.getOpenBank();
+        });
         mRlAddFile = (RelativeLayout) findViewById(R.id.rl_add_file);
         mBtnAddFile = (Button) findViewById(R.id.btn_add_file);
         mBtnAddFile.setOnClickListener(v -> {
@@ -143,29 +160,39 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
             intentFile.addCategory(Intent.CATEGORY_OPENABLE);
             startActivityForResult(intentFile, 100);
         });
-
-        mRecyAccessory = (RecyclerView) findViewById(R.id.recy_accessory);
-        mRecyAccessory.setLayoutManager(new LinearLayoutManager(this));
-        mRecyAccessory.setNestedScrollingEnabled(false);
-        accessoryAdapter = new AccessoryAdapter(accessoryResqsList);
-        mRecyAccessory.setAdapter(accessoryAdapter);
-        accessoryAdapter.setOnItemClickListener(new AccessoryAdapter.OnItemClickListener() {
+        mBtnCreateLoan = (Button) findViewById(R.id.btn_create_loan);
+        mBtnCreateLoan.setOnClickListener(v -> createPsonLoan());
+        mEdtExpenseType.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onItemClick(int position, AccessoryResq accessoryResq) {
-                if (!TextUtils.isEmpty(accessoryResq.getLoadUrl())) {
-                    // 弹出一个选择浏览器的框，选择浏览器再进入
-                    Intent intent = new Intent(Intent.ACTION_VIEW,
-                            Uri.parse(getString(R.string.home_base_url) + accessoryResq.getLoadUrl()));
-                    startActivity(intent);
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                if ("转账".equals(s.toString())){
+                    mLlTransferMsg.setVisibility(View.VISIBLE);
+                    mBtnSelBankAccount.setVisibility(View.VISIBLE);
+                } else if ("现金".equals(s.toString())){
+                    mLlTransferMsg.setVisibility(View.GONE);
+                    mBtnSelBankAccount.setVisibility(View.GONE);
                 }
             }
-
-            @Override
-            public void onDelClick(int position, AccessoryResq accessoryResq) {
-                accessoryResqsList.remove(position);
-                accessoryAdapter.notifyDataSetChanged();
-            }
         });
+
+
+    }
+
+    private void createPsonLoan() {
+        PsonLoanCreateReqs psonLoanCreateReqs = new PsonLoanCreateReqs();
+        psonLoanCreateReqs.setCwPcompany(mEdtCompanyName.getText().toString().trim());
+        psonLoanCreateReqs.setCwPLeader(mEdtFristLeader.getText().toString().trim());
+        psonLoanCreateReqs.setCwPreason(mEdtExpenseReason.getText().toString().trim());
+        psonLoanCreateReqs.setCwPmoney(mEdtExpenseAmount.getText().toString().trim());
+        psonLoanCreateReqs.setCwPmode(mEdtExpenseType.getText().toString().trim());
+        psonLoanCreateReqs.setCwRpname(mEdtAccountName.getText().toString().trim());
+        psonLoanCreateReqs.setCwRpbank(mEdtOpenactBank.getText().toString().trim());
+        psonLoanCreateReqs.setCwRpnum(mEdtBankAccount.getText().toString().trim());
+        mPresenter.createPsonLoan(psonLoanCreateReqs);
     }
 
 
@@ -220,6 +247,62 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
         accAlert.show();
     }
 
+    @Override
+    public void showCompanyList(PLCompanyResp plCompanyResp) {
+        List<String> companyList = plCompanyResp.getCompany();
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
+        dialog.setTitle("选择公司");
+        dialog.setView(layout).setCancelable(false)
+                .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
+        AlertDialog accAlert = dialog.create();
+        ListView accList = (ListView) layout.findViewById(R.id.accList);
+
+        ComnStringAdapter comnStringAdapter = new ComnStringAdapter(mContext, companyList);
+        accList.setAdapter(comnStringAdapter);
+
+        comnStringAdapter.setItemClickListener(position -> {
+            mEdtCompanyName.setText(companyList.get(position));
+            accAlert.dismiss();
+        });
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(mEdtFristLeader.getWindowToken(), 0);
+        accAlert.show();
+    }
+
+    @Override
+    public void showBankAccount(PLBankAccountResp plBankAccountResp) {
+
+        List<PLBankAccountResp.BankPackBean> bankPack = plBankAccountResp.getBankPack();
+        if (bankPack == null || bankPack.size() == 0){
+            return;
+        }
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
+        dialog.setTitle("选择公司");
+        dialog.setView(layout).setCancelable(false)
+                .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
+        AlertDialog accAlert = dialog.create();
+        ListView accList = (ListView) layout.findViewById(R.id.accList);
+
+        BankAccountAdapter bankAccountAdapter = new BankAccountAdapter(mContext, bankPack);
+        accList.setAdapter(bankAccountAdapter);
+
+        bankAccountAdapter.setItemClickListener(position -> {
+            mEdtAccountName.setText(bankPack.get(position).getBankPerson());
+            mEdtBankAccount.setText(bankPack.get(position).getBankNum());
+            mEdtOpenactBank.setText(bankPack.get(position).getBankName());
+            accAlert.dismiss();
+        });
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(mEdtFristLeader.getWindowToken(), 0);
+        accAlert.show();
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -240,8 +323,8 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
                         String imageAbsolutePath = ImgUtil.getImageAbsolutePath(getApplicationContext(), uri);
                         File file = new File(imageAbsolutePath);
                         accessoryResq.setName(file.getName());
-                        accessoryResqsList.add(accessoryResq);
-                        accessoryAdapter.notifyDataSetChanged();
+//                        accessoryResqsList.add(accessoryResq);
+//                        accessoryAdapter.notifyDataSetChanged();
                     }
 
                     @Override

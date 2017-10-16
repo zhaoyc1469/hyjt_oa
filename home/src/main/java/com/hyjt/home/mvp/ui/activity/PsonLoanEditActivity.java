@@ -158,10 +158,8 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         for (int position = 0; position<flowPack.size(); position++){
             setFilePack(position);
         }
-
-
-
     }
+
 
     private void setFilePack(int position) {
 

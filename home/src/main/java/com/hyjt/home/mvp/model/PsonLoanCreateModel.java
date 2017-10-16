@@ -13,15 +13,12 @@ import javax.inject.Inject;
 
 import com.hyjt.home.mvp.contract.PsonLoanCreateContract;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
-import com.hyjt.home.mvp.model.entity.Resp.ChildrenBean;
-import com.hyjt.home.mvp.model.entity.Resp.LinkManResp;
+import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFlowNodeResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.mvp.model.service.HomeService;
-
-import java.util.List;
 
 import io.reactivex.Observable;
 
@@ -71,5 +68,12 @@ public class PsonLoanCreateModel extends BaseModel implements PsonLoanCreateCont
         Observable<BaseJson<PLCompanyResp>> plCompany = mRepositoryManager.obtainRetrofitService(HomeService.class)
                 .psonLoanCompany();
         return plCompany;
+    }
+
+    @Override
+    public Observable<BaseJson<Object>> createPsonLoan(PsonLoanCreateReqs psonLoanCreateReqs) {
+        Observable<BaseJson<Object>> createPsonLoan = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .psonLoanCreate(psonLoanCreateReqs);
+        return createPsonLoan;
     }
 }
