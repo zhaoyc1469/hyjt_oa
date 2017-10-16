@@ -79,7 +79,6 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
     private EditText mEdtExpenseReason;
     private EditText mEdtExpenseAmount;
     private EditText mEdtExpenseType;
-    private StaffNameIdKey receiver = new StaffNameIdKey();
     private Activity mContext;
     private ProgressDialog progressDialog;
     private PLFristLeaderResp.FlowDetailsBean flowDetailsBean;
@@ -88,7 +87,6 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
     private EditText mEdtAccountName;
     private EditText mEdtOpenactBank;
     private EditText mEdtRemark;
-    private BankAccountAdapter bankAccountAdapter;
     private Button mBtnSelBankAccount;
     private Button mBtnCreateLoan;
 
@@ -192,6 +190,7 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
         psonLoanCreateReqs.setCwRpname(mEdtAccountName.getText().toString().trim());
         psonLoanCreateReqs.setCwRpbank(mEdtOpenactBank.getText().toString().trim());
         psonLoanCreateReqs.setCwRpnum(mEdtBankAccount.getText().toString().trim());
+        psonLoanCreateReqs.setFlowid(flowDetailsBean.getFlowid());
         mPresenter.createPsonLoan(psonLoanCreateReqs);
     }
 
