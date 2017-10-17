@@ -14,6 +14,7 @@ import javax.inject.Inject;
 import com.hyjt.home.mvp.contract.PsonLoanCreateContract;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
+import com.hyjt.home.mvp.model.entity.Resp.ImgUploadResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFlowNodeResp;
@@ -21,6 +22,7 @@ import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.mvp.model.service.HomeService;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
 
 
 @ActivityScope
@@ -75,5 +77,12 @@ public class PsonLoanCreateModel extends BaseModel implements PsonLoanCreateCont
         Observable<BaseJson<Object>> createPsonLoan = mRepositoryManager.obtainRetrofitService(HomeService.class)
                 .psonLoanCreate(psonLoanCreateReqs);
         return createPsonLoan;
+    }
+
+    @Override
+    public Observable<BaseJson<ImgUploadResp>> fileUpload(MultipartBody.Part filePart) {
+        Observable<BaseJson<ImgUploadResp>> fileUpload = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .imgUpload(filePart);
+        return fileUpload;
     }
 }

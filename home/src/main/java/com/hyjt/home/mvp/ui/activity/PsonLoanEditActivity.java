@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.bumptech.glide.Glide;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.utils.UiUtils;
@@ -33,6 +32,8 @@ import com.hyjt.home.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.http.Field;
 
 import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 
@@ -60,8 +61,23 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
     private EditText mEdtLoanNum;
     private EditText mEdtLoanTime;
     private List<PsonLoanDetailResp.FlowPackBean> flowPack = new ArrayList<>();
+    private List<PsonLoanDetailResp.FilePackBean> filePack = new ArrayList<>();
     private LinearLayout mLLFlowNode;
     private String currentPerson;
+    private Button mBtnSelBankAccount;
+    private LinearLayout mLlTransferMsg;
+    private LinearLayout mLlFilePack;
+    private RelativeLayout mRlAddFile;
+    private Button mBtnAddFile;
+    private RelativeLayout mRlTellerConfirm;
+    private ImageView mIvTellerSign;
+    private Button mBtnTellerConfirm;
+    private RelativeLayout mRlReceiverAccount;
+    private EditText mEdtReceiverAccount;
+    private ImageView mIvReceiverSign;
+    private Button mBtnReceiverConfirm;
+    private RelativeLayout mRlReceiverConfirm;
+    private EditText mEdtRemark;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -91,6 +107,11 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mIvTopSelect = (ImageView) findViewById(R.id.iv_top_select);
         mIvTopSelect.setVisibility(View.GONE);
 
+        mBtnSelBankAccount = (Button) findViewById(R.id.btn_sel_bank_account);
+        mBtnSelBankAccount.setVisibility(View.GONE);
+        mLlTransferMsg = (LinearLayout) findViewById(R.id.ll_transfer_msg);
+        mLlTransferMsg.setVisibility(View.GONE);
+
         mEdtLoanNum = (EditText) findViewById(R.id.edt_loan_num);
         mEdtLoanTime = (EditText) findViewById(R.id.edt_loan_time);
         mEdtProposer = (EditText) findViewById(R.id.edt_proposer);
@@ -104,6 +125,19 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mEdtOpenactBank = (EditText) findViewById(R.id.edt_openact_bank);
         mEdtBankAccount = (EditText) findViewById(R.id.edt_bank_account);
         mLLFlowNode = (LinearLayout) findViewById(R.id.ll_flow_node);
+        mLlFilePack = (LinearLayout) findViewById(R.id.ll_file_pack);
+        mRlAddFile = (RelativeLayout) findViewById(R.id.rl_add_file);
+        mBtnAddFile = (Button) findViewById(R.id.btn_add_file);
+
+        mRlTellerConfirm = (RelativeLayout) findViewById(R.id.rl_teller_confirm);
+        mIvTellerSign = (ImageView) findViewById(R.id.iv_teller_sign);
+        mBtnTellerConfirm = (Button) findViewById(R.id.btn_teller_confirm);
+        mRlReceiverAccount = (RelativeLayout) findViewById(R.id.rl_receiver_account);
+        mEdtReceiverAccount = (EditText) findViewById(R.id.edt_receiver_account);
+        mIvReceiverSign = (ImageView) findViewById(R.id.iv_receiver_sign);
+        mBtnReceiverConfirm = (Button) findViewById(R.id.btn_receiver_confirm);
+        mRlReceiverConfirm = (RelativeLayout) findViewById(R.id.rl_receiver_confirm);
+        mEdtRemark = (EditText) findViewById(R.id.edt_remark);
         mPresenter.getrPsonLoanDetail(psonLoanId);
     }
 
@@ -131,14 +165,19 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
     public void showPLDetail(PsonLoanDetailResp psonLoanDetailResp) {
         currentPerson = psonLoanDetailResp.getCurrentPerson().trim();
 
-//        if (!getUserName().equals(currentPerson) || !currentPerson.equals(psonLoanDetailResp.getCwJKState().trim())){
-//            mRbAgree.setClickable(false);
-//            mRbRefuse.setClickable(false);
-//            mEdtApprover.setEnabled(false);
-//            mEdtApprover.setFocusable(false);
-//            mEdtRemark.setEnabled(false);
-//            mEdtRemark.setFocusable(false);
-//        }
+        if (!getUserName().equals(psonLoanDetailResp.getCwPpersonal())
+                || !"提交".equals(psonLoanDetailResp.getCwJKState())) {
+            mEdtCompany.setFocusable(false);
+            mEdtDepartment.setFocusable(false);
+            mEdtFristLeader.setFocusable(false);
+            mEdtLoanReason.setFocusable(false);
+            mEdtLoanAmount.setFocusable(false);
+            mEdtPaymentTerm.setFocusable(false);
+            mEdtAccountName.setFocusable(false);
+            mEdtOpenactBank.setFocusable(false);
+            mEdtBankAccount.setFocusable(false);
+            mEdtRemark.setFocusable(false);
+        }
 
         mEdtLoanNum.setText(psonLoanDetailResp.getCwPnum());
         mEdtLoanTime.setText(psonLoanDetailResp.getSqDate());
@@ -152,16 +191,60 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mEdtAccountName.setText(psonLoanDetailResp.getCwRpname());
         mEdtOpenactBank.setText(psonLoanDetailResp.getCwRpbank());
         mEdtBankAccount.setText(psonLoanDetailResp.getCwRpnum());
+//        mEdtRemark.setText(psonLoanDetailResp.getCw);
 
         flowPack.clear();
         flowPack.addAll(psonLoanDetailResp.getFlowPack());
-        for (int position = 0; position<flowPack.size(); position++){
-            setFilePack(position);
+        for (int position = 0; position < flowPack.size(); position++) {
+            setFlowPack(position);
         }
+        filePack.clear();
+        if (psonLoanDetailResp.getFilePack() != null && psonLoanDetailResp.getFilePack().size() > 0) {
+            filePack.addAll(psonLoanDetailResp.getFilePack());
+            for (int position = 0; position < filePack.size(); position++) {
+                setFilePack(position);
+            }
+        } else {
+            mRlAddFile.setVisibility(View.GONE);
+        }
+
+        if ("审批完成".equals(psonLoanDetailResp.getFlowState())) {
+            if (!"0".equals(psonLoanDetailResp.getCashierQren())) {
+                mBtnTellerConfirm.setVisibility(View.GONE);
+                Glide.with(this).load(getString(R.string.home_base_url) +
+                        psonLoanDetailResp.getCashierQren()).into(mIvTellerSign);
+            }
+            if (!"0".equals(psonLoanDetailResp.getCwPpersonalQren())) {
+                mBtnReceiverConfirm.setVisibility(View.GONE);
+                Glide.with(this).load(getString(R.string.home_base_url) +
+                        psonLoanDetailResp.getCwPpersonalQren()).into(mIvReceiverSign);
+            }
+
+        } else {
+            mRlReceiverConfirm.setVisibility(View.GONE);
+            mRlReceiverAccount.setVisibility(View.GONE);
+            mRlTellerConfirm.setVisibility(View.GONE);
+        }
+
+    }
+
+    private void setFilePack(int position) {
+        PsonLoanDetailResp.FilePackBean filePackBean = filePack.get(position);
+        View inflate = LayoutInflater.from(this).inflate(R.layout.home_add_comn_filepack, null);
+        TextView certificate = (TextView) inflate.findViewById(R.id.tv_certificate);
+        certificate.setText(filePackBean.getFileName());
+        certificate.setOnClickListener(v -> {
+            // 弹出一个选择浏览器的框，选择浏览器再进入
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.home_base_url) + filePackBean.getFilePath()));
+            startActivity(intent);
+        });
+        Button DelFile = (Button) inflate.findViewById(R.id.btn_del_file);
+        DelFile.setVisibility(View.GONE);
+        mLlFilePack.addView(inflate);
     }
 
 
-    private void setFilePack(int position) {
+    private void setFlowPack(int position) {
 
         View inflate = LayoutInflater.from(this).inflate(R.layout.home_add_plflownode, null);
         PsonLoanDetailResp.FlowPackBean flowPackBean = flowPack.get(position);
@@ -176,7 +259,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mTvNodeName.setText(flowPackBean.getNodeName());
         mEdtApprover.setText(flowPackBean.getNodePerson());
 
-        if (!getUserName().equals(currentPerson) || !currentPerson.equals(flowPackBean.getNodePerson().trim())){
+        if (!getUserName().equals(currentPerson) || !currentPerson.equals(flowPackBean.getNodePerson().trim())) {
             mRbAgree.setClickable(false);
             mRbRefuse.setClickable(false);
             mEdtApprover.setEnabled(false);

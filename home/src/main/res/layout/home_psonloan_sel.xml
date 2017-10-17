@@ -8,11 +8,110 @@
         android:id="@+id/pop_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="@drawable/home_bg_dp_pop"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/ll_approve_teller"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:gravity="center_vertical"
+                    android:text="申请人"
+                    android:textColor="@color/home_common_000000" />
+
+                <EditText
+                    android:id="@+id/edt_apply_man"
+                    android:layout_width="240dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/home_common_000000" />
+            </LinearLayout>
+            <View
+                android:layout_width="320dp"
+                android:layout_height="0.5dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#a8a8a8" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:gravity="center_vertical"
+                    android:text="公司"
+                    android:textColor="@color/home_common_000000" />
+
+                <EditText
+                    android:id="@+id/edt_company_name"
+                    android:layout_width="240dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/home_common_000000" />
+            </LinearLayout>
+            <View
+                android:layout_width="320dp"
+                android:layout_height="0.5dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#a8a8a8" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:gravity="center_vertical"
+                    android:text="部门"
+                    android:textColor="@color/home_common_000000" />
+
+                <EditText
+                    android:id="@+id/edt_department"
+                    android:layout_width="240dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/home_common_000000" />
+            </LinearLayout>
+            <View
+                android:layout_width="320dp"
+                android:layout_height="0.5dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#a8a8a8" />
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,15 +128,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:gravity="center_vertical"
-                android:textColor="@color/home_common_000000"
-                android:text="借款单编号" />
+                android:text="借款单编号"
+                android:textColor="@color/home_common_000000" />
 
             <EditText
                 android:id="@+id/edt_psonloan_num"
                 android:layout_width="240dp"
                 android:layout_height="match_parent"
-                android:textColor="@color/home_common_000000"
-                android:layout_marginStart="20dp"/>
+                android:layout_marginStart="20dp"
+                android:textColor="@color/home_common_000000" />
         </LinearLayout>
 
         <View
@@ -61,15 +160,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:gravity="center_vertical"
-                android:textColor="@color/home_common_000000"
-                android:text="起始时间" />
+                android:text="起始时间"
+                android:textColor="@color/home_common_000000" />
 
             <EditText
                 android:id="@+id/edt_start_time"
                 android:layout_width="240dp"
                 android:layout_height="match_parent"
-                android:textColor="@color/home_common_000000"
-                android:layout_marginStart="35dp"/>
+                android:layout_marginStart="35dp"
+                android:textColor="@color/home_common_000000" />
         </LinearLayout>
 
         <View
@@ -92,8 +191,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:gravity="center_vertical"
-                android:textColor="@color/home_common_000000"
-                android:text="结束时间" />
+                android:text="结束时间"
+                android:textColor="@color/home_common_000000" />
 
             <EditText
                 android:id="@+id/edt_end_time"

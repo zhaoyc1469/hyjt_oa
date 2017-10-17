@@ -32,10 +32,16 @@ public class PsonLoanSelPop extends PopupWindow {
     private EditText mEdtStartTime;
     private EditText mEdtEndTime;
     private Button mBtnSel;
+    private LinearLayout mLlApproveTeller;
+    private EditText mEdtApplyMan;
+    private EditText mEdtCompanyName;
+    private EditText mEdtDepartment;
+    private String type;
 
-    public PsonLoanSelPop(Activity context) {
+    public PsonLoanSelPop(Activity context, String type) {
         super(context);
         this.context = context;
+        this.type = type;
         Init();
     }
 
@@ -45,8 +51,12 @@ public class PsonLoanSelPop extends PopupWindow {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mMenuView = inflater.inflate(R.layout.home_psonloan_sel, null);
         mPopLayout = (LinearLayout) mMenuView.findViewById(R.id.pop_layout);
+        mLlApproveTeller = (LinearLayout) mMenuView.findViewById(R.id.ll_approve_teller);
         mEdtPsonloanNum = (EditText) mMenuView.findViewById(R.id.edt_psonloan_num);
         mEdtStartTime = (EditText) mMenuView.findViewById(R.id.edt_start_time);
+        mEdtApplyMan = (EditText) mMenuView.findViewById(R.id.edt_apply_man);
+        mEdtCompanyName = (EditText) mMenuView.findViewById(R.id.edt_company_name);
+        mEdtDepartment = (EditText) mMenuView.findViewById(R.id.edt_department);
         setTimeEdit(mEdtStartTime);
         mEdtEndTime = (EditText) mMenuView.findViewById(R.id.edt_end_time);
         setTimeEdit(mEdtEndTime);
@@ -54,12 +64,20 @@ public class PsonLoanSelPop extends PopupWindow {
         mBtnSel.setOnClickListener(v -> {
             dismiss();
             mSelCmListener.onSelCmClick(
-                    mEdtPsonloanNum.getText().toString().trim()
+                    mEdtApplyMan.getText().toString().trim()
+                    , mEdtCompanyName.getText().toString().trim()
+                    , mEdtDepartment.getText().toString().trim()
+                    , mEdtPsonloanNum.getText().toString().trim()
                     , mEdtStartTime.getText().toString().trim()
                     , mEdtEndTime.getText().toString().trim()
             );
         });
 
+        if (type.equals("2") || type.equals("3")){
+            mLlApproveTeller.setVisibility(View.VISIBLE);
+        } else {
+            mLlApproveTeller.setVisibility(View.GONE);
+        }
 
         // 导入布局
         this.setContentView(mMenuView);
@@ -110,7 +128,9 @@ public class PsonLoanSelPop extends PopupWindow {
         this.mSelCmListener = listener;
     }
 
+
     public interface SelCmListener {
-        void onSelCmClick(String num, String start, String end);
+        void onSelCmClick(String personal, String company,
+                          String department, String num, String start, String end);
     }
 }

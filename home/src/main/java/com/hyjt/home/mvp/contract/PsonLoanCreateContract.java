@@ -10,6 +10,7 @@ import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.StaffNameIdKey;
 import com.hyjt.home.mvp.model.entity.Resp.ChildrenBean;
+import com.hyjt.home.mvp.model.entity.Resp.ImgUploadResp;
 import com.hyjt.home.mvp.model.entity.Resp.LinkManResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
@@ -22,6 +23,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import java.util.List;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
 
 
 public interface PsonLoanCreateContract {
@@ -37,6 +39,8 @@ public interface PsonLoanCreateContract {
         void showCompanyList(PLCompanyResp plCompanyResp);
 
         void showBankAccount(PLBankAccountResp plBankAccountResp);
+
+        void fileUploadOk(List<ImgUploadResp> imgUploadList);
     }
 
     interface Model extends IModel {
@@ -51,6 +55,6 @@ public interface PsonLoanCreateContract {
 
         Observable<BaseJson<Object>> createPsonLoan(PsonLoanCreateReqs psonLoanDetailResp);
 
-
+        Observable<BaseJson<ImgUploadResp>> fileUpload(MultipartBody.Part filePart);
     }
 }

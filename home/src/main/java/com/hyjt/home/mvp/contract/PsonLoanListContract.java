@@ -26,6 +26,8 @@ public interface PsonLoanListContract {
         void endLoadMore();
 
         void endLoad();
+
+        void showNoLimits();
     }
 
     interface Model extends IModel {

@@ -1,14 +1,17 @@
 package com.hyjt.home.mvp.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -51,6 +54,14 @@ public class PsonLoanListActivity extends BaseActivity<PsonLoanListPresenter> im
     private String End;
     private boolean isLoadingMore;
     private PsonLoanSelPop psonLoanSelPop;
+    private String Type;
+    private String Mode;
+    private String CwPpersonal;
+    private String CwPcompany;
+    private String CwPdepartment;
+    private android.widget.LinearLayout mLlMode;
+    private Button mBtnWaitType;
+    private Button mBtnReadedType;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -69,6 +80,9 @@ public class PsonLoanListActivity extends BaseActivity<PsonLoanListPresenter> im
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        Intent intent = getIntent();
+        Type = intent.getStringExtra("type");
+        Mode = Type.equals("3") ? "1" : "0";
 
         mIvTopBack = (ImageView) findViewById(R.id.iv_top_back);
         mIvTopBack.setOnClickListener(v -> finish());
@@ -77,23 +91,57 @@ public class PsonLoanListActivity extends BaseActivity<PsonLoanListPresenter> im
         mTvTitle.setOnClickListener(v -> finish());
         mIvTopSelect = (ImageView) findViewById(R.id.iv_top_select);
         mIvTopSelect.setOnClickListener(v -> popSel());
+
+        mLlMode = (LinearLayout) findViewById(R.id.ll_mode);
+        mBtnWaitType = (Button) findViewById(R.id.btn_wait_type);
+        mBtnWaitType.setOnClickListener(v -> {
+            Mode = "0";
+            mPresenter.getPsonLoanList(true, Type, Mode, CwPpersonal,
+                    CwPcompany, CwPdepartment, CwPnum, Start, End);
+        });
+        mBtnReadedType = (Button) findViewById(R.id.btn_readed_type);
+        mBtnReadedType.setOnClickListener(v -> {
+            Mode = "1";
+            mPresenter.getPsonLoanList(true, Type, Mode, CwPpersonal,
+                    CwPcompany, CwPdepartment, CwPnum, Start, End);
+        });
         mBtnNewPloan = (Button) findViewById(R.id.btn_new_ploan);
         mSrlPloanList = (SwipeRefreshLayout) findViewById(R.id.srl_ploan_list);
         mRecyPloanList = (RecyclerView) findViewById(R.id.recy_ploan_list);
         mBtnNewPloan.setOnClickListener(v -> ARouter.getInstance()
                 .build("/home/PsonLoanCreateActivity").navigation());
-        mPresenter.getPsonLoanList(true, "", "", "");
+
+
+        switch (Type) {
+            case "1":
+                mLlMode.setVisibility(View.GONE);
+                break;
+            case "2":
+                mBtnWaitType.setText("未审批");
+                mBtnReadedType.setText("已审批");
+                break;
+            case "3":
+                mBtnWaitType.setText("待确认");
+                mBtnReadedType.setText("全部");
+                mBtnNewPloan.setVisibility(View.GONE);
+                break;
+        }
+        mPresenter.getPsonLoanList(true, Type, Mode, "", "", "", "", "", "");
     }
 
     private void popSel() {
-        psonLoanSelPop = new PsonLoanSelPop(this);
-        psonLoanSelPop.setSelCmListener((num, start, end) -> {
-                    CwPnum = num;
-                    Start = start;
-                    End = end;
-                    mPresenter.getPsonLoanList(true, CwPnum, Start, End);
-                }
-        );
+        psonLoanSelPop = new PsonLoanSelPop(this, Type);
+        psonLoanSelPop.setSelCmListener((personal, company, department, num, start, end) -> {
+            CwPpersonal = personal;
+            CwPcompany = company;
+            CwPdepartment = department;
+            CwPnum = num;
+            Start = start;
+            End = end;
+            mPresenter.getPsonLoanList(true, Type, Mode, CwPpersonal,
+                    CwPcompany, CwPdepartment, CwPnum, Start, End);
+
+        });
         psonLoanSelPop.showAtLocation(findViewById(R.id.rl_psonloan),
                 Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
     }
@@ -138,7 +186,8 @@ public class PsonLoanListActivity extends BaseActivity<PsonLoanListPresenter> im
             Paginate.Callbacks callbacks = new Paginate.Callbacks() {
                 @Override
                 public void onLoadMore() {
-                    mPresenter.getPsonLoanList(false, CwPnum, Start, End);
+                    mPresenter.getPsonLoanList(false, Type, Mode, CwPpersonal,
+                            CwPcompany, CwPdepartment, CwPnum, Start, End);
                 }
 
                 @Override
@@ -175,7 +224,17 @@ public class PsonLoanListActivity extends BaseActivity<PsonLoanListPresenter> im
     }
 
     @Override
+    public void showNoLimits() {
+        new AlertDialog.Builder(this).setTitle("权限提示")//设置对话框标题
+                .setMessage("您没有权限查看出纳信息模块！")//设置显示的内容
+                .setPositiveButton("确定", (dialog, which) -> finish()).show();//在按键响应事件中显示此对话框
+    }
+
+    @Override
     public void onRefresh() {
-        mPresenter.getPsonLoanList(true, "", "", "");
+        mPresenter.getPsonLoanList(true, Type, Mode, "", "", "", "", "", "");
+    }
+
+    private void initView() {
     }
 }

@@ -118,6 +118,11 @@ public class PsonLoanCreateReqs {
         private String FileId;
         private String FileName;
 
+        public FilePackBean(String fileId, String fileName) {
+            FileId = fileId;
+            FileName = fileName;
+        }
+
         public String getFileId() {
             return FileId;
         }

@@ -56,7 +56,9 @@ public class PsonLoanListPresenter extends BasePresenter<PsonLoanListContract.Mo
         this.mApplication = null;
     }
 
-    public void getPsonLoanList(boolean pullToRefresh, String CwPnum, String Start, String End){
+    public void getPsonLoanList(boolean pullToRefresh, String Type, String Mode,
+                                String CwPpersonal, String CwPcompany, String CwPdepartment,
+                                String CwPnum, String Start, String End){
 
         if (mAdapter == null) {
             mAdapter = new PsonLoanAdapter(plList);
@@ -73,10 +75,10 @@ public class PsonLoanListPresenter extends BasePresenter<PsonLoanListContract.Mo
         } else
             pageId++;
 
-        mModel.getPsonLoanList(new PsonLoanListReqs("" + pageId, "10", CwPnum, Start, End))
+        mModel.getPsonLoanList(new PsonLoanListReqs("" + pageId, "10", CwPnum, Start, End,
+                Type, Mode, CwPpersonal, CwPcompany, CwPdepartment))
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
-                .retryWhen(new RetryWithDelay(3, 2))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                 .doOnSubscribe(disposable -> {
                     if (pullToRefresh)
                         mRootView.showLoading();//显示上拉刷新的进度条
@@ -110,6 +112,16 @@ public class PsonLoanListPresenter extends BasePresenter<PsonLoanListContract.Mo
                         }
                         if (psonLoanListResp.getRows().size() == 0) {
                             mRootView.endLoad();
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        if ("202".equals(e.getMessage())) {
+                            mRootView.showNoLimits();
+//                            mRootView.killMyself();
+                        } else {
+                            mRootView.showMessage(e.getMessage());
                         }
                     }
                 });

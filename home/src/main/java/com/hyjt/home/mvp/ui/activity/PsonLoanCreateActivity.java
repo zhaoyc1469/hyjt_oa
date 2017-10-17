@@ -9,8 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -23,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -34,17 +33,14 @@ import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.di.component.DaggerPsonLoanCreateComponent;
 import com.hyjt.home.di.module.PsonLoanCreateModule;
 import com.hyjt.home.mvp.contract.PsonLoanCreateContract;
-import com.hyjt.home.mvp.model.entity.AccessoryResq;
 import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
-import com.hyjt.home.mvp.model.entity.Reqs.StaffNameIdKey;
+import com.hyjt.home.mvp.model.entity.Resp.ImgUploadResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
-import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 import com.hyjt.home.mvp.presenter.PsonLoanCreatePresenter;
 
 import com.hyjt.home.R;
-import com.hyjt.home.mvp.ui.adapter.AccessoryAdapter;
 import com.hyjt.home.mvp.ui.adapter.BankAccountAdapter;
 import com.hyjt.home.mvp.ui.adapter.ComnStringAdapter;
 import com.hyjt.home.mvp.ui.adapter.FrstLdAdapter;
@@ -89,6 +85,10 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
     private EditText mEdtRemark;
     private Button mBtnSelBankAccount;
     private Button mBtnCreateLoan;
+    private List<PsonLoanCreateReqs.FilePackBean> FileList = new ArrayList<>();
+    private ArrayList<Uri> mFileURLList = new ArrayList<>();
+    private LinearLayout mLlFilePack;
+    private ScrollView mSlvPsonLoan;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -158,8 +158,10 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
             intentFile.addCategory(Intent.CATEGORY_OPENABLE);
             startActivityForResult(intentFile, 100);
         });
+        mLlFilePack = (LinearLayout) findViewById(R.id.ll_file_pack);
+        mSlvPsonLoan = (ScrollView) findViewById(R.id.slv_psonloan);
         mBtnCreateLoan = (Button) findViewById(R.id.btn_create_loan);
-        mBtnCreateLoan.setOnClickListener(v -> createPsonLoan());
+        mBtnCreateLoan.setOnClickListener(v -> checkNullMsg());
         mEdtExpenseType.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -176,24 +178,32 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
                 }
             }
         });
-
-
     }
 
-    private void createPsonLoan() {
-        PsonLoanCreateReqs psonLoanCreateReqs = new PsonLoanCreateReqs();
-        psonLoanCreateReqs.setCwPcompany(mEdtCompanyName.getText().toString().trim());
-        psonLoanCreateReqs.setCwPLeader(mEdtFristLeader.getText().toString().trim());
-        psonLoanCreateReqs.setCwPreason(mEdtExpenseReason.getText().toString().trim());
-        psonLoanCreateReqs.setCwPmoney(mEdtExpenseAmount.getText().toString().trim());
-        psonLoanCreateReqs.setCwPmode(mEdtExpenseType.getText().toString().trim());
-        psonLoanCreateReqs.setCwRpname(mEdtAccountName.getText().toString().trim());
-        psonLoanCreateReqs.setCwRpbank(mEdtOpenactBank.getText().toString().trim());
-        psonLoanCreateReqs.setCwRpnum(mEdtBankAccount.getText().toString().trim());
-        psonLoanCreateReqs.setFlowid(flowDetailsBean.getFlowid());
-        mPresenter.createPsonLoan(psonLoanCreateReqs);
-    }
+    private void checkNullMsg() {
+        if (TextUtils.isEmpty(mEdtCompanyName.getText())){
+            shortToast("请选择公司名称");
+        }
+        if (TextUtils.isEmpty(mEdtFristLeader.getText())){
+            shortToast("请选择首签领导");
+        }
+        if (TextUtils.isEmpty(mEdtExpenseReason.getText())){
+            shortToast("请填写借款事由");
+        }
+        if (TextUtils.isEmpty(mEdtExpenseAmount.getText())){
+            shortToast("请填写借款金额");
+        }
+        if (TextUtils.isEmpty(mEdtExpenseType.getText())){
+            shortToast("请选择收款方式");
+        }
 
+        if (mFileURLList.size() > 0) {
+            progressDialog = ProgressDialog.show(this, null, "正在上传附件…");
+            mPresenter.sendFile(mFileURLList);
+        } else {
+            fileUploadOk(new ArrayList<>());
+        }
+    }
 
     @Override
     public void showMessage(@NonNull String message) {
@@ -270,6 +280,41 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
         imm.hideSoftInputFromWindow(mEdtFristLeader.getWindowToken(), 0);
         accAlert.show();
     }
+    private void addFilePack(int position) {
+
+        View inflate = LayoutInflater.from(getApplicationContext()).inflate(R.layout.home_add_comn_filepack, null);
+        TextView certificate = (TextView) inflate.findViewById(R.id.tv_certificate);
+        Button DelFile = (Button) inflate.findViewById(R.id.btn_del_file);
+        DelFile.setOnClickListener(v -> {
+            mLlFilePack.removeView(inflate);
+            mFileURLList.remove(position - 1);
+        });
+
+
+        RxErrorHandler build = RxErrorHandler.builder()
+                .with(getApplicationContext())
+                .responseErrorListener((context, t) -> {
+                }).build();
+
+
+        PermissionUtil.externalStorage(new PermissionUtil.RequestPermission() {
+            @Override
+            public void onRequestPermissionSuccess() {
+                Uri uri = mFileURLList.get(position - 1);
+                String imageAbsolutePath = ImgUtil.getImageAbsolutePath(getApplicationContext(), uri);
+                File file = new File(imageAbsolutePath);
+                certificate.setText("" + file.getName());
+            }
+
+            @Override
+            public void onRequestPermissionFailure() {
+                shortToast("您需要打开存储权限");
+            }
+        }, getRxPermissions(), build);
+
+        mLlFilePack.addView(inflate);
+        mSlvPsonLoan.fullScroll(ScrollView.FOCUS_DOWN);
+    }
 
     @Override
     public void showBankAccount(PLBankAccountResp plBankAccountResp) {
@@ -302,6 +347,29 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
         accAlert.show();
     }
 
+    @Override
+    public void fileUploadOk(List<ImgUploadResp> imgUploadList) {
+        if (imgUploadList.size() > 0) {
+            for (int i = 0; i < imgUploadList.size(); i++) {
+                FileList.add(new PsonLoanCreateReqs.FilePackBean(imgUploadList.get(i).getId()
+                        , imgUploadList.get(i).getName()));
+            }
+        }
+        PsonLoanCreateReqs psonLoanCreateReqs = new PsonLoanCreateReqs();
+        psonLoanCreateReqs.setCwPcompany(mEdtCompanyName.getText().toString().trim());
+        psonLoanCreateReqs.setCwPLeader(mEdtFristLeader.getText().toString().trim());
+        psonLoanCreateReqs.setCwPreason(mEdtExpenseReason.getText().toString().trim());
+        psonLoanCreateReqs.setCwPmoney(mEdtExpenseAmount.getText().toString().trim());
+        psonLoanCreateReqs.setCwPmode(mEdtExpenseType.getText().toString().trim());
+        psonLoanCreateReqs.setCwRpname(mEdtAccountName.getText().toString().trim());
+        psonLoanCreateReqs.setCwRpbank(mEdtOpenactBank.getText().toString().trim());
+        psonLoanCreateReqs.setCwRpnum(mEdtBankAccount.getText().toString().trim());
+        psonLoanCreateReqs.setFlowid(flowDetailsBean.getFlowid());
+        psonLoanCreateReqs.setFilePack(FileList);
+
+        mPresenter.createPsonLoan(psonLoanCreateReqs);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -309,28 +377,10 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
         if (requestCode == 100) {
             if (resultCode == Activity.RESULT_OK) {
                 Uri uri = data.getData();
+                mFileURLList.add(uri);
 
-                RxErrorHandler build = RxErrorHandler.builder()
-                        .with(getApplicationContext())
-                        .responseErrorListener((context, t) -> {
-                        }).build();
-                PermissionUtil.externalStorage(new PermissionUtil.RequestPermission() {
-                    @Override
-                    public void onRequestPermissionSuccess() {
-                        AccessoryResq accessoryResq = new AccessoryResq();
-                        accessoryResq.setUri(uri);
-                        String imageAbsolutePath = ImgUtil.getImageAbsolutePath(getApplicationContext(), uri);
-                        File file = new File(imageAbsolutePath);
-                        accessoryResq.setName(file.getName());
-//                        accessoryResqsList.add(accessoryResq);
-//                        accessoryAdapter.notifyDataSetChanged();
-                    }
+                addFilePack(mFileURLList.size());
 
-                    @Override
-                    public void onRequestPermissionFailure() {
-                        shortToast("您需要打开存储权限");
-                    }
-                }, getRxPermissions(), build);
             }
         }
     }

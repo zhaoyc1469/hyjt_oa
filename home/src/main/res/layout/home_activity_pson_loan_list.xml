@@ -8,6 +8,30 @@
     <include
         android:id="@+id/icld_ploan_list"
         layout="@layout/home_include_back_title" />
+
+    <LinearLayout
+        android:id="@+id/ll_mode"
+        android:layout_below="@id/icld_ploan_list"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <Button
+            android:id="@+id/btn_wait_type"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/home_bg_new_meeting"
+            android:text="待审批"/>
+        <Button
+            android:id="@+id/btn_readed_type"
+            android:layout_marginStart="46dp"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/home_bg_new_meeting"
+            android:text="已审批"/>
+    </LinearLayout>
     <Button
         android:id="@+id/btn_new_ploan"
         android:layout_width="160dp"
@@ -16,15 +40,15 @@
         android:text="发起个人借款"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="19dp"/>
+        android:layout_marginBottom="16dp"/>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/srl_ploan_list"
         android:layout_above="@id/btn_new_ploan"
-        android:layout_below="@id/icld_ploan_list"
+        android:layout_below="@id/ll_mode"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="19dp">
+        android:layout_marginBottom="16dp">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recy_ploan_list"

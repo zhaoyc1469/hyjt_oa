@@ -7,38 +7,31 @@ import java.util.List;
  */
 
 public class PsonLoanDetailResp {
-
-
     /**
-     * Id : 201709260934597845311d1ca6d8119
-     * CwPnum : GRJKD20170926-0002
-     * SqDate : 2017/9/26 9:35:16
+     * Id : 201710171201086648301e2af78c776
+     * CwPnum : GRJKD20171017-0003
+     * SqDate : 2017/10/17 12:01:08
      * CwPpersonal : 李大鹏
      * CwPcompany : 辽宁环宇矿业咨询有限公司
      * CwPdepartment : 信息技术部
      * CwPLeader : 李大鹏
-     * CwPreason : 测试
-     * CwPmoney : ￥3,000.00
+     * CwPreason : 噜啦啦噜啦啦
+     * CwPmoney : ￥188,888.00
      * CwPmode : 转账
      * CwRpname : 李大鹏
-     * CwRpbank : 建设银行北陵支行
-     * CwRpnum : 1111111
-     * CashierQren : /Upload/2017021410336078.jpg
-     * CashQrenTime : 2017/9/26 9:38:43
-     * CwBname :
-     * CwBnum :
-     * CwPpersonalQren : /Upload/2017021410336078.jpg
-     * PersonalQrenTime : 2017/9/26 9:39:54
-     * FlowState : 审批完成
-     * Flowid : 2017092609351604364279f5dcdfdcc
-     * CwJKState : 收款人已确认
-     * CurrentPerson :
-     * NodePerson : 李大鹏 '龙悦'胡成良'张斌'
+     * CwRpbank : 中信银行
+     * CwRpnum : 1212122
+     * CashierQren : 0
+     * CwPpersonalQren : 0
+     * FlowState : 审批中
+     * Flowid : 2017101712010863483011698272e69
+     * CwJKState : 提交
+     * CurrentPerson : 李大鹏
      * FileUploader : System.Data.Objects.DataClasses.EntityCollection`1[DAL.FileUploader]
-     * EntityState : Modified
+     * EntityState : Unchanged
      * EntityKey : System.Data.EntityKey
-     * FilePack : []
-     * FlowPack : [{"NodeName":"首签领导","NodePerson":"李大鹏","NodeMemo":"同意","NodeMemotext":""},{"NodeName":"经理","NodePerson":"龙悦","NodeMemo":"同意","NodeMemotext":""},{"NodeName":"董事长","NodePerson":"胡成良","NodeMemo":"同意","NodeMemotext":""},{"NodeName":"财务部","NodePerson":"张斌","NodeMemo":"同意","NodeMemotext":""}]
+     * FilePack : [{"FileId":"20171017120100382830181317c5aa0","FileName":"Screenshot_20171016-192943.png","FilePath":"/up/20171017120100382830181317c5aa0Screenshot_20171016-192943.png"}]
+     * FlowPack : [{"NodeName":"首签领导","NodePerson":"李大鹏","NodeSign":"/Upload/2017021410336078.jpg","NodeMemo":null,"NodeMemotext":null,"IsBank":"0","CwBname":null,"CwBnum":null},{"NodeName":"经理","NodePerson":"龙悦","NodeSign":"/Upload/20170511093651105.jpg","NodeMemo":null,"NodeMemotext":null,"IsBank":"0","CwBname":null,"CwBnum":null},{"NodeName":"董事长","NodePerson":"胡成良","NodeSign":"/Upload/20170509033410580.jpg","NodeMemo":null,"NodeMemotext":null,"IsBank":"1","CwBname":null,"CwBnum":null},{"NodeName":"财务部","NodePerson":"张斌","NodeSign":"/Upload/20170509103633667.jpg","NodeMemo":null,"NodeMemotext":null,"IsBank":"1","CwBname":null,"CwBnum":null}]
      */
 
     private String Id;
@@ -55,20 +48,15 @@ public class PsonLoanDetailResp {
     private String CwRpbank;
     private String CwRpnum;
     private String CashierQren;
-    private String CashQrenTime;
-    private String CwBname;
-    private String CwBnum;
     private String CwPpersonalQren;
-    private String PersonalQrenTime;
     private String FlowState;
     private String Flowid;
     private String CwJKState;
     private String CurrentPerson;
-    private String NodePerson;
     private String FileUploader;
     private String EntityState;
     private String EntityKey;
-    private List<Object> FilePack;
+    private List<FilePackBean> FilePack;
     private List<FlowPackBean> FlowPack;
 
     public String getId() {
@@ -183,44 +171,12 @@ public class PsonLoanDetailResp {
         this.CashierQren = CashierQren;
     }
 
-    public String getCashQrenTime() {
-        return CashQrenTime;
-    }
-
-    public void setCashQrenTime(String CashQrenTime) {
-        this.CashQrenTime = CashQrenTime;
-    }
-
-    public String getCwBname() {
-        return CwBname;
-    }
-
-    public void setCwBname(String CwBname) {
-        this.CwBname = CwBname;
-    }
-
-    public String getCwBnum() {
-        return CwBnum;
-    }
-
-    public void setCwBnum(String CwBnum) {
-        this.CwBnum = CwBnum;
-    }
-
     public String getCwPpersonalQren() {
         return CwPpersonalQren;
     }
 
     public void setCwPpersonalQren(String CwPpersonalQren) {
         this.CwPpersonalQren = CwPpersonalQren;
-    }
-
-    public String getPersonalQrenTime() {
-        return PersonalQrenTime;
-    }
-
-    public void setPersonalQrenTime(String PersonalQrenTime) {
-        this.PersonalQrenTime = PersonalQrenTime;
     }
 
     public String getFlowState() {
@@ -255,14 +211,6 @@ public class PsonLoanDetailResp {
         this.CurrentPerson = CurrentPerson;
     }
 
-    public String getNodePerson() {
-        return NodePerson;
-    }
-
-    public void setNodePerson(String NodePerson) {
-        this.NodePerson = NodePerson;
-    }
-
     public String getFileUploader() {
         return FileUploader;
     }
@@ -287,11 +235,11 @@ public class PsonLoanDetailResp {
         this.EntityKey = EntityKey;
     }
 
-    public List<Object> getFilePack() {
+    public List<FilePackBean> getFilePack() {
         return FilePack;
     }
 
-    public void setFilePack(List<Object> FilePack) {
+    public void setFilePack(List<FilePackBean> FilePack) {
         this.FilePack = FilePack;
     }
 
@@ -303,18 +251,62 @@ public class PsonLoanDetailResp {
         this.FlowPack = FlowPack;
     }
 
+    public static class FilePackBean {
+        /**
+         * FileId : 20171017120100382830181317c5aa0
+         * FileName : Screenshot_20171016-192943.png
+         * FilePath : /up/20171017120100382830181317c5aa0Screenshot_20171016-192943.png
+         */
+
+        private String FileId;
+        private String FileName;
+        private String FilePath;
+
+        public String getFileId() {
+            return FileId;
+        }
+
+        public void setFileId(String FileId) {
+            this.FileId = FileId;
+        }
+
+        public String getFileName() {
+            return FileName;
+        }
+
+        public void setFileName(String FileName) {
+            this.FileName = FileName;
+        }
+
+        public String getFilePath() {
+            return FilePath;
+        }
+
+        public void setFilePath(String FilePath) {
+            this.FilePath = FilePath;
+        }
+    }
+
     public static class FlowPackBean {
         /**
          * NodeName : 首签领导
          * NodePerson : 李大鹏
-         * NodeMemo : 同意
-         * NodeMemotext :
+         * NodeSign : /Upload/2017021410336078.jpg
+         * NodeMemo : null
+         * NodeMemotext : null
+         * IsBank : 0
+         * CwBname : null
+         * CwBnum : null
          */
 
         private String NodeName;
         private String NodePerson;
+        private String NodeSign;
         private String NodeMemo;
         private String NodeMemotext;
+        private String IsBank;
+        private Object CwBname;
+        private Object CwBnum;
 
         public String getNodeName() {
             return NodeName;
@@ -332,6 +324,14 @@ public class PsonLoanDetailResp {
             this.NodePerson = NodePerson;
         }
 
+        public String getNodeSign() {
+            return NodeSign;
+        }
+
+        public void setNodeSign(String NodeSign) {
+            this.NodeSign = NodeSign;
+        }
+
         public String getNodeMemo() {
             return NodeMemo;
         }
@@ -346,6 +346,30 @@ public class PsonLoanDetailResp {
 
         public void setNodeMemotext(String NodeMemotext) {
             this.NodeMemotext = NodeMemotext;
+        }
+
+        public String getIsBank() {
+            return IsBank;
+        }
+
+        public void setIsBank(String IsBank) {
+            this.IsBank = IsBank;
+        }
+
+        public Object getCwBname() {
+            return CwBname;
+        }
+
+        public void setCwBname(Object CwBname) {
+            this.CwBname = CwBname;
+        }
+
+        public Object getCwBnum() {
+            return CwBnum;
+        }
+
+        public void setCwBnum(Object CwBnum) {
+            this.CwBnum = CwBnum;
         }
     }
 }

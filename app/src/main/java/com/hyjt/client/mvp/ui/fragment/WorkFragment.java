@@ -26,6 +26,8 @@ import com.hyjt.client.mvp.model.entity.WorkMission;
 import com.hyjt.client.mvp.presenter.WorkPresenter;
 import com.hyjt.client.mvp.ui.adapter.ModuleAdapter;
 import com.hyjt.client.mvp.ui.view.EmailPop;
+import com.hyjt.client.mvp.ui.view.FinancePlPop;
+import com.hyjt.client.mvp.ui.view.FinanceTellerPop;
 import com.hyjt.client.mvp.ui.view.ReAndSePop;
 import com.hyjt.client.mvp.ui.view.ReportTopPop;
 import com.hyjt.client.mvp.ui.view.SLConsultPop;
@@ -744,7 +746,35 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
                 break;
             }
             case 101: {//个人借款
-                ARouter.getInstance().build("/home/PsonLoanListActivity").navigation(getActivity(), Api.WorkStartCode);
+                FinancePlPop financePlPop = new FinancePlPop(getActivity());
+                financePlPop.setOnItemClickListener(type -> {
+                    ARouter.getInstance().build("/home/PsonLoanListActivity")
+                            .withString("type", type).navigation(getActivity(), Api.WorkStartCode);
+                    financePlPop.dismiss();
+                });
+                financePlPop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
+                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+                break;
+            }
+            case 104: {//出纳确认
+                FinanceTellerPop financeTellerPop = new FinanceTellerPop(getActivity());
+                financeTellerPop.setOnItemClickListener(type -> {
+                    switch (type) {
+                        case "1":
+                            ARouter.getInstance().build("/home/PsonLoanListActivity")
+                                    .withString("type", "3").navigation(getActivity(), Api.WorkStartCode);
+                            break;
+                        case "2":
+
+                            break;
+                        case "3":
+
+                            break;
+                    }
+                    financeTellerPop.dismiss();
+                });
+                financeTellerPop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
+                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
                 break;
             }
         }
