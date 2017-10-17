@@ -374,7 +374,24 @@ public interface HomeService {
     //个人借款详情
     @POST("/APICwPersonalJK/Details")
     Observable<BaseJson<PsonLoanDetailResp>> psonLoanDetail(@Body BaseIdReqs PsonLoanReqs);
-    //个人借款详情
+
+    //个人借款创建
     @POST("/APICwPersonalJK/CreateOnOnePage")
     Observable<BaseJson<Object>> psonLoanCreate(@Body PsonLoanCreateReqs PsonLoanReqs);
+
+    //个人借款删除
+    @POST("/APICwPersonalJK/Delete")
+    Observable<BaseJson<Object>> psonLoanDel(@Body BaseIdReqs BaseIdReqs);
+
+    //个人借款出纳确认
+    @POST("/APICwPersonalJK/EditChuNa")
+    Observable<BaseJson<Object>> plTellerConfirm(@Body BaseIdReqs BaseIdReqs);
+
+    //个人借款收款人确认
+    @POST("/APICwPersonalJK/Editshoukuan")
+    Observable<BaseJson<Object>> plReceiverConfirm(@Body BaseIdReqs BaseIdReqs);
+
+    //选择出款银行
+    @POST("/APICwPersonalJK/GetCompanyBank")
+    Observable<BaseJson<Object>> plReceiverBankAccount();
 }

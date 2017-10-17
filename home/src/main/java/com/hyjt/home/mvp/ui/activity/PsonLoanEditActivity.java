@@ -24,7 +24,6 @@ import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.di.component.DaggerPsonLoanEditComponent;
 import com.hyjt.home.di.module.PsonLoanEditModule;
 import com.hyjt.home.mvp.contract.PsonLoanEditContract;
-import com.hyjt.home.mvp.model.entity.Resp.CEmailDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 import com.hyjt.home.mvp.presenter.PsonLoanEditPresenter;
 
@@ -32,8 +31,6 @@ import com.hyjt.home.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.http.Field;
 
 import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 
@@ -78,6 +75,9 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
     private Button mBtnReceiverConfirm;
     private RelativeLayout mRlReceiverConfirm;
     private EditText mEdtRemark;
+    private Button mBtnDelLoan;
+    private Button mBtnEditLoan;
+    private LinearLayout mLlBottomBtn;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -129,6 +129,11 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mRlAddFile = (RelativeLayout) findViewById(R.id.rl_add_file);
         mBtnAddFile = (Button) findViewById(R.id.btn_add_file);
 
+        mBtnEditLoan = (Button) findViewById(R.id.btn_edit_loan);
+        mBtnDelLoan = (Button) findViewById(R.id.btn_del_loan);
+        mBtnDelLoan.setOnClickListener(v -> {mPresenter.delPsonLoan(psonLoanId);});
+        mLlBottomBtn = (LinearLayout) findViewById(R.id.ll_bottom_btn);
+
         mRlTellerConfirm = (RelativeLayout) findViewById(R.id.rl_teller_confirm);
         mIvTellerSign = (ImageView) findViewById(R.id.iv_teller_sign);
         mBtnTellerConfirm = (Button) findViewById(R.id.btn_teller_confirm);
@@ -138,7 +143,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mBtnReceiverConfirm = (Button) findViewById(R.id.btn_receiver_confirm);
         mRlReceiverConfirm = (RelativeLayout) findViewById(R.id.rl_receiver_confirm);
         mEdtRemark = (EditText) findViewById(R.id.edt_remark);
-        mPresenter.getrPsonLoanDetail(psonLoanId);
+        mPresenter.getPsonLoanDetail(psonLoanId);
     }
 
 
@@ -177,6 +182,10 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
             mEdtOpenactBank.setFocusable(false);
             mEdtBankAccount.setFocusable(false);
             mEdtRemark.setFocusable(false);
+            mBtnDelLoan.setVisibility(View.GONE);
+            mBtnEditLoan.setText("提交审批");
+        } else {
+
         }
 
         mEdtLoanNum.setText(psonLoanDetailResp.getCwPnum());

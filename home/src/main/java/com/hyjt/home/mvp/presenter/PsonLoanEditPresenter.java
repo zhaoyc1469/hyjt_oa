@@ -54,7 +54,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
         this.mApplication = null;
     }
 
-    public void getrPsonLoanDetail(String plId){
+    public void getPsonLoanDetail(String plId){
         mModel.getPLDetail(new BaseIdReqs(plId))
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
@@ -100,6 +100,10 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
 
                     }
                 });
+    }
+
+    public void delPsonLoan(String psonLoanId){
+
     }
 
 }
