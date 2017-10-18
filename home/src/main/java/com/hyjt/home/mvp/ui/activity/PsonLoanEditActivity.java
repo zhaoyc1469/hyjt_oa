@@ -1,15 +1,22 @@
 package com.hyjt.home.mvp.ui.activity;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -24,10 +31,15 @@ import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.di.component.DaggerPsonLoanEditComponent;
 import com.hyjt.home.di.module.PsonLoanEditModule;
 import com.hyjt.home.mvp.contract.PsonLoanEditContract;
+import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
+import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 import com.hyjt.home.mvp.presenter.PsonLoanEditPresenter;
 
 import com.hyjt.home.R;
+import com.hyjt.home.mvp.ui.adapter.FrstLdAdapter;
+import com.hyjt.home.mvp.ui.view.Constant;
+import com.hyjt.home.mvp.ui.view.GetSingleSelectItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +63,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
     private android.widget.EditText mEdtFristLeader;
     private android.widget.EditText mEdtLoanReason;
     private android.widget.EditText mEdtLoanAmount;
-    private android.widget.EditText mEdtPaymentTerm;
+    private android.widget.EditText mEdtPaymentType;
     private android.widget.EditText mEdtAccountName;
     private android.widget.EditText mEdtOpenactBank;
     private android.widget.EditText mEdtBankAccount;
@@ -78,6 +90,11 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
     private Button mBtnDelLoan;
     private Button mBtnEditLoan;
     private LinearLayout mLlBottomBtn;
+    private ProgressDialog progressDialog;
+    private boolean editState;
+    private PsonLoanDetailResp psonLoanDetailResp;
+    private PLFristLeaderResp.FlowDetailsBean flowDetailsBean;
+    private PsonLoanEditActivity mContext;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -96,6 +113,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        mContext = this;
         Intent intent = getIntent();
         psonLoanId = intent.getStringExtra("PsonLoanId");
         mRlPsonloan = (RelativeLayout) findViewById(R.id.rl_psonloan);
@@ -120,7 +138,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mEdtFristLeader = (EditText) findViewById(R.id.edt_frist_leader);
         mEdtLoanReason = (EditText) findViewById(R.id.edt_loan_reason);
         mEdtLoanAmount = (EditText) findViewById(R.id.edt_loan_amount);
-        mEdtPaymentTerm = (EditText) findViewById(R.id.edt_payment_term);
+        mEdtPaymentType = (EditText) findViewById(R.id.edt_payment_type);
         mEdtAccountName = (EditText) findViewById(R.id.edt_account_name);
         mEdtOpenactBank = (EditText) findViewById(R.id.edt_openact_bank);
         mEdtBankAccount = (EditText) findViewById(R.id.edt_bank_account);
@@ -130,8 +148,36 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mBtnAddFile = (Button) findViewById(R.id.btn_add_file);
 
         mBtnEditLoan = (Button) findViewById(R.id.btn_edit_loan);
+        mBtnEditLoan.setOnClickListener(v -> {
+            if (editState) {
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
+                        .setTitle("修改借款信息")
+                        .setMessage("确定修改该条个人借款?")
+                        .setPositiveButton("确定", (dialog, which) -> sendEditPLMsg())
+                        .setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
+                builder.show();
+            } else {
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
+                        .setTitle("提交审批信息")
+                        .setMessage("确定提交该条审批信息?")
+                        .setPositiveButton("确定", (dialog, which) -> {
+                            progressDialog = ProgressDialog.show(this, null, "审批信息提交中…");
+//                            mPresenter.delPsonLoan(psonLoanId);
+                        }).setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
+                builder.show();
+            }
+        });
         mBtnDelLoan = (Button) findViewById(R.id.btn_del_loan);
-        mBtnDelLoan.setOnClickListener(v -> {mPresenter.delPsonLoan(psonLoanId);});
+        mBtnDelLoan.setOnClickListener(v -> {
+            android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
+                    .setTitle("删除借款")
+                    .setMessage("确定删除该条个人借款?")
+                    .setPositiveButton("确定", (dialog, which) -> {
+                        progressDialog = ProgressDialog.show(this, null, "借款信息删除中…");
+                        mPresenter.delPsonLoan(psonLoanId);
+                    }).setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
         mLlBottomBtn = (LinearLayout) findViewById(R.id.ll_bottom_btn);
 
         mRlTellerConfirm = (RelativeLayout) findViewById(R.id.rl_teller_confirm);
@@ -144,6 +190,34 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mRlReceiverConfirm = (RelativeLayout) findViewById(R.id.rl_receiver_confirm);
         mEdtRemark = (EditText) findViewById(R.id.edt_remark);
         mPresenter.getPsonLoanDetail(psonLoanId);
+    }
+
+    private void sendEditPLMsg() {
+        progressDialog = ProgressDialog.show(this, null, "借款信息提交中…");
+        PsonLoanCreateReqs psonLoanCreateReqs = new PsonLoanCreateReqs();
+        psonLoanCreateReqs.setId(psonLoanDetailResp.getId());
+        psonLoanCreateReqs.setCwPcompany(mEdtCompany.getText().toString().trim());
+        psonLoanCreateReqs.setCwPLeader(mEdtFristLeader.getText().toString().trim());
+        psonLoanCreateReqs.setCwPreason(mEdtLoanReason.getText().toString().trim());
+        psonLoanCreateReqs.setCwPmoney(mEdtLoanAmount.getText().toString().trim());
+        psonLoanCreateReqs.setCwPmode(mEdtPaymentType.getText().toString().trim());
+        psonLoanCreateReqs.setCwRpname(mEdtAccountName.getText().toString().trim());
+        psonLoanCreateReqs.setCwRpbank(mEdtOpenactBank.getText().toString().trim());
+        psonLoanCreateReqs.setCwRpnum(mEdtBankAccount.getText().toString().trim());
+
+//        psonLoanCreateReqs.setFlowid();
+        psonLoanCreateReqs.setCwPtext(mEdtRemark.getText().toString().trim());
+        List<PsonLoanDetailResp.FilePackBean> fileDetailList = psonLoanDetailResp.getFilePack();
+        List<PsonLoanCreateReqs.FilePackBean> fileCreateList = new ArrayList<>();
+        for (PsonLoanDetailResp.FilePackBean filePackBean : fileDetailList ){
+            PsonLoanCreateReqs.FilePackBean fileCreate =
+                    new PsonLoanCreateReqs.FilePackBean(filePackBean.getFileId(), filePackBean.getFileName());
+            fileCreateList.add(fileCreate);
+
+        }
+        psonLoanCreateReqs.setFilePack(fileCreateList);
+//        psonLoanCreateReqs.setFlowid();
+        mPresenter.editPsonLoan(psonLoanCreateReqs);
     }
 
 
@@ -163,11 +237,15 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
 
     @Override
     public void hideLoading() {
-
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
     }
 
     @Override
     public void showPLDetail(PsonLoanDetailResp psonLoanDetailResp) {
+        this.psonLoanDetailResp = psonLoanDetailResp;
+        flowDetailsBean.setFlowid(psonLoanDetailResp.getFlowid());
         currentPerson = psonLoanDetailResp.getCurrentPerson().trim();
 
         if (!getUserName().equals(psonLoanDetailResp.getCwPpersonal())
@@ -177,15 +255,15 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
             mEdtFristLeader.setFocusable(false);
             mEdtLoanReason.setFocusable(false);
             mEdtLoanAmount.setFocusable(false);
-            mEdtPaymentTerm.setFocusable(false);
+            mEdtPaymentType.setFocusable(false);
             mEdtAccountName.setFocusable(false);
             mEdtOpenactBank.setFocusable(false);
             mEdtBankAccount.setFocusable(false);
             mEdtRemark.setFocusable(false);
             mBtnDelLoan.setVisibility(View.GONE);
-            mBtnEditLoan.setText("提交审批");
+            editState = false;
         } else {
-
+            setBaseMsgOnClick();
         }
 
         mEdtLoanNum.setText(psonLoanDetailResp.getCwPnum());
@@ -196,7 +274,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mEdtFristLeader.setText(psonLoanDetailResp.getCwPLeader());
         mEdtLoanReason.setText(psonLoanDetailResp.getCwPreason());
         mEdtLoanAmount.setText(psonLoanDetailResp.getCwPmoney());
-        mEdtPaymentTerm.setText(psonLoanDetailResp.getCwPmode());
+        mEdtPaymentType.setText(psonLoanDetailResp.getCwPmode());
         mEdtAccountName.setText(psonLoanDetailResp.getCwRpname());
         mEdtOpenactBank.setText(psonLoanDetailResp.getCwRpbank());
         mEdtBankAccount.setText(psonLoanDetailResp.getCwRpnum());
@@ -235,6 +313,63 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
             mRlTellerConfirm.setVisibility(View.GONE);
         }
 
+    }
+
+    @Override
+    public void loadFlowNode(PLFristLeaderResp plFristLeaderResp) {
+        List<PLFristLeaderResp.FlowDetailsBean> flowDetails = plFristLeaderResp.getFlowDetails();
+        flowDetailsBean = new PLFristLeaderResp.FlowDetailsBean();
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
+        dialog.setTitle("选择首签领导");
+        dialog.setView(layout).setCancelable(false)
+                .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
+        AlertDialog accAlert = dialog.create();
+        ListView accList = (ListView) layout.findViewById(R.id.accList);
+
+        FrstLdAdapter frstLdAdapter = new FrstLdAdapter(mContext, flowDetails);
+        accList.setAdapter(frstLdAdapter);
+
+        frstLdAdapter.setItemClickListener(position -> {
+            PLFristLeaderResp.FlowDetailsBean flowDetailsBean = flowDetails.get(position);
+            mEdtFristLeader.setText(flowDetailsBean.getLeader());
+            this.flowDetailsBean.setFlowid(flowDetailsBean.getFlowid());
+            accAlert.dismiss();
+        });
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(mEdtFristLeader.getWindowToken(), 0);
+        accAlert.show();
+    }
+
+    private void setBaseMsgOnClick() {
+        mEdtCompany.setOnClickListener(v -> {
+            progressDialog = ProgressDialog.show(this, null, "加载公司列表…");
+            mPresenter.getPLCompany();
+        });
+        mEdtFristLeader.setOnClickListener(v -> {
+            progressDialog = ProgressDialog.show(this, null, "加载首签领导…");
+            mPresenter.getFristLeader("个人借款");
+        });
+        mEdtPaymentType.setOnTouchListener(new GetSingleSelectItem(
+                this, mEdtPaymentType, "收款方式", Constant.payTypeArr, false));
+        mEdtPaymentType.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                if ("转账".equals(s.toString())){
+                    mLlTransferMsg.setVisibility(View.VISIBLE);
+                    mBtnSelBankAccount.setVisibility(View.VISIBLE);
+                } else if ("现金".equals(s.toString())){
+                    mLlTransferMsg.setVisibility(View.GONE);
+                    mBtnSelBankAccount.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     private void setFilePack(int position) {

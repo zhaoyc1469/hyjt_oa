@@ -12,6 +12,7 @@ import java.util.List;
 
 public class PsonLoanCreateReqs {
 
+    private String Id;
     private String CwRpname;
     private String CwRpbank;
     private String CwRpnum;
@@ -23,6 +24,14 @@ public class PsonLoanCreateReqs {
     private String CwPLeader;
     private String CwPreason;
     private List<FilePackBean> FilePack;
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
+    }
 
     public String getCwRpname() {
         return CwRpname;

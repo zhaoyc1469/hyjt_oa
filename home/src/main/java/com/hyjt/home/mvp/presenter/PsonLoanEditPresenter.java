@@ -25,6 +25,7 @@ import javax.inject.Inject;
 import com.hyjt.home.mvp.contract.PsonLoanEditContract;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Resp.ChildrenBean;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
@@ -81,7 +82,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 .subscribe(new ErrorHandleSubscriber<PLFristLeaderResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull PLFristLeaderResp plFristLeaderResp) {
-
+                        mRootView.loadFlowNode(plFristLeaderResp);
                     }
                 });
     }
@@ -103,7 +104,37 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
     }
 
     public void delPsonLoan(String psonLoanId){
+        mModel.delPsonLoan(new BaseIdReqs(psonLoanId))
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object object) {
+                        mRootView.showMessage("删除成功");
+                        mRootView.killMyself();
+                    }
+                });
+    }
 
+    public void editPsonLoan(PsonLoanCreateReqs psonLoanCreateReqs){
+        mModel.editPsonLoan(psonLoanCreateReqs)
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object object) {
+                        mRootView.showMessage("编辑成功");
+                        mRootView.killMyself();
+                    }
+                });
     }
 
 }

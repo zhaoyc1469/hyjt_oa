@@ -197,12 +197,19 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
             shortToast("请选择收款方式");
         }
 
-        if (mFileURLList.size() > 0) {
-            progressDialog = ProgressDialog.show(this, null, "正在上传附件…");
-            mPresenter.sendFile(mFileURLList);
-        } else {
-            fileUploadOk(new ArrayList<>());
-        }
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
+                .setTitle("发起借款")
+                .setMessage("确定发起个人借款?")
+                .setPositiveButton("确定", (dialog, which) -> {
+                    if (mFileURLList.size() > 0) {
+                        progressDialog = ProgressDialog.show(this, null, "正在上传附件…");
+                        mPresenter.sendFile(mFileURLList);
+                    } else {
+                        fileUploadOk(new ArrayList<>());
+                    }
+                }).setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
+        builder.show();
+
     }
 
     @Override

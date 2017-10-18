@@ -14,6 +14,7 @@ import javax.inject.Inject;
 import com.hyjt.home.mvp.contract.PsonLoanEditContract;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Resp.ChildrenBean;
 import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
@@ -71,6 +72,20 @@ public class PsonLoanEditModel extends BaseModel implements PsonLoanEditContract
         Observable<BaseJson<PLCompanyResp>> plCompany = mRepositoryManager.obtainRetrofitService(HomeService.class)
                 .psonLoanCompany();
         return plCompany;
+    }
+
+    @Override
+    public Observable<BaseJson<Object>> delPsonLoan(BaseIdReqs baseIdReqs) {
+        Observable<BaseJson<Object>> delPsonLoan = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .psonLoanDel(baseIdReqs);
+        return delPsonLoan;
+    }
+
+    @Override
+    public Observable<BaseJson<Object>> editPsonLoan(PsonLoanCreateReqs psonLoanCreateReqs) {
+        Observable<BaseJson<Object>> editPsonLoan = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .psonLoanEdit(psonLoanCreateReqs);
+        return editPsonLoan;
     }
 
 }

@@ -383,6 +383,10 @@ public interface HomeService {
     @POST("/APICwPersonalJK/Delete")
     Observable<BaseJson<Object>> psonLoanDel(@Body BaseIdReqs BaseIdReqs);
 
+    //个人借款编辑
+    @POST("/APICwPersonalJK/EditOnOnePage")
+    Observable<BaseJson<Object>> psonLoanEdit(@Body PsonLoanCreateReqs PsonLoanReqs);
+
     //个人借款出纳确认
     @POST("/APICwPersonalJK/EditChuNa")
     Observable<BaseJson<Object>> plTellerConfirm(@Body BaseIdReqs BaseIdReqs);

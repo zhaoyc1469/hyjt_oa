@@ -23,6 +23,7 @@ android {
                 arguments = [moduleName: project.getName()]
             }
         }
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -132,4 +133,5 @@ dependencies {
     testCompile rootProject.ext.dependencies["junit"]
 
 //    compile project(':db')
+    compile 'com.android.support:multidex:1.0.1'
 }

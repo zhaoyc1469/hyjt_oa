@@ -6,6 +6,7 @@ import com.hyjt.frame.mvp.IModel;
 import com.hyjt.frame.mvp.IView;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
@@ -22,6 +23,7 @@ public interface PsonLoanEditContract {
 
         void showPLDetail(PsonLoanDetailResp psonLoanDetailResp);
 
+        void loadFlowNode(PLFristLeaderResp plFristLeaderResp);
     }
 
     interface Model extends IModel {
@@ -33,5 +35,9 @@ public interface PsonLoanEditContract {
         Observable<BaseJson<PLBankAccountResp>> getBankAccount();
 
         Observable<BaseJson<PLCompanyResp>> getPLCompany();
+
+        Observable<BaseJson<Object>> delPsonLoan(BaseIdReqs baseIdReqs);
+
+        Observable<BaseJson<Object>> editPsonLoan(PsonLoanCreateReqs psonLoanCreateReqs);
     }
 }
