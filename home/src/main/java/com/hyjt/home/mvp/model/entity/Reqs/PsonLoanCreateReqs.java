@@ -148,5 +148,32 @@ public class PsonLoanCreateReqs {
             this.FileName = FileName;
         }
 
+        @Override
+        public String toString() {
+            return "FilePackBean{" +
+                    "FileId='" + FileId + '\'' +
+                    ", FileName='" + FileName + '\'' +
+                    '}';
+        }
     }
+
+    @Override
+    public String toString() {
+        return "PsonLoanCreateReqs{" +
+                "Id='" + Id + '\'' +
+                ", CwRpname='" + CwRpname + '\'' +
+                ", CwRpbank='" + CwRpbank + '\'' +
+                ", CwRpnum='" + CwRpnum + '\'' +
+                ", CwPtext='" + CwPtext + '\'' +
+                ", Flowid='" + Flowid + '\'' +
+                ", CwPmode='" + CwPmode + '\'' +
+                ", CwPmoney='" + CwPmoney + '\'' +
+                ", CwPcompany='" + CwPcompany + '\'' +
+                ", CwPLeader='" + CwPLeader + '\'' +
+                ", CwPreason='" + CwPreason + '\'' +
+                ", FilePack=" + (FilePack.size() > 0 ? "" : FilePack.get(0).toString()) +
+                '}';
+    }
+
+
 }

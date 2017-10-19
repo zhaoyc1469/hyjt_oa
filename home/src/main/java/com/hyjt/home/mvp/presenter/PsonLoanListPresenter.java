@@ -65,7 +65,8 @@ public class PsonLoanListPresenter extends BasePresenter<PsonLoanListContract.Mo
             mRootView.setAdapter(mAdapter);
             mAdapter.setOnItemClickListener((view, viewType, data, position) -> {
                 ARouter.getInstance().build("/home/PsonLoanEditActivity")
-                        .withString("PsonLoanId", plList.get(position).getId()).navigation();
+                        .withString("PsonLoanId", plList.get(position).getId())
+                        .withString("PsonLoanType", Type).navigation();
             });
         }
 

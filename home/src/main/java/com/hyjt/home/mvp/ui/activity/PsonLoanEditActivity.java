@@ -17,8 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -31,13 +29,16 @@ import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.di.component.DaggerPsonLoanEditComponent;
 import com.hyjt.home.di.module.PsonLoanEditModule;
 import com.hyjt.home.mvp.contract.PsonLoanEditContract;
+import com.hyjt.home.mvp.model.entity.Reqs.PlNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
+import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 import com.hyjt.home.mvp.presenter.PsonLoanEditPresenter;
 
 import com.hyjt.home.R;
 import com.hyjt.home.mvp.ui.adapter.FrstLdAdapter;
+import com.hyjt.home.mvp.ui.adapter.PlCompBankActAdapter;
 import com.hyjt.home.mvp.ui.view.Constant;
 import com.hyjt.home.mvp.ui.view.GetSingleSelectItem;
 
@@ -91,10 +92,11 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
     private Button mBtnEditLoan;
     private LinearLayout mLlBottomBtn;
     private ProgressDialog progressDialog;
-    private boolean editState;
     private PsonLoanDetailResp psonLoanDetailResp;
-    private PLFristLeaderResp.FlowDetailsBean flowDetailsBean;
+    private PLFristLeaderResp.FlowDetailsBean flowDetailsBean = new PLFristLeaderResp.FlowDetailsBean();
     private PsonLoanEditActivity mContext;
+    private String psonLoanType;
+    private PLCompBankAccountResp.BankPackBean bankPackBean;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -115,6 +117,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
     public void initData(Bundle savedInstanceState) {
         mContext = this;
         Intent intent = getIntent();
+        psonLoanType = intent.getStringExtra("PsonLoanType");
         psonLoanId = intent.getStringExtra("PsonLoanId");
         mRlPsonloan = (RelativeLayout) findViewById(R.id.rl_psonloan);
         mIvTopBack = (ImageView) findViewById(R.id.iv_top_back);
@@ -149,23 +152,12 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
 
         mBtnEditLoan = (Button) findViewById(R.id.btn_edit_loan);
         mBtnEditLoan.setOnClickListener(v -> {
-            if (editState) {
-                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
-                        .setTitle("修改借款信息")
-                        .setMessage("确定修改该条个人借款?")
-                        .setPositiveButton("确定", (dialog, which) -> sendEditPLMsg())
-                        .setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
-                builder.show();
-            } else {
-                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
-                        .setTitle("提交审批信息")
-                        .setMessage("确定提交该条审批信息?")
-                        .setPositiveButton("确定", (dialog, which) -> {
-                            progressDialog = ProgressDialog.show(this, null, "审批信息提交中…");
-//                            mPresenter.delPsonLoan(psonLoanId);
-                        }).setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
-                builder.show();
-            }
+            android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
+                    .setTitle("修改借款信息")
+                    .setMessage("确定修改该条个人借款?")
+                    .setPositiveButton("确定", (dialog, which) -> sendEditPLMsg())
+                    .setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
+            builder.show();
         });
         mBtnDelLoan = (Button) findViewById(R.id.btn_del_loan);
         mBtnDelLoan.setOnClickListener(v -> {
@@ -189,6 +181,17 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mBtnReceiverConfirm = (Button) findViewById(R.id.btn_receiver_confirm);
         mRlReceiverConfirm = (RelativeLayout) findViewById(R.id.rl_receiver_confirm);
         mEdtRemark = (EditText) findViewById(R.id.edt_remark);
+
+        if ("1".equals(psonLoanType)){
+            mRlTellerConfirm.setVisibility(View.GONE);
+            mRlReceiverConfirm.setVisibility(View.VISIBLE);
+        } else if ("2".equals(psonLoanType)){
+            mRlTellerConfirm.setVisibility(View.GONE);
+            mRlReceiverConfirm.setVisibility(View.GONE);
+        } else if ("3".equals(psonLoanType)){
+            mRlTellerConfirm.setVisibility(View.VISIBLE);
+            mRlReceiverConfirm.setVisibility(View.GONE);
+        }
         mPresenter.getPsonLoanDetail(psonLoanId);
     }
 
@@ -209,7 +212,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         psonLoanCreateReqs.setCwPtext(mEdtRemark.getText().toString().trim());
         List<PsonLoanDetailResp.FilePackBean> fileDetailList = psonLoanDetailResp.getFilePack();
         List<PsonLoanCreateReqs.FilePackBean> fileCreateList = new ArrayList<>();
-        for (PsonLoanDetailResp.FilePackBean filePackBean : fileDetailList ){
+        for (PsonLoanDetailResp.FilePackBean filePackBean : fileDetailList) {
             PsonLoanCreateReqs.FilePackBean fileCreate =
                     new PsonLoanCreateReqs.FilePackBean(filePackBean.getFileId(), filePackBean.getFileName());
             fileCreateList.add(fileCreate);
@@ -260,8 +263,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
             mEdtOpenactBank.setFocusable(false);
             mEdtBankAccount.setFocusable(false);
             mEdtRemark.setFocusable(false);
-            mBtnDelLoan.setVisibility(View.GONE);
-            editState = false;
+            mLlBottomBtn.setVisibility(View.GONE);
         } else {
             setBaseMsgOnClick();
         }
@@ -278,6 +280,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mEdtAccountName.setText(psonLoanDetailResp.getCwRpname());
         mEdtOpenactBank.setText(psonLoanDetailResp.getCwRpbank());
         mEdtBankAccount.setText(psonLoanDetailResp.getCwRpnum());
+        mEdtReceiverAccount.setText(psonLoanDetailResp.getCwBname() + psonLoanDetailResp.getCwBnum());
 //        mEdtRemark.setText(psonLoanDetailResp.getCw);
 
         flowPack.clear();
@@ -300,11 +303,21 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
                 mBtnTellerConfirm.setVisibility(View.GONE);
                 Glide.with(this).load(getString(R.string.home_base_url) +
                         psonLoanDetailResp.getCashierQren()).into(mIvTellerSign);
+            } else {
+                mBtnTellerConfirm.setOnClickListener(v -> {
+                    progressDialog = ProgressDialog.show(this, null, "出纳人员确认中…");
+                    mPresenter.tellerConfirm(psonLoanId);
+                });
             }
             if (!"0".equals(psonLoanDetailResp.getCwPpersonalQren())) {
                 mBtnReceiverConfirm.setVisibility(View.GONE);
                 Glide.with(this).load(getString(R.string.home_base_url) +
                         psonLoanDetailResp.getCwPpersonalQren()).into(mIvReceiverSign);
+            } else {
+                mBtnReceiverConfirm.setOnClickListener(v -> {
+                    progressDialog = ProgressDialog.show(this, null, "收款人员确认中…");
+                    mPresenter.receiverConfirm(psonLoanId);
+                });
             }
 
         } else {
@@ -343,6 +356,36 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         accAlert.show();
     }
 
+    @Override
+    public void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText editText) {
+        List<PLCompBankAccountResp.BankPackBean> bankPack = compBankAccountResp.getBankPack();
+        this.bankPackBean = new PLCompBankAccountResp.BankPackBean();
+
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
+        dialog.setTitle("选择首签领导");
+        dialog.setView(layout).setCancelable(false)
+                .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
+        AlertDialog accAlert = dialog.create();
+        ListView accList = (ListView) layout.findViewById(R.id.accList);
+
+        PlCompBankActAdapter compBankActAdapter = new PlCompBankActAdapter(mContext, bankPack);
+        accList.setAdapter(compBankActAdapter);
+
+        compBankActAdapter.setItemClickListener(position -> {
+            PLCompBankAccountResp.BankPackBean flowDetailsBean = bankPack.get(position);
+            editText.setText(flowDetailsBean.getBankName() + flowDetailsBean.getBankNum());
+            this.bankPackBean.setBankName(flowDetailsBean.getBankName());
+            this.bankPackBean.setBankNum(flowDetailsBean.getBankNum());
+            accAlert.dismiss();
+        });
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+        accAlert.show();
+    }
+
     private void setBaseMsgOnClick() {
         mEdtCompany.setOnClickListener(v -> {
             progressDialog = ProgressDialog.show(this, null, "加载公司列表…");
@@ -356,15 +399,19 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
                 this, mEdtPaymentType, "收款方式", Constant.payTypeArr, false));
         mEdtPaymentType.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
             @Override
             public void afterTextChanged(Editable s) {
-                if ("转账".equals(s.toString())){
+                if ("转账".equals(s.toString())) {
                     mLlTransferMsg.setVisibility(View.VISIBLE);
                     mBtnSelBankAccount.setVisibility(View.VISIBLE);
-                } else if ("现金".equals(s.toString())){
+                } else if ("现金".equals(s.toString())) {
                     mLlTransferMsg.setVisibility(View.GONE);
                     mBtnSelBankAccount.setVisibility(View.GONE);
                 }
@@ -395,31 +442,79 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
 
         TextView mTvNodeName = (TextView) inflate.findViewById(R.id.tv_node_name);
         EditText mEdtApprover = (EditText) inflate.findViewById(R.id.edt_approver);
-        RadioGroup mRgAprState = (RadioGroup) inflate.findViewById(R.id.rg_apr_state);
-        RadioButton mRbAgree = (RadioButton) inflate.findViewById(R.id.rb_agree);
-        RadioButton mRbRefuse = (RadioButton) inflate.findViewById(R.id.rb_refuse);
+        RelativeLayout mRlAccount = (RelativeLayout) inflate.findViewById(R.id.rl_company_act);
+        LinearLayout mLlAccount = (LinearLayout) inflate.findViewById(R.id.ll_company_act);
+        RelativeLayout mRlRemark = (RelativeLayout) inflate.findViewById(R.id.rl_remark);
+        EditText mEdtSendAccount = (EditText) inflate.findViewById(R.id.edt_send_account);
+        Button mBtnSelAct = (Button) inflate.findViewById(R.id.btn_sel_bank_account);
+        LinearLayout mLlAprBtn = (LinearLayout) inflate.findViewById(R.id.ll_apr_btn);
+        ImageView mIvSign = (ImageView) inflate.findViewById(R.id.iv_teller_sign);
+        mLlAprBtn.setVisibility(View.GONE);
+        Button mBtnAgree = (Button) inflate.findViewById(R.id.btn_agree);
+        Button mBtnRefuse = (Button) inflate.findViewById(R.id.btn_refuse);
+        TextView mTvAprState = (TextView) inflate.findViewById(R.id.tv_apr_state);
+        mTvAprState.setVisibility(View.GONE);
         EditText mEdtRemark = (EditText) inflate.findViewById(R.id.edt_remark);
 
         mTvNodeName.setText(flowPackBean.getNodeName());
         mEdtApprover.setText(flowPackBean.getNodePerson());
+        if ("1".equals(flowPackBean.getIsBank())) {
+            mRlRemark.setVisibility(View.GONE);
+            mLlAccount.setVisibility(View.VISIBLE);
+        } else {
+            mRlRemark.setVisibility(View.VISIBLE);
+            mLlAccount.setVisibility(View.GONE);
+        }
+        mBtnSelAct.setOnClickListener(v -> mPresenter.selCompBankAct(mEdtSendAccount));
+
+        if ("同意".equals(flowPackBean.getNodeMemo())) {
+            mTvAprState.setVisibility(View.VISIBLE);
+            mTvAprState.setText(flowPackBean.getNodeMemo());
+            mEdtApprover.setVisibility(View.GONE);
+            Glide.with(mContext).load(getString(R.string.home_base_url) +
+                    flowPackBean.getNodeSign()).into(mIvSign);
+            mIvSign.setVisibility(View.VISIBLE);
+        } else if ("不同意".equals(flowPackBean.getNodeMemo())) {
+            mTvAprState.setVisibility(View.VISIBLE);
+            mTvAprState.setText(flowPackBean.getNodeMemo());
+            mEdtApprover.setVisibility(View.GONE);
+            Glide.with(mContext).load(getString(R.string.home_base_url) +
+                    flowPackBean.getNodeSign()).into(mIvSign);
+            mIvSign.setVisibility(View.VISIBLE);
+        } else {
+            mLlAprBtn.setVisibility(View.VISIBLE);
+            mTvAprState.setText("未审批");
+            mBtnAgree.setOnClickListener(v -> {
+                PlNodeApproveReqs nodeApr = new PlNodeApproveReqs();
+                nodeApr.setId(psonLoanId);
+                nodeApr.setNodeMemo("同意");
+                nodeApr.setNodeMemotext(mEdtRemark.getText().toString().trim());
+                nodeApr.setCwBname("");
+                nodeApr.setCwBnum("");
+                mPresenter.flowNodeApr(nodeApr);
+            });
+            mBtnRefuse.setOnClickListener(v -> {
+                PlNodeApproveReqs nodeApr = new PlNodeApproveReqs();
+                nodeApr.setId(psonLoanId);
+                nodeApr.setNodeMemo("不同意");
+                nodeApr.setNodeMemotext(mEdtRemark.getText().toString().trim());
+                mPresenter.flowNodeApr(nodeApr);
+            });
+        }
+        mEdtRemark.setText(flowPackBean.getNodeMemotext());
+
 
         if (!getUserName().equals(currentPerson) || !currentPerson.equals(flowPackBean.getNodePerson().trim())) {
-            mRbAgree.setClickable(false);
-            mRbRefuse.setClickable(false);
             mEdtApprover.setEnabled(false);
             mEdtApprover.setFocusable(false);
             mEdtRemark.setEnabled(false);
             mEdtRemark.setFocusable(false);
+            mLlAprBtn.setVisibility(View.GONE);
+            mRlRemark.setVisibility(View.GONE);
+            mLlAccount.setVisibility(View.GONE);
+            mTvAprState.setVisibility(View.VISIBLE);
         }
-
-        if ("同意".equals(flowPackBean.getNodeMemo())) {
-            mRbAgree.setChecked(true);
-        } else if ("不同意".equals(flowPackBean.getNodeMemo())) {
-            mRbRefuse.setChecked(true);
-        }
-        mEdtRemark.setText(flowPackBean.getNodeMemotext());
 
         mLLFlowNode.addView(inflate);
     }
-
 }

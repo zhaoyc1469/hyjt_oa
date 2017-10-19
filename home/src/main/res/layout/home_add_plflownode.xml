@@ -5,71 +5,176 @@
     android:background="@color/home_common_F4F5F6">
 
     <LinearLayout
-        android:layout_marginTop="@dimen/home_common_12sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/home_common_12sp"
         android:orientation="vertical">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="34dp"
-            android:layout_marginTop="6dp"
-            android:background="@drawable/home_bg_white_table">
-            <TextView
-                android:id="@+id/tv_node_name"
-                style="@style/home_tv_standard"
-                android:text="审批人"/>
-            <View style="@style/home_meeting_line" />
-            <EditText
-                android:id="@+id/edt_approver"
-                style="@style/home_edt_standard" />
-            <RadioGroup
-                android:id="@+id/rg_apr_state"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="16dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:id="@+id/rb_agree"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="同意"
-                    android:textColor="@color/home_common_000000"/>
-                <RadioButton
-                    android:id="@+id/rb_refuse"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="不同意"
-                    android:textColor="@color/home_common_000000"/>
-            </RadioGroup>
-        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:minHeight="30dp"
-            android:layout_height="wrap_content"
+            android:layout_height="47dp"
             android:layout_marginTop="6dp"
             android:background="@drawable/home_bg_white_table">
+
+            <TextView
+                android:id="@+id/tv_node_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginStart="16dp"
+                android:textColor="@color/home_common_000000"
+                android:text="审批人" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="47dp"
+                android:layout_marginStart="86dp"
+                android:background="#000" />
+
+            <EditText
+                android:id="@+id/edt_approver"
+                style="@style/home_edt_standard"
+                android:focusable="true"/>
+
+            <ImageView
+                android:id="@+id/iv_teller_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_marginBottom="1.4dp"
+                android:layout_marginStart="89dp"
+                android:layout_marginTop="1.4dp" />
+
+            <LinearLayout
+                android:id="@+id/ll_apr_btn"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_agree"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginTop="1dp"
+                    android:paddingBottom="0dp"
+                    android:paddingTop="0dp"
+                    android:text="同意" />
+
+                <Button
+                    android:id="@+id/btn_refuse"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginTop="1dp"
+                    android:paddingBottom="0dp"
+                    android:paddingTop="0dp"
+                    android:text="拒绝" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_apr_state"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="34dp"
+                android:textSize="21sp"
+                android:gravity="center_vertical"
+                android:text="同意"
+                android:textColor="#000"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_company_act"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="选择账户" />
+
+
+                <Button
+                    android:id="@+id/btn_sel_bank_account"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:text="选择出款账户"/>
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_company_act"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="放款账户" />
+
+                <EditText
+                    android:id="@+id/edt_send_account"
+                    style="@style/home_edt_standard"/>
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="34dp"-->
+                <!--android:layout_marginTop="6dp"-->
+                <!--android:background="@drawable/home_bg_white_table">-->
+
+                <!--<TextView-->
+                    <!--style="@style/home_tv_standard"-->
+                    <!--android:text="账户银行" />-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/edt_send_act_bank"-->
+                    <!--style="@style/home_edt_standard"/>-->
+                <!--<View style="@style/home_meeting_line" />-->
+            <!--</RelativeLayout>-->
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/home_bg_white_table"
+            android:minHeight="30dp">
 
             <TextView
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:text="备注"
                 android:textColor="@color/home_common_000000" />
+
             <EditText
                 android:id="@+id/edt_remark"
                 android:layout_width="match_parent"
-                android:minHeight="30dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="14dp"
                 android:layout_marginStart="89dp"
                 android:layout_marginTop="6dp"
                 android:background="@null"
                 android:gravity="top"
+                android:minHeight="30dp"
                 android:textColor="@color/home_common_434242"
                 android:textColorHint="@color/home_common_9CA0A4"
                 android:textSize="14sp" />
@@ -79,17 +184,19 @@
                 android:layout_height="20dp"
                 android:layout_marginStart="86dp"
                 android:background="#000000" />
+
             <View
                 android:layout_width="1dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="86dp"
                 android:layout_alignParentBottom="true"
+                android:layout_marginStart="86dp"
                 android:background="#000000" />
+
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_alignTop="@id/edt_remark"
                 android:layout_alignBottom="@id/edt_remark"
+                android:layout_alignTop="@id/edt_remark"
                 android:layout_marginStart="86dp"
                 android:background="#000000" />
         </RelativeLayout>

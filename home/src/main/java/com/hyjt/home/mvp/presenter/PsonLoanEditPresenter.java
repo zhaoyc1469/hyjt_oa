@@ -1,6 +1,8 @@
 package com.hyjt.home.mvp.presenter;
 
 import android.app.Application;
+import android.util.Log;
+import android.widget.EditText;
 
 import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
@@ -25,9 +27,12 @@ import javax.inject.Inject;
 import com.hyjt.home.mvp.contract.PsonLoanEditContract;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.PlNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Resp.ChildrenBean;
+import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLFlowNodeResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 import com.hyjt.home.mvp.ui.view.treelistview.Node;
@@ -121,6 +126,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
     }
 
     public void editPsonLoan(PsonLoanCreateReqs psonLoanCreateReqs){
+        Log.e("http_reqs", psonLoanCreateReqs.toString());
         mModel.editPsonLoan(psonLoanCreateReqs)
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
@@ -132,6 +138,75 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                     @Override
                     public void onNext(@NonNull Object object) {
                         mRootView.showMessage("编辑成功");
+                        mRootView.killMyself();
+                    }
+                });
+    }
+
+    public void flowNodeApr(PlNodeApproveReqs plnodeApproveReqs){
+        Log.e("http_reqs", plnodeApproveReqs.toString());
+        mModel.flowNodeApprove(plnodeApproveReqs)
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object object) {
+                        mRootView.showMessage("审批成功");
+                        mRootView.killMyself();
+                    }
+                });
+    }
+
+    public void selCompBankAct(EditText editText){
+        mModel.compBankAccount()
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ErrorHandleSubscriber<PLCompBankAccountResp>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull PLCompBankAccountResp CompBankAccountResp) {
+                        mRootView.showAprBankAccount(CompBankAccountResp, editText);
+                    }
+                });
+    }
+
+    public void tellerConfirm(String psonLoanId){
+        mModel.plReceiverConfirm(new BaseIdReqs(psonLoanId))
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object obj) {
+                        mRootView.showMessage("确认成功");
+                        mRootView.killMyself();
+                    }
+                });
+    }
+
+
+    public void receiverConfirm(String psonLoanId){
+        mModel.plReceiverConfirm(new BaseIdReqs(psonLoanId))
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object obj) {
+                        mRootView.showMessage("确认成功");
                         mRootView.killMyself();
                     }
                 });

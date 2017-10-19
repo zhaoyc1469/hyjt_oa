@@ -14,15 +14,14 @@ import javax.inject.Inject;
 import com.hyjt.home.mvp.contract.PsonLoanEditContract;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.PlNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
-import com.hyjt.home.mvp.model.entity.Resp.ChildrenBean;
 import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 import com.hyjt.home.mvp.model.service.HomeService;
-
-import java.util.List;
 
 import io.reactivex.Observable;
 
@@ -86,6 +85,34 @@ public class PsonLoanEditModel extends BaseModel implements PsonLoanEditContract
         Observable<BaseJson<Object>> editPsonLoan = mRepositoryManager.obtainRetrofitService(HomeService.class)
                 .psonLoanEdit(psonLoanCreateReqs);
         return editPsonLoan;
+    }
+
+    @Override
+    public Observable<BaseJson<Object>> flowNodeApprove(PlNodeApproveReqs PlNodeApproveReqs) {
+        Observable<BaseJson<Object>> flowNodeApr = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .plFlowNodeApr(PlNodeApproveReqs);
+        return flowNodeApr;
+    }
+
+    @Override
+    public Observable<BaseJson<PLCompBankAccountResp>> compBankAccount() {
+        Observable<BaseJson<PLCompBankAccountResp>> compBankAccount = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .plCompBankAccount();
+        return compBankAccount;
+    }
+
+    @Override
+    public Observable<BaseJson<Object>> plTellerConfirm(BaseIdReqs baseIdReqs) {
+        Observable<BaseJson<Object>> tellerConfirm = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .plTellerConfirm(baseIdReqs);
+        return tellerConfirm;
+    }
+
+    @Override
+    public Observable<BaseJson<Object>> plReceiverConfirm(BaseIdReqs baseIdReqs) {
+        Observable<BaseJson<Object>> receiverConfirm = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .plReceiverConfirm(baseIdReqs);
+        return receiverConfirm;
     }
 
 }

@@ -52,12 +52,30 @@ public class PsonLoanDetailResp {
     private String FlowState;
     private String Flowid;
     private String CwJKState;
+    private String CwBname;
+    private String CwBnum;
     private String CurrentPerson;
     private String FileUploader;
     private String EntityState;
     private String EntityKey;
     private List<FilePackBean> FilePack;
     private List<FlowPackBean> FlowPack;
+
+    public String getCwBname() {
+        return CwBname;
+    }
+
+    public void setCwBname(String cwBname) {
+        CwBname = cwBname;
+    }
+
+    public String getCwBnum() {
+        return CwBnum;
+    }
+
+    public void setCwBnum(String cwBnum) {
+        CwBnum = cwBnum;
+    }
 
     public String getId() {
         return Id;

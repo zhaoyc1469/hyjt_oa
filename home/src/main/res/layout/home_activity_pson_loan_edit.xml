@@ -15,8 +15,8 @@
         android:layout_height="29dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="4dp"
         android:layout_marginBottom="11dp"
+        android:layout_marginTop="4dp"
         android:orientation="horizontal">
 
         <Button
@@ -38,8 +38,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/icld_ploan_edit"
-        android:layout_above="@id/ll_bottom_btn">
+        android:layout_above="@id/ll_bottom_btn"
+        android:layout_below="@id/icld_ploan_edit">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -131,7 +131,7 @@
                 <EditText
                     android:id="@+id/edt_department"
                     style="@style/home_edt_standard"
-                    android:focusable="false"/>
+                    android:focusable="false" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
@@ -149,7 +149,7 @@
                 <EditText
                     android:id="@+id/edt_frist_leader"
                     style="@style/home_edt_standard"
-                    android:focusable="false"/>
+                    android:focusable="false" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
@@ -183,7 +183,7 @@
 
                 <EditText
                     android:id="@+id/edt_loan_amount"
-                    style="@style/home_edt_standard"/>
+                    style="@style/home_edt_standard" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
@@ -201,16 +201,16 @@
                 <EditText
                     android:id="@+id/edt_payment_type"
                     style="@style/home_edt_standard"
-                    android:focusable="false"/>
+                    android:focusable="false" />
 
                 <Button
                     android:id="@+id/btn_sel_bank_account"
-                    android:layout_alignParentEnd="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="0dp"
+                    android:layout_alignParentEnd="true"
                     android:paddingBottom="0dp"
-                    android:text="选择预存账户"/>
+                    android:paddingTop="0dp"
+                    android:text="选择预存账户" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
@@ -250,7 +250,7 @@
 
                     <EditText
                         android:id="@+id/edt_openact_bank"
-                        style="@style/home_edt_standard"/>
+                        style="@style/home_edt_standard" />
 
                     <View style="@style/home_meeting_line" />
                 </RelativeLayout>
@@ -344,52 +344,73 @@
                 android:id="@+id/ll_flow_node"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"/>
+                android:orientation="vertical" />
+
+            <RelativeLayout
+                android:id="@+id/rl_receiver_account"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="付款账户" />
+
+                <EditText
+                    android:id="@+id/edt_receiver_account"
+                    style="@style/home_edt_standard" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/rl_teller_confirm"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="47dp"
                 android:layout_marginTop="6dp"
                 android:background="@drawable/home_bg_white_table"
                 android:minHeight="40dp">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
                     android:text="出纳确认"
                     android:textColor="@color/home_common_000000" />
+
                 <ImageView
                     android:id="@+id/iv_teller_sign"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginEnd="3dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="46dp" />
+                    android:layout_height="44dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginTop="1dp" />
+
                 <Button
                     android:id="@+id/btn_teller_confirm"
-                    android:paddingTop="0dp"
-                    android:paddingBottom="0dp"
-                    android:layout_alignParentEnd="true"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:text="确认"/>
+                    android:layout_alignParentEnd="true"
+                    android:paddingBottom="0dp"
+                    android:paddingTop="0dp"
+                    android:text="确认" />
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="31dp"
                     android:layout_marginStart="86dp"
                     android:background="#000000" />
+
                 <View
                     android:layout_width="1dp"
                     android:layout_height="31dp"
                     android:layout_alignParentBottom="true"
                     android:layout_marginStart="86dp"
                     android:background="#000000" />
+
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
@@ -398,68 +419,44 @@
                     android:layout_marginStart="86dp"
                     android:background="#000000" />
             </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/rl_receiver_account"
-                android:layout_width="match_parent"
-                android:layout_height="34dp"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/home_bg_white_table">
-                <TextView
-                    style="@style/home_tv_standard"
-                    android:text="付款账户" />
-                <EditText
-                    android:id="@+id/edt_receiver_account"
-                    style="@style/home_edt_standard"/>
-                <View style="@style/home_meeting_line" />
-            </RelativeLayout>
+
             <RelativeLayout
                 android:id="@+id/rl_receiver_confirm"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="40dp"
+                android:layout_height="47dp"
                 android:layout_marginTop="6dp"
                 android:background="@drawable/home_bg_white_table">
+
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
+                    android:gravity="center_vertical"
                     android:text="收款人确认"
                     android:textColor="@color/home_common_000000" />
+
                 <ImageView
                     android:id="@+id/iv_receiver_sign"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginEnd="3dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="46dp"/>
+                    android:layout_height="44dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="1.4dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginTop="1dp" />
+
                 <Button
                     android:id="@+id/btn_receiver_confirm"
-                    android:layout_alignParentEnd="true"
-                    android:paddingTop="0dp"
-                    android:paddingBottom="0dp"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
                     android:gravity="center"
+                    android:paddingBottom="0dp"
+                    android:paddingTop="0dp"
                     android:text="确认" />
-                <View
-                android:layout_width="1dp"
-                android:layout_height="31dp"
-                android:layout_marginStart="86dp"
-                android:background="#000000" />
+
                 <View
                     android:layout_width="1dp"
-                    android:layout_height="31dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="86dp"
-                    android:background="#000000" />
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignBottom="@id/iv_receiver_sign"
-                    android:layout_alignTop="@id/iv_receiver_sign"
+                    android:layout_height="47dp"
                     android:layout_marginStart="86dp"
                     android:background="#000000" />
             </RelativeLayout>
@@ -485,8 +482,8 @@
                     android:layout_height="30dp"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="20dp"
-                    android:paddingTop="0dp"
                     android:paddingBottom="0dp"
+                    android:paddingTop="0dp"
                     android:text="添加" />
 
             </RelativeLayout>
@@ -495,8 +492,8 @@
                 android:id="@+id/ll_file_pack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="9dp"/>
+                android:layout_marginBottom="9dp"
+                android:orientation="vertical" />
 
         </LinearLayout>
 
