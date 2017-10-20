@@ -16,6 +16,7 @@ public class PsonLoanCreateReqs {
     private String CwRpname;
     private String CwRpbank;
     private String CwRpnum;
+    private String CwPpnum;
     private String CwPtext;
     private String Flowid;
     private String CwPmode;
@@ -24,6 +25,14 @@ public class PsonLoanCreateReqs {
     private String CwPLeader;
     private String CwPreason;
     private List<FilePackBean> FilePack;
+
+    public String getCwPpnum() {
+        return CwPpnum;
+    }
+
+    public void setCwPpnum(String cwPpnum) {
+        CwPpnum = cwPpnum;
+    }
 
     public String getId() {
         return Id;
@@ -171,7 +180,7 @@ public class PsonLoanCreateReqs {
                 ", CwPcompany='" + CwPcompany + '\'' +
                 ", CwPLeader='" + CwPLeader + '\'' +
                 ", CwPreason='" + CwPreason + '\'' +
-                ", FilePack=" + (FilePack.size() > 0 ? "" : FilePack.get(0).toString()) +
+                ", FilePack=" + FilePack.toString() +//(FilePack.size() > 0 ? "" : FilePack.get(0).toString()) +
                 '}';
     }
 

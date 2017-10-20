@@ -23,6 +23,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
 import com.hyjt.frame.base.BaseActivity;
+import com.hyjt.frame.base.BaseApplication;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.utils.UiUtils;
 
@@ -207,8 +208,8 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         psonLoanCreateReqs.setCwRpname(mEdtAccountName.getText().toString().trim());
         psonLoanCreateReqs.setCwRpbank(mEdtOpenactBank.getText().toString().trim());
         psonLoanCreateReqs.setCwRpnum(mEdtBankAccount.getText().toString().trim());
-
-//        psonLoanCreateReqs.setFlowid();
+        psonLoanCreateReqs.setCwPpnum(mEdtLoanNum.getText().toString().trim());
+        psonLoanCreateReqs.setFlowid(flowDetailsBean.getFlowid());
         psonLoanCreateReqs.setCwPtext(mEdtRemark.getText().toString().trim());
         List<PsonLoanDetailResp.FilePackBean> fileDetailList = psonLoanDetailResp.getFilePack();
         List<PsonLoanCreateReqs.FilePackBean> fileCreateList = new ArrayList<>();
@@ -219,7 +220,6 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
 
         }
         psonLoanCreateReqs.setFilePack(fileCreateList);
-//        psonLoanCreateReqs.setFlowid();
         mPresenter.editPsonLoan(psonLoanCreateReqs);
     }
 
@@ -365,7 +365,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
-        dialog.setTitle("选择首签领导");
+        dialog.setTitle("选择银行账户");
         dialog.setView(layout).setCancelable(false)
                 .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
         AlertDialog accAlert = dialog.create();
