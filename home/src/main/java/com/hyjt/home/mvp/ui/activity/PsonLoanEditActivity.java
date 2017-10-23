@@ -521,6 +521,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
             });
         }
         mEdtRemark.setText(flowPackBean.getNodeMemotext());
+        mEdtSendAccount.setText(flowPackBean.getCwBname() + " " + flowPackBean.getCwBnum());
 
 
         if (!getUserName().equals(currentPerson) || !currentPerson.equals(flowPackBean.getNodePerson().trim())) {
