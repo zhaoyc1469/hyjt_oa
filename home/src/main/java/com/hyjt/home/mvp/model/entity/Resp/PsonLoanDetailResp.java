@@ -51,6 +51,7 @@ public class PsonLoanDetailResp {
     private String CwPpersonalQren;
     private String FlowState;
     private String Flowid;
+    private String CwPtext;
     private String CwJKState;
     private String CwBname;
     private String CwBnum;
@@ -60,6 +61,14 @@ public class PsonLoanDetailResp {
     private String EntityKey;
     private List<FilePackBean> FilePack;
     private List<FlowPackBean> FlowPack;
+
+    public String getCwPtext() {
+        return CwPtext;
+    }
+
+    public void setCwPtext(String cwPtext) {
+        CwPtext = cwPtext;
+    }
 
     public String getCwBname() {
         return CwBname;

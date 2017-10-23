@@ -200,6 +200,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         psonLoanCreateReqs.setCwPpnum(mEdtLoanNum.getText().toString().trim());
         psonLoanCreateReqs.setFlowid(flowDetailsBean.getFlowid());
         psonLoanCreateReqs.setCwPtext(mEdtRemark.getText().toString().trim());
+        psonLoanCreateReqs.setCwPnum(mEdtLoanNum.getText().toString().trim());
         List<PsonLoanDetailResp.FilePackBean> fileDetailList = psonLoanDetailResp.getFilePack();
         List<PsonLoanCreateReqs.FilePackBean> fileCreateList = new ArrayList<>();
         for (PsonLoanDetailResp.FilePackBean filePackBean : fileDetailList) {
@@ -258,20 +259,19 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         }
 
 
-
-        if ("1".equals(psonLoanType)){
-            if ("提交".equals(psonLoanDetailResp.getCwJKState())){
+        if ("1".equals(psonLoanType)) {
+            if ("提交".equals(psonLoanDetailResp.getCwJKState())) {
                 mRlTellerConfirm.setVisibility(View.GONE);
                 mRlReceiverConfirm.setVisibility(View.GONE);
-            }else {
+            } else {
                 mRlTellerConfirm.setVisibility(View.VISIBLE);
                 mRlReceiverConfirm.setVisibility(View.VISIBLE);
             }
             mEdtReceiverAccount.setFocusable(false);
-        } else if ("2".equals(psonLoanType)){
+        } else if ("2".equals(psonLoanType)) {
             mRlTellerConfirm.setVisibility(View.GONE);
             mRlReceiverConfirm.setVisibility(View.GONE);
-        } else if ("3".equals(psonLoanType)){
+        } else if ("3".equals(psonLoanType)) {
             mRlTellerConfirm.setVisibility(View.VISIBLE);
             mRlReceiverConfirm.setVisibility(View.GONE);
         }
@@ -288,6 +288,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mEdtAccountName.setText(psonLoanDetailResp.getCwRpname());
         mEdtOpenactBank.setText(psonLoanDetailResp.getCwRpbank());
         mEdtBankAccount.setText(psonLoanDetailResp.getCwRpnum());
+        mEdtRemark.setText(psonLoanDetailResp.getCwPtext());
         mEdtReceiverAccount.setText(psonLoanDetailResp.getCwBname() + psonLoanDetailResp.getCwBnum());
 //        mEdtRemark.setText(psonLoanDetailResp.getCw);
 
@@ -312,20 +313,28 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
                 Glide.with(this).load(getString(R.string.home_base_url) +
                         psonLoanDetailResp.getCashierQren()).into(mIvTellerSign);
             } else {
-                mBtnTellerConfirm.setOnClickListener(v -> {
-                    progressDialog = ProgressDialog.show(this, null, "出纳人员确认中…");
-                    mPresenter.tellerConfirm(psonLoanId);
-                });
+                if ("3".equals(psonLoanType)) {
+                    mBtnTellerConfirm.setOnClickListener(v -> {
+                        progressDialog = ProgressDialog.show(this, null, "出纳人员确认中…");
+                        mPresenter.tellerConfirm(psonLoanId);
+                    });
+                } else {
+                    mRlTellerConfirm.setVisibility(View.GONE);
+                }
             }
             if (!"0".equals(psonLoanDetailResp.getCwPpersonalQren())) {
                 mBtnReceiverConfirm.setVisibility(View.GONE);
                 Glide.with(this).load(getString(R.string.home_base_url) +
                         psonLoanDetailResp.getCwPpersonalQren()).into(mIvReceiverSign);
             } else {
-                mBtnReceiverConfirm.setOnClickListener(v -> {
-                    progressDialog = ProgressDialog.show(this, null, "收款人员确认中…");
-                    mPresenter.receiverConfirm(psonLoanId);
-                });
+                if ("0".equals(psonLoanDetailResp.getCashierQren())) {
+                    mBtnReceiverConfirm.setOnClickListener(v -> {
+                        progressDialog = ProgressDialog.show(this, null, "收款人员确认中…");
+                        mPresenter.receiverConfirm(psonLoanId);
+                    });
+                } else {
+                    mRlReceiverConfirm.setVisibility(View.GONE);
+                }
             }
 
         } else {
@@ -368,7 +377,6 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
     public void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText editText) {
         List<PLCompBankAccountResp.BankPackBean> bankPack = compBankAccountResp.getBankPack();
         this.bankPackBean = new PLCompBankAccountResp.BankPackBean();
-
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -496,16 +504,18 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
                 PlNodeApproveReqs nodeApr = new PlNodeApproveReqs();
                 nodeApr.setId(psonLoanId);
                 nodeApr.setNodeMemo("同意");
+                nodeApr.setCwBname(bankPackBean.getBankName());
+                nodeApr.setCwBnum(bankPackBean.getBankNum());
                 nodeApr.setNodeMemotext(mEdtRemark.getText().toString().trim());
-                nodeApr.setCwBname("");
-                nodeApr.setCwBnum("");
                 mPresenter.flowNodeApr(nodeApr);
             });
             mBtnRefuse.setOnClickListener(v -> {
                 PlNodeApproveReqs nodeApr = new PlNodeApproveReqs();
                 nodeApr.setId(psonLoanId);
                 nodeApr.setNodeMemo("不同意");
-                nodeApr.setNodeMemotext(mEdtRemark.getText().toString().trim());
+                nodeApr.setCwBname(bankPackBean.getBankName());
+                nodeApr.setCwBnum(bankPackBean.getBankNum());
+                nodeApr.setNodeMemotext("" + mEdtRemark.getText().toString().trim());
                 mPresenter.flowNodeApr(nodeApr);
             });
         }
@@ -518,7 +528,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
             mEdtRemark.setEnabled(false);
             mEdtRemark.setFocusable(false);
             mLlAprBtn.setVisibility(View.GONE);
-            mRlRemark.setVisibility(View.GONE);
+//            mRlRemark.setVisibility(View.GONE);
             mLlAccount.setVisibility(View.GONE);
             mTvAprState.setVisibility(View.VISIBLE);
         }

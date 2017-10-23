@@ -3,6 +3,7 @@ package com.hyjt.home.mvp.ui.activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.home.di.component.DaggerToCompLoanCreateComponent;
@@ -12,9 +13,8 @@ import com.hyjt.home.mvp.presenter.ToCompLoanCreatePresenter;
 
 import com.hyjt.home.R;
 
-
+@Route(path = "/home/ToCompLoanCreateActivity")
 public class ToCompLoanCreateActivity extends BaseActivity<ToCompLoanCreatePresenter> implements ToCompLoanCreateContract.View {
-
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {

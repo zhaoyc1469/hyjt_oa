@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.hyjt.frame.api.Api;
 import com.hyjt.frame.utils.JsonUtils;
 import com.hyjt.home.mvp.model.entity.Resp.PushExtraResp;
 
 import cn.jpush.android.api.JPushInterface;
+import freemarker.template.utility.StringUtil;
 
 public class InformReceiver extends BroadcastReceiver {
 
@@ -72,6 +74,18 @@ public class InformReceiver extends BroadcastReceiver {
                     if (!TextUtils.isEmpty(pushExtraResp.getId())) {
                         ARouter.getInstance().build("/home/LaborUnionReqsDetailActivity")
                                 .withString("Id", pushExtraResp.getId())
+                                .navigation();
+                    }
+                } else if ("CwPersonalJK".equals(pushExtraResp.getType())){
+                    if (!TextUtils.isEmpty(pushExtraResp.getId())) {
+                        ARouter.getInstance().build("/home/PsonLoanEditActivity")
+                                .withString("type", ""+(Integer.parseInt(pushExtraResp.getMode())+1))
+                                .navigation();
+                    }
+                } else if ("CwCompanyJK".equals(pushExtraResp.getType())){
+                    if (!TextUtils.isEmpty(pushExtraResp.getId())) {
+                        ARouter.getInstance().build("/home/ToCompLoanEditActivity")
+                                .withString("type", ""+(Integer.parseInt(pushExtraResp.getMode())+1))
                                 .navigation();
                     }
                 }

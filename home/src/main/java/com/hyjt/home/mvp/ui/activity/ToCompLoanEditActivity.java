@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.home.di.component.DaggerToCompLoanEditComponent;
@@ -15,7 +16,7 @@ import com.hyjt.home.R;
 
 
 
-
+@Route(path = "/home/ToCompLoanEditActivity")
 public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter> implements ToCompLoanEditContract.View {
 
 

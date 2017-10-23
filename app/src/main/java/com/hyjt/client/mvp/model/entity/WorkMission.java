@@ -8,17 +8,18 @@ package com.hyjt.client.mvp.model.entity;
 
 public class WorkMission {
 
-
     /**
-     * Record : 6
-     * RecordL : 0
-     * RecordDb : 2
-     * SysLetter : 4
+     * Record : 1
+     * RecordL : 1
+     * RecordDb : 0
+     * SysLetter : 1
      * WorkingConference : 0
      * WorkingConsult : 0
      * LeapfrogReport : 0
-     * Yuangongxianji : 1
+     * Yuangongxianji : 0
      * UnionAppeal : 0
+     * CwPersonalJK : 0
+     * CwCompanyJK : 0
      */
 
     private String Record;
@@ -30,6 +31,8 @@ public class WorkMission {
     private String LeapfrogReport;
     private String Yuangongxianji;
     private String UnionAppeal;
+    private String CwPersonalJK;
+    private String CwCompanyJK;
 
     public String getRecord() {
         return Record;
@@ -101,5 +104,21 @@ public class WorkMission {
 
     public void setUnionAppeal(String UnionAppeal) {
         this.UnionAppeal = UnionAppeal;
+    }
+
+    public String getCwPersonalJK() {
+        return CwPersonalJK;
+    }
+
+    public void setCwPersonalJK(String CwPersonalJK) {
+        this.CwPersonalJK = CwPersonalJK;
+    }
+
+    public String getCwCompanyJK() {
+        return CwCompanyJK;
+    }
+
+    public void setCwCompanyJK(String CwCompanyJK) {
+        this.CwCompanyJK = CwCompanyJK;
     }
 }

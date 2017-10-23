@@ -1,6 +1,7 @@
 package com.hyjt.home.mvp.model;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -74,6 +75,7 @@ public class PsonLoanCreateModel extends BaseModel implements PsonLoanCreateCont
 
     @Override
     public Observable<BaseJson<Object>> createPsonLoan(PsonLoanCreateReqs psonLoanCreateReqs) {
+        Log.e("http_psonLoanCreateReqs", psonLoanCreateReqs.toString());
         Observable<BaseJson<Object>> createPsonLoan = mRepositoryManager.obtainRetrofitService(HomeService.class)
                 .psonLoanCreate(psonLoanCreateReqs);
         return createPsonLoan;

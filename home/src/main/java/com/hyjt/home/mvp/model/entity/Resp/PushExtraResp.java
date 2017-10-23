@@ -10,6 +10,7 @@ public class PushExtraResp {
 
     private String Id;
     private String Type;
+    private String Mode;
 
 
     public String getId() {
@@ -28,4 +29,11 @@ public class PushExtraResp {
         Type = type;
     }
 
+    public String getMode() {
+        return Mode;
+    }
+
+    public void setMode(String mode) {
+        Mode = mode;
+    }
 }

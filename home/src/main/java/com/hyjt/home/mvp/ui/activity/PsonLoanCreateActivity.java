@@ -371,6 +371,7 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
         psonLoanCreateReqs.setCwRpname(mEdtAccountName.getText().toString().trim());
         psonLoanCreateReqs.setCwRpbank(mEdtOpenactBank.getText().toString().trim());
         psonLoanCreateReqs.setCwRpnum(mEdtBankAccount.getText().toString().trim());
+        psonLoanCreateReqs.setCwPtext(mEdtRemark.getText().toString().trim());
         psonLoanCreateReqs.setFlowid(flowDetailsBean.getFlowid());
         psonLoanCreateReqs.setFilePack(FileList);
 

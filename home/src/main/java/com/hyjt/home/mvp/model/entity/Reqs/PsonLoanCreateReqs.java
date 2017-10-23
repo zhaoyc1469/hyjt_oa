@@ -15,6 +15,7 @@ public class PsonLoanCreateReqs {
     private String Id;
     private String CwRpname;
     private String CwRpbank;
+    private String CwPnum;
     private String CwRpnum;
     private String CwPpnum;
     private String CwPtext;
@@ -25,6 +26,14 @@ public class PsonLoanCreateReqs {
     private String CwPLeader;
     private String CwPreason;
     private List<FilePackBean> FilePack;
+
+    public String getCwPnum() {
+        return CwPnum;
+    }
+
+    public void setCwPnum(String cwPnum) {
+        CwPnum = cwPnum;
+    }
 
     public String getCwPpnum() {
         return CwPpnum;
