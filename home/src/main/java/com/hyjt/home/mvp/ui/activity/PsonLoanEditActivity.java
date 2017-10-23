@@ -459,6 +459,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         TextView mTvNodeName = (TextView) inflate.findViewById(R.id.tv_node_name);
         EditText mEdtApprover = (EditText) inflate.findViewById(R.id.edt_approver);
         RelativeLayout mRlAccount = (RelativeLayout) inflate.findViewById(R.id.rl_company_act);
+        RelativeLayout mRlSelAct = (RelativeLayout) inflate.findViewById(R.id.rl_sel_act);
         LinearLayout mLlAccount = (LinearLayout) inflate.findViewById(R.id.ll_company_act);
         RelativeLayout mRlRemark = (RelativeLayout) inflate.findViewById(R.id.rl_remark);
         EditText mEdtSendAccount = (EditText) inflate.findViewById(R.id.edt_send_account);
@@ -529,7 +530,8 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
             mEdtRemark.setFocusable(false);
             mLlAprBtn.setVisibility(View.GONE);
 //            mRlRemark.setVisibility(View.GONE);
-            mLlAccount.setVisibility(View.GONE);
+//            mLlAccount.setVisibility(View.GONE);
+            mRlSelAct.setVisibility(View.GONE);
             mTvAprState.setVisibility(View.VISIBLE);
         }
 

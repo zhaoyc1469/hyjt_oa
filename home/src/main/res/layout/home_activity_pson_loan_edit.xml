@@ -351,6 +351,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
                 android:layout_marginTop="6dp"
+                android:visibility="gone"
                 android:background="@drawable/home_bg_white_table">
 
                 <TextView
