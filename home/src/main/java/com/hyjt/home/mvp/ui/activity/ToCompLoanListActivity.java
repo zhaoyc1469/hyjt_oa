@@ -12,70 +12,68 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.utils.UiUtils;
-
-import com.hyjt.home.di.component.DaggerPsonLoanListComponent;
-import com.hyjt.home.di.module.PsonLoanListModule;
-import com.hyjt.home.mvp.contract.PsonLoanListContract;
-import com.hyjt.home.mvp.presenter.PsonLoanListPresenter;
+import com.hyjt.home.di.component.DaggerToCompLoanListComponent;
+import com.hyjt.home.di.module.ToCompLoanListModule;
+import com.hyjt.home.mvp.contract.ToCompLoanListContract;
+import com.hyjt.home.mvp.presenter.ToCompLoanListPresenter;
 
 import com.hyjt.home.R;
-import com.hyjt.home.mvp.ui.adapter.LUAppealAdapter;
-import com.hyjt.home.mvp.ui.adapter.PsonLoanAdapter;
-import com.hyjt.home.mvp.ui.view.MeetingSelPop;
+import com.hyjt.home.mvp.ui.adapter.CompLoanAdapter;
+import com.hyjt.home.mvp.ui.view.CompLoanSelPop;
 import com.hyjt.home.mvp.ui.view.PsonLoanSelPop;
 import com.paginate.Paginate;
-
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
 import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 
-@Route(path = "/home/PsonLoanListActivity")
-public class PsonLoanListActivity extends BaseActivity<PsonLoanListPresenter> implements PsonLoanListContract.View, SwipeRefreshLayout.OnRefreshListener {
+@Route(path = "/home/ToCompLoanListActivity")
+public class ToCompLoanListActivity extends BaseActivity<ToCompLoanListPresenter> implements ToCompLoanListContract.View, SwipeRefreshLayout.OnRefreshListener {
 
 
+    private android.widget.RelativeLayout mRlComploan;
     private android.widget.ImageView mIvTopBack;
     private android.widget.TextView mTvTitle;
     private android.widget.ImageView mIvTopSelect;
-    private android.widget.Button mBtnNewPloan;
-    private android.support.v4.widget.SwipeRefreshLayout mSrlPloanList;
-    private android.support.v7.widget.RecyclerView mRecyPloanList;
-    private Paginate mPaginate;
-    private String CwPnum;
+    private android.widget.LinearLayout mLlMode;
+    private android.widget.Button mBtnWaitType;
+    private android.widget.Button mBtnReadedType;
+    private android.widget.Button mBtnNewCloan;
+    private android.support.v4.widget.SwipeRefreshLayout mSrlCloanList;
+    private android.support.v7.widget.RecyclerView mRecyCloanList;
+    private String Type;
+    private String Mode;
+    private CompLoanSelPop compLoanSelPop;
+    private String CwCpersonal;
+    private String CwCcompany;
+    private String CwCdepartment;
+    private String CwCnum;
     private String Start;
     private String End;
     private boolean isLoadingMore;
-    private PsonLoanSelPop psonLoanSelPop;
-    private String Type;
-    private String Mode;
-    private String CwPpersonal;
-    private String CwPcompany;
-    private String CwPdepartment;
-    private android.widget.LinearLayout mLlMode;
-    private Button mBtnWaitType;
-    private Button mBtnReadedType;
+    private Paginate mPaginate;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
-        DaggerPsonLoanListComponent
+        DaggerToCompLoanListComponent //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
-                .psonLoanListModule(new PsonLoanListModule(this))
+                .toCompLoanListModule(new ToCompLoanListModule(this))
                 .build()
                 .inject(this);
     }
 
     @Override
     public int initView(Bundle savedInstanceState) {
-        return R.layout.home_activity_pson_loan_list;
+        return R.layout.home_activity_to_comp_loan_list; //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
     }
 
     @Override
@@ -84,34 +82,31 @@ public class PsonLoanListActivity extends BaseActivity<PsonLoanListPresenter> im
         Type = intent.getStringExtra("type");
         Mode = Type.equals("3") ? "1" : "0";
 
+        mRlComploan = (RelativeLayout) findViewById(R.id.rl_comploan);
         mIvTopBack = (ImageView) findViewById(R.id.iv_top_back);
         mTvTitle = (TextView) findViewById(R.id.tv_title);
         mIvTopSelect = (ImageView) findViewById(R.id.iv_top_select);
         mIvTopBack.setOnClickListener(v -> finish());
-        mTvTitle.setText("个人借款列表");
+        mTvTitle.setText("对公借款列表");
         mTvTitle.setOnClickListener(v -> finish());
         mIvTopSelect.setOnClickListener(v -> popSel());
-
         mLlMode = (LinearLayout) findViewById(R.id.ll_mode);
         mBtnWaitType = (Button) findViewById(R.id.btn_wait_type);
+        mBtnReadedType = (Button) findViewById(R.id.btn_readed_type);
+        mBtnNewCloan = (Button) findViewById(R.id.btn_new_cloan);
+        mSrlCloanList = (SwipeRefreshLayout) findViewById(R.id.srl_cloan_list);
+        mRecyCloanList = (RecyclerView) findViewById(R.id.recy_cloan_list);
+        
         mBtnWaitType.setOnClickListener(v -> {
             Mode = "0";
-            mPresenter.getPsonLoanList(true, Type, Mode, CwPpersonal,
-                    CwPcompany, CwPdepartment, CwPnum, Start, End);
+            mPresenter.getCompLoanList(true, Type, Mode, CwCpersonal,
+                    CwCcompany, CwCdepartment, CwCnum, Start, End);
         });
-        mBtnReadedType = (Button) findViewById(R.id.btn_readed_type);
         mBtnReadedType.setOnClickListener(v -> {
             Mode = "1";
-            mPresenter.getPsonLoanList(true, Type, Mode, CwPpersonal,
-                    CwPcompany, CwPdepartment, CwPnum, Start, End);
+            mPresenter.getCompLoanList(true, Type, Mode, CwCpersonal,
+                    CwCcompany, CwCdepartment, CwCnum, Start, End);
         });
-        mBtnNewPloan = (Button) findViewById(R.id.btn_new_ploan);
-        mSrlPloanList = (SwipeRefreshLayout) findViewById(R.id.srl_ploan_list);
-        mRecyPloanList = (RecyclerView) findViewById(R.id.recy_ploan_list);
-        mBtnNewPloan.setOnClickListener(v -> ARouter.getInstance()
-                .build("/home/PsonLoanCreateActivity").navigation());
-
-
         switch (Type) {
             case "1":
                 mLlMode.setVisibility(View.GONE);
@@ -123,26 +118,28 @@ public class PsonLoanListActivity extends BaseActivity<PsonLoanListPresenter> im
             case "3":
                 mBtnWaitType.setText("待确认");
                 mBtnReadedType.setText("全部");
-                mBtnNewPloan.setVisibility(View.GONE);
+                mBtnNewCloan.setVisibility(View.GONE);
                 break;
         }
-        mPresenter.getPsonLoanList(true, Type, Mode, "", "", "", "", "", "");
+        mPresenter.getCompLoanList(true, Type, Mode, "", "", "", "", "", "");
+
     }
 
+
     private void popSel() {
-        psonLoanSelPop = new PsonLoanSelPop(this, Type);
-        psonLoanSelPop.setSelCmListener((personal, company, department, num, start, end) -> {
-            CwPpersonal = personal;
-            CwPcompany = company;
-            CwPdepartment = department;
-            CwPnum = num;
+        compLoanSelPop = new CompLoanSelPop(this, Type);
+        compLoanSelPop.setSelCmListener((personal, company, department, num, start, end) -> {
+            CwCpersonal = personal;
+            CwCcompany = company;
+            CwCdepartment = department;
+            CwCnum = num;
             Start = start;
             End = end;
-            mPresenter.getPsonLoanList(true, Type, Mode, CwPpersonal,
-                    CwPcompany, CwPdepartment, CwPnum, Start, End);
+            mPresenter.getCompLoanList(true, Type, Mode, CwCpersonal,
+                    CwCcompany, CwCdepartment, CwCnum, Start, End);
 
         });
-        psonLoanSelPop.showAtLocation(findViewById(R.id.rl_psonloan),
+        compLoanSelPop.showAtLocation(findViewById(R.id.rl_comploan),
                 Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
     }
 
@@ -160,52 +157,24 @@ public class PsonLoanListActivity extends BaseActivity<PsonLoanListPresenter> im
         finish();
     }
 
-
     @Override
     public void showLoading() {
         Observable.just(1)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(integer -> mSrlPloanList.setRefreshing(true));
+                .subscribe(integer -> mSrlCloanList.setRefreshing(true));
     }
 
     @Override
     public void hideLoading() {
-        mSrlPloanList.setRefreshing(false);
+        mSrlCloanList.setRefreshing(false);
     }
 
     @Override
-    public void setAdapter(PsonLoanAdapter psonLoanAdapter) {
-        mRecyPloanList.setLayoutManager(new LinearLayoutManager(this));
-        mRecyPloanList.setAdapter(psonLoanAdapter);
-        mSrlPloanList.setOnRefreshListener(this);
+    public void setAdapter(CompLoanAdapter CompLoanAdapter) {
+        mRecyCloanList.setLayoutManager(new LinearLayoutManager(this));
+        mRecyCloanList.setAdapter(CompLoanAdapter);
+        mSrlCloanList.setOnRefreshListener(this);
         initPaginate();
-    }
-
-    private void initPaginate() {
-        if (mPaginate == null) {
-            Paginate.Callbacks callbacks = new Paginate.Callbacks() {
-                @Override
-                public void onLoadMore() {
-                    mPresenter.getPsonLoanList(false, Type, Mode, CwPpersonal,
-                            CwPcompany, CwPdepartment, CwPnum, Start, End);
-                }
-
-                @Override
-                public boolean isLoading() {
-                    return isLoadingMore;
-                }
-
-                @Override
-                public boolean hasLoadedAllItems() {
-                    return false;
-                }
-            };
-
-            mPaginate = Paginate.with(mRecyPloanList, callbacks)
-                    .setLoadingTriggerThreshold(0)
-                    .build();
-            mPaginate.setHasMoreDataToLoad(false);
-        }
     }
 
     @Override
@@ -230,8 +199,35 @@ public class PsonLoanListActivity extends BaseActivity<PsonLoanListPresenter> im
                 .setPositiveButton("确定", (dialog, which) -> finish()).show();//在按键响应事件中显示此对话框
     }
 
+    private void initPaginate() {
+        if (mPaginate == null) {
+            Paginate.Callbacks callbacks = new Paginate.Callbacks() {
+                @Override
+                public void onLoadMore() {
+                    mPresenter.getCompLoanList(false, Type, Mode, CwCpersonal,
+                            CwCcompany, CwCdepartment, CwCnum, Start, End);
+                }
+
+                @Override
+                public boolean isLoading() {
+                    return isLoadingMore;
+                }
+
+                @Override
+                public boolean hasLoadedAllItems() {
+                    return false;
+                }
+            };
+
+            mPaginate = Paginate.with(mRecyCloanList, callbacks)
+                    .setLoadingTriggerThreshold(0)
+                    .build();
+            mPaginate.setHasMoreDataToLoad(false);
+        }
+    }
+
     @Override
     public void onRefresh() {
-        mPresenter.getPsonLoanList(true, Type, Mode, "", "", "", "", "", "");
+        mPresenter.getCompLoanList(true, Type, Mode, "", "", "", "", "", "");
     }
 }

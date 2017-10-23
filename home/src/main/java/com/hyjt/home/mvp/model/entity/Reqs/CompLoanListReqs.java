@@ -4,33 +4,33 @@ package com.hyjt.home.mvp.model.entity.Reqs;
  * Created by Administrator on 2017/10/10.
  */
 
-public class PsonLoanListReqs {
+public class CompLoanListReqs {
 
     private String Page;
     private String Rows;
-    private String CwPnum;
     private String Start;
     private String End;
     private String Type;
     private String Mode;
-    private String CwPpersonal;
-    private String CwPcompany;
-    private String CwPdepartment;
+    private String CwCnum;
+    private String CwCpersonal;
+    private String CwCcompany;
+    private String CwCdepartment;
 
-    public PsonLoanListReqs(String page, String rows, String cwPnum, String start, String end, String type, String mode, String cwPpersonal, String cwPcompany, String cwPdepartment) {
-        Page = page;
-        Rows = rows;
-        CwPnum = cwPnum;
-        Start = start;
-        End = end;
-        Type = type;
-        Mode = mode;
-        CwPpersonal = cwPpersonal;
-        CwPcompany = cwPcompany;
-        CwPdepartment = cwPdepartment;
+    public CompLoanListReqs(String page, String rows, String CwCnum, String start, String end, String type, String mode, String CwCpersonal, String CwCcompany, String CwCdepartment) {
+        this.Page = page;
+        this.Rows = rows;
+        this.CwCnum = CwCnum;
+        this.Start = start;
+        this.End = end;
+        this.Type = type;
+        this.Mode = mode;
+        this.CwCpersonal = CwCpersonal;
+        this.CwCcompany = CwCcompany;
+        this.CwCdepartment = CwCdepartment;
     }
 
-    public PsonLoanListReqs() {
+    public CompLoanListReqs() {
     }
 
     public String getType() {
@@ -50,27 +50,27 @@ public class PsonLoanListReqs {
     }
 
     public String getCwPpersonal() {
-        return CwPpersonal;
+        return CwCpersonal;
     }
 
     public void setCwPpersonal(String cwPpersonal) {
-        CwPpersonal = cwPpersonal;
+        CwCpersonal = cwPpersonal;
     }
 
     public String getCwPcompany() {
-        return CwPcompany;
+        return CwCcompany;
     }
 
     public void setCwPcompany(String cwPcompany) {
-        CwPcompany = cwPcompany;
+        CwCcompany = cwPcompany;
     }
 
     public String getCwPdepartment() {
-        return CwPdepartment;
+        return CwCdepartment;
     }
 
     public void setCwPdepartment(String cwPdepartment) {
-        CwPdepartment = cwPdepartment;
+        CwCdepartment = cwPdepartment;
     }
 
     public String getPage() {
@@ -90,11 +90,11 @@ public class PsonLoanListReqs {
     }
 
     public String getCwPnum() {
-        return CwPnum;
+        return CwCnum;
     }
 
     public void setCwPnum(String cwPnum) {
-        CwPnum = cwPnum;
+        CwCnum = cwPnum;
     }
 
     public String getStart() {
@@ -115,17 +115,17 @@ public class PsonLoanListReqs {
 
     @Override
     public String toString() {
-        return "PsonLoanListReqs{" +
+        return "CompLoanListReqs{" +
                 "Page='" + Page + '\'' +
                 ", Rows='" + Rows + '\'' +
-                ", CwPnum='" + CwPnum + '\'' +
                 ", Start='" + Start + '\'' +
                 ", End='" + End + '\'' +
                 ", Type='" + Type + '\'' +
                 ", Mode='" + Mode + '\'' +
-                ", CwPpersonal='" + CwPpersonal + '\'' +
-                ", CwPcompany='" + CwPcompany + '\'' +
-                ", CwPdepartment='" + CwPdepartment + '\'' +
+                ", CwCnum='" + CwCnum + '\'' +
+                ", CwCpersonal='" + CwCpersonal + '\'' +
+                ", CwCcompany='" + CwCcompany + '\'' +
+                ", CwCdepartment='" + CwCdepartment + '\'' +
                 '}';
     }
 }

@@ -182,17 +182,6 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mBtnReceiverConfirm = (Button) findViewById(R.id.btn_receiver_confirm);
         mRlReceiverConfirm = (RelativeLayout) findViewById(R.id.rl_receiver_confirm);
         mEdtRemark = (EditText) findViewById(R.id.edt_remark);
-
-        if ("1".equals(psonLoanType)){
-            mRlTellerConfirm.setVisibility(View.GONE);
-            mRlReceiverConfirm.setVisibility(View.VISIBLE);
-        } else if ("2".equals(psonLoanType)){
-            mRlTellerConfirm.setVisibility(View.GONE);
-            mRlReceiverConfirm.setVisibility(View.GONE);
-        } else if ("3".equals(psonLoanType)){
-            mRlTellerConfirm.setVisibility(View.VISIBLE);
-            mRlReceiverConfirm.setVisibility(View.GONE);
-        }
         mPresenter.getPsonLoanDetail(psonLoanId);
     }
 
@@ -266,6 +255,25 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
             mLlBottomBtn.setVisibility(View.GONE);
         } else {
             setBaseMsgOnClick();
+        }
+
+
+
+        if ("1".equals(psonLoanType)){
+            if ("提交".equals(psonLoanDetailResp.getCwJKState())){
+                mRlTellerConfirm.setVisibility(View.GONE);
+                mRlReceiverConfirm.setVisibility(View.GONE);
+            }else {
+                mRlTellerConfirm.setVisibility(View.VISIBLE);
+                mRlReceiverConfirm.setVisibility(View.VISIBLE);
+            }
+            mEdtReceiverAccount.setFocusable(false);
+        } else if ("2".equals(psonLoanType)){
+            mRlTellerConfirm.setVisibility(View.GONE);
+            mRlReceiverConfirm.setVisibility(View.GONE);
+        } else if ("3".equals(psonLoanType)){
+            mRlTellerConfirm.setVisibility(View.VISIBLE);
+            mRlReceiverConfirm.setVisibility(View.GONE);
         }
 
         mEdtLoanNum.setText(psonLoanDetailResp.getCwPnum());

@@ -178,7 +178,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
     }
 
     public void tellerConfirm(String psonLoanId){
-        mModel.plReceiverConfirm(new BaseIdReqs(psonLoanId))
+        mModel.plTellerConfirm(new BaseIdReqs(psonLoanId))
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

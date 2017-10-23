@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_comploan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_common_F4F5F6">
+
+    <include
+        android:id="@+id/icld_cloan_list"
+        layout="@layout/home_include_back_title" />
+
+    <LinearLayout
+        android:id="@+id/ll_mode"
+        android:layout_below="@id/icld_cloan_list"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <Button
+            android:id="@+id/btn_wait_type"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/home_bg_new_meeting"
+            android:text="待审批"/>
+        <Button
+            android:id="@+id/btn_readed_type"
+            android:layout_marginStart="46dp"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/home_bg_new_meeting"
+            android:text="已审批"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_new_cloan"
+        android:layout_width="160dp"
+        android:layout_height="29dp"
+        android:background="@drawable/home_bg_new_meeting"
+        android:text="发起对公借款"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_cloan_list"
+        android:layout_above="@id/btn_new_cloan"
+        android:layout_below="@id/ll_mode"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="16dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy_cloan_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</RelativeLayout>

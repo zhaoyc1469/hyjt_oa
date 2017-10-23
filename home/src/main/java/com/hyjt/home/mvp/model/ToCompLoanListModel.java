@@ -4,17 +4,15 @@ import android.app.Application;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import javax.inject.Inject;
 
 import com.hyjt.frame.api.BaseJson;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.integration.IRepositoryManager;
 import com.hyjt.frame.mvp.BaseModel;
-
-import javax.inject.Inject;
-
-import com.hyjt.home.mvp.contract.PsonLoanListContract;
-import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanListReqs;
-import com.hyjt.home.mvp.model.entity.Resp.LinkManResp;
+import com.hyjt.home.mvp.contract.ToCompLoanListContract;
+import com.hyjt.home.mvp.model.entity.Reqs.CompLoanListReqs;
+import com.hyjt.home.mvp.model.entity.Resp.CompLoanListResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanListResp;
 import com.hyjt.home.mvp.model.service.HomeService;
 
@@ -22,12 +20,12 @@ import io.reactivex.Observable;
 
 
 @ActivityScope
-public class PsonLoanListModel extends BaseModel implements PsonLoanListContract.Model {
+public class ToCompLoanListModel extends BaseModel implements ToCompLoanListContract.Model {
     private Gson mGson;
     private Application mApplication;
 
     @Inject
-    public PsonLoanListModel(IRepositoryManager repositoryManager, Gson gson, Application application) {
+    public ToCompLoanListModel(IRepositoryManager repositoryManager, Gson gson, Application application) {
         super(repositoryManager);
         this.mGson = gson;
         this.mApplication = application;
@@ -41,10 +39,10 @@ public class PsonLoanListModel extends BaseModel implements PsonLoanListContract
     }
 
     @Override
-    public Observable<BaseJson<PsonLoanListResp>> getPsonLoanList(PsonLoanListReqs psonLoanListReqs) {
-        Log.e("http_reqs", psonLoanListReqs.toString());
-        Observable<BaseJson<PsonLoanListResp>> psonLoanReqsList = mRepositoryManager.obtainRetrofitService(HomeService.class)
-                .psonLoanReqsList(psonLoanListReqs);
-        return psonLoanReqsList;
+    public Observable<BaseJson<CompLoanListResp>> getCompLoanList(CompLoanListReqs compLoanListReqs) {
+        Log.e("http_CompLoan", compLoanListReqs.toString());
+        Observable<BaseJson<CompLoanListResp>> compLoanReqsList = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .compLoanReqsList(compLoanListReqs);
+        return compLoanReqsList;
     }
 }
