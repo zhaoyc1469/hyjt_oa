@@ -409,7 +409,7 @@ public interface HomeService {
     Observable<BaseJson<Object>> plFlowNodeApr(@Body PlNodeApproveReqs PlNodeApproveReqs);
 
 
-    @POST("/APICompanyJK/GetData")
+    @POST("/APICwCompanyJK/GetData")
     Observable<BaseJson<CompLoanListResp>> compLoanReqsList(@Body CompLoanListReqs compLoanListReqs);
 
     //个人借款详情

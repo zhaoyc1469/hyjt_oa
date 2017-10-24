@@ -347,7 +347,7 @@
                 android:orientation="vertical" />
 
             <RelativeLayout
-                android:id="@+id/rl_receiver_account"
+                android:id="@+id/rl_send_account"
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
                 android:layout_marginTop="6dp"

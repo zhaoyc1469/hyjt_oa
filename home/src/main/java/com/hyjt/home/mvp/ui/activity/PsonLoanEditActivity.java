@@ -23,7 +23,6 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
 import com.hyjt.frame.base.BaseActivity;
-import com.hyjt.frame.base.BaseApplication;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.utils.UiUtils;
 
@@ -83,7 +82,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
     private RelativeLayout mRlTellerConfirm;
     private ImageView mIvTellerSign;
     private Button mBtnTellerConfirm;
-    private RelativeLayout mRlReceiverAccount;
+    private RelativeLayout mRlSendAccount;
     private EditText mEdtReceiverAccount;
     private ImageView mIvReceiverSign;
     private Button mBtnReceiverConfirm;
@@ -176,7 +175,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mRlTellerConfirm = (RelativeLayout) findViewById(R.id.rl_teller_confirm);
         mIvTellerSign = (ImageView) findViewById(R.id.iv_teller_sign);
         mBtnTellerConfirm = (Button) findViewById(R.id.btn_teller_confirm);
-        mRlReceiverAccount = (RelativeLayout) findViewById(R.id.rl_receiver_account);
+        mRlSendAccount = (RelativeLayout) findViewById(R.id.rl_send_account);
         mEdtReceiverAccount = (EditText) findViewById(R.id.edt_receiver_account);
         mIvReceiverSign = (ImageView) findViewById(R.id.iv_receiver_sign);
         mBtnReceiverConfirm = (Button) findViewById(R.id.btn_receiver_confirm);
@@ -269,8 +268,8 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
             }
             mEdtReceiverAccount.setFocusable(false);
         } else if ("2".equals(psonLoanType)) {
-            mRlTellerConfirm.setVisibility(View.GONE);
-            mRlReceiverConfirm.setVisibility(View.GONE);
+//            mRlTellerConfirm.setVisibility(View.GONE);
+//            mRlReceiverConfirm.setVisibility(View.GONE);
         } else if ("3".equals(psonLoanType)) {
             mRlTellerConfirm.setVisibility(View.VISIBLE);
             mRlReceiverConfirm.setVisibility(View.GONE);
@@ -318,6 +317,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
                         progressDialog = ProgressDialog.show(this, null, "出纳人员确认中…");
                         mPresenter.tellerConfirm(psonLoanId);
                     });
+                    mRlSendAccount.setVisibility(View.VISIBLE);
                 } else {
                     mRlTellerConfirm.setVisibility(View.GONE);
                 }
@@ -327,7 +327,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
                 Glide.with(this).load(getString(R.string.home_base_url) +
                         psonLoanDetailResp.getCwPpersonalQren()).into(mIvReceiverSign);
             } else {
-                if ("0".equals(psonLoanDetailResp.getCashierQren())) {
+                if ("1".equals(psonLoanType) && !"0".equals(psonLoanDetailResp.getCashierQren())) {
                     mBtnReceiverConfirm.setOnClickListener(v -> {
                         progressDialog = ProgressDialog.show(this, null, "收款人员确认中…");
                         mPresenter.receiverConfirm(psonLoanId);
@@ -339,7 +339,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
 
         } else {
             mRlReceiverConfirm.setVisibility(View.GONE);
-            mRlReceiverAccount.setVisibility(View.GONE);
+            mRlSendAccount.setVisibility(View.GONE);
             mRlTellerConfirm.setVisibility(View.GONE);
         }
 
@@ -502,33 +502,48 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
             mLlAprBtn.setVisibility(View.VISIBLE);
             mTvAprState.setText("未审批");
             mBtnAgree.setOnClickListener(v -> {
-                PlNodeApproveReqs nodeApr = new PlNodeApproveReqs();
-                nodeApr.setId(psonLoanId);
-                nodeApr.setNodeMemo("同意");
-                nodeApr.setCwBname(bankPackBean.getBankName());
-                nodeApr.setCwBnum(bankPackBean.getBankNum());
-                nodeApr.setNodeMemotext(mEdtRemark.getText().toString().trim());
-                mPresenter.flowNodeApr(nodeApr);
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
+                        .setTitle("审批通过")
+                        .setMessage("审批通过?")
+                        .setPositiveButton("确定", (dialog, which) -> {PlNodeApproveReqs nodeApr = new PlNodeApproveReqs();
+                            nodeApr.setId(psonLoanId);
+                            nodeApr.setNodeMemo("同意");
+                            nodeApr.setCwBname(bankPackBean != null ? bankPackBean.getBankName() : "");
+                            nodeApr.setCwBnum(bankPackBean != null ? bankPackBean.getBankNum() : "");
+                            nodeApr.setNodeMemotext(mEdtRemark.getText().toString().trim());
+                            mPresenter.flowNodeApr(nodeApr);
+                        }).setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
+                builder.show();
             });
             mBtnRefuse.setOnClickListener(v -> {
-                PlNodeApproveReqs nodeApr = new PlNodeApproveReqs();
-                nodeApr.setId(psonLoanId);
-                nodeApr.setNodeMemo("不同意");
-                nodeApr.setCwBname(bankPackBean.getBankName());
-                nodeApr.setCwBnum(bankPackBean.getBankNum());
-                nodeApr.setNodeMemotext("" + mEdtRemark.getText().toString().trim());
-                mPresenter.flowNodeApr(nodeApr);
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
+                        .setTitle("审批拒绝")
+                        .setMessage("审批拒绝?")
+                        .setPositiveButton("确定", (dialog, which) -> {
+                            PlNodeApproveReqs nodeApr = new PlNodeApproveReqs();
+                            nodeApr.setId(psonLoanId);
+                            nodeApr.setNodeMemo("不同意");
+                            nodeApr.setCwBname(bankPackBean != null ? bankPackBean.getBankName() : "");
+                            nodeApr.setCwBnum(bankPackBean != null ? bankPackBean.getBankNum() : "");
+                            nodeApr.setNodeMemotext("" + mEdtRemark.getText().toString().trim());
+                            mPresenter.flowNodeApr(nodeApr);
+                        }).setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
+                builder.show();
             });
         }
         mEdtRemark.setText(flowPackBean.getNodeMemotext());
         mEdtSendAccount.setText(flowPackBean.getCwBname() + " " + flowPackBean.getCwBnum());
-
+        if ("1".equals(psonLoanType) || "3".equals(psonLoanType)) {
+            mLlAccount.setVisibility(View.GONE);
+        }
 
         if (!getUserName().equals(currentPerson) || !currentPerson.equals(flowPackBean.getNodePerson().trim())) {
             mEdtApprover.setEnabled(false);
             mEdtApprover.setFocusable(false);
             mEdtRemark.setEnabled(false);
             mEdtRemark.setFocusable(false);
+            mEdtSendAccount.setEnabled(false);
+            mEdtSendAccount.setFocusable(false);
             mLlAprBtn.setVisibility(View.GONE);
 //            mRlRemark.setVisibility(View.GONE);
 //            mLlAccount.setVisibility(View.GONE);

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.hyjt.frame.api.Api;
@@ -26,6 +27,7 @@ public class InformReceiver extends BroadcastReceiver {
             Bundle bundle = intent.getExtras();
             String extra = bundle.getString("cn.jpush.android.EXTRA");
             PushExtraResp pushExtraResp = JsonUtils.parseJson(extra, PushExtraResp.class);
+            Log.e("tuisong", extra);
             if (!TextUtils.isEmpty(pushExtraResp.getType())){
                 if ("Meeting ".equals(pushExtraResp.getType())){
                     if (!TextUtils.isEmpty(pushExtraResp.getId())) {

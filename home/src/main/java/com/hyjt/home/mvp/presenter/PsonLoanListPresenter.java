@@ -58,7 +58,7 @@ public class PsonLoanListPresenter extends BasePresenter<PsonLoanListContract.Mo
 
     public void getPsonLoanList(boolean pullToRefresh, String Type, String Mode,
                                 String CwPpersonal, String CwPcompany, String CwPdepartment,
-                                String CwPnum, String Start, String End){
+                                String CwPnum, String Start, String End) {
 
         if (mAdapter == null) {
             mAdapter = new PsonLoanAdapter(plList);
@@ -92,7 +92,7 @@ public class PsonLoanListPresenter extends BasePresenter<PsonLoanListContract.Mo
                         if (mRootView != null) {
                             mRootView.hideLoading();//隐藏上拉刷新的进度条
                         }
-                    } else{
+                    } else {
                         if (mRootView != null) {
                             mRootView.endLoadMore();//隐藏下拉加载更多的进度条
                         }
@@ -103,26 +103,30 @@ public class PsonLoanListPresenter extends BasePresenter<PsonLoanListContract.Mo
                 .subscribe(new ErrorHandleSubscriber<PsonLoanListResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull PsonLoanListResp psonLoanListResp) {
-                        if (pullToRefresh) {
-                            plList.clear();
-                            plList.addAll(psonLoanListResp.getRows());
-                            mAdapter.notifyDataSetChanged();
-                        } else {
-                            plList.addAll(psonLoanListResp.getRows());
-                            mAdapter.notifyDataSetChanged();
-                        }
-                        if (psonLoanListResp.getRows().size() == 0) {
-                            mRootView.endLoad();
+                        if (mRootView != null) {
+                            if (pullToRefresh) {
+                                plList.clear();
+                                plList.addAll(psonLoanListResp.getRows());
+                                mAdapter.notifyDataSetChanged();
+                            } else {
+                                plList.addAll(psonLoanListResp.getRows());
+                                mAdapter.notifyDataSetChanged();
+                            }
+                            if (psonLoanListResp.getRows().size() == 0) {
+                                mRootView.endLoad();
+                            }
                         }
                     }
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-                        if ("202".equals(e.getMessage())) {
-                            mRootView.showNoLimits();
+                        if (mRootView != null) {
+                            if ("202".equals(e.getMessage())) {
+                                mRootView.showNoLimits();
 //                            mRootView.killMyself();
-                        } else {
-                            mRootView.showMessage(e.getMessage());
+                            } else {
+                                mRootView.showMessage(e.getMessage());
+                            }
                         }
                     }
                 });

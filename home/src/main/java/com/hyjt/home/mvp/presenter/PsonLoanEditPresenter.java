@@ -60,13 +60,14 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
         this.mApplication = null;
     }
 
-    public void getPsonLoanDetail(String plId){
+    public void getPsonLoanDetail(String plId) {
         mModel.getPLDetail(new BaseIdReqs(plId))
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doAfterTerminate(() -> {
-                    mRootView.hideLoading();//隐藏
+                    if (mRootView != null)
+                        mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<PsonLoanDetailResp>(mErrorHandler) {
                     @Override
@@ -76,7 +77,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 });
     }
 
-    public void getFristLeader(String plType){
+    public void getFristLeader(String plType) {
         mModel.getFristLeader(new BaseTypeReqs(plType))
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
@@ -92,7 +93,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 });
     }
 
-    public void getPLCompany(){
+    public void getPLCompany() {
         mModel.getPLCompany()
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
@@ -108,7 +109,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 });
     }
 
-    public void delPsonLoan(String psonLoanId){
+    public void delPsonLoan(String psonLoanId) {
         mModel.delPsonLoan(new BaseIdReqs(psonLoanId))
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
@@ -125,7 +126,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 });
     }
 
-    public void editPsonLoan(PsonLoanCreateReqs psonLoanCreateReqs){
+    public void editPsonLoan(PsonLoanCreateReqs psonLoanCreateReqs) {
         Log.e("http_reqs", psonLoanCreateReqs.toString());
         mModel.editPsonLoan(psonLoanCreateReqs)
                 .map(new parseResponse<>())
@@ -143,7 +144,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 });
     }
 
-    public void flowNodeApr(PlNodeApproveReqs plnodeApproveReqs){
+    public void flowNodeApr(PlNodeApproveReqs plnodeApproveReqs) {
         Log.e("http_reqs", plnodeApproveReqs.toString());
         mModel.flowNodeApprove(plnodeApproveReqs)
                 .map(new parseResponse<>())
@@ -161,7 +162,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 });
     }
 
-    public void selCompBankAct(EditText editText){
+    public void selCompBankAct(EditText editText) {
         mModel.compBankAccount()
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
@@ -177,7 +178,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 });
     }
 
-    public void tellerConfirm(String psonLoanId){
+    public void tellerConfirm(String psonLoanId) {
         mModel.plTellerConfirm(new BaseIdReqs(psonLoanId))
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
@@ -195,7 +196,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
     }
 
 
-    public void receiverConfirm(String psonLoanId){
+    public void receiverConfirm(String psonLoanId) {
         mModel.plReceiverConfirm(new BaseIdReqs(psonLoanId))
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
