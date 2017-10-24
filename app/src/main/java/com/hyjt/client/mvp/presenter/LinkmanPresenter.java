@@ -6,6 +6,7 @@ import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.integration.AppManager;
 import com.hyjt.frame.mvp.BasePresenter;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 import com.hyjt.client.mvp.contract.LinkmanContract;
 import com.hyjt.home.mvp.model.entity.Resp.ChildrenBean;
@@ -94,13 +95,13 @@ public class LinkmanPresenter extends BasePresenter<LinkmanContract.Model, Linkm
                         mRootView.startLoadMore();//显示下拉加载更多的进度条
                 }).subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     if (pullToRefresh)
                         mRootView.hideLoading();//隐藏上拉刷新的进度条
                     else
                         mRootView.endLoadMore();//隐藏下拉加载更多的进度条
-                })
-                .observeOn(AndroidSchedulers.mainThread())
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<StaffListResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull StaffListResp staffListResp) {
@@ -132,14 +133,12 @@ public class LinkmanPresenter extends BasePresenter<LinkmanContract.Model, Linkm
                         return ObservableError.just(deptList);
                     }
                 })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new ErrorHandleSubscriber<List<Node>>(mErrorHandler) {
-                    @Override
-                    public void onNext(@NonNull List<Node> data) {
-                        mRootView.showDeptTree(deptList);
-                    }
-                });
+                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).compose(RxLifecycleUtils.bindToLifecycle(mRootView)).subscribe(new ErrorHandleSubscriber<List<Node>>(mErrorHandler) {
+            @Override
+            public void onNext(@NonNull List<Node> data) {
+                mRootView.showDeptTree(deptList);
+            }
+        });
     }
 
     /**

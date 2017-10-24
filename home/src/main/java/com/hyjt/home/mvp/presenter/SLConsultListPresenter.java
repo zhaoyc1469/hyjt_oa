@@ -7,6 +7,7 @@ import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.integration.AppManager;
 import com.hyjt.frame.mvp.BasePresenter;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 import com.hyjt.home.mvp.contract.SLConsultListContract;
 import com.hyjt.home.mvp.model.entity.Reqs.SLConsultListReqs;
@@ -57,10 +58,10 @@ public class SLConsultListPresenter extends BasePresenter<SLConsultListContract.
         this.mApplication = null;
     }
 
-    public void getSLCList(boolean pullToRefresh, String Type){
+    public void getSLCList(boolean pullToRefresh, String Type) {
 
         if (mAdapter == null) {
-            mAdapter = new SLConsultAdapter(slcList,Type);
+            mAdapter = new SLConsultAdapter(slcList, Type);
             mRootView.setAdapter(mAdapter);
             mAdapter.setOnItemClickListener((view, viewType, data, position) -> {
                 String id = slcList.get(position).getId();
@@ -88,19 +89,17 @@ public class SLConsultListPresenter extends BasePresenter<SLConsultListContract.
                         mRootView.startLoadMore();//显示下拉加载更多的进度条
                 }).subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     if (pullToRefresh) {
-                        if (mRootView != null) {
-                            mRootView.hideLoading();//隐藏上拉刷新的进度条
-                        }
-                    } else{
+                        mRootView.hideLoading();
+                    } else {
                         if (mRootView != null) {
                             mRootView.endLoadMore();//隐藏下拉加载更多的进度条
                         }
                     }
 
-                })
-                .observeOn(AndroidSchedulers.mainThread())
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<SLConsultListResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull SLConsultListResp sLConsultListResp) {

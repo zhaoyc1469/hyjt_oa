@@ -76,7 +76,6 @@ public class SkipReportDetailActivity extends BaseActivity<SkipReportDetailPrese
         Intent intent = getIntent();
         srId = intent.getStringExtra("Id");
 
-
         mIvTopBack = (ImageView) findViewById(R.id.iv_top_back);
         mIvTopBack.setOnClickListener(v -> finish());
         mTvTitle = (TextView) findViewById(R.id.tv_title);

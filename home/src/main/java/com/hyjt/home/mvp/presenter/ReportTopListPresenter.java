@@ -4,6 +4,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.mvp.BasePresenter;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.home.mvp.contract.ReportTopListContract;
 import com.hyjt.home.mvp.model.entity.Reqs.ReportTopListReqs;
 import com.hyjt.home.mvp.model.entity.Resp.ReportTListResp;
@@ -42,10 +43,10 @@ public class ReportTopListPresenter extends BasePresenter<ReportTopListContract.
         this.mErrorHandler = null;
     }
 
-    public void getReportList(boolean pullToRefresh, String Type){
+    public void getReportList(boolean pullToRefresh, String Type) {
 
         if (mAdapter == null) {
-            mAdapter = new ReportTopAdapter(rtList,Type);
+            mAdapter = new ReportTopAdapter(rtList, Type);
             mRootView.setAdapter(mAdapter);
             mAdapter.setOnItemClickListener((view, viewType, data, position) -> {
                 String id = rtList.get(position).getId();
@@ -74,19 +75,17 @@ public class ReportTopListPresenter extends BasePresenter<ReportTopListContract.
                         mRootView.startLoadMore();//显示下拉加载更多的进度条
                 }).subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     if (pullToRefresh) {
-                        if (mRootView != null) {
-                            mRootView.hideLoading();//隐藏上拉刷新的进度条
-                        }
-                    } else{
+                        mRootView.hideLoading();
+                    } else {
                         if (mRootView != null) {
                             mRootView.endLoadMore();//隐藏下拉加载更多的进度条
                         }
                     }
 
-                })
-                .observeOn(AndroidSchedulers.mainThread())
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<ReportTListResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull ReportTListResp reportTListResp) {

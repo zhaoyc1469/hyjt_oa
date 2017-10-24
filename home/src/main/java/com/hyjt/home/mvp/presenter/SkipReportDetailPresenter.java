@@ -55,7 +55,7 @@ public class SkipReportDetailPresenter extends BasePresenter<SkipReportDetailCon
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<SReportDetailResp>(mErrorHandler) {
@@ -72,7 +72,7 @@ public class SkipReportDetailPresenter extends BasePresenter<SkipReportDetailCon
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
@@ -90,7 +90,7 @@ public class SkipReportDetailPresenter extends BasePresenter<SkipReportDetailCon
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {

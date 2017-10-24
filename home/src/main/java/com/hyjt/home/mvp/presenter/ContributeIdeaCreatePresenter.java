@@ -9,6 +9,7 @@ import com.hyjt.frame.mvp.BasePresenter;
 import com.hyjt.frame.integration.AppManager;
 
 
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 
 
@@ -61,6 +62,7 @@ public class ContributeIdeaCreatePresenter extends BasePresenter<ContributeIdeaC
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<LinkManResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull LinkManResp linkManResp) {
@@ -82,13 +84,13 @@ public class ContributeIdeaCreatePresenter extends BasePresenter<ContributeIdeaC
                 });
     }
 
-    public void createContribute(CIdeaDetailResp cIdeaDetail){
+    public void createContribute(CIdeaDetailResp cIdeaDetail) {
 
         mModel.createContribute(cIdeaDetail)
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {

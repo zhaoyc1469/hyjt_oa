@@ -3,6 +3,7 @@ package com.hyjt.home.mvp.presenter;
 import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.mvp.BasePresenter;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.home.mvp.contract.CreateStaffContract;
 import com.hyjt.home.mvp.model.entity.Reqs.StaffMsgReqs;
 import com.hyjt.home.mvp.model.entity.Resp.ChildrenBean;
@@ -56,9 +57,7 @@ public class CreateStaffPresenter extends BasePresenter<CreateStaffContract.Mode
                         return ObservableError.just(deptList);
                     }
                 })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new ErrorHandleSubscriber<List<Node>>(mErrorHandler) {
+                .subscribeOn(Schedulers.io())                 .observeOn(AndroidSchedulers.mainThread())                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))                 .subscribe(new ErrorHandleSubscriber<List<Node>>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull List<Node> data) {
                         mRootView.showDeptTree(deptList);
@@ -86,6 +85,7 @@ public class CreateStaffPresenter extends BasePresenter<CreateStaffContract.Mode
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull Object deptBean1) {

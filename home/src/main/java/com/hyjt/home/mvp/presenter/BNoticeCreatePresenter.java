@@ -97,7 +97,7 @@ public class BNoticeCreatePresenter extends BasePresenter<BNoticeCreateContract.
                             .subscribeOn(Schedulers.io())
                             .retryWhen(new RetryWithDelay(5, 10))
                             .observeOn(AndroidSchedulers.mainThread())
-                            .doAfterTerminate(() -> {
+                            .doFinally(() -> {
                                 if (ImgUploadList.size() == filesPaths.size() - 1) {
                                     mRootView.hideLoading();//隐藏
                                 }
@@ -128,7 +128,7 @@ public class BNoticeCreatePresenter extends BasePresenter<BNoticeCreateContract.
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {

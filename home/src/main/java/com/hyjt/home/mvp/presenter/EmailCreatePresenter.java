@@ -11,6 +11,7 @@ import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.integration.AppManager;
 import com.hyjt.frame.mvp.BasePresenter;
 import com.hyjt.frame.utils.PermissionUtil;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 import com.hyjt.home.mvp.contract.EmailCreateContract;
 import com.hyjt.home.mvp.model.entity.Reqs.CEmailSendReqs;
@@ -69,6 +70,7 @@ public class EmailCreatePresenter extends BasePresenter<EmailCreateContract.Mode
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<LinkManResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull LinkManResp linkManResp) {
@@ -97,6 +99,7 @@ public class EmailCreatePresenter extends BasePresenter<EmailCreateContract.Mode
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull Object obj) {
@@ -142,7 +145,7 @@ public class EmailCreatePresenter extends BasePresenter<EmailCreateContract.Mode
                             .subscribeOn(Schedulers.io())
                             .retryWhen(new RetryWithDelay(5, 10))
                             .observeOn(AndroidSchedulers.mainThread())
-                            .doAfterTerminate(() -> {
+                            .doFinally(() -> {
                                 if (ImgUploadList.size() == filesPaths.size() - 1) {
                                     mRootView.hideLoading();//隐藏
                                 }

@@ -65,7 +65,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     if (mRootView != null)
                         mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
@@ -82,7 +82,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<PLFristLeaderResp>(mErrorHandler) {
@@ -98,7 +98,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<PLCompanyResp>(mErrorHandler) {
@@ -114,7 +114,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
@@ -132,7 +132,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
@@ -150,7 +150,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
@@ -167,7 +167,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<PLCompBankAccountResp>(mErrorHandler) {
@@ -183,7 +183,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
@@ -201,7 +201,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {

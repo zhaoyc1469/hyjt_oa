@@ -29,8 +29,8 @@ public class CompLoanItemHolder extends BaseHolder<CompLoanListResp.RowsBean> {
 
     @Override
     public void setData(CompLoanListResp.RowsBean data, int position) {
-        mTvClNum.setText(data.getCwPnum());
-        mTvClAmount.setText(data.getCwPmoney());
+        mTvClNum.setText(data.getCwCnum());
+        mTvClAmount.setText(data.getCwCmoney());
         mTvClType.setText(data.getCwJKState());
         mTvClTime.setText(data.getSqDate());
     }

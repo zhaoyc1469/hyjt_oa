@@ -41,10 +41,10 @@ public class CompLoanListResp {
          */
 
         private String Id;
-        private String CwPnum;
+        private String CwCnum;
         private String SqDate;
-        private String CwPpersonal;
-        private String CwPmoney;
+        private String CwCpersonal;
+        private String CwCmoney;
         private String FlowState;
         private String CwJKState;
 
@@ -56,12 +56,28 @@ public class CompLoanListResp {
             this.Id = Id;
         }
 
-        public String getCwPnum() {
-            return CwPnum;
+        public String getCwCnum() {
+            return CwCnum;
         }
 
-        public void setCwPnum(String CwPnum) {
-            this.CwPnum = CwPnum;
+        public void setCwCnum(String cwCnum) {
+            CwCnum = cwCnum;
+        }
+
+        public String getCwCpersonal() {
+            return CwCpersonal;
+        }
+
+        public void setCwCpersonal(String cwCpersonal) {
+            CwCpersonal = cwCpersonal;
+        }
+
+        public String getCwCmoney() {
+            return CwCmoney;
+        }
+
+        public void setCwCmoney(String cwCmoney) {
+            CwCmoney = cwCmoney;
         }
 
         public String getSqDate() {
@@ -70,22 +86,6 @@ public class CompLoanListResp {
 
         public void setSqDate(String SqDate) {
             this.SqDate = SqDate;
-        }
-
-        public String getCwPpersonal() {
-            return CwPpersonal;
-        }
-
-        public void setCwPpersonal(String CwPpersonal) {
-            this.CwPpersonal = CwPpersonal;
-        }
-
-        public String getCwPmoney() {
-            return CwPmoney;
-        }
-
-        public void setCwPmoney(String CwPmoney) {
-            this.CwPmoney = CwPmoney;
         }
 
         public String getFlowState() {

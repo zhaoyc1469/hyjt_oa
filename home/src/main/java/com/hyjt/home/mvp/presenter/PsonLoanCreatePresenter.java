@@ -78,7 +78,7 @@ public class PsonLoanCreatePresenter extends BasePresenter<PsonLoanCreateContrac
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<PLFristLeaderResp>(mErrorHandler) {
@@ -94,7 +94,7 @@ public class PsonLoanCreatePresenter extends BasePresenter<PsonLoanCreateContrac
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<PLCompanyResp>(mErrorHandler) {
@@ -110,7 +110,7 @@ public class PsonLoanCreatePresenter extends BasePresenter<PsonLoanCreateContrac
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<PLFlowNodeResp>(mErrorHandler) {
@@ -127,7 +127,7 @@ public class PsonLoanCreatePresenter extends BasePresenter<PsonLoanCreateContrac
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<PLBankAccountResp>(mErrorHandler) {
@@ -143,7 +143,7 @@ public class PsonLoanCreatePresenter extends BasePresenter<PsonLoanCreateContrac
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
@@ -189,7 +189,7 @@ public class PsonLoanCreatePresenter extends BasePresenter<PsonLoanCreateContrac
                             .subscribeOn(Schedulers.io())
                             .retryWhen(new RetryWithDelay(5, 10))
                             .observeOn(AndroidSchedulers.mainThread())
-                            .doAfterTerminate(() -> {
+                            .doFinally(() -> {
                                 if (ImgUploadList.size() == filesPaths.size() - 1) {
                                     mRootView.hideLoading();//隐藏
                                 }

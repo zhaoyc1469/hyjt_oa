@@ -46,6 +46,7 @@ import com.hyjt.frame.utils.JsonUtils;
 import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.mvp.ui.view.BlocPop;
 import com.hyjt.home.mvp.ui.view.StaffStatePop;
+import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import org.greenrobot.greendao.query.QueryBuilder;
 import org.simple.eventbus.Subscriber;
@@ -53,6 +54,8 @@ import org.simple.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.subjects.Subject;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.hyjt.app.R.id.tv_out_login;
@@ -815,4 +818,5 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
 
         super.onDestroy();
     }
+
 }

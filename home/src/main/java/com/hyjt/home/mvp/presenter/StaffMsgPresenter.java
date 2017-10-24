@@ -3,6 +3,7 @@ package com.hyjt.home.mvp.presenter;
 import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.mvp.BasePresenter;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.home.mvp.contract.StaffMsgContract;
 import com.hyjt.home.mvp.model.entity.Resp.ChildrenBean;
 import com.hyjt.home.mvp.model.entity.Resp.StaffMsgResp;
@@ -51,8 +52,9 @@ public class StaffMsgPresenter extends BasePresenter<StaffMsgContract.Model, Sta
                 .doOnSubscribe(disposable -> mRootView.startLoading())
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> mRootView.endLoading())
+                .doFinally(() -> mRootView.endLoading())
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<StaffMsgResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull StaffMsgResp staffMsgResp) {
@@ -66,6 +68,7 @@ public class StaffMsgPresenter extends BasePresenter<StaffMsgContract.Model, Sta
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull Object staffMsgResp) {
@@ -88,6 +91,7 @@ public class StaffMsgPresenter extends BasePresenter<StaffMsgContract.Model, Sta
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<List<Node>>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull List<Node> data) {
@@ -115,15 +119,13 @@ public class StaffMsgPresenter extends BasePresenter<StaffMsgContract.Model, Sta
     public void sendEditStaf(StaffMsgResp staffMsgResp) {
         mModel.editStaffMsg(staffMsgResp)
                 .map(new parseResponse<>())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
-                    @Override
-                    public void onNext(@NonNull Object staffMsgResp) {
-                        mRootView.showMessage("编辑成功");
-                        mRootView.killMyself();
-                    }
-                });
+                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).compose(RxLifecycleUtils.bindToLifecycle(mRootView)).subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+            @Override
+            public void onNext(@NonNull Object staffMsgResp) {
+                mRootView.showMessage("编辑成功");
+                mRootView.killMyself();
+            }
+        });
     }
 
 }

@@ -3,6 +3,7 @@ package com.hyjt.home.mvp.presenter;
 import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.mvp.BasePresenter;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.home.mvp.contract.AddressBookContract;
 import com.hyjt.home.mvp.model.entity.Resp.ChildrenBean;
 import com.hyjt.home.mvp.model.entity.Resp.StaffListResp;
@@ -78,13 +79,14 @@ public class AddressBookPresenter extends BasePresenter<AddressBookContract.Mode
                         mRootView.startLoadMore();//显示下拉加载更多的进度条
                 }).subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     if (pullToRefresh)
                         mRootView.hideLoading();//隐藏上拉刷新的进度条
                     else
                         mRootView.endLoadMore();//隐藏下拉加载更多的进度条
                 })
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<StaffListResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull StaffListResp staffListResp) {
@@ -146,9 +148,7 @@ public class AddressBookPresenter extends BasePresenter<AddressBookContract.Mode
                         return ObservableError.just(deptList);
                     }
                 })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new ErrorHandleSubscriber<List<Node>>(mErrorHandler) {
+                .subscribeOn(Schedulers.io())                 .observeOn(AndroidSchedulers.mainThread())                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))                 .subscribe(new ErrorHandleSubscriber<List<Node>>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull List<Node> data) {
                         mRootView.showDeptTree(deptList);

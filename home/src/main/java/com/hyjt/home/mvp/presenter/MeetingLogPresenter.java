@@ -11,6 +11,7 @@ import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.integration.AppManager;
 import com.hyjt.frame.mvp.BasePresenter;
 import com.hyjt.frame.utils.PermissionUtil;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 import com.hyjt.home.mvp.contract.MeetingLogContract;
 import com.hyjt.home.mvp.model.entity.Reqs.MeetingMsgReqs;
@@ -88,7 +89,7 @@ public class MeetingLogPresenter extends BasePresenter<MeetingLogContract.Model,
                             .subscribeOn(Schedulers.io())
                             .retryWhen(new RetryWithDelay(5, 10))
                             .observeOn(AndroidSchedulers.mainThread())
-                            .doAfterTerminate(() -> {
+                            .doFinally(() -> {
                                 if (ImgUploadList.size() == filesPaths.size() - 1) {
                                     mRootView.hideUpload();//隐藏上拉刷新的进度条
                                 }
@@ -119,6 +120,7 @@ public class MeetingLogPresenter extends BasePresenter<MeetingLogContract.Model,
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<LinkManResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull LinkManResp linkManResp) {
@@ -150,7 +152,6 @@ public class MeetingLogPresenter extends BasePresenter<MeetingLogContract.Model,
         }
 
 
-
         mModel.sendMeetingMsg(meetingMsgReqs.getCM_name(),
                 meetingMsgReqs.getCM_person(),
                 meetingMsgReqs.getCM_promoter(),
@@ -166,21 +167,19 @@ public class MeetingLogPresenter extends BasePresenter<MeetingLogContract.Model,
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideUpload();//隐藏加载中
-                })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new ErrorHandleSubscriber<StaffNameIdKey>(mErrorHandler) {
-                    @Override
-                    public void onNext(@NonNull StaffNameIdKey linkManResp) {
+                }).observeOn(AndroidSchedulers.mainThread()).compose(RxLifecycleUtils.bindToLifecycle(mRootView)).subscribe(new ErrorHandleSubscriber<StaffNameIdKey>(mErrorHandler) {
+            @Override
+            public void onNext(@NonNull StaffNameIdKey linkManResp) {
 
-                        String id = linkManResp.getId();
+                String id = linkManResp.getId();
 
-                        Log.e("sendMeetingMsg", id);
-                        mRootView.showMessage("创建成功");
+                Log.e("sendMeetingMsg", id);
+                mRootView.showMessage("创建成功");
 
-                    }
-                });
+            }
+        });
     }
 
     @Override

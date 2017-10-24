@@ -9,6 +9,7 @@ import com.hyjt.client.mvp.ui.activity.HomeActivity;
 import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.mvp.BasePresenter;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 
 import javax.inject.Inject;
 
@@ -28,7 +29,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.Model, LoginCont
 
     @Inject
     public LoginPresenter(LoginContract.Model model, LoginContract.View rootView
-            , RxErrorHandler handler,  Application application) {
+            , RxErrorHandler handler, Application application) {
         super(model, rootView);
         this.mErrorHandler = handler;
         this.mApplication = application;
@@ -39,8 +40,9 @@ public class LoginPresenter extends BasePresenter<LoginContract.Model, LoginCont
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() ->mRootView.hideDialog())//隐藏
+                .doFinally(() -> mRootView.hideDialog())//隐藏
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<LoginResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull LoginResp loginResp) {

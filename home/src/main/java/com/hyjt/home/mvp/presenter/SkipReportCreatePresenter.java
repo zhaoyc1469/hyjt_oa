@@ -7,6 +7,7 @@ import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.integration.AppManager;
 import com.hyjt.frame.mvp.BasePresenter;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 import com.hyjt.home.mvp.contract.SkipReportCreateContract;
 import com.hyjt.home.mvp.model.entity.Reqs.StaffNameIdKey;
@@ -57,6 +58,7 @@ public class SkipReportCreatePresenter extends BasePresenter<SkipReportCreateCon
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<LinkManResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull LinkManResp linkManResp) {
@@ -78,13 +80,13 @@ public class SkipReportCreatePresenter extends BasePresenter<SkipReportCreateCon
                 });
     }
 
-    public void createReport(SReportDetailResp reportDetail){
+    public void createReport(SReportDetailResp reportDetail) {
 
         mModel.skipReportCreate(reportDetail)
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {

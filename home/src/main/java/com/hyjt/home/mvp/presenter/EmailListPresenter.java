@@ -7,6 +7,7 @@ import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.integration.AppManager;
 import com.hyjt.frame.mvp.BasePresenter;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 import com.hyjt.home.mvp.contract.EmailListContract;
 import com.hyjt.home.mvp.model.entity.Reqs.EmailListReqs;
@@ -50,7 +51,7 @@ public class EmailListPresenter extends BasePresenter<EmailListContract.Model, E
     public void getEmailList(boolean pullToRefresh, String Type) {
 
         if (mAdapter == null) {
-            mAdapter = new EmailAdapter(ceList,Type);
+            mAdapter = new EmailAdapter(ceList, Type);
             mRootView.setAdapter(mAdapter);
             mAdapter.setOnItemClickListener((view, viewType, data, position) -> {
                 String id = ceList.get(position).getId();
@@ -79,15 +80,13 @@ public class EmailListPresenter extends BasePresenter<EmailListContract.Model, E
                         mRootView.startLoadMore();//显示下拉加载更多的进度条
                 }).subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     if (pullToRefresh) {
-                        if (mRootView != null) {
-                            mRootView.hideLoading();//隐藏上拉刷新的进度条
-                        }
+                        mRootView.hideLoading();
                     } else
                         mRootView.endLoadMore();//隐藏下拉加载更多的进度条
-                })
-                .observeOn(AndroidSchedulers.mainThread())
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<CEmailListResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull CEmailListResp cEmailListResp) {

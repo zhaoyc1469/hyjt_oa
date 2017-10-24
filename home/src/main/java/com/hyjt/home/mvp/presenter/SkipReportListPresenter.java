@@ -7,6 +7,7 @@ import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.integration.AppManager;
 import com.hyjt.frame.mvp.BasePresenter;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 import com.hyjt.home.mvp.contract.SkipReportListContract;
 import com.hyjt.home.mvp.model.entity.Reqs.ReportTopListReqs;
@@ -82,19 +83,17 @@ public class SkipReportListPresenter extends BasePresenter<SkipReportListContrac
                         mRootView.startLoadMore();//显示下拉加载更多的进度条
                 }).subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     if (pullToRefresh) {
-                        if (mRootView != null) {
-                            mRootView.hideLoading();//隐藏上拉刷新的进度条
-                        }
+                        mRootView.hideLoading();
                     } else {
                         if (mRootView != null) {
                             mRootView.endLoadMore();//隐藏下拉加载更多的进度条
                         }
                     }
 
-                })
-                .observeOn(AndroidSchedulers.mainThread())
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<SReportListResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull SReportListResp reportListResp) {

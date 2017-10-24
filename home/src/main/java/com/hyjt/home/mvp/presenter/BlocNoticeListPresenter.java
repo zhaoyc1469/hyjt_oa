@@ -4,6 +4,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.mvp.BasePresenter;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.home.mvp.contract.BlocNoticeListContract;
 import com.hyjt.home.mvp.model.entity.Resp.BlocNoticeListResp;
 import com.hyjt.home.mvp.ui.adapter.BlocNoticeAdapter;
@@ -76,13 +77,13 @@ public class BlocNoticeListPresenter extends BasePresenter<BlocNoticeListContrac
                         mRootView.startLoadMore();//显示下拉加载更多的进度条
                 }).subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     if (pullToRefresh)
                         mRootView.hideLoading();//隐藏上拉刷新的进度条
                     else
                         mRootView.endLoadMore(ForbidEdit);//隐藏下拉加载更多的进度条
-                })
-                .observeOn(AndroidSchedulers.mainThread())
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<BlocNoticeListResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull BlocNoticeListResp bNoticeListResp) {
@@ -94,7 +95,7 @@ public class BlocNoticeListPresenter extends BasePresenter<BlocNoticeListContrac
                             bnList.addAll(bNoticeListResp.getRows());
                             mAdapter.notifyDataSetChanged();
                         }
-                        if (bNoticeListResp.getRows().size() == 0){
+                        if (bNoticeListResp.getRows().size() == 0) {
                             mRootView.endLoad();
                         }
                     }
@@ -107,7 +108,7 @@ public class BlocNoticeListPresenter extends BasePresenter<BlocNoticeListContrac
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> mRootView.LoadList())
+                .doFinally(() -> mRootView.LoadList())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Object>() {
                     @Override

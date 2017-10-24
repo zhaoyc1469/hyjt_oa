@@ -6,6 +6,7 @@ import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.event.OutLoginEvent;
 import com.hyjt.frame.mvp.BasePresenter;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 
 import org.simple.eventbus.EventBus;
 
@@ -37,6 +38,7 @@ public class WorkPresenter extends BasePresenter<WorkContract.Model, WorkContrac
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new Observer<WorkMission>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
@@ -66,6 +68,7 @@ public class WorkPresenter extends BasePresenter<WorkContract.Model, WorkContrac
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {

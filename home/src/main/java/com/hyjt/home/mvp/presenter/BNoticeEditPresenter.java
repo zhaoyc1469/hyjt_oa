@@ -9,6 +9,7 @@ import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.mvp.BasePresenter;
 import com.hyjt.frame.utils.PermissionUtil;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.home.mvp.contract.BNoticeEditContract;
 import com.hyjt.home.mvp.model.entity.Resp.BNoticeDetailsResp;
 import com.hyjt.home.mvp.model.entity.Resp.ImgUploadResp;
@@ -57,6 +58,7 @@ public class BNoticeEditPresenter extends BasePresenter<BNoticeEditContract.Mode
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<BNoticeDetailsResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull BNoticeDetailsResp bNoticeDetails) {
@@ -102,7 +104,7 @@ public class BNoticeEditPresenter extends BasePresenter<BNoticeEditContract.Mode
                             .subscribeOn(Schedulers.io())
                             .retryWhen(new RetryWithDelay(5, 10))
                             .observeOn(AndroidSchedulers.mainThread())
-                            .doAfterTerminate(() -> {
+                            .doFinally(() -> {
                                 if (ImgUploadList.size() == filesPaths.size() - 1) {
                                     mRootView.hideLoading();//隐藏
                                 }
@@ -134,7 +136,7 @@ public class BNoticeEditPresenter extends BasePresenter<BNoticeEditContract.Mode
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
@@ -154,7 +156,7 @@ public class BNoticeEditPresenter extends BasePresenter<BNoticeEditContract.Mode
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {

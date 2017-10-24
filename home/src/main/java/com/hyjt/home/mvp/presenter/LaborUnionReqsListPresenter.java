@@ -9,6 +9,7 @@ import com.hyjt.frame.mvp.BasePresenter;
 import com.hyjt.frame.integration.AppManager;
 
 
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 
 
@@ -96,19 +97,17 @@ public class LaborUnionReqsListPresenter extends BasePresenter<LaborUnionReqsLis
                         mRootView.startLoadMore();//显示下拉加载更多的进度条
                 }).subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     if (pullToRefresh) {
-                        if (mRootView != null) {
-                            mRootView.hideLoading();//隐藏上拉刷新的进度条
-                        }
+                        mRootView.hideLoading();
                     } else {
                         if (mRootView != null) {
                             mRootView.endLoadMore();//隐藏下拉加载更多的进度条
                         }
                     }
 
-                })
-                .observeOn(AndroidSchedulers.mainThread())
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<LUReqsListResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull LUReqsListResp cideaList) {

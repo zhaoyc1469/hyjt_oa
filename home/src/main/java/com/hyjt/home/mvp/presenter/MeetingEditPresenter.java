@@ -11,6 +11,7 @@ import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.integration.AppManager;
 import com.hyjt.frame.mvp.BasePresenter;
 import com.hyjt.frame.utils.PermissionUtil;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 import com.hyjt.home.mvp.contract.MeetingEditContract;
 import com.hyjt.home.mvp.model.entity.Reqs.MeetingEditReqs;
@@ -59,14 +60,12 @@ public class MeetingEditPresenter extends BasePresenter<MeetingEditContract.Mode
 
         mModel.getMeetingMsg(meetingId)
                 .map(new parseResponse<>())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new ErrorHandleSubscriber<MeetingMsgResp>(mErrorHandler) {
-                    @Override
-                    public void onNext(@NonNull MeetingMsgResp meetingMsgResp) {
-                        mRootView.setMeetingMsg(meetingMsgResp);
-                    }
-                });
+                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).compose(RxLifecycleUtils.bindToLifecycle(mRootView)).subscribe(new ErrorHandleSubscriber<MeetingMsgResp>(mErrorHandler) {
+            @Override
+            public void onNext(@NonNull MeetingMsgResp meetingMsgResp) {
+                mRootView.setMeetingMsg(meetingMsgResp);
+            }
+        });
 
         Log.e("getMeetingMsg", meetingId);
     }
@@ -77,6 +76,7 @@ public class MeetingEditPresenter extends BasePresenter<MeetingEditContract.Mode
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<LinkManResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull LinkManResp linkManResp) {
@@ -110,14 +110,12 @@ public class MeetingEditPresenter extends BasePresenter<MeetingEditContract.Mode
                         return "删除失败";
                     }
                 })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new ErrorHandleSubscriber<String>(mErrorHandler) {
-                    @Override
-                    public void onNext(@NonNull String s) {
-                        mRootView.showMessage(s);
-                    }
-                });
+                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).compose(RxLifecycleUtils.bindToLifecycle(mRootView)).subscribe(new ErrorHandleSubscriber<String>(mErrorHandler) {
+            @Override
+            public void onNext(@NonNull String s) {
+                mRootView.showMessage(s);
+            }
+        });
     }
 
 
@@ -126,8 +124,9 @@ public class MeetingEditPresenter extends BasePresenter<MeetingEditContract.Mode
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> mRootView.hideUpload())//隐藏上拉刷新的进度条
+                .doFinally(() -> mRootView.hideUpload())//隐藏上拉刷新的进度条
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull Object Object) {
@@ -170,7 +169,7 @@ public class MeetingEditPresenter extends BasePresenter<MeetingEditContract.Mode
                             .subscribeOn(Schedulers.io())
                             .retryWhen(new RetryWithDelay(5, 10))
                             .observeOn(AndroidSchedulers.mainThread())
-                            .doAfterTerminate(() -> {
+                            .doFinally(() -> {
                                 if (ImgUploadList.size() == filesPaths.size() - 1) {
                                     mRootView.hideUpload();//隐藏
                                 }

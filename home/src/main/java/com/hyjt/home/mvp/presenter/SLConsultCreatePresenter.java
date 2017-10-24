@@ -7,6 +7,7 @@ import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.integration.AppManager;
 import com.hyjt.frame.mvp.BasePresenter;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -53,13 +54,13 @@ public class SLConsultCreatePresenter extends BasePresenter<SLConsultCreateContr
         this.mApplication = null;
     }
 
-    public void createConsult(SLConsultDetailResp consultDetail){
+    public void createConsult(SLConsultDetailResp consultDetail) {
 
         mModel.slConsultCreate(consultDetail)
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(() -> {
+                .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
@@ -76,6 +77,7 @@ public class SLConsultCreatePresenter extends BasePresenter<SLConsultCreateContr
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<LinkManResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull LinkManResp linkManResp) {
