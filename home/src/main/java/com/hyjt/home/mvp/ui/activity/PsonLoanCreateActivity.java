@@ -164,15 +164,19 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
         mBtnCreateLoan.setOnClickListener(v -> checkNullMsg());
         mEdtExpenseType.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
             @Override
             public void afterTextChanged(Editable s) {
-                if ("转账".equals(s.toString())){
+                if ("转账".equals(s.toString())) {
                     mLlTransferMsg.setVisibility(View.VISIBLE);
                     mBtnSelBankAccount.setVisibility(View.VISIBLE);
-                } else if ("现金".equals(s.toString())){
+                } else if ("现金".equals(s.toString())) {
                     mLlTransferMsg.setVisibility(View.GONE);
                     mBtnSelBankAccount.setVisibility(View.GONE);
                 }
@@ -181,19 +185,19 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
     }
 
     private void checkNullMsg() {
-        if (TextUtils.isEmpty(mEdtCompanyName.getText())){
+        if (TextUtils.isEmpty(mEdtCompanyName.getText())) {
             shortToast("请选择公司名称");
         }
-        if (TextUtils.isEmpty(mEdtFristLeader.getText())){
+        if (TextUtils.isEmpty(mEdtFristLeader.getText())) {
             shortToast("请选择首签领导");
         }
-        if (TextUtils.isEmpty(mEdtExpenseReason.getText())){
+        if (TextUtils.isEmpty(mEdtExpenseReason.getText())) {
             shortToast("请填写借款事由");
         }
-        if (TextUtils.isEmpty(mEdtExpenseAmount.getText())){
+        if (TextUtils.isEmpty(mEdtExpenseAmount.getText())) {
             shortToast("请填写借款金额");
         }
-        if (TextUtils.isEmpty(mEdtExpenseType.getText())){
+        if (TextUtils.isEmpty(mEdtExpenseType.getText())) {
             shortToast("请选择收款方式");
         }
 
@@ -287,6 +291,7 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
         imm.hideSoftInputFromWindow(mEdtFristLeader.getWindowToken(), 0);
         accAlert.show();
     }
+
     private void addFilePack(int position) {
 
         View inflate = LayoutInflater.from(getApplicationContext()).inflate(R.layout.home_add_comn_filepack, null);
@@ -327,7 +332,10 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
     public void showBankAccount(PLBankAccountResp plBankAccountResp) {
 
         List<PLBankAccountResp.BankPackBean> bankPack = plBankAccountResp.getBankPack();
-        if (bankPack == null || bankPack.size() == 0){
+        if (bankPack == null || bankPack.size() == 0) {
+            new AlertDialog.Builder(this).setTitle("提示")//设置对话框标题
+                    .setMessage("您没有预存银行账户信息！")//设置显示的内容
+                    .setPositiveButton("确定", (dialog, which) -> dialog.dismiss()).show();
             return;
         }
 

@@ -81,8 +81,10 @@ public class InformReceiver extends BroadcastReceiver {
                 } else if ("CwPersonalJK".equals(pushExtraResp.getType())){
                     if (!TextUtils.isEmpty(pushExtraResp.getId())) {
                         ARouter.getInstance().build("/home/PsonLoanEditActivity")
-                                .withString("type", ""+(Integer.parseInt(pushExtraResp.getMode())+1))
+                                .withString("PsonLoanId", pushExtraResp.getId())
+                                .withString("PsonLoanType", ""+(Integer.parseInt(pushExtraResp.getMode())+1))
                                 .navigation();
+
                     }
                 } else if ("CwCompanyJK".equals(pushExtraResp.getType())){
                     if (!TextUtils.isEmpty(pushExtraResp.getId())) {

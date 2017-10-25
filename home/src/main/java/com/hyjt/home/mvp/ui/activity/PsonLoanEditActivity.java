@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -442,7 +443,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         certificate.setText(filePackBean.getFileName());
         certificate.setOnClickListener(v -> {
             // 弹出一个选择浏览器的框，选择浏览器再进入
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.home_base_url) + filePackBean.getFilePath()));
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.home_url_othfile) + filePackBean.getFilePath()));
             startActivity(intent);
         });
         Button DelFile = (Button) inflate.findViewById(R.id.btn_del_file);
@@ -505,12 +506,19 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
                 android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
                         .setTitle("审批通过")
                         .setMessage("审批通过?")
-                        .setPositiveButton("确定", (dialog, which) -> {PlNodeApproveReqs nodeApr = new PlNodeApproveReqs();
+                        .setPositiveButton("确定", (dialog, which) -> {
+                            PlNodeApproveReqs nodeApr = new PlNodeApproveReqs();
                             nodeApr.setId(psonLoanId);
                             nodeApr.setNodeMemo("同意");
-                            nodeApr.setCwBname(bankPackBean != null ? bankPackBean.getBankName() : "");
-                            nodeApr.setCwBnum(bankPackBean != null ? bankPackBean.getBankNum() : "");
+                            if (bankPackBean != null) {
+                                nodeApr.setCwBname(bankPackBean.getBankName() != null ? bankPackBean.getBankName() : "");
+                                nodeApr.setCwBnum(bankPackBean.getBankNum() != null ? bankPackBean.getBankNum() : "");
+                            } else {
+                                nodeApr.setCwBname("");
+                                nodeApr.setCwBnum("");
+                            }
                             nodeApr.setNodeMemotext(mEdtRemark.getText().toString().trim());
+
                             mPresenter.flowNodeApr(nodeApr);
                         }).setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
                 builder.show();
@@ -523,8 +531,14 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
                             PlNodeApproveReqs nodeApr = new PlNodeApproveReqs();
                             nodeApr.setId(psonLoanId);
                             nodeApr.setNodeMemo("不同意");
-                            nodeApr.setCwBname(bankPackBean != null ? bankPackBean.getBankName() : "");
-                            nodeApr.setCwBnum(bankPackBean != null ? bankPackBean.getBankNum() : "");
+
+                            if (bankPackBean != null) {
+                                nodeApr.setCwBname(bankPackBean.getBankName() != null ? bankPackBean.getBankName() : "");
+                                nodeApr.setCwBnum(bankPackBean.getBankNum() != null ? bankPackBean.getBankNum() : "");
+                            } else {
+                                nodeApr.setCwBname("");
+                                nodeApr.setCwBnum("");
+                            }
                             nodeApr.setNodeMemotext("" + mEdtRemark.getText().toString().trim());
                             mPresenter.flowNodeApr(nodeApr);
                         }).setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
@@ -532,7 +546,9 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
             });
         }
         mEdtRemark.setText(flowPackBean.getNodeMemotext());
-        mEdtSendAccount.setText(flowPackBean.getCwBname() + " " + flowPackBean.getCwBnum());
+        if (!TextUtils.isEmpty(flowPackBean.getCwBname())) {
+            mEdtSendAccount.setText(flowPackBean.getCwBname() + " " + flowPackBean.getCwBnum());
+        }
         if ("1".equals(psonLoanType) || "3".equals(psonLoanType)) {
             mLlAccount.setVisibility(View.GONE);
         }

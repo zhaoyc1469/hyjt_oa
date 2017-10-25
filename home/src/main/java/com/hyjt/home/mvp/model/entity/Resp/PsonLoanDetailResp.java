@@ -332,8 +332,8 @@ public class PsonLoanDetailResp {
         private String NodeMemo;
         private String NodeMemotext;
         private String IsBank;
-        private Object CwBname;
-        private Object CwBnum;
+        private String CwBname;
+        private String CwBnum;
 
         public String getNodeName() {
             return NodeName;
@@ -383,19 +383,19 @@ public class PsonLoanDetailResp {
             this.IsBank = IsBank;
         }
 
-        public Object getCwBname() {
+        public String getCwBname() {
             return CwBname;
         }
 
-        public void setCwBname(Object CwBname) {
+        public void setCwBname(String CwBname) {
             this.CwBname = CwBname;
         }
 
-        public Object getCwBnum() {
+        public String getCwBnum() {
             return CwBnum;
         }
 
-        public void setCwBnum(Object CwBnum) {
+        public void setCwBnum(String CwBnum) {
             this.CwBnum = CwBnum;
         }
     }

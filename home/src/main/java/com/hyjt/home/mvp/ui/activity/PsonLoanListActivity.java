@@ -82,7 +82,7 @@ public class PsonLoanListActivity extends BaseActivity<PsonLoanListPresenter> im
     public void initData(Bundle savedInstanceState) {
         Intent intent = getIntent();
         Type = intent.getStringExtra("type");
-        Mode = Type.equals("3") ? "1" : "0";
+        Mode = "0";
 
         mIvTopBack = (ImageView) findViewById(R.id.iv_top_back);
         mTvTitle = (TextView) findViewById(R.id.tv_title);

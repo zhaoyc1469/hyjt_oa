@@ -2,6 +2,7 @@
     <string name="home_app_name">Home</string>
     <string name="home_work_name">辽宁环宇综合管理平台</string>
     <string name="home_base_url">http://test.cemtn.cn/</string>
+    <string name="home_url_othfile">http://test.cemtn.cn</string>
 
     <string name="home_clear">清空</string>
     <string name="home_add">添加</string>
