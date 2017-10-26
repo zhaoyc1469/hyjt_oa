@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.utils.UiUtils;
@@ -96,7 +97,9 @@ public class ToCompLoanListActivity extends BaseActivity<ToCompLoanListPresenter
         mBtnNewCloan = (Button) findViewById(R.id.btn_new_cloan);
         mSrlCloanList = (SwipeRefreshLayout) findViewById(R.id.srl_cloan_list);
         mRecyCloanList = (RecyclerView) findViewById(R.id.recy_cloan_list);
-        
+        mBtnNewCloan.setOnClickListener(v -> ARouter.getInstance()
+                .build("/home/ToCompLoanCreateActivity").navigation());
+
         mBtnWaitType.setOnClickListener(v -> {
             Mode = "0";
             mPresenter.getCompLoanList(true, Type, Mode, CwCpersonal,

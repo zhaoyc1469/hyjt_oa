@@ -10,6 +10,7 @@ import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.home.di.component.DaggerToCompLoanEditComponent;
 import com.hyjt.home.di.module.ToCompLoanEditModule;
 import com.hyjt.home.mvp.contract.ToCompLoanEditContract;
+import com.hyjt.home.mvp.model.entity.Resp.CompLoanDetailResp;
 import com.hyjt.home.mvp.presenter.ToCompLoanEditPresenter;
 
 import com.hyjt.home.R;
@@ -50,4 +51,13 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
     }
 
 
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showCLDetail(CompLoanDetailResp compLoanDetailResp) {
+
+    }
 }

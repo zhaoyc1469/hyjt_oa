@@ -57,7 +57,10 @@ public class CreateStaffPresenter extends BasePresenter<CreateStaffContract.Mode
                         return ObservableError.just(deptList);
                     }
                 })
-                .subscribeOn(Schedulers.io())                 .observeOn(AndroidSchedulers.mainThread())                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))                 .subscribe(new ErrorHandleSubscriber<List<Node>>(mErrorHandler) {
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<List<Node>>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull List<Node> data) {
                         mRootView.showDeptTree(deptList);
@@ -67,12 +70,13 @@ public class CreateStaffPresenter extends BasePresenter<CreateStaffContract.Mode
 
     /**
      * 解析部门数据
+     *
      * @param childrenBeanList
      * @param parent
      */
     private void parseDept(List<ChildrenBean> childrenBeanList, int parent) {
-        for (ChildrenBean childrenBean : childrenBeanList){
-            deptId ++;
+        for (ChildrenBean childrenBean : childrenBeanList) {
+            deptId++;
             deptList.add(new Dept(deptId, parent, childrenBean.getText(), childrenBean.getId()));
             if (childrenBean.getChildren().size() == 0)
                 continue;

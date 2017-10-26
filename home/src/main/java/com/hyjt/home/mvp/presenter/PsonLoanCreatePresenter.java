@@ -13,6 +13,7 @@ import com.hyjt.frame.integration.AppManager;
 
 
 import com.hyjt.frame.utils.PermissionUtil;
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 
 
@@ -130,6 +131,7 @@ public class PsonLoanCreatePresenter extends BasePresenter<PsonLoanCreateContrac
                 .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<PLBankAccountResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull PLBankAccountResp plBankAccountResp) {
@@ -146,6 +148,7 @@ public class PsonLoanCreatePresenter extends BasePresenter<PsonLoanCreateContrac
                 .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull Object object) {
@@ -195,6 +198,7 @@ public class PsonLoanCreatePresenter extends BasePresenter<PsonLoanCreateContrac
                                 }
                             })
                             .observeOn(AndroidSchedulers.mainThread())
+                            .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                             .subscribe(new ErrorHandleSubscriber<ImgUploadResp>(mErrorHandler) {
                                 @Override
                                 public void onNext(@NonNull ImgUploadResp imgUploadResp) {

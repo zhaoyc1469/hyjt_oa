@@ -10,6 +10,7 @@ import com.hyjt.frame.mvp.BasePresenter;
 import com.hyjt.frame.integration.AppManager;
 
 
+import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 
 
@@ -101,6 +102,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<PLCompanyResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull PLCompanyResp plCompanyResp) {
@@ -117,6 +119,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 .doFinally(() -> {
                     mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull Object object) {
