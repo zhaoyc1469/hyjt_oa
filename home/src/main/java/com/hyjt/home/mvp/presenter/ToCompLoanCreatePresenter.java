@@ -19,6 +19,7 @@ import com.hyjt.frame.widget.imageloader.ImageLoader;
 import com.hyjt.home.mvp.contract.ToCompLoanCreateContract;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CompLoanContractReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.CompLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.CpContractListResp;
 
@@ -65,6 +66,25 @@ public class ToCompLoanCreatePresenter extends BasePresenter<ToCompLoanCreateCon
                     @Override
                     public void onNext(@NonNull CpContractListResp cpContractListResp) {
                         mRootView.showContractList(cpContractListResp);
+                    }
+                });
+    }
+
+
+    public void createCompLoan(CompLoanCreateReqs compLoanCreateReqs){
+        mModel.CompLoanCreate(compLoanCreateReqs)
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+                    if (mRootView != null)
+                        mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object obj) {
+//                        mRootView.showContractList(cpContractListResp);
                     }
                 });
     }

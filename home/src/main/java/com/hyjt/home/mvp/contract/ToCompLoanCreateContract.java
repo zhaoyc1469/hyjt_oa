@@ -6,6 +6,7 @@ import com.hyjt.frame.mvp.IModel;
 import com.hyjt.frame.mvp.IView;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CompLoanContractReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.CompLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.CpContractListResp;
 
@@ -24,5 +25,7 @@ public interface ToCompLoanCreateContract {
     interface Model extends IModel {
 
         Observable<BaseJson<CpContractListResp>> getCLContractList(CompLoanContractReqs compLoanContractReqs);
+
+        Observable<BaseJson<Object>> CompLoanCreate(CompLoanCreateReqs compLoanCreateReqs);
     }
 }

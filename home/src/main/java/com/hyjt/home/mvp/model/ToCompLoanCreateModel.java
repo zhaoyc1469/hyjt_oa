@@ -12,6 +12,7 @@ import com.hyjt.frame.mvp.BaseModel;
 import com.hyjt.home.mvp.contract.ToCompLoanCreateContract;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CompLoanContractReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.CompLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Resp.CpContractListResp;
 import com.hyjt.home.mvp.model.service.HomeService;
 
@@ -43,5 +44,12 @@ public class ToCompLoanCreateModel extends BaseModel implements ToCompLoanCreate
         Observable<BaseJson<CpContractListResp>> getCLContractList = mRepositoryManager.obtainRetrofitService(HomeService.class)
                 .compLoanContract(compLoanContractReqs);
         return getCLContractList;
+    }
+
+    @Override
+    public Observable<BaseJson<Object>> CompLoanCreate(CompLoanCreateReqs compLoanCreateReqsReqs) {
+        Observable<BaseJson<Object>> compLoanCreate = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .compLoanCreate(compLoanCreateReqsReqs);
+        return compLoanCreate;
     }
 }

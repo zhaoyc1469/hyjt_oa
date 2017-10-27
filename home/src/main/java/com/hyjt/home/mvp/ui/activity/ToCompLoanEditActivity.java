@@ -21,6 +21,8 @@ import com.hyjt.home.R;
 public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter> implements ToCompLoanEditContract.View {
 
 
+    private String compLoanId;
+
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
         DaggerToCompLoanEditComponent //如找不到该类,请编译一下项目
@@ -38,7 +40,9 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
 
     @Override
     public void initData(Bundle savedInstanceState) {
-
+        Intent intent = getIntent();
+        compLoanId = intent.getStringExtra("CompLoanId");
+        mPresenter.getCompLoanDetail(compLoanId);
     }
 
     @Override

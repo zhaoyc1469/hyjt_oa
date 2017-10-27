@@ -3,6 +3,7 @@ package com.hyjt.home.mvp.model.service;
 import com.hyjt.frame.api.BaseJson;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CompLoanContractReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.CompLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CompLoanListReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.LUReqsListReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PlNodeApproveReqs;
@@ -420,11 +421,11 @@ public interface HomeService {
     Observable<BaseJson<CompLoanDetailResp>> compLoanDetail(@Body BaseIdReqs PsonLoanReqs);
 
     //对公借款创建
-    @POST("/APICompanyJK/CreateOnOnePage")
-    Observable<BaseJson<Object>> compLoanCreate(@Body PsonLoanCreateReqs PsonLoanReqs);
+    @POST("/APICwCompanyJK/CreateOnOnePage")
+    Observable<BaseJson<Object>> compLoanCreate(@Body CompLoanCreateReqs compLoanCreateReqs);
 
     //对公借款删除
-    @POST("/APICompanyJK/Delete")
+    @POST("/APICwCompanyJK/Delete")
     Observable<BaseJson<Object>> compLoanDel(@Body BaseIdReqs BaseIdReqs);
 
     //对公借款合同及供应商列表获取
