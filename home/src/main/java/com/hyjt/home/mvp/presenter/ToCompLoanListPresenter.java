@@ -66,7 +66,7 @@ public class ToCompLoanListPresenter extends BasePresenter<ToCompLoanListContrac
             mAdapter = new CompLoanAdapter(clList);
             mRootView.setAdapter(mAdapter);
             mAdapter.setOnItemClickListener((view, viewType, data, position) -> {
-                ARouter.getInstance().build("/home/PsonLoanEditActivity")
+                ARouter.getInstance().build("/home/ToCompLoanEditActivity")
                         .withString("CompLoanId", clList.get(position).getId())
                         .withString("CompLoanType", Type).navigation();
             });

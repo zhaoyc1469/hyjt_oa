@@ -2,6 +2,7 @@ package com.hyjt.home.mvp.model.service;
 
 import com.hyjt.frame.api.BaseJson;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.ClNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CompLoanContractReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CompLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CompLoanListReqs;
@@ -27,6 +28,7 @@ import com.hyjt.home.mvp.model.entity.Resp.ChildrenBean;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanListResp;
 import com.hyjt.home.mvp.model.entity.Resp.CpContractListResp;
+import com.hyjt.home.mvp.model.entity.Resp.CpSupplierListResp;
 import com.hyjt.home.mvp.model.entity.Resp.ImgUploadResp;
 import com.hyjt.home.mvp.model.entity.Resp.LUReqsDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.LUReqsListResp;
@@ -428,7 +430,23 @@ public interface HomeService {
     @POST("/APICwCompanyJK/Delete")
     Observable<BaseJson<Object>> compLoanDel(@Body BaseIdReqs BaseIdReqs);
 
-    //对公借款合同及供应商列表获取
+    //对公借款合同列表获取
     @POST("/APICwContract/GetData")
     Observable<BaseJson<CpContractListResp>> compLoanContract(@Body CompLoanContractReqs compLoanContractReqs);
+
+    //对公借款供应商列表获取
+    @POST("/APICwContract/GetData")
+    Observable<BaseJson<CpSupplierListResp>> compLoanSupplier(@Body CompLoanContractReqs compLoanContractReqs);
+
+    //对公选择审批
+    @POST("/APICwFlowInstanceNode/EditYFInstanceNode")
+    Observable<BaseJson<Object>> clFlowNodeApr(@Body ClNodeApproveReqs clNodeApproveReqs);
+
+    //对公借款出纳确认
+    @POST("/APICwCompanyJK/EditChuNa")
+    Observable<BaseJson<Object>> clTellerConfirm(@Body BaseIdReqs BaseIdReqs);
+
+    //对公借款收款人确认
+    @POST("/APICwCompanyJK/Editshoukuan")
+    Observable<BaseJson<Object>> clReceiverConfirm(@Body BaseIdReqs BaseIdReqs);
 }

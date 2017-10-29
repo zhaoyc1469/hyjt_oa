@@ -107,7 +107,7 @@
 
                 <EditText
                     android:id="@+id/edt_expense_reason"
-                    style="@style/home_edt_standard"/>
+                    style="@style/home_edt_standard" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
@@ -125,31 +125,9 @@
                 <EditText
                     android:id="@+id/edt_expense_amount"
                     style="@style/home_edt_standard"
-                    android:inputType="number"/>
+                    android:inputType="number" />
 
                 <View style="@style/home_meeting_line" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="34dp"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/home_bg_white_table">
-
-                <TextView
-                    style="@style/home_tv_standard"
-                    android:text="合同选择" />
-
-                <View style="@style/home_meeting_line" />
-
-                <Button
-                    android:id="@+id/btn_sel_contract"
-                    android:layout_alignParentEnd="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="0dp"
-                    android:paddingBottom="0dp"
-                    android:text="选择合同"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -167,6 +145,14 @@
                     android:id="@+id/edt_compact_nub"
                     style="@style/home_edt_standard" />
 
+                <Button
+                    android:id="@+id/btn_sel_contract"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:paddingBottom="0dp"
+                    android:paddingTop="0dp"
+                    android:text="选择合同" />
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
 
@@ -188,6 +174,25 @@
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
 
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="收款方式" />
+
+                <EditText
+                    android:id="@+id/edt_expense_type"
+                    style="@style/home_edt_standard"
+                    android:focusable="false" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
@@ -200,16 +205,15 @@
 
                 <Button
                     android:id="@+id/btn_sel_supplier"
-                    android:layout_alignParentEnd="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="0dp"
+                    android:layout_alignParentEnd="true"
                     android:paddingBottom="0dp"
-                    android:text="选择供货商"/>
+                    android:paddingTop="0dp"
+                    android:text="选择供货商" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
-
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -229,8 +233,22 @@
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
 
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="开户银行" />
 
+                <EditText
+                    android:id="@+id/edt_openact_bank"
+                    style="@style/home_edt_standard" />
+
+                <View style="@style/home_meeting_line" />
+            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -240,87 +258,20 @@
 
                 <TextView
                     style="@style/home_tv_standard"
-                    android:text="收款方式" />
+                    android:text="银行账号" />
 
                 <EditText
-                    android:id="@+id/edt_expense_type"
-                    style="@style/home_edt_standard"
-                    android:focusable="false" />
-
-                <Button
-                    android:id="@+id/btn_sel_bank_account"
-                    android:layout_alignParentEnd="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="0dp"
-                    android:paddingBottom="0dp"
-                    android:text="选择预存账户"/>
+                    android:id="@+id/edt_bank_account"
+                    style="@style/home_edt_standard" />
 
                 <View style="@style/home_meeting_line" />
             </RelativeLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_transfer_msg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="34dp"
-                    android:layout_marginTop="6dp"
-                    android:background="@drawable/home_bg_white_table">
-
-                    <TextView
-                        style="@style/home_tv_standard"
-                        android:text="户名" />
-
-                    <EditText
-                        android:id="@+id/edt_account_name"
-                        style="@style/home_edt_standard"/>
-
-                    <View style="@style/home_meeting_line" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="34dp"
-                    android:layout_marginTop="6dp"
-                    android:background="@drawable/home_bg_white_table">
-
-                    <TextView
-                        style="@style/home_tv_standard"
-                        android:text="开户银行" />
-
-                    <EditText
-                        android:id="@+id/edt_openact_bank"
-                        style="@style/home_edt_standard" />
-
-                    <View style="@style/home_meeting_line" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="34dp"
-                    android:layout_marginTop="6dp"
-                    android:background="@drawable/home_bg_white_table">
-
-                    <TextView
-                        style="@style/home_tv_standard"
-                        android:text="银行账号" />
-
-                    <EditText
-                        android:id="@+id/edt_bank_account"
-                        style="@style/home_edt_standard" />
-
-                    <View style="@style/home_meeting_line" />
-                </RelativeLayout>
-            </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/home_bg_white_table"
                 android:minHeight="30dp">
 
@@ -368,42 +319,6 @@
                     android:layout_marginStart="86dp"
                     android:background="#000000" />
             </RelativeLayout>
-
-
-            <RelativeLayout
-                android:id="@+id/rl_add_file"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginTop="4dp"
-                    android:gravity="center"
-                    android:text="附件列表"
-                    android:textColor="@color/home_common_000000"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/btn_add_file"
-                    android:layout_width="60dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="20dp"
-                    android:paddingTop="0dp"
-                    android:paddingBottom="0dp"
-                    android:text="添加" />
-
-            </RelativeLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_file_pack"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

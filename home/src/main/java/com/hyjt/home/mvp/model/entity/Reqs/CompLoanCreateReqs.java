@@ -19,7 +19,7 @@ public class CompLoanCreateReqs {
     private String CwCSupplierI;
     private String CwCSupbank;
     private String CwCSupnum;
-    private String CwPtext;
+    private String CwCmodetext;
     private String Flowid;
 
     public String getCwCcompany() {
@@ -118,19 +118,39 @@ public class CompLoanCreateReqs {
         CwCSupnum = cwCSupnum;
     }
 
-    public String getCwPtext() {
-        return CwPtext;
-    }
-
-    public void setCwPtext(String cwPtext) {
-        CwPtext = cwPtext;
-    }
-
     public String getFlowid() {
         return Flowid;
     }
 
+    public String getCwCmodetext() {
+        return CwCmodetext;
+    }
+
+    public void setCwCmodetext(String cwCmodetext) {
+        CwCmodetext = cwCmodetext;
+    }
+
     public void setFlowid(String flowid) {
         Flowid = flowid;
+    }
+
+    @Override
+    public String toString() {
+        return "CompLoanCreateReqs{" +
+                "CwCcompany='" + CwCcompany + '\'' +
+                ", CwCLeader='" + CwCLeader + '\'' +
+                ", CwCreason='" + CwCreason + '\'' +
+                ", CwCmoney='" + CwCmoney + '\'' +
+                ", CwCmode='" + CwCmode + '\'' +
+                ", CwC_id='" + CwC_id + '\'' +
+                ", CwCOnum='" + CwCOnum + '\'' +
+                ", CwCcontracTime='" + CwCcontracTime + '\'' +
+                ", CwCSupplierId='" + CwCSupplierId + '\'' +
+                ", CwCSupplierI='" + CwCSupplierI + '\'' +
+                ", CwCSupbank='" + CwCSupbank + '\'' +
+                ", CwCSupnum='" + CwCSupnum + '\'' +
+                ", CwCmodetext='" + CwCmodetext + '\'' +
+                ", Flowid='" + Flowid + '\'' +
+                '}';
     }
 }

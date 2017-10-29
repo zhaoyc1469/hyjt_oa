@@ -149,9 +149,14 @@
             android:name=".mvp.ui.activity.PsonLoanEditActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
-        <activity android:name=".mvp.ui.activity.ToCompLoanListActivity" />
-        <activity android:name=".mvp.ui.activity.ToCompLoanCreateActivity" />
-        <activity android:name=".mvp.ui.activity.ToCompLoanEditActivity"></activity>
+        <activity android:name=".mvp.ui.activity.ToCompLoanListActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".mvp.ui.activity.ToCompLoanCreateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity android:name=".mvp.ui.activity.ToCompLoanEditActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan"/>
     </application>
 
 </manifest>

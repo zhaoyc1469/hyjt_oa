@@ -9,32 +9,30 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hyjt.home.R;
-import com.hyjt.home.mvp.model.entity.Resp.CpContractListResp;
 import com.hyjt.home.mvp.model.entity.Resp.CpSupplierListResp;
-import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 
 import java.util.List;
 
 
-public class CLContractAdapter extends BaseAdapter {
+public class CLSupplierAdapter extends BaseAdapter {
 
 
-    private List<CpContractListResp.RowsBean> cpContractList;
+    private List<CpSupplierListResp.SupPackBean> cpSupplierList;
     private LayoutInflater mInflater;
 
-    public CLContractAdapter(Context context, List<CpContractListResp.RowsBean> cpContractList) {
-        this.cpContractList = cpContractList;
+    public CLSupplierAdapter(Context context, List<CpSupplierListResp.SupPackBean> cpContractList) {
+        this.cpSupplierList = cpContractList;
         mInflater = LayoutInflater.from(context);//Supplier
     }
 
     @Override
     public int getCount() {
-        return cpContractList.size();
+        return cpSupplierList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return cpContractList.get(position);
+        return cpSupplierList.get(position);
     }
 
     @Override
@@ -44,26 +42,27 @@ public class CLContractAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        CpContractListResp.RowsBean rowsBean = cpContractList.get(position);
+        CpSupplierListResp.SupPackBean supPackBean = cpSupplierList.get(position);
 
         ViewHolder holder;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.home_dialog_sel_contract, null);
+            convertView = mInflater.inflate(R.layout.home_dialog_sel_supplier, null);
             holder = new ViewHolder();
+
             holder.mRlItemSupplier = (RelativeLayout) convertView.findViewById(R.id.rl_item_supplier);
             holder.mTvSupplierName = (TextView) convertView.findViewById(R.id.tv_supplier_name);
-            holder.mTvContractNum = (TextView) convertView.findViewById(R.id.tv_contract_num);
-            holder.mTvContractName = (TextView) convertView.findViewById(R.id.tv_contract_name);
+            holder.mTvOpenBank = (TextView) convertView.findViewById(R.id.tv_open_bank);
+            holder.mTvBankAccount = (TextView) convertView.findViewById(R.id.tv_bank_account);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.mTvSupplierName.setText(rowsBean.getCwCSupplierI());
-        holder.mTvContractName.setText(rowsBean.getCwCOname());
-        holder.mTvContractNum.setText(rowsBean.getCwCSupnum());
+        holder.mTvSupplierName.setText(supPackBean.getCwCSupplierI());
+        holder.mTvOpenBank.setText(supPackBean.getCwCSupbank());
+        holder.mTvBankAccount.setText(supPackBean.getCwCSupnum());
         holder.mRlItemSupplier.setOnClickListener(v -> {
-            if (mOnItemClickListener != null){
+            if (mOnItemClickListener != null) {
                 mOnItemClickListener.onItemClick(position);
             }
         });
@@ -77,6 +76,9 @@ public class CLContractAdapter extends BaseAdapter {
         this.mOnItemClickListener = listener;
     }
 
+    private void initView() {
+    }
+
     public interface onItemClickListener {
         void onItemClick(int position);
     }
@@ -84,8 +86,8 @@ public class CLContractAdapter extends BaseAdapter {
     class ViewHolder {
         RelativeLayout mRlItemSupplier;
         TextView mTvSupplierName;
-        TextView mTvContractNum;
-        TextView mTvContractName;
+        TextView mTvOpenBank;
+        TextView mTvBankAccount;
     }
 
 

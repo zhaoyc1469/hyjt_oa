@@ -12,7 +12,9 @@ import com.hyjt.frame.integration.IRepositoryManager;
 import com.hyjt.frame.mvp.BaseModel;
 import com.hyjt.home.mvp.contract.ToCompLoanEditContract;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.ClNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanDetailResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 import com.hyjt.home.mvp.model.service.HomeService;
 
@@ -50,5 +52,33 @@ public class ToCompLoanEditModel extends BaseModel implements ToCompLoanEditCont
         Observable<BaseJson<Object>> delDetail = mRepositoryManager.obtainRetrofitService(HomeService.class)
                 .compLoanDel(baseIdReqs);
         return delDetail;
+    }
+
+    @Override
+    public Observable<BaseJson<PLCompBankAccountResp>> compBankAccount() {
+        Observable<BaseJson<PLCompBankAccountResp>> compBankAccount = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .plCompBankAccount();
+        return compBankAccount;
+    }
+
+    @Override
+    public Observable<BaseJson<Object>> flowNodeApprove(ClNodeApproveReqs clNodeApproveReqs) {
+        Observable<BaseJson<Object>> flowNodeApr = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .clFlowNodeApr(clNodeApproveReqs);
+        return flowNodeApr;
+    }
+
+    @Override
+    public Observable<BaseJson<Object>> clTellerConfirm(BaseIdReqs baseIdReqs) {
+        Observable<BaseJson<Object>> tellerConfirm = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .clTellerConfirm(baseIdReqs);
+        return tellerConfirm;
+    }
+
+    @Override
+    public Observable<BaseJson<Object>> clReceiverConfirm(BaseIdReqs baseIdReqs) {
+        Observable<BaseJson<Object>> receiverConfirm = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .clReceiverConfirm(baseIdReqs);
+        return receiverConfirm;
     }
 }

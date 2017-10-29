@@ -1,6 +1,8 @@
 package com.hyjt.home.mvp.presenter;
 
 import android.app.Application;
+import android.util.Log;
+import android.widget.EditText;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
@@ -18,7 +20,10 @@ import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 import com.hyjt.home.mvp.contract.ToCompLoanEditContract;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.ClNodeApproveReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.PlNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanDetailResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 
 
@@ -63,6 +68,84 @@ public class ToCompLoanEditPresenter extends BasePresenter<ToCompLoanEditContrac
                     @Override
                     public void onNext(@NonNull CompLoanDetailResp compLoanDetailResp) {
                         mRootView.showCLDetail(compLoanDetailResp);
+                    }
+                });
+    }
+
+
+
+    public void selCompBankAct(EditText editText) {
+        mModel.compBankAccount()
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<PLCompBankAccountResp>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull PLCompBankAccountResp CompBankAccountResp) {
+                        mRootView.showAprBankAccount(CompBankAccountResp, editText);
+                    }
+                });
+    }
+
+
+    public void flowNodeApr(ClNodeApproveReqs clnodeApproveReqs) {
+        Log.e("http_reqs", clnodeApproveReqs.toString());
+        mModel.flowNodeApprove(clnodeApproveReqs)
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object object) {
+                        mRootView.showMessage("审批成功");
+                        mRootView.killMyself();
+                    }
+                });
+    }
+
+
+
+    public void tellerConfirm(String compLoanId) {
+        mModel.clTellerConfirm(new BaseIdReqs(compLoanId))
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object obj) {
+                        mRootView.showMessage("确认成功");
+                        mRootView.killMyself();
+                    }
+                });
+    }
+
+
+    public void receiverConfirm(String compLoanId) {
+        mModel.clReceiverConfirm(new BaseIdReqs(compLoanId))
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object obj) {
+                        mRootView.showMessage("确认成功");
+                        mRootView.killMyself();
                     }
                 });
     }
