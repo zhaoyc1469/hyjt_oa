@@ -7,6 +7,9 @@ package com.hyjt.home.mvp.model.entity.Reqs;
 public class CompLoanCreateReqs {
 
 
+    private String Id;
+    private String CwCnum;
+    private String CwPcompany;
     private String CwCcompany;
     private String CwCLeader;
     private String CwCreason;
@@ -21,6 +24,30 @@ public class CompLoanCreateReqs {
     private String CwCSupnum;
     private String CwCmodetext;
     private String Flowid;
+
+    public String getCwPcompany() {
+        return CwPcompany;
+    }
+
+    public void setCwPcompany(String cwPcompany) {
+        CwPcompany = cwPcompany;
+    }
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
+    }
+
+    public String getCwCnum() {
+        return CwCnum;
+    }
+
+    public void setCwCnum(String cwCnum) {
+        CwCnum = cwCnum;
+    }
 
     public String getCwCcompany() {
         return CwCcompany;
@@ -134,10 +161,14 @@ public class CompLoanCreateReqs {
         Flowid = flowid;
     }
 
+
     @Override
     public String toString() {
         return "CompLoanCreateReqs{" +
-                "CwCcompany='" + CwCcompany + '\'' +
+                "Id='" + Id + '\'' +
+                ", CwCnum='" + CwCnum + '\'' +
+                ", CwPcompany='" + CwPcompany + '\'' +
+                ", CwCcompany='" + CwCcompany + '\'' +
                 ", CwCLeader='" + CwCLeader + '\'' +
                 ", CwCreason='" + CwCreason + '\'' +
                 ", CwCmoney='" + CwCmoney + '\'' +

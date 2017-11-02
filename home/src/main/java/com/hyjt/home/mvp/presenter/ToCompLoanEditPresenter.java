@@ -21,8 +21,12 @@ import com.hyjt.frame.widget.imageloader.ImageLoader;
 import com.hyjt.home.mvp.contract.ToCompLoanEditContract;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.ClNodeApproveReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.CompLoanContractReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.CompLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PlNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanDetailResp;
+import com.hyjt.home.mvp.model.entity.Resp.CpContractListResp;
+import com.hyjt.home.mvp.model.entity.Resp.CpSupplierListResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 
@@ -146,6 +150,80 @@ public class ToCompLoanEditPresenter extends BasePresenter<ToCompLoanEditContrac
                     public void onNext(@NonNull Object obj) {
                         mRootView.showMessage("确认成功");
                         mRootView.killMyself();
+                    }
+                });
+    }
+
+    public void editCompLoanDetail(CompLoanCreateReqs clCreateReqs) {
+
+        Log.e("http_reqs", clCreateReqs.toString());
+        mModel.editCLDetail(clCreateReqs)
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object obj) {
+                        mRootView.showMessage("编辑成功");
+                        mRootView.killMyself();
+                    }
+                });
+    }
+    public void delCompLoanDetail(String compLoanId) {
+        mModel.delCLDetail(new BaseIdReqs(compLoanId))
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object obj) {
+                        mRootView.showMessage("删除成功");
+                        mRootView.killMyself();
+                    }
+                });
+    }
+
+
+    public void getContractList(String type) {
+        mModel.getCLContractList(new CompLoanContractReqs("1", "9999", type))
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+                    if (mRootView != null)
+                        mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<CpContractListResp>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull CpContractListResp cpContractListResp) {
+                        mRootView.showContractList(cpContractListResp);
+                    }
+                });
+    }
+
+    public void getSupplierList(String type) {
+        mModel.getCLSupplierList(new CompLoanContractReqs("1", "9999", type))
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+                    if (mRootView != null)
+                        mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<CpSupplierListResp>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull CpSupplierListResp cpSupplierListResp) {
+                        mRootView.showSupplierList(cpSupplierListResp);
                     }
                 });
     }

@@ -13,7 +13,11 @@ import com.hyjt.frame.mvp.BaseModel;
 import com.hyjt.home.mvp.contract.ToCompLoanEditContract;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.ClNodeApproveReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.CompLoanContractReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.CompLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanDetailResp;
+import com.hyjt.home.mvp.model.entity.Resp.CpContractListResp;
+import com.hyjt.home.mvp.model.entity.Resp.CpSupplierListResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 import com.hyjt.home.mvp.model.service.HomeService;
@@ -81,4 +85,26 @@ public class ToCompLoanEditModel extends BaseModel implements ToCompLoanEditCont
                 .clReceiverConfirm(baseIdReqs);
         return receiverConfirm;
     }
+
+    @Override
+    public Observable<BaseJson<Object>> editCLDetail(CompLoanCreateReqs compLoanCreateReqs) {
+        Observable<BaseJson<Object>> editCLDetail = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .compLoanEdit(compLoanCreateReqs);
+        return editCLDetail;
+    }
+
+    @Override
+    public Observable<BaseJson<CpContractListResp>> getCLContractList(CompLoanContractReqs compLoanContractReqs) {
+        Observable<BaseJson<CpContractListResp>> getCLContractList = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .compLoanContract(compLoanContractReqs);
+        return getCLContractList;
+    }
+
+    @Override
+    public Observable<BaseJson<CpSupplierListResp>> getCLSupplierList(CompLoanContractReqs compLoanContractReqs) {
+        Observable<BaseJson<CpSupplierListResp>> getCLSupplierList = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .compLoanSupplier(compLoanContractReqs);
+        return getCLSupplierList;
+    }
+
 }

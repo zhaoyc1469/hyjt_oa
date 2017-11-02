@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -29,18 +30,28 @@ import com.hyjt.home.di.component.DaggerToCompLoanEditComponent;
 import com.hyjt.home.di.module.ToCompLoanEditModule;
 import com.hyjt.home.mvp.contract.ToCompLoanEditContract;
 import com.hyjt.home.mvp.model.entity.Reqs.ClNodeApproveReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.CompLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PlNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanListResp;
+import com.hyjt.home.mvp.model.entity.Resp.CpContractListResp;
+import com.hyjt.home.mvp.model.entity.Resp.CpSupplierListResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 import com.hyjt.home.mvp.presenter.ToCompLoanEditPresenter;
 
 import com.hyjt.home.R;
+import com.hyjt.home.mvp.ui.adapter.CLContractAdapter;
+import com.hyjt.home.mvp.ui.adapter.CLSupplierAdapter;
+import com.hyjt.home.mvp.ui.adapter.ComnStringAdapter;
 import com.hyjt.home.mvp.ui.adapter.PlCompBankActAdapter;
+import com.hyjt.home.mvp.ui.view.DatePickDialog;
+import com.hyjt.home.mvp.ui.view.DateTimePickDialog;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -92,6 +103,10 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
     private CompLoanDetailResp compLoanDetailResp;
     private PLFristLeaderResp.FlowDetailsBean flowDetailsBean = new PLFristLeaderResp.FlowDetailsBean();
     private PLCompBankAccountResp.BankPackBean bankPackBean;
+    private Button mBtnEditLoan;
+    private Button mBtnDelLoan;
+    private CpSupplierListResp.SupPackBean supPackBean = new CpSupplierListResp.SupPackBean();
+    private CpContractListResp.RowsBean ContractRowsBean = new CpContractListResp.RowsBean();
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -143,6 +158,11 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
 
         this.compLoanDetailResp = compLoanDetailResp;
         flowDetailsBean.setFlowid(compLoanDetailResp.getFlowid());
+        ContractRowsBean.setCwC_id(compLoanDetailResp.getCwC_id());
+        ContractRowsBean.setCwCOnum(compLoanDetailResp.getCwCOnum());
+        supPackBean.setCwCSupplierID(compLoanDetailResp.getCwCSupplierID());
+
+
         if (!TextUtils.isEmpty(compLoanDetailResp.getCurrentPerson())) {
             currentPerson = compLoanDetailResp.getCurrentPerson().trim();
         }
@@ -163,7 +183,6 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
         mEdtBankAccount.setText(compLoanDetailResp.getCwCSupnum());
         mEdtRemark.setText(compLoanDetailResp.getCwCmodetext());
 
-
         flowPack.clear();
         flowPack.addAll(compLoanDetailResp.getFlowPack());
         for (int position = 0; position < flowPack.size(); position++) {
@@ -171,11 +190,16 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
         }
 
 
-        if (!"提交".equals(compLoanDetailResp.getFlowState()) ||
-                !getUserName().equals(compLoanDetailResp.getCwCpersonal())) {
+//        if (!"提交".equals(compLoanDetailResp.getCwJKState()) ||
+//                !getUserName().equals(compLoanDetailResp.getCwCpersonal())) {
+//        }
+
+        if (!"提交".equals(compLoanDetailResp.getCwJKState()) ||
+                !"1".equals(compLoanType)) {
+            mLlBottomBtn.setVisibility(View.GONE);
             mRlSelSupplier.setVisibility(View.GONE);
             mBtnSelContract.setVisibility(View.GONE);
-            mLlBottomBtn.setVisibility(View.GONE);
+            mBtnSelContract.setVisibility(View.GONE);
             mEdtProposer.setFocusable(false);
             mEdtApplyTime.setFocusable(false);
             mEdtCompanyName.setFocusable(false);
@@ -189,7 +213,14 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
             mEdtOpenactBank.setFocusable(false);
             mEdtBankAccount.setFocusable(false);
             mEdtRemark.setFocusable(false);
+        } else {
+            setTimeEdit(mEdtCreditPeriod);
+            mBtnSelContract.setOnClickListener(v -> mPresenter.getContractList("0"));
+            mBtnSelSupplier.setOnClickListener(v -> mPresenter.getSupplierList("1"));
         }
+
+
+        mEdtReceiverAccount.setText(compLoanDetailResp.getCwBname() + compLoanDetailResp.getCwBnum());
 
 
         if ("审批完成".equals(compLoanDetailResp.getFlowState())) {
@@ -227,6 +258,87 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
             mRlSendAccount.setVisibility(View.GONE);
             mRlTellerConfirm.setVisibility(View.GONE);
         }
+    }
+
+
+    private void setTimeEdit(EditText finishTime) {
+        finishTime.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                Calendar c = Calendar.getInstance();
+                new DatePickDialog(mContext, c).setOnDateTimeSetListener((dp,year, monthOfYear, dayOfMonth) -> {
+                    finishTime.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                    // 保存选择后时间
+                    c.set(Calendar.YEAR, year);
+                    c.set(Calendar.MONTH, monthOfYear);
+                    c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                });
+            }
+            return true;
+        });
+    }
+
+    @Override
+    public void showContractList(CpContractListResp cpContractListResp) {
+        List<CpContractListResp.RowsBean> rowsBeanList = cpContractListResp.getRows();
+        ContractRowsBean = new CpContractListResp.RowsBean();
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
+        dialog.setTitle("  选择合同  ");
+        dialog.setView(layout).setCancelable(false)
+                .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
+        AlertDialog accAlert = dialog.create();
+        ListView accList = (ListView) layout.findViewById(R.id.accList);
+
+        CLContractAdapter contractAdapter = new CLContractAdapter(mContext, rowsBeanList);
+        accList.setAdapter(contractAdapter);
+
+        contractAdapter.setItemClickListener(position -> {
+            CpContractListResp.RowsBean bean = rowsBeanList.get(position);
+            mEdtCompactNub.setText(bean.getCwCOnum());
+            mEdtSupplier.setText(bean.getCwCSupplierI());
+            mEdtOpenactBank.setText(bean.getCwCSupbank());
+            mEdtBankAccount.setText(bean.getCwCSupnum());
+            this.supPackBean.setCwCSupplierID(bean.getCwCSupplierID());
+            this.ContractRowsBean.setCwCOnum(bean.getCwCOnum());
+            this.ContractRowsBean.setCwC_id(bean.getCwC_id());
+            accAlert.dismiss();
+        });
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(mEdtFristLeader.getWindowToken(), 0);
+        accAlert.show();
+    }
+
+    @Override
+    public void showSupplierList(CpSupplierListResp cpSupplierListResp) {
+
+        List<CpSupplierListResp.SupPackBean> supPack = cpSupplierListResp.getSupPack();
+        supPackBean = new CpSupplierListResp.SupPackBean();
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
+        dialog.setTitle("  选择供应商  ");
+        dialog.setView(layout).setCancelable(false)
+                .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
+        AlertDialog accAlert = dialog.create();
+        ListView accList = (ListView) layout.findViewById(R.id.accList);
+
+        CLSupplierAdapter SupplierAdapter = new CLSupplierAdapter(mContext, supPack);
+        accList.setAdapter(SupplierAdapter);
+
+        SupplierAdapter.setItemClickListener(position -> {
+            CpSupplierListResp.SupPackBean bean = supPack.get(position);
+            mEdtSupplier.setText(bean.getCwCSupplierI());
+            mEdtOpenactBank.setText(bean.getCwCSupbank());
+            mEdtBankAccount.setText(bean.getCwCSupnum());
+            this.supPackBean.setCwCSupplierID(bean.getCwCSupplierID());
+            accAlert.dismiss();
+        });
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(mEdtFristLeader.getWindowToken(), 0);
+        accAlert.show();
     }
 
     @Override
@@ -298,6 +410,48 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
         mRlReceiverConfirm = (RelativeLayout) findViewById(R.id.rl_receiver_confirm);
         mIvReceiverSign = (ImageView) findViewById(R.id.iv_receiver_sign);
         mBtnReceiverConfirm = (Button) findViewById(R.id.btn_receiver_confirm);
+        mBtnEditLoan = (Button) findViewById(R.id.btn_edit_loan);
+        mBtnDelLoan = (Button) findViewById(R.id.btn_del_loan);
+
+
+        mBtnEditLoan.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                    .setTitle("编辑确认")
+                    .setMessage("是否编辑该条对公借款?")
+                    .setPositiveButton("确定", (dialog, which) -> editCloan())
+                    .setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
+        mBtnDelLoan.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                    .setTitle("删除确认")
+                    .setMessage("是否删除该条对公借款?")
+                    .setPositiveButton("确定", (dialog, which) -> mPresenter.delCompLoanDetail(compLoanId))
+                    .setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
+
+    }
+
+    private void editCloan() {
+        CompLoanCreateReqs clCreateReqs = new CompLoanCreateReqs();
+        clCreateReqs.setId(compLoanId);
+        clCreateReqs.setCwCnum(compLoanDetailResp.getCwCnum());
+        clCreateReqs.setCwPcompany(mEdtCompanyName.getText().toString());
+        clCreateReqs.setCwCLeader(mEdtFristLeader.getText().toString());
+        clCreateReqs.setCwCreason(mEdtExpenseReason.getText().toString());
+        clCreateReqs.setCwCmoney(mEdtExpenseAmount.getText().toString());
+        clCreateReqs.setCwCmode(mEdtExpenseType.getText().toString());
+        clCreateReqs.setCwC_id(ContractRowsBean.getCwC_id());
+        clCreateReqs.setCwCOnum(mEdtCompactNub.getText().toString());
+        clCreateReqs.setCwCcontracTime(mEdtCreditPeriod.getText().toString());
+        clCreateReqs.setCwCSupplierId(supPackBean.getCwCSupplierID());
+        clCreateReqs.setCwCSupplierI(mEdtSupplier.getText().toString());
+        clCreateReqs.setCwCSupbank(mEdtOpenactBank.getText().toString());
+        clCreateReqs.setCwCSupnum(mEdtBankAccount.getText().toString());
+        clCreateReqs.setCwCmodetext(mEdtRemark.getText().toString());
+        clCreateReqs.setFlowid(flowDetailsBean.getFlowid());
+        mPresenter.editCompLoanDetail(clCreateReqs);
     }
 
 

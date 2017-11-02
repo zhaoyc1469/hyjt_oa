@@ -59,8 +59,8 @@ public class CLContractAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.mTvSupplierName.setText(rowsBean.getCwCSupplierI());
-        holder.mTvContractName.setText(rowsBean.getCwCOname());
+        holder.mTvSupplierName.setText("供应商名称：" + rowsBean.getCwCSupplierI());
+        holder.mTvContractName.setText("合同名称：" + rowsBean.getCwCOname());
         holder.mTvContractNum.setText(rowsBean.getCwCSupnum());
         holder.mRlItemSupplier.setOnClickListener(v -> {
             if (mOnItemClickListener != null){

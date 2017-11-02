@@ -58,9 +58,9 @@ public class CLSupplierAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.mTvSupplierName.setText(supPackBean.getCwCSupplierI());
-        holder.mTvOpenBank.setText(supPackBean.getCwCSupbank());
-        holder.mTvBankAccount.setText(supPackBean.getCwCSupnum());
+        holder.mTvSupplierName.setText("供应商名称：" + supPackBean.getCwCSupplierI());
+        holder.mTvOpenBank.setText("开户银行：" +supPackBean.getCwCSupbank());
+        holder.mTvBankAccount.setText("银行账号：" +supPackBean.getCwCSupnum());
         holder.mRlItemSupplier.setOnClickListener(v -> {
             if (mOnItemClickListener != null) {
                 mOnItemClickListener.onItemClick(position);

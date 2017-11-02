@@ -47,6 +47,7 @@ import com.hyjt.home.mvp.ui.adapter.CLSupplierAdapter;
 import com.hyjt.home.mvp.ui.adapter.ComnStringAdapter;
 import com.hyjt.home.mvp.ui.adapter.FrstLdAdapter;
 import com.hyjt.home.mvp.ui.view.Constant;
+import com.hyjt.home.mvp.ui.view.DatePickDialog;
 import com.hyjt.home.mvp.ui.view.DateTimePickDialog;
 import com.hyjt.home.mvp.ui.view.GetSingleSelectItem;
 import com.hyjt.home.utils.ImgUtil;
@@ -85,13 +86,13 @@ public class ToCompLoanCreateActivity extends BaseActivity<ToCompLoanCreatePrese
     private Button mBtnSelContract;
     private Button mBtnSelSupplier;
     private EditText mEdtSupplier;
-    private CpContractListResp.RowsBean ContractRowsBean;
     private ToCompLoanCreateActivity mContext;
     private List<PsonLoanCreateReqs.FilePackBean> FileList = new ArrayList<>();
     private ArrayList<Uri> mFileURLList = new ArrayList<>();
     private ProgressDialog progressDialog;
     private PLFristLeaderResp.FlowDetailsBean flowDetailsBean;
-    private CpSupplierListResp.SupPackBean supPackBean;
+    private CpSupplierListResp.SupPackBean supPackBean = new CpSupplierListResp.SupPackBean();
+    private CpContractListResp.RowsBean ContractRowsBean = new CpContractListResp.RowsBean();
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -218,6 +219,37 @@ public class ToCompLoanCreateActivity extends BaseActivity<ToCompLoanCreatePrese
     }
 
     @Override
+    public void showSupplierList(CpSupplierListResp cpSupplierListResp) {
+
+        List<CpSupplierListResp.SupPackBean> supPack = cpSupplierListResp.getSupPack();
+        supPackBean = new CpSupplierListResp.SupPackBean();
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
+        dialog.setTitle("  选择供应商  ");
+        dialog.setView(layout).setCancelable(false)
+                .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
+        AlertDialog accAlert = dialog.create();
+        ListView accList = (ListView) layout.findViewById(R.id.accList);
+
+        CLSupplierAdapter SupplierAdapter = new CLSupplierAdapter(mContext, supPack);
+        accList.setAdapter(SupplierAdapter);
+
+        SupplierAdapter.setItemClickListener(position -> {
+            CpSupplierListResp.SupPackBean bean = supPack.get(position);
+            mEdtSupplier.setText(bean.getCwCSupplierI());
+            mEdtOpenactBank.setText(bean.getCwCSupbank());
+            mEdtBankAccount.setText(bean.getCwCSupnum());
+            this.supPackBean.setCwCSupplierID(bean.getCwCSupplierID());
+            accAlert.dismiss();
+        });
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(mEdtFristLeader.getWindowToken(), 0);
+        accAlert.show();
+    }
+
+    @Override
     public void showContractList(CpContractListResp cpContractListResp) {
         List<CpContractListResp.RowsBean> rowsBeanList = cpContractListResp.getRows();
         ContractRowsBean = new CpContractListResp.RowsBean();
@@ -225,7 +257,7 @@ public class ToCompLoanCreateActivity extends BaseActivity<ToCompLoanCreatePrese
         AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
-        dialog.setTitle("选择合同");
+        dialog.setTitle("  选择合同  ");
         dialog.setView(layout).setCancelable(false)
                 .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
         AlertDialog accAlert = dialog.create();
@@ -237,6 +269,10 @@ public class ToCompLoanCreateActivity extends BaseActivity<ToCompLoanCreatePrese
         contractAdapter.setItemClickListener(position -> {
             CpContractListResp.RowsBean bean = rowsBeanList.get(position);
             mEdtCompactNub.setText(bean.getCwCOnum());
+            mEdtSupplier.setText(bean.getCwCSupplierI());
+            mEdtOpenactBank.setText(bean.getCwCSupbank());
+            mEdtBankAccount.setText(bean.getCwCSupnum());
+            this.supPackBean.setCwCSupplierID(bean.getCwCSupplierID());
             this.ContractRowsBean.setCwCOnum(bean.getCwCOnum());
             this.ContractRowsBean.setCwC_id(bean.getCwC_id());
             accAlert.dismiss();
@@ -281,15 +317,12 @@ public class ToCompLoanCreateActivity extends BaseActivity<ToCompLoanCreatePrese
         finishTime.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 Calendar c = Calendar.getInstance();
-                new DateTimePickDialog(mContext, c).setOnDateTimeSetListener((dp, tp, year, monthOfYear, dayOfMonth, hourOfDay, minute) -> {
-                    finishTime.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth + " "
-                            + hourOfDay + ":" + minute + ":00");
+                new DatePickDialog(mContext, c).setOnDateTimeSetListener((dp,  year, monthOfYear, dayOfMonth) -> {
+                    finishTime.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth );
                     // 保存选择后时间
                     c.set(Calendar.YEAR, year);
                     c.set(Calendar.MONTH, monthOfYear);
                     c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    c.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                    c.set(Calendar.MINUTE, minute);
                 });
             }
             return true;
@@ -348,37 +381,6 @@ public class ToCompLoanCreateActivity extends BaseActivity<ToCompLoanCreatePrese
             PLFristLeaderResp.FlowDetailsBean flowDetailsBean = flowDetails.get(position);
             mEdtFristLeader.setText(flowDetailsBean.getLeader());
             this.flowDetailsBean.setFlowid(flowDetailsBean.getFlowid());
-            accAlert.dismiss();
-        });
-        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(mEdtFristLeader.getWindowToken(), 0);
-        accAlert.show();
-    }
-
-    @Override
-    public void showSupplierList(CpSupplierListResp cpSupplierListResp) {
-
-        List<CpSupplierListResp.SupPackBean> supPack = cpSupplierListResp.getSupPack();
-        supPackBean = new CpSupplierListResp.SupPackBean();
-
-        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
-        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
-        dialog.setTitle("选择合同");
-        dialog.setView(layout).setCancelable(false)
-                .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
-        AlertDialog accAlert = dialog.create();
-        ListView accList = (ListView) layout.findViewById(R.id.accList);
-
-        CLSupplierAdapter SupplierAdapter = new CLSupplierAdapter(mContext, supPack);
-        accList.setAdapter(SupplierAdapter);
-
-        SupplierAdapter.setItemClickListener(position -> {
-            CpSupplierListResp.SupPackBean bean = supPack.get(position);
-            mEdtSupplier.setText(bean.getCwCSupplierI());
-            mEdtOpenactBank.setText(bean.getCwCSupbank());
-            mEdtBankAccount.setText(bean.getCwCSupnum());
-            this.supPackBean.setCwCSupplierID(bean.getCwCSupplierID());
             accAlert.dismiss();
         });
         InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);

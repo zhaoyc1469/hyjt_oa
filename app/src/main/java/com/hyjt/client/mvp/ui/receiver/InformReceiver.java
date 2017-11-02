@@ -89,7 +89,8 @@ public class InformReceiver extends BroadcastReceiver {
                 } else if ("CwCompanyJK".equals(pushExtraResp.getType())){
                     if (!TextUtils.isEmpty(pushExtraResp.getId())) {
                         ARouter.getInstance().build("/home/ToCompLoanEditActivity")
-                                .withString("type", ""+(Integer.parseInt(pushExtraResp.getMode())+1))
+                                .withString("CompLoanId", pushExtraResp.getId())
+                                .withString("CompLoanType", ""+(Integer.parseInt(pushExtraResp.getMode())+1))
                                 .navigation();
                     }
                 }

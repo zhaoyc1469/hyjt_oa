@@ -81,7 +81,7 @@ public class ToCompLoanListActivity extends BaseActivity<ToCompLoanListPresenter
     public void initData(Bundle savedInstanceState) {
         Intent intent = getIntent();
         Type = intent.getStringExtra("type");
-        Mode = Type.equals("3") ? "1" : "0";
+        Mode = Type.equals("3") ? "0" : "1";
 
         mRlComploan = (RelativeLayout) findViewById(R.id.rl_comploan);
         mIvTopBack = (ImageView) findViewById(R.id.iv_top_back);

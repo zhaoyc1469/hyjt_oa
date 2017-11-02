@@ -639,9 +639,9 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
             moduleBean.setMessage_nub(Integer.parseInt(workMission.getCwPersonalJK()));
             moduleBeanDbDao.update(moduleBean);
         }
-        if (Integer.parseInt(workMission.getUnionAppeal()) > 0) {
+        if (Integer.parseInt(workMission.getCwCompanyJK()) > 0) {
             ModuleBeanDb moduleBean = moduleBeanDbDao.load("对公借款");
-            moduleBean.setMessage_nub(Integer.parseInt(workMission.getUnionAppeal()));
+            moduleBean.setMessage_nub(Integer.parseInt(workMission.getCwCompanyJK()));
             moduleBeanDbDao.update(moduleBean);
         }
         loadModuleList();

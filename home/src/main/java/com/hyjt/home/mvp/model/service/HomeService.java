@@ -426,6 +426,10 @@ public interface HomeService {
     @POST("/APICwCompanyJK/CreateOnOnePage")
     Observable<BaseJson<Object>> compLoanCreate(@Body CompLoanCreateReqs compLoanCreateReqs);
 
+    //对公借款编辑
+    @POST("/APICwCompanyJK/EditOnOnePage")
+    Observable<BaseJson<Object>> compLoanEdit(@Body CompLoanCreateReqs compLoanCreateReqs);
+
     //对公借款删除
     @POST("/APICwCompanyJK/Delete")
     Observable<BaseJson<Object>> compLoanDel(@Body BaseIdReqs BaseIdReqs);

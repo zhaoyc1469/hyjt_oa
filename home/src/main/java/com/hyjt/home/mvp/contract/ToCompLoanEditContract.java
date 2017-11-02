@@ -8,8 +8,12 @@ import com.hyjt.frame.mvp.IModel;
 import com.hyjt.frame.mvp.IView;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.ClNodeApproveReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.CompLoanContractReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.CompLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PlNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanDetailResp;
+import com.hyjt.home.mvp.model.entity.Resp.CpContractListResp;
+import com.hyjt.home.mvp.model.entity.Resp.CpSupplierListResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
@@ -25,6 +29,10 @@ public interface ToCompLoanEditContract {
         void showCLDetail(CompLoanDetailResp compLoanDetailResp);
 
         void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText editText);
+
+        void showContractList(CpContractListResp cpContractListResp);
+
+        void showSupplierList(CpSupplierListResp cpSupplierListResp);
     }
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存
@@ -41,6 +49,13 @@ public interface ToCompLoanEditContract {
         Observable<BaseJson<Object>> clTellerConfirm(BaseIdReqs baseIdReqs);
 
         Observable<BaseJson<Object>> clReceiverConfirm(BaseIdReqs baseIdReqs);
+
+        Observable<BaseJson<Object>> editCLDetail(CompLoanCreateReqs compLoanCreateReqs);
+
+        Observable<BaseJson<CpContractListResp>> getCLContractList(CompLoanContractReqs compLoanContractReqs);
+
+        Observable<BaseJson<CpSupplierListResp>> getCLSupplierList(CompLoanContractReqs compLoanContractReqs);
+
 
     }
 }
