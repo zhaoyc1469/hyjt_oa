@@ -780,6 +780,17 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
                         Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
                 break;
             }
+            case 103: {//费用报销
+                FinancePlPop financePlPop = new FinancePlPop(getActivity());
+                financePlPop.setOnItemClickListener(type -> {
+                    ARouter.getInstance().build("/home/ApplyExpenseListActivity")
+                            .withString("type", type).navigation(getActivity(), Api.WorkStartCode);
+                    financePlPop.dismiss();
+                });
+                financePlPop.showAtLocation(getActivity().findViewById(R.id.rl_home_fragment_work),
+                        Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+                break;
+            }
             case 104: {//出纳确认
                 FinanceTellerPop financeTellerPop = new FinanceTellerPop(getActivity());
                 financeTellerPop.setOnItemClickListener(type -> {
@@ -793,7 +804,8 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
                                     .withString("type", "3").navigation(getActivity(), Api.WorkStartCode);
                             break;
                         case "3":
-
+                            ARouter.getInstance().build("/home/ApplyExpenseListActivity")
+                                    .withString("type", "3").navigation(getActivity(), Api.WorkStartCode);
                             break;
                     }
                     financeTellerPop.dismiss();

@@ -14,7 +14,7 @@
         android:id="@+id/btn_new_meeting"
         android:layout_width="160dp"
         android:layout_height="29dp"
-        android:background="@drawable/home_bg_new_meeting"
+        android:background="@drawable/home_bg_new_btn_common"
         android:text="@string/home_mlist_new_meeting"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

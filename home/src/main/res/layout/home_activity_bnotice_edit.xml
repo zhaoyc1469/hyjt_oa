@@ -24,7 +24,7 @@
             android:id="@+id/btn_edit_bnotice"
             android:layout_width="110dp"
             android:layout_height="29dp"
-            android:background="@drawable/home_bg_new_meeting"
+            android:background="@drawable/home_bg_new_btn_common"
             android:text="@string/home_meeting_save" />
 
         <Button
@@ -32,7 +32,7 @@
             android:layout_width="110dp"
             android:layout_height="29dp"
             android:layout_marginStart="30dp"
-            android:background="@drawable/home_bg_new_meeting"
+            android:background="@drawable/home_bg_new_btn_common"
             android:text="删除" />
     </LinearLayout>
 

@@ -22,14 +22,14 @@
             android:id="@+id/btn_wait_type"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:background="@drawable/home_bg_new_meeting"
+            android:background="@drawable/home_bg_new_btn_common"
             android:text="待批示"/>
         <Button
             android:id="@+id/btn_readed_type"
             android:layout_marginStart="46dp"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:background="@drawable/home_bg_new_meeting"
+            android:background="@drawable/home_bg_new_btn_common"
             android:text="已批示"/>
 
     </LinearLayout>
@@ -37,7 +37,7 @@
         android:id="@+id/btn_new_report"
         android:layout_width="160dp"
         android:layout_height="29dp"
-        android:background="@drawable/home_bg_new_meeting"
+        android:background="@drawable/home_bg_new_btn_common"
         android:text="新建汇报"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

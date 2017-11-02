@@ -1,6 +1,7 @@
 package com.hyjt.home.mvp.model.service;
 
 import com.hyjt.frame.api.BaseJson;
+import com.hyjt.home.mvp.model.entity.Reqs.ApplyExpenseListReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.ClNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CompLoanContractReqs;
@@ -10,6 +11,7 @@ import com.hyjt.home.mvp.model.entity.Reqs.LUReqsListReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PlNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanListReqs;
+import com.hyjt.home.mvp.model.entity.Resp.ApplyExpenseListResp;
 import com.hyjt.home.mvp.model.entity.Resp.CIdeaDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.CIdeaListResp;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
@@ -453,4 +455,8 @@ public interface HomeService {
     //对公借款收款人确认
     @POST("/APICwCompanyJK/Editshoukuan")
     Observable<BaseJson<Object>> clReceiverConfirm(@Body BaseIdReqs BaseIdReqs);
+
+    //费用报销列表
+    @POST("/APICwExpense/GetData")
+    Observable<BaseJson<ApplyExpenseListResp>> ApplyExpenseReqsList(@Body ApplyExpenseListReqs applyExpenseListReqs);
 }

@@ -23,7 +23,7 @@
             android:id="@+id/btn_edit_consult"
             android:layout_width="110dp"
             android:layout_height="29dp"
-            android:background="@drawable/home_bg_new_meeting"
+            android:background="@drawable/home_bg_new_btn_common"
             android:text="发起协商" />
 
     </LinearLayout>

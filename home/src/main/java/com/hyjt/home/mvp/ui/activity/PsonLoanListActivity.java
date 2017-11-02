@@ -232,6 +232,12 @@ public class PsonLoanListActivity extends BaseActivity<PsonLoanListPresenter> im
 
     @Override
     public void onRefresh() {
+        CwPpersonal = "";
+        CwPcompany = "";
+        CwPdepartment = "";
+        CwPnum = "";
+        Start = "";
+        End = "";
         mPresenter.getPsonLoanList(true, Type, Mode, "", "", "", "", "", "");
     }
 }

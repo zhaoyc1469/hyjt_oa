@@ -17,7 +17,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="19dp"
-        android:background="@drawable/home_bg_new_meeting"
+        android:background="@drawable/home_bg_new_btn_common"
         android:text="@string/home_meeting_save" />
 
     <ScrollView
