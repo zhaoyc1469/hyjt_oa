@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -117,6 +118,31 @@ public class ApplyExpenseListActivity extends BaseActivity<ApplyExpenseListPrese
         mBtnNewAexpense = (Button) findViewById(R.id.btn_new_aexpense);
         mSrlAexpenseList = (SwipeRefreshLayout) findViewById(R.id.srl_aexpense_list);
         mRecyAexpenseList = (RecyclerView) findViewById(R.id.recy_aexpense_list);
+
+        mBtnWaitType.setOnClickListener(v -> {
+            Mode = "0";
+            mPresenter.getApplyExpList(true, Type, Mode, CwEpersonal,
+                    CwEcompany, CwEdepartment, CwEnum, Start, End);
+        });
+        mBtnReadedType.setOnClickListener(v -> {
+            Mode = "1";
+            mPresenter.getApplyExpList(true, Type, Mode, CwEpersonal,
+                    CwEcompany, CwEdepartment, CwEnum, Start, End);
+        });
+        switch (Type) {
+            case "1":
+                mLlMode.setVisibility(View.GONE);
+                break;
+            case "2":
+                mBtnWaitType.setText("未审批");
+                mBtnReadedType.setText("已审批");
+                break;
+            case "3":
+                mBtnWaitType.setText("待确认");
+                mBtnReadedType.setText("全部");
+                mBtnNewAexpense.setVisibility(View.GONE);
+                break;
+        }
     }
 
 
@@ -133,7 +159,7 @@ public class ApplyExpenseListActivity extends BaseActivity<ApplyExpenseListPrese
                     CwEcompany, CwEdepartment, CwEnum, Start, End);
 
         });
-        applyExpSelPop.showAtLocation(findViewById(R.id.rl_comploan),
+        applyExpSelPop.showAtLocation(findViewById(R.id.rl_apply_expense_list),
                 Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
     }
 

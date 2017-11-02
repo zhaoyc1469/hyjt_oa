@@ -459,4 +459,32 @@ public interface HomeService {
     //费用报销列表
     @POST("/APICwExpense/GetData")
     Observable<BaseJson<ApplyExpenseListResp>> ApplyExpenseReqsList(@Body ApplyExpenseListReqs applyExpenseListReqs);
+
+//
+//    //费用报销 详细
+//    @POST("/APICwExpense/Details")
+//
+//    //费用报销 创建
+//    @POST("/APICwExpense/Create")
+//
+//    //已核销金额及未核销金额计算
+//    @POST("/APICwExpense/GetPayed")
+//
+//    //获取费用类型 接口
+//    @POST("/APICwExpense/GetCwEmode")
+//
+//    //费用报销 编辑
+//    @POST("/APICwExpense/Edit")
+//
+//    //费用报销 删除
+//    @POST("/APICwExpense/Delete")
+//
+//    //费用报销 审批
+//    @POST("/APICwFlowInstanceNode/EditCwExpenseNode")
+//
+//    //费用报销 出纳确认
+//    @POST("/APICwExpense/EditChuNa")
+//
+//    //费用报销 收款人确认
+//    @POST("/APICwExpense/Editshoukuan")
 }
