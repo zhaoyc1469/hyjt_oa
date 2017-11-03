@@ -160,7 +160,9 @@
             android:name=".mvp.ui.activity.ToCompLoanEditActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
-        <activity android:name=".mvp.ui.activity.ApplyExpenseListActivity"></activity>
+        <activity android:name=".mvp.ui.activity.ApplyExpenseListActivity" />
+        <activity android:name=".mvp.ui.activity.ApplyExpenseCreateActivity" />
+        <activity android:name=".mvp.ui.activity.ApplyExpenseEditActivity"></activity>
     </application>
 
 </manifest>
