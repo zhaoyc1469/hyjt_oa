@@ -19,6 +19,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
+import com.hyjt.frame.event.RefreshListEvent;
 import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.di.component.DaggerToCompLoanListComponent;
 import com.hyjt.home.di.module.ToCompLoanListModule;
@@ -30,6 +31,9 @@ import com.hyjt.home.mvp.ui.adapter.CompLoanAdapter;
 import com.hyjt.home.mvp.ui.view.CompLoanSelPop;
 import com.hyjt.home.mvp.ui.view.PsonLoanSelPop;
 import com.paginate.Paginate;
+
+import org.simple.eventbus.Subscriber;
+import org.simple.eventbus.ThreadMode;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -81,7 +85,7 @@ public class ToCompLoanListActivity extends BaseActivity<ToCompLoanListPresenter
     public void initData(Bundle savedInstanceState) {
         Intent intent = getIntent();
         Type = intent.getStringExtra("type");
-        Mode = Type.equals("3") ? "0" : "1";
+        Mode = "0";
 
         mRlComploan = (RelativeLayout) findViewById(R.id.rl_comploan);
         mIvTopBack = (ImageView) findViewById(R.id.iv_top_back);
@@ -170,6 +174,12 @@ public class ToCompLoanListActivity extends BaseActivity<ToCompLoanListPresenter
     @Override
     public void hideLoading() {
         mSrlCloanList.setRefreshing(false);
+    }
+
+    @Override
+    @Subscriber(tag = "Refresh_List", mode = ThreadMode.MAIN)
+    public void refreshList(RefreshListEvent refreshListEvent) {
+        onRefresh();
     }
 
     @Override

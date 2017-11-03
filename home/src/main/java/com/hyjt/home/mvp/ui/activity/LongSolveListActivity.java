@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
+import com.hyjt.frame.event.RefreshListEvent;
 import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.R;
 import com.hyjt.home.di.component.DaggerLongSolveListComponent;
@@ -24,6 +25,9 @@ import com.hyjt.home.mvp.ui.adapter.MeetingAdapter;
 import com.hyjt.home.mvp.ui.view.MeetingSelPop;
 import com.paginate.Paginate;
 
+import org.simple.eventbus.Subscriber;
+import org.simple.eventbus.ThreadMode;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
@@ -31,8 +35,7 @@ import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 
 
 @Route(path = "/home/LongSolveListActivity")
-public class LongSolveListActivity extends BaseActivity<LongSolveListPresenter>
-        implements LongSolveListContract.View, SwipeRefreshLayout.OnRefreshListener{
+public class LongSolveListActivity extends BaseActivity<LongSolveListPresenter> implements LongSolveListContract.View, SwipeRefreshLayout.OnRefreshListener{
 
 
     private android.widget.RelativeLayout mRlLSolveList;
@@ -131,6 +134,13 @@ public class LongSolveListActivity extends BaseActivity<LongSolveListPresenter>
     public void hideLoading() {
         mSrlLSolveList.setRefreshing(false);
     }
+
+    @Override
+    @Subscriber(tag = "Refresh_List", mode = ThreadMode.MAIN)
+    public void refreshList(RefreshListEvent refreshListEvent) {
+        onRefresh();
+    }
+
 
     @Override
     public void onRefresh() {

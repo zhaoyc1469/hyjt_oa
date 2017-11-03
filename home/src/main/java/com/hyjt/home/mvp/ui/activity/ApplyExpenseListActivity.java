@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
+import com.hyjt.frame.event.RefreshListEvent;
 import com.hyjt.frame.utils.UiUtils;
 
 import com.hyjt.home.di.component.DaggerApplyExpenseListComponent;
@@ -31,6 +32,9 @@ import com.hyjt.home.mvp.ui.view.ApplyExpSelPop;
 import com.hyjt.home.mvp.ui.view.CompLoanSelPop;
 import com.paginate.Paginate;
 
+
+import org.simple.eventbus.Subscriber;
+import org.simple.eventbus.ThreadMode;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -82,7 +86,7 @@ public class ApplyExpenseListActivity extends BaseActivity<ApplyExpenseListPrese
     public void initData(Bundle savedInstanceState) {
         Intent intent = getIntent();
         Type = intent.getStringExtra("type");
-        Mode = Type.equals("3") ? "0" : "1";
+        Mode = "0";
         initView();
 
         mPresenter.getApplyExpList(true, Type, Mode, "", "", "", "", "", "");
@@ -173,6 +177,12 @@ public class ApplyExpenseListActivity extends BaseActivity<ApplyExpenseListPrese
     @Override
     public void hideLoading() {
         mSrlAexpenseList.setRefreshing(false);
+    }
+
+    @Override
+    @Subscriber(tag = "Refresh_List", mode = ThreadMode.MAIN)
+    public void refreshList(RefreshListEvent refreshListEvent) {
+        onRefresh();
     }
 
     @Override

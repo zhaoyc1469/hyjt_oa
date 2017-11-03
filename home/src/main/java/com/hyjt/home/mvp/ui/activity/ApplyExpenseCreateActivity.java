@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
+import com.hyjt.frame.event.RefreshListEvent;
 import com.hyjt.frame.utils.UiUtils;
 
 import com.hyjt.home.di.component.DaggerApplyExpenseCreateComponent;
@@ -17,10 +18,13 @@ import com.hyjt.home.mvp.presenter.ApplyExpenseCreatePresenter;
 import com.hyjt.home.R;
 
 
+import org.simple.eventbus.EventBus;
+
 import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 
 @Route(path = "/home/ApplyExpenseCreateActivity")
 public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreatePresenter> implements ApplyExpenseCreateContract.View {
+
 
 
     @Override
@@ -55,6 +59,7 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
     @Override
     public void killMyself() {
         finish();
+        EventBus.getDefault().post(new RefreshListEvent(), "Refresh_List");
     }
 
 

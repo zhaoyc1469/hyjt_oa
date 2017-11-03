@@ -26,6 +26,7 @@ import com.bumptech.glide.Glide;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.base.delegate.IFragment;
 import com.hyjt.frame.di.component.AppComponent;
+import com.hyjt.frame.event.RefreshListEvent;
 import com.hyjt.home.di.component.DaggerToCompLoanEditComponent;
 import com.hyjt.home.di.module.ToCompLoanEditModule;
 import com.hyjt.home.mvp.contract.ToCompLoanEditContract;
@@ -49,6 +50,8 @@ import com.hyjt.home.mvp.ui.adapter.ComnStringAdapter;
 import com.hyjt.home.mvp.ui.adapter.PlCompBankActAdapter;
 import com.hyjt.home.mvp.ui.view.DatePickDialog;
 import com.hyjt.home.mvp.ui.view.DateTimePickDialog;
+
+import org.simple.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -143,6 +146,7 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
     @Override
     public void killMyself() {
         finish();
+        EventBus.getDefault().post(new RefreshListEvent(), "Refresh_List");
     }
 
 

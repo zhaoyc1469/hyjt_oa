@@ -18,6 +18,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
+import com.hyjt.frame.event.RefreshListEvent;
 import com.hyjt.frame.utils.UiUtils;
 
 import com.hyjt.home.di.component.DaggerPsonLoanListComponent;
@@ -32,6 +33,9 @@ import com.hyjt.home.mvp.ui.view.MeetingSelPop;
 import com.hyjt.home.mvp.ui.view.PsonLoanSelPop;
 import com.paginate.Paginate;
 
+
+import org.simple.eventbus.Subscriber;
+import org.simple.eventbus.ThreadMode;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -172,6 +176,13 @@ public class PsonLoanListActivity extends BaseActivity<PsonLoanListPresenter> im
     public void hideLoading() {
         mSrlPloanList.setRefreshing(false);
     }
+
+    @Override
+    @Subscriber(tag = "Refresh_List", mode = ThreadMode.MAIN)
+    public void refreshList(RefreshListEvent refreshListEvent) {
+        onRefresh();
+    }
+
 
     @Override
     public void setAdapter(PsonLoanAdapter psonLoanAdapter) {

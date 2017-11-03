@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
+import com.hyjt.frame.event.RefreshListEvent;
 import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.R;
 import com.hyjt.home.di.component.DaggerAddressBookComponent;
@@ -26,6 +27,9 @@ import com.hyjt.home.mvp.ui.view.AddressBookSelPop;
 import com.hyjt.home.mvp.ui.view.StaffMsgPop;
 import com.hyjt.home.mvp.ui.view.treelistview.Node;
 import com.paginate.Paginate;
+
+import org.simple.eventbus.Subscriber;
+import org.simple.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -103,6 +107,13 @@ public class AddressBookActivity extends BaseActivity<AddressBookPresenter> impl
     public void hideLoading() {
         mSrlAddressBook.setRefreshing(false);
     }
+
+    @Override
+    @Subscriber(tag = "Refresh_List", mode = ThreadMode.MAIN)
+    public void refreshList(RefreshListEvent refreshListEvent) {
+        onRefresh();
+    }
+
 
     @Override
     public void showMessage(@NonNull String message) {

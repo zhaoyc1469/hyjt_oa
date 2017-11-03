@@ -27,6 +27,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
+import com.hyjt.frame.event.RefreshListEvent;
 import com.hyjt.frame.utils.PermissionUtil;
 import com.hyjt.frame.utils.UiUtils;
 
@@ -49,6 +50,8 @@ import com.hyjt.home.mvp.ui.view.GetSingleSelectItem;
 import com.hyjt.home.utils.ImgUtil;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+
+import org.simple.eventbus.EventBus;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -226,6 +229,7 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
     @Override
     public void killMyself() {
         finish();
+        EventBus.getDefault().post(new RefreshListEvent(), "Refresh_List");
     }
 
     @Override

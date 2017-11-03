@@ -25,6 +25,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
+import com.hyjt.frame.event.RefreshListEvent;
 import com.hyjt.frame.utils.UiUtils;
 
 import com.hyjt.home.di.component.DaggerPsonLoanEditComponent;
@@ -42,6 +43,8 @@ import com.hyjt.home.mvp.ui.adapter.FrstLdAdapter;
 import com.hyjt.home.mvp.ui.adapter.PlCompBankActAdapter;
 import com.hyjt.home.mvp.ui.view.Constant;
 import com.hyjt.home.mvp.ui.view.GetSingleSelectItem;
+
+import org.simple.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -225,6 +228,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
     @Override
     public void killMyself() {
         finish();
+        EventBus.getDefault().post(new RefreshListEvent(), "Refresh_List");
     }
 
 

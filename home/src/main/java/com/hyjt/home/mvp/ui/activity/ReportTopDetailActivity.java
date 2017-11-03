@@ -18,6 +18,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
+import com.hyjt.frame.event.RefreshListEvent;
 import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.R;
 import com.hyjt.home.di.component.DaggerReportTopDetailComponent;
@@ -25,6 +26,8 @@ import com.hyjt.home.di.module.ReportTopDetailModule;
 import com.hyjt.home.mvp.contract.ReportTopDetailContract;
 import com.hyjt.home.mvp.model.entity.Resp.ReportTDetailResp;
 import com.hyjt.home.mvp.presenter.ReportTopDetailPresenter;
+
+import org.simple.eventbus.EventBus;
 
 import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 
@@ -140,6 +143,7 @@ public class ReportTopDetailActivity extends BaseActivity<ReportTopDetailPresent
     @Override
     public void killMyself() {
         finish();
+        EventBus.getDefault().post(new RefreshListEvent(), "Refresh_List");
     }
 
     @Override

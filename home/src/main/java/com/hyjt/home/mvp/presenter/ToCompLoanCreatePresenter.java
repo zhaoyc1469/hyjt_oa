@@ -19,6 +19,7 @@ import javax.inject.Inject;
 
 import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
+import com.hyjt.frame.event.RefreshListEvent;
 import com.hyjt.frame.integration.AppManager;
 import com.hyjt.frame.mvp.BasePresenter;
 import com.hyjt.frame.utils.PermissionUtil;
@@ -39,6 +40,8 @@ import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFlowNodeResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.utils.ImgUtil;
+
+import org.simple.eventbus.EventBus;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -125,6 +128,8 @@ public class ToCompLoanCreatePresenter extends BasePresenter<ToCompLoanCreateCon
                     @Override
                     public void onNext(@NonNull Object obj) {
 //                        mRootView.showContractList(cpContractListResp);
+                        mRootView.showMessage("创建成功");
+                        mRootView.killMyself();
                     }
                 });
     }

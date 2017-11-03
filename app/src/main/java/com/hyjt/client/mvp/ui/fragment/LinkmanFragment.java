@@ -162,6 +162,11 @@ public class LinkmanFragment extends BaseFragment<LinkmanPresenter> implements L
         mSrlAddressBook.setRefreshing(false);
     }
 
+    @Override
+    public void refreshList() {
+
+    }
+
     /**
      * 初始化Paginate,用于加载更多
      */

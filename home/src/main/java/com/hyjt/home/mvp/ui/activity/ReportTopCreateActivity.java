@@ -23,6 +23,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
+import com.hyjt.frame.event.RefreshListEvent;
 import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.R;
 import com.hyjt.home.di.component.DaggerReportTopCreateComponent;
@@ -32,6 +33,8 @@ import com.hyjt.home.mvp.model.entity.Reqs.StaffNameIdKey;
 import com.hyjt.home.mvp.model.entity.Resp.ReportTDetailResp;
 import com.hyjt.home.mvp.presenter.ReportTopCreatePresenter;
 import com.hyjt.home.mvp.ui.view.DepartmentPop;
+
+import org.simple.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -128,6 +131,7 @@ public class ReportTopCreateActivity extends BaseActivity<ReportTopCreatePresent
     @Override
     public void killMyself() {
         finish();
+        EventBus.getDefault().post(new RefreshListEvent(), "Refresh_List");
     }
 
     @Override
