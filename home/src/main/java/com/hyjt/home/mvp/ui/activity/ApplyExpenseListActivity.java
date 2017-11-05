@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.event.RefreshListEvent;
@@ -140,6 +141,7 @@ public class ApplyExpenseListActivity extends BaseActivity<ApplyExpenseListPrese
             case "2":
                 mBtnWaitType.setText("未审批");
                 mBtnReadedType.setText("已审批");
+                mBtnNewAexpense.setVisibility(View.GONE);
                 break;
             case "3":
                 mBtnWaitType.setText("待确认");
@@ -147,6 +149,9 @@ public class ApplyExpenseListActivity extends BaseActivity<ApplyExpenseListPrese
                 mBtnNewAexpense.setVisibility(View.GONE);
                 break;
         }
+
+        mBtnNewAexpense.setOnClickListener(v ->
+                ARouter.getInstance().build("/home/ApplyExpenseCreateActivity").navigation());
     }
 
 

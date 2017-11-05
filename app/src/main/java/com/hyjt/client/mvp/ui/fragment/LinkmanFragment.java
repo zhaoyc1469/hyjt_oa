@@ -19,6 +19,7 @@ import com.hyjt.client.mvp.contract.LinkmanContract;
 import com.hyjt.client.mvp.presenter.LinkmanPresenter;
 import com.hyjt.frame.base.BaseFragment;
 import com.hyjt.frame.di.component.AppComponent;
+import com.hyjt.frame.event.RefreshListEvent;
 import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.mvp.model.entity.Reqs.StaffNameIdKey;
 import com.hyjt.home.mvp.ui.adapter.StaffListAdapter;
@@ -163,9 +164,10 @@ public class LinkmanFragment extends BaseFragment<LinkmanPresenter> implements L
     }
 
     @Override
-    public void refreshList() {
+    public void refreshList(RefreshListEvent refreshListEvent) {
 
     }
+
 
     /**
      * 初始化Paginate,用于加载更多

@@ -58,7 +58,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="部门" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_sel_dept"
@@ -78,7 +78,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="姓名" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_name"
@@ -97,7 +97,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="员工工号" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_staff_id"
@@ -116,7 +116,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="性别" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_sex"
@@ -136,7 +136,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="出生日期" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_birthday"
@@ -156,7 +156,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="民族" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_nation"
@@ -176,7 +176,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="政治面貌" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_politics_status"
@@ -196,7 +196,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="婚育状况" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_marriage_status"
@@ -239,7 +239,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="籍贯" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_native_place"
@@ -257,7 +257,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="现居住地" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_current_address"
@@ -275,7 +275,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="身份证号" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_identity_card"
@@ -293,7 +293,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="外语等级" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_foreign_language"
@@ -338,7 +338,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="最高学历" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_most_education"
@@ -358,7 +358,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="职务" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_duty"
@@ -376,7 +376,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="职位" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_post"
@@ -396,7 +396,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="职称" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_post_title"
@@ -415,7 +415,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="入职时间" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_entry_time"
@@ -434,7 +434,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="职工状态" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_staff_status"
@@ -454,7 +454,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="是否住宿" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_is_live"
@@ -497,7 +497,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="签约时间" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_sign_time"
@@ -516,7 +516,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="到约时间" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_expire_time"
@@ -535,7 +535,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="是否参保" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_is_insured"
@@ -578,7 +578,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="手机号码" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_phone_num"
@@ -596,7 +596,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="手机小号" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_other_phonenum"
@@ -614,7 +614,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="办公小号" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_other_offnum"
@@ -632,7 +632,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="QQ" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_qq"
@@ -650,7 +650,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="邮箱" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_mailbox"
@@ -668,7 +668,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="备注" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_remark"
@@ -710,7 +710,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="职责范围" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_responsibility"
@@ -728,7 +728,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="家庭状况" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_family_state"
@@ -746,7 +746,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="离职时间" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_dimission_time"

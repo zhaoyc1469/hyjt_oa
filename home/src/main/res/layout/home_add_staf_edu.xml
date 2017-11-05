@@ -42,7 +42,7 @@
             android:text="学校名称" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_school"
             style="@style/home_edt_new_meeting"
@@ -60,7 +60,7 @@
             android:text="毕业日期" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_graduation_time"
             style="@style/home_edt_new_meeting"
@@ -79,7 +79,7 @@
             android:text="专业" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_major"
             style="@style/home_edt_new_meeting"
@@ -97,7 +97,7 @@
             android:text="学历学位" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_education"
             style="@style/home_edt_new_meeting"

@@ -79,11 +79,8 @@ public class ReportTopListPresenter extends BasePresenter<ReportTopListContract.
                     if (pullToRefresh) {
                         mRootView.hideLoading();
                     } else {
-                        if (mRootView != null) {
-                            mRootView.endLoadMore();//隐藏下拉加载更多的进度条
-                        }
+                        mRootView.endLoadMore();//隐藏下拉加载更多的进度条
                     }
-
                 }).observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<ReportTListResp>(mErrorHandler) {

@@ -59,7 +59,7 @@
                     android:focusable="false"
                     style="@style/home_edt_new_meeting" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -77,7 +77,7 @@
                     android:focusable="false"
                     style="@style/home_edt_new_meeting" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -95,7 +95,7 @@
                     android:focusable="false"
                     style="@style/home_edt_new_meeting" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -113,7 +113,7 @@
                     android:focusable="false"
                     style="@style/home_edt_new_meeting" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -269,7 +269,7 @@
                     android:focusable="false"
                     style="@style/home_edt_new_meeting" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
         </LinearLayout>

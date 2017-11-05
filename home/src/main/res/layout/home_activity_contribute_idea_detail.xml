@@ -63,7 +63,7 @@
                     android:focusable="false"
                     style="@style/home_edt_new_meeting" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -81,7 +81,7 @@
                     android:focusable="false"
                     style="@style/home_edt_new_meeting" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -99,7 +99,7 @@
                     android:focusable="false"
                     style="@style/home_edt_new_meeting" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -116,7 +116,7 @@
                     android:id="@+id/edt_rp_title"
                     style="@style/home_edt_new_meeting" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -173,7 +173,7 @@
                     android:focusable="false"
                     style="@style/home_edt_new_meeting" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -226,7 +226,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="是否同意" />
                 <View
-                    style="@style/home_meeting_line"/>
+                    style="@style/home_common_line"/>
 
                 <RadioGroup
                     android:id="@+id/rg_question_state"
@@ -267,7 +267,7 @@
                     android:focusable="false"
                     style="@style/home_edt_new_meeting" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

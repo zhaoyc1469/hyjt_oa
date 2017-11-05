@@ -112,7 +112,7 @@
                     android:paddingTop="0dp"
                     android:paddingBottom="0dp"
                     android:text="选择出款账户"/>
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -129,7 +129,7 @@
                 <EditText
                     android:id="@+id/edt_send_account"
                     style="@style/home_edt_standard"/>
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <!--<RelativeLayout-->

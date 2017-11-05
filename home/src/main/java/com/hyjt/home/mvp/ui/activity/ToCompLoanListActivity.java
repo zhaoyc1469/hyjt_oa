@@ -121,6 +121,7 @@ public class ToCompLoanListActivity extends BaseActivity<ToCompLoanListPresenter
             case "2":
                 mBtnWaitType.setText("未审批");
                 mBtnReadedType.setText("已审批");
+                mBtnNewCloan.setVisibility(View.GONE);
                 break;
             case "3":
                 mBtnWaitType.setText("待确认");

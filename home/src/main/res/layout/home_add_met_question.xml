@@ -42,7 +42,7 @@
             android:text="执行部门" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_question_department"
             style="@style/home_edt_new_meeting"
@@ -60,7 +60,7 @@
             android:text="@string/home_meeting_executor" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_question_executor"
             style="@style/home_edt_new_meeting"
@@ -79,7 +79,7 @@
             android:text="要求时间" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_question_predict_time"
             style="@style/home_edt_new_meeting"
@@ -147,7 +147,7 @@
             android:text="问题是否解决" />
         <View
             android:layout_marginStart="116dp"
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
 
         <RadioGroup
             android:id="@+id/rg_question_state"
@@ -190,7 +190,7 @@
             android:text="解决时间" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_question_finish_time"
             style="@style/home_edt_new_meeting"
@@ -262,7 +262,7 @@
             android:text="督办人" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_question_supervisor"
             android:focusable="false"
@@ -281,7 +281,7 @@
             android:text="督办时间" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
 
         <EditText
             android:id="@+id/edt_supervise_time"
@@ -300,7 +300,7 @@
             android:text="督办状态" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <RadioGroup
             android:id="@+id/rg_supervise_state"
             android:layout_width="wrap_content"
@@ -342,7 +342,7 @@
 
         <View
             android:minHeight="40dp"
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_supervise_opinion"
             android:layout_width="match_parent"

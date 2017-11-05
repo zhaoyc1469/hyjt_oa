@@ -66,7 +66,7 @@
                     style="@style/home_edt_new_meeting"
                     android:hint="@string/home_meeting_issue" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -79,7 +79,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="@string/home_meeting_site" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_home_meeting_site"
@@ -151,7 +151,7 @@
                     style="@style/home_edt_new_meeting"
                     android:hint="@string/home_meeting_compere" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -216,7 +216,7 @@
                     style="@style/home_edt_new_meeting"
                     android:hint="@string/home_meeting_time" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -234,7 +234,7 @@
                     style="@style/home_edt_new_meeting"
                     android:hint="@string/home_meeting_department" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -252,7 +252,7 @@
                     style="@style/home_edt_new_meeting"
                     android:hint="@string/home_meeting_recorder" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -273,7 +273,7 @@
 
                     <View
                         android:layout_marginStart="0dp"
-                        style="@style/home_meeting_line"/>
+                        style="@style/home_common_line"/>
                     <RelativeLayout
                         android:id="@+id/rl_meeting_img1"
                         android:layout_width="0dp"
@@ -299,7 +299,7 @@
 
                     <View
                         android:layout_marginStart="0dp"
-                        style="@style/home_meeting_line"/>
+                        style="@style/home_common_line"/>
 
                     <RelativeLayout
                         android:id="@+id/rl_meeting_img2"
@@ -326,7 +326,7 @@
 
                     <View
                         android:layout_marginStart="0dp"
-                        style="@style/home_meeting_line"/>
+                        style="@style/home_common_line"/>
 
                     <RelativeLayout
                         android:id="@+id/rl_meeting_img3"
@@ -353,7 +353,7 @@
 
                     <View
                         android:layout_marginStart="0dp"
-                        style="@style/home_meeting_line"/>
+                        style="@style/home_common_line"/>
 
                     <RelativeLayout
                         android:id="@+id/rl_meeting_img4"
@@ -378,7 +378,7 @@
 
                         <View
                             android:layout_marginStart="0dp"
-                            style="@style/home_meeting_line"/>
+                            style="@style/home_common_line"/>
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -411,7 +411,7 @@
 
                 <View
                     android:layout_height="38dp"
-                    style="@style/home_meeting_line"/>
+                    style="@style/home_common_line"/>
                 <View
                     android:layout_below="@id/btn_add_pic"
                     android:layout_width="match_parent"
@@ -458,7 +458,7 @@
 
                 <View
                     android:layout_marginStart="116dp"
-                    style="@style/home_meeting_line"/>
+                    style="@style/home_common_line"/>
 
 
                 <TextView

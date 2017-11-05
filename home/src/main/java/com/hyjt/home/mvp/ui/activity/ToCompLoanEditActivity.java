@@ -91,7 +91,6 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
     private ProgressDialog progressDialog;
     private String compLoanType;
     private List<CompLoanDetailResp.FlowPackBean> flowPack = new ArrayList<>();
-    private List<PsonLoanDetailResp.FilePackBean> filePack = new ArrayList<>();
     private ToCompLoanEditActivity mContext;
     private LinearLayout mLlFlowNode;
     private RelativeLayout mRlSendAccount;

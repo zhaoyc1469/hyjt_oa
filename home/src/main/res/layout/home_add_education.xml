@@ -31,7 +31,7 @@
             android:text="学校名称" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_question_department"
             style="@style/home_edt_new_meeting"
@@ -49,7 +49,7 @@
             android:text="@string/home_meeting_executor" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_question_executor"
             style="@style/home_edt_new_meeting"
@@ -68,7 +68,7 @@
             android:text="要求时间" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_question_predict_time"
             style="@style/home_edt_new_meeting"
@@ -86,7 +86,7 @@
             android:text="解决时间" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_question_finish_time"
             style="@style/home_edt_new_meeting"
@@ -104,7 +104,7 @@
             android:text="督办人" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_question_supervisor"
             android:focusable="false"
@@ -123,7 +123,7 @@
             android:text="督办时间" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
 
         <EditText
             android:id="@+id/edt_supervise_time"

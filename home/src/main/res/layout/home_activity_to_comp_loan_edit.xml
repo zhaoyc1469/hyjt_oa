@@ -63,7 +63,7 @@
                     style="@style/home_edt_standard"
                     android:focusable="false" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -81,7 +81,7 @@
                     style="@style/home_edt_standard"
                     android:focusable="false" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -99,7 +99,7 @@
                     style="@style/home_edt_standard"
                     android:focusable="false" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -117,7 +117,7 @@
                     style="@style/home_edt_standard"
                     android:focusable="false" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -134,7 +134,7 @@
                     android:id="@+id/edt_expense_reason"
                     style="@style/home_edt_standard" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -152,7 +152,7 @@
                     style="@style/home_edt_standard"
                     android:inputType="number" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -179,7 +179,7 @@
                     android:paddingTop="0dp"
                     android:text="选择合同" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -197,7 +197,7 @@
                     android:id="@+id/edt_credit_period"
                     style="@style/home_edt_standard" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -220,7 +220,7 @@
                     android:paddingTop="0dp"
                     android:text="选择供货商" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -238,7 +238,7 @@
                     android:id="@+id/edt_supplier"
                     style="@style/home_edt_standard" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -256,7 +256,7 @@
                     style="@style/home_edt_standard"
                     android:focusable="false" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -273,7 +273,7 @@
                     android:id="@+id/edt_openact_bank"
                     style="@style/home_edt_standard" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -290,7 +290,7 @@
                     android:id="@+id/edt_bank_account"
                     style="@style/home_edt_standard" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -368,7 +368,7 @@
                     android:id="@+id/edt_receiver_account"
                     style="@style/home_edt_standard" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
             </RelativeLayout>
 
             <RelativeLayout

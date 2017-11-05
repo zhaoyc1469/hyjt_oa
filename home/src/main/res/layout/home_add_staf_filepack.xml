@@ -20,7 +20,7 @@
             android:text="证件名称" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <TextView
             android:id="@+id/tv_certificate_file"
             android:textColor="@color/home_common_0D8CFF"

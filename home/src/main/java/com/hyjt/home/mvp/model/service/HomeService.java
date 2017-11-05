@@ -11,6 +11,8 @@ import com.hyjt.home.mvp.model.entity.Reqs.LUReqsListReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PlNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanListReqs;
+import com.hyjt.home.mvp.model.entity.Resp.ApplyExpDetailResp;
+import com.hyjt.home.mvp.model.entity.Resp.ApplyExpTypeResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpenseListResp;
 import com.hyjt.home.mvp.model.entity.Resp.CIdeaDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.CIdeaListResp;
@@ -246,13 +248,13 @@ public interface HomeService {
 
 
     @GET("/apihr/TongXunList")
-    Observable<BaseJson<StaffListResp>> getAddressBook (@Query("Page") int Page, @Query("Rows") int Rows,
-                                                 @Query("E_State") String E_State,
-                                                 @Query("Sys_Id") String Sys_Id,
-                                                 @Query("MyName") String MyName,
-                                                 @Query("State") String State,
-                                                 @Query("E_maturetimeStart_Time") String E_maturetimeStart_Time,
-                                                 @Query("E_maturetimeEnd_Time") String E_maturetimeEnd_Time);
+    Observable<BaseJson<StaffListResp>> getAddressBook(@Query("Page") int Page, @Query("Rows") int Rows,
+                                                       @Query("E_State") String E_State,
+                                                       @Query("Sys_Id") String Sys_Id,
+                                                       @Query("MyName") String MyName,
+                                                       @Query("State") String State,
+                                                       @Query("E_maturetimeStart_Time") String E_maturetimeStart_Time,
+                                                       @Query("E_maturetimeEnd_Time") String E_maturetimeEnd_Time);
 
     @GET("/APImsg/GetData")
     Observable<BaseJson<BlocNoticeListResp>> getBNoticeList(@Query("Page") int Page, @Query("Rows") int Rows);
@@ -314,7 +316,6 @@ public interface HomeService {
     Observable<BaseJson<Object>> SLConsultCreate(@Body SLConsultDetailResp consultDetail);
 
 
-
     @POST("/APILeapfrogReport/GetData")
     Observable<BaseJson<SReportListResp>> skipReportList(@Body SReportListReqs sReportListReqs);
 
@@ -329,7 +330,6 @@ public interface HomeService {
 
     @POST("/APILeapfrogReport/Delete")
     Observable<BaseJson<Object>> skipReportDelete(@Body BaseIdReqs baseIdReqs);
-
 
 
     @POST("/APIYuangongxianji/GetData")
@@ -460,18 +460,20 @@ public interface HomeService {
     @POST("/APICwExpense/GetData")
     Observable<BaseJson<ApplyExpenseListResp>> ApplyExpenseReqsList(@Body ApplyExpenseListReqs applyExpenseListReqs);
 
-//
-//    //费用报销 详细
-//    @POST("/APICwExpense/Details")
-//
-//    //费用报销 创建
+
+    //费用报销 详细
+    @POST("/APICwExpense/Details")
+    Observable<BaseJson<ApplyExpDetailResp>> ApplyExpeDetailReqs(@Body BaseIdReqs baseIdReqs);
+
+    //费用报销 创建
 //    @POST("/APICwExpense/Create")
 //
 //    //已核销金额及未核销金额计算
 //    @POST("/APICwExpense/GetPayed")
 //
 //    //获取费用类型 接口
-//    @POST("/APICwExpense/GetCwEmode")
+    @POST("/APICwExpense/GetCwEmode")
+    Observable<BaseJson<ApplyExpTypeResp>> getApplyExpTypeList();
 //
 //    //费用报销 编辑
 //    @POST("/APICwExpense/Edit")
@@ -480,11 +482,14 @@ public interface HomeService {
 //    @POST("/APICwExpense/Delete")
 //
 //    //费用报销 审批
-//    @POST("/APICwFlowInstanceNode/EditCwExpenseNode")
-//
-//    //费用报销 出纳确认
-//    @POST("/APICwExpense/EditChuNa")
-//
-//    //费用报销 收款人确认
-//    @POST("/APICwExpense/Editshoukuan")
+    @POST("/APICwFlowInstanceNode/EditCwExpenseNode")
+    Observable<BaseJson<Object>> aeFlowNodeApr(@Body ClNodeApproveReqs clNodeApproveReqs);
+
+    //费用报销 出纳确认
+    @POST("/APICwExpense/EditChuNa")
+    Observable<BaseJson<Object>> aeTellerConfirm(@Body BaseIdReqs BaseIdReqs);
+
+    //费用报销 收款人确认
+    @POST("/APICwExpense/Editshoukuan")
+    Observable<BaseJson<Object>> aeReceiverConfirm(@Body BaseIdReqs BaseIdReqs);
 }

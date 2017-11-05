@@ -101,9 +101,7 @@ public class LaborUnionReqsListPresenter extends BasePresenter<LaborUnionReqsLis
                     if (pullToRefresh) {
                         mRootView.hideLoading();
                     } else {
-                        if (mRootView != null) {
-                            mRootView.endLoadMore();//隐藏下拉加载更多的进度条
-                        }
+                        mRootView.endLoadMore();//隐藏下拉加载更多的进度条
                     }
 
                 }).observeOn(AndroidSchedulers.mainThread())
@@ -120,8 +118,7 @@ public class LaborUnionReqsListPresenter extends BasePresenter<LaborUnionReqsLis
                             mAdapter.notifyDataSetChanged();
                         }
                         if (cideaList.getRows().size() == 0) {
-                            if (mRootView != null)
-                                mRootView.endLoad();
+                            mRootView.endLoad();
                         }
                     }
                 });

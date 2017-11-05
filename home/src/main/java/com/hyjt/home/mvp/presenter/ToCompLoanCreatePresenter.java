@@ -82,8 +82,7 @@ public class ToCompLoanCreatePresenter extends BasePresenter<ToCompLoanCreateCon
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doFinally(() -> {
-                    if (mRootView != null)
-                        mRootView.hideLoading();//隐藏
+                    mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<CpContractListResp>(mErrorHandler) {
@@ -100,8 +99,7 @@ public class ToCompLoanCreatePresenter extends BasePresenter<ToCompLoanCreateCon
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doFinally(() -> {
-                    if (mRootView != null)
-                        mRootView.hideLoading();//隐藏
+                    mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<CpSupplierListResp>(mErrorHandler) {
@@ -113,15 +111,14 @@ public class ToCompLoanCreatePresenter extends BasePresenter<ToCompLoanCreateCon
     }
 
 
-    public void createCompLoan(CompLoanCreateReqs compLoanCreateReqs){
+    public void createCompLoan(CompLoanCreateReqs compLoanCreateReqs) {
         Log.e("http_reqs", compLoanCreateReqs.toString());
         mModel.CompLoanCreate(compLoanCreateReqs)
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doFinally(() -> {
-                    if (mRootView != null)
-                        mRootView.hideLoading();//隐藏
+                    mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
@@ -135,9 +132,7 @@ public class ToCompLoanCreatePresenter extends BasePresenter<ToCompLoanCreateCon
     }
 
 
-
-
-    public void getFristLeader(String plType){
+    public void getFristLeader(String plType) {
         mModel.getFristLeader(new BaseTypeReqs(plType))
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
@@ -153,7 +148,7 @@ public class ToCompLoanCreatePresenter extends BasePresenter<ToCompLoanCreateCon
                 });
     }
 
-    public void getTCLCompany(){
+    public void getTCLCompany() {
         mModel.getTCLCompany()
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())

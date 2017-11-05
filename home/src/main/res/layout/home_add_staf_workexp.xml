@@ -42,7 +42,7 @@
             android:text="公司名称" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_company"
             style="@style/home_edt_new_meeting"
@@ -60,7 +60,7 @@
             android:text="工作岗位" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_work_post"
             style="@style/home_edt_new_meeting"
@@ -78,7 +78,7 @@
             android:text="起始时间" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_start_time"
             style="@style/home_edt_new_meeting"
@@ -97,7 +97,7 @@
             android:text="结束时间" />
 
         <View
-            style="@style/home_meeting_line"/>
+            style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_end_time"
             style="@style/home_edt_new_meeting"

@@ -63,10 +63,8 @@ public class ToCompLoanEditPresenter extends BasePresenter<ToCompLoanEditContrac
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doFinally(() -> {
-                    if (mRootView != null)
-                        mRootView.hideLoading();//隐藏
-                }).observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> mRootView.hideLoading())
+                .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<CompLoanDetailResp>(mErrorHandler) {
                     @Override
@@ -77,15 +75,13 @@ public class ToCompLoanEditPresenter extends BasePresenter<ToCompLoanEditContrac
     }
 
 
-
     public void selCompBankAct(EditText editText) {
         mModel.compBankAccount()
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doFinally(() -> {
-                    mRootView.hideLoading();//隐藏
-                }).observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> mRootView.hideLoading())
+                .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<PLCompBankAccountResp>(mErrorHandler) {
                     @Override
@@ -102,9 +98,8 @@ public class ToCompLoanEditPresenter extends BasePresenter<ToCompLoanEditContrac
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doFinally(() -> {
-                    mRootView.hideLoading();//隐藏
-                }).observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> mRootView.hideLoading())
+                .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
                     @Override
@@ -116,15 +111,13 @@ public class ToCompLoanEditPresenter extends BasePresenter<ToCompLoanEditContrac
     }
 
 
-
     public void tellerConfirm(String compLoanId) {
         mModel.clTellerConfirm(new BaseIdReqs(compLoanId))
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doFinally(() -> {
-                    mRootView.hideLoading();//隐藏
-                }).observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> mRootView.hideLoading())
+                .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
                     @Override
@@ -141,9 +134,8 @@ public class ToCompLoanEditPresenter extends BasePresenter<ToCompLoanEditContrac
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doFinally(() -> {
-                    mRootView.hideLoading();//隐藏
-                }).observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> mRootView.hideLoading())
+                .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
                     @Override
@@ -161,9 +153,8 @@ public class ToCompLoanEditPresenter extends BasePresenter<ToCompLoanEditContrac
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doFinally(() -> {
-                    mRootView.hideLoading();//隐藏
-                }).observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> mRootView.hideLoading())
+                .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
                     @Override
@@ -173,14 +164,14 @@ public class ToCompLoanEditPresenter extends BasePresenter<ToCompLoanEditContrac
                     }
                 });
     }
+
     public void delCompLoanDetail(String compLoanId) {
         mModel.delCLDetail(new BaseIdReqs(compLoanId))
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doFinally(() -> {
-                    mRootView.hideLoading();//隐藏
-                }).observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> mRootView.hideLoading())
+                .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
                     @Override
@@ -197,10 +188,8 @@ public class ToCompLoanEditPresenter extends BasePresenter<ToCompLoanEditContrac
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doFinally(() -> {
-                    if (mRootView != null)
-                        mRootView.hideLoading();//隐藏
-                }).observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> mRootView.hideLoading())
+                .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<CpContractListResp>(mErrorHandler) {
                     @Override
@@ -215,10 +204,8 @@ public class ToCompLoanEditPresenter extends BasePresenter<ToCompLoanEditContrac
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doFinally(() -> {
-                    if (mRootView != null)
-                        mRootView.hideLoading();//隐藏
-                }).observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> mRootView.hideLoading())
+                .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<CpSupplierListResp>(mErrorHandler) {
                     @Override

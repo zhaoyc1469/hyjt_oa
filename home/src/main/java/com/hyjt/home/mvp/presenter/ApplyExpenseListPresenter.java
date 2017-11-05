@@ -68,11 +68,10 @@ public class ApplyExpenseListPresenter extends BasePresenter<ApplyExpenseListCon
         if (mAdapter == null) {
             mAdapter = new ApplyExpenseAdapter(aeList);
             mRootView.setAdapter(mAdapter);
-            mAdapter.setOnItemClickListener((view, viewType, data, position) -> {
-//                ARouter.getInstance().build("/home/ToCompLoanEditActivity")
-//                        .withString("CompLoanId", aeList.get(position).getId())
-//                        .withString("CompLoanType", Type).navigation();
-            });
+            mAdapter.setOnItemClickListener((view, viewType, data, position) ->
+                    ARouter.getInstance().build("/home/ApplyExpenseEditActivity")
+                    .withString("ApplyExpId", aeList.get(position).getId())
+                    .withString("ApplyExpType", Type).navigation());
         }
 
         if (pullToRefresh) {

@@ -92,9 +92,7 @@ public class PsonLoanListPresenter extends BasePresenter<PsonLoanListContract.Mo
                     if (pullToRefresh) {
                         mRootView.hideLoading();
                     } else {
-                        if (mRootView != null) {
-                            mRootView.endLoadMore();//隐藏下拉加载更多的进度条
-                        }
+                        mRootView.endLoadMore();//隐藏下拉加载更多的进度条
                     }
 
                 }).observeOn(AndroidSchedulers.mainThread())
@@ -102,30 +100,26 @@ public class PsonLoanListPresenter extends BasePresenter<PsonLoanListContract.Mo
                 .subscribe(new ErrorHandleSubscriber<PsonLoanListResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull PsonLoanListResp psonLoanListResp) {
-                        if (mRootView != null) {
-                            if (pullToRefresh) {
-                                plList.clear();
-                                plList.addAll(psonLoanListResp.getRows());
-                                mAdapter.notifyDataSetChanged();
-                            } else {
-                                plList.addAll(psonLoanListResp.getRows());
-                                mAdapter.notifyDataSetChanged();
-                            }
-                            if (psonLoanListResp.getRows().size() == 0) {
-                                mRootView.endLoad();
-                            }
+                        if (pullToRefresh) {
+                            plList.clear();
+                            plList.addAll(psonLoanListResp.getRows());
+                            mAdapter.notifyDataSetChanged();
+                        } else {
+                            plList.addAll(psonLoanListResp.getRows());
+                            mAdapter.notifyDataSetChanged();
+                        }
+                        if (psonLoanListResp.getRows().size() == 0) {
+                            mRootView.endLoad();
                         }
                     }
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-                        if (mRootView != null) {
-                            if ("202".equals(e.getMessage())) {
-                                mRootView.showNoLimits();
+                        if ("202".equals(e.getMessage())) {
+                            mRootView.showNoLimits();
 //                            mRootView.killMyself();
-                            } else {
-                                mRootView.showMessage(e.getMessage());
-                            }
+                        } else {
+                            mRootView.showMessage(e.getMessage());
                         }
                     }
                 });

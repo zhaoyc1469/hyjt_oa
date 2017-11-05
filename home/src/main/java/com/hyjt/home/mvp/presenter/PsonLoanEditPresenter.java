@@ -67,9 +67,9 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doFinally(() -> {
-                    if (mRootView != null)
-                        mRootView.hideLoading();//隐藏
+                    mRootView.hideLoading();//隐藏
                 }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<PsonLoanDetailResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull PsonLoanDetailResp psonLoanDetailResp) {

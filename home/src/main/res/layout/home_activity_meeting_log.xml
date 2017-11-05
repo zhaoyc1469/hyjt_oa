@@ -44,7 +44,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="@string/home_meeting_issue" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_home_meeting_issue"
@@ -62,7 +62,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="@string/home_meeting_site" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_home_meeting_site"
@@ -84,7 +84,7 @@
                     android:text="@string/home_meeting_person"
                     android:textColor="@color/home_common_000000" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <Button
                     android:id="@+id/btn_person_clear"
@@ -121,7 +121,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="@string/home_meeting_compere" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_home_meeting_compere"
@@ -194,7 +194,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="@string/home_meeting_time" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_meeting_time"
@@ -212,7 +212,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="@string/home_meeting_department" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <EditText
                     android:id="@+id/edt_home_meeting_department"
@@ -270,7 +270,7 @@
                     style="@style/home_tv_new_meeting"
                     android:text="@string/home_meeting_recorder" />
 
-                <View style="@style/home_meeting_line" />
+                <View style="@style/home_common_line" />
 
                 <TextView
                     android:id="@+id/tv_recorder"
@@ -323,7 +323,7 @@
                     android:text="添加会议问题" />
 
                 <View
-                    style="@style/home_meeting_line"
+                    style="@style/home_common_line"
                     android:layout_marginStart="116dp" />
 
                 <Button
