@@ -90,7 +90,14 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
     private RelativeLayout mRlAddFile;
     private Button mBtnAddFile;
     private LinearLayout mLlFilePack;
-//    private LinearLayout mLlFilePack;
+    private RelativeLayout mRlAddWriteoff;
+    private Button mBtnAddWriteoff;
+    private LinearLayout mLlWriteoff;
+    private RelativeLayout mRlAddReceive;
+    private Button mBtnAddReceive;
+    private LinearLayout mLlReceive;
+    private ApplyExpCreateReqs applyExpCreateReqs;
+    //    private LinearLayout mLlFilePack;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -160,10 +167,44 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
         mEdtMoneyType = (EditText) findViewById(R.id.edt_money_type);
         mRlAddFile = (RelativeLayout) findViewById(R.id.rl_add_file);
         mBtnAddFile = (Button) findViewById(R.id.btn_add_file);
+        mBtnAddFile.setOnClickListener(v -> {
+            Intent intentFile = new Intent(Intent.ACTION_GET_CONTENT);
+            intentFile.setType("*/*");//设置类型，我这里是任意类型，任意后缀的可以这样写。
+            intentFile.addCategory(Intent.CATEGORY_OPENABLE);
+            startActivityForResult(intentFile, 100);
+        });
         mLlFilePack = (LinearLayout) findViewById(R.id.ll_file_pack);
+        mRlAddWriteoff = (RelativeLayout) findViewById(R.id.rl_add_writeoff);
+        mBtnAddWriteoff = (Button) findViewById(R.id.btn_add_writeoff);
+        mBtnAddWriteoff.setOnClickListener(v -> addWriteOffPack());
+        mLlWriteoff = (LinearLayout) findViewById(R.id.ll_writeoff);
+        mRlAddReceive = (RelativeLayout) findViewById(R.id.rl_add_receive);
+        mBtnAddReceive = (Button) findViewById(R.id.btn_add_receive);
+        mLlReceive = (LinearLayout) findViewById(R.id.ll_receive);
+    }
+
+    private void addWriteOffPack() {
+        View inflate = LayoutInflater.from(this).inflate(R.layout.home_add_ae_write_off, null);
+
+
+        EditText mEdtWriteoffNum = (EditText) inflate.findViewById(R.id.edt_writeoff_num);
+        EditText mEdtBorrowMoney = (EditText) inflate.findViewById(R.id.edt_borrow_money);
+        EditText mEdtWriteoffMoney = (EditText) inflate.findViewById(R.id.edt_writeoff_money);
+        //删除布局
+        Button delWriteoff = (Button) inflate.findViewById(R.id.btn_del_writeoff);
+        delWriteoff.setOnClickListener(v -> {
+//            if (meetingQuestionList.size()>size){
+            mLlWriteoff.removeView(inflate);
+//                meetingQuestionList.remove(size);
+//            }
+        });
+
+        mLlWriteoff.addView(inflate);
+        mSlvApplyexp.fullScroll(ScrollView.FOCUS_DOWN);
     }
 
     private void checkApplyExp() {
+        applyExpCreateReqs = new ApplyExpCreateReqs();
 
         if (TextUtils.isEmpty(mEdtCompanyName.getText())) {
             shortToast("请选择公司名称");
@@ -181,9 +222,20 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
             shortToast("请选择收款方式");
         }
 
+//        new
+        for (int i = 0; i < mLlWriteoff.getChildCount(); i++) {
+            View inflate = mLlWriteoff.getChildAt(i);
+
+            EditText mEdtWriteoffNum = (EditText) inflate.findViewById(R.id.edt_writeoff_num);
+            EditText mEdtBorrowMoney = (EditText) inflate.findViewById(R.id.edt_borrow_money);
+            EditText mEdtWriteoffMoney = (EditText) inflate.findViewById(R.id.edt_writeoff_money);
+
+            mEdtWriteoffNum.getText().toString();
+        }
+
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
-                .setTitle("发起借款")
-                .setMessage("确定发起个人借款?")
+                .setTitle("报销申请")
+                .setMessage("确定发起报销申请?")
                 .setPositiveButton("确定", (dialog, which) -> {
                     if (mFileURLList.size() > 0) {
                         progressDialog = ProgressDialog.show(this, null, "正在上传附件…");
@@ -298,7 +350,7 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
                         , imgUploadList.get(i).getName()));
             }
         }
-        ApplyExpCreateReqs applyExpCreateReqs = new ApplyExpCreateReqs();
+
         applyExpCreateReqs.setCwEcompany(mEdtCompanyName.getText().toString().trim());
         applyExpCreateReqs.setCwELeader(mEdtFristLeader.getText().toString().trim());
         applyExpCreateReqs.setCwEreason(mEdtExpenseReason.getText().toString().trim());
@@ -310,6 +362,7 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
         applyExpCreateReqs.setFlowid(flowDetailsBean.getFlowid());
         applyExpCreateReqs.setFilePack(FileList);
 
+
         mPresenter.createApplyExp(applyExpCreateReqs);
     }
 
@@ -317,7 +370,6 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
     public RxPermissions getRxPermissions() {
         return new RxPermissions(this);
     }
-
 
 
     private void addFilePack(int position) {

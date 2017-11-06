@@ -1,6 +1,7 @@
 package com.hyjt.home.mvp.model.service;
 
 import com.hyjt.frame.api.BaseJson;
+import com.hyjt.home.mvp.model.entity.Reqs.ApplyExpCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.ApplyExpenseListReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.ClNodeApproveReqs;
@@ -466,9 +467,10 @@ public interface HomeService {
     Observable<BaseJson<ApplyExpDetailResp>> ApplyExpeDetailReqs(@Body BaseIdReqs baseIdReqs);
 
     //费用报销 创建
-//    @POST("/APICwExpense/Create")
-//
-//    //已核销金额及未核销金额计算
+    @POST("/APICwExpense/Create")
+    Observable<BaseJson<Object>> ApplyExpeCreateReqs(@Body ApplyExpCreateReqs applyExpCreateReqs);
+
+    //已核销金额及未核销金额计算
 //    @POST("/APICwExpense/GetPayed")
 //
 //    //获取费用类型 接口

@@ -67,7 +67,6 @@ public class ApplyExpenseEditPresenter extends BasePresenter<ApplyExpenseEditCon
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe(disposable -> mRootView.showLoading("报销详情加载中..."))
                 .subscribeOn(AndroidSchedulers.mainThread())
-                .observeOn(AndroidSchedulers.mainThread())
                 .doFinally(() -> mRootView.hideLoading())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))

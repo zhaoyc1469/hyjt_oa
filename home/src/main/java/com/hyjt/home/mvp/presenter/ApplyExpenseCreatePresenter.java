@@ -38,6 +38,7 @@ import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.utils.ImgUtil;
 
 import java.io.File;
+import java.lang.annotation.Repeatable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -158,6 +159,7 @@ public class ApplyExpenseCreatePresenter extends BasePresenter<ApplyExpenseCreat
                     mModel.fileUpload(filePart)
                             .map(new parseResponse<>())
                             .subscribeOn(Schedulers.io())
+//                            .repeat(filesPaths.size())
                             .retryWhen(new RetryWithDelay(5, 10))
                             .observeOn(AndroidSchedulers.mainThread())
                             .doFinally(() -> {
@@ -190,5 +192,20 @@ public class ApplyExpenseCreatePresenter extends BasePresenter<ApplyExpenseCreat
 
     public void createApplyExp(ApplyExpCreateReqs applyExpCreateReqs) {
 
+        mModel.createApplyExp(applyExpCreateReqs)
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .doOnSubscribe(disposable -> mRootView.showLoading("费用报销创建中..."))
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> mRootView.hideLoading())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object obj) {
+                        mRootView.showMessage("创建成功");
+                        mRootView.killMyself();
+                    }
+                });
     }
 }

@@ -73,6 +73,8 @@ public class ApplyExpenseCreateModel extends BaseModel implements ApplyExpenseCr
 
     @Override
     public Observable<BaseJson<Object>> createApplyExp(ApplyExpCreateReqs applyExpCreateReqs) {
-        return null;
+        Observable<BaseJson<Object>> createReqs = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .ApplyExpeCreateReqs(applyExpCreateReqs);
+        return createReqs;
     }
 }

@@ -39,7 +39,8 @@ public class LoginPresenter extends BasePresenter<LoginContract.Model, LoginCont
         mModel.sendLogin(name, pwd, reb, registrationID)
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable -> mRootView.showLoading("登录中..."))
+                .subscribeOn(AndroidSchedulers.mainThread())
                 .doFinally(() -> mRootView.hideDialog())//隐藏
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))

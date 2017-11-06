@@ -89,14 +89,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         mButton = (Button) findViewById(R.id.button);
         mCbRebPwd = (CheckBox) findViewById(R.id.cb_reb_pwd);
 
-        mButton.setOnClickListener(v -> {
-            progressDialog = ProgressDialog.show(LoginActivity.this, null, "登录中…");
-            mPresenter.sendLoginMsg(
-                    mEdtUsername.getText().toString().trim(),
-                    mEdtPassword.getText().toString().trim(),
-                    mCbRebPwd.isChecked() ? 1 : 0,
-                    registrationID);
-        });
+        mButton.setOnClickListener(v -> mPresenter.sendLoginMsg(
+                mEdtUsername.getText().toString().trim(),
+                mEdtPassword.getText().toString().trim(),
+                mCbRebPwd.isChecked() ? 1 : 0,
+                registrationID));
 
 
         SharedPreferences sharedPre = getSharedPreferences("config", MODE_PRIVATE);
@@ -233,6 +230,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     public void hideDialog() {
         progressDialog.dismiss();
+    }
+
+    @Override
+    public void showLoading(String msg) {
+        progressDialog = ProgressDialog.show(LoginActivity.this, null, msg);
     }
 
     @Override
