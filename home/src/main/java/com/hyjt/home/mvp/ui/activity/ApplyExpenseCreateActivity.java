@@ -180,6 +180,7 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
         mLlWriteoff = (LinearLayout) findViewById(R.id.ll_writeoff);
         mRlAddReceive = (RelativeLayout) findViewById(R.id.rl_add_receive);
         mBtnAddReceive = (Button) findViewById(R.id.btn_add_receive);
+        mBtnAddReceive.setOnClickListener(v -> addReceiver());
         mLlReceive = (LinearLayout) findViewById(R.id.ll_receive);
     }
 
@@ -200,6 +201,29 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
         });
 
         mLlWriteoff.addView(inflate);
+        mSlvApplyexp.fullScroll(ScrollView.FOCUS_DOWN);
+    }
+
+
+    private void addReceiver() {
+        View inflate = LayoutInflater.from(this).inflate(R.layout.home_add_ae_receiver, null);
+
+
+        EditText mEdtAccountName = (EditText) findViewById(R.id.edt_account_name);
+        EditText mEdtOpenactBank = (EditText) findViewById(R.id.edt_openact_bank);
+        EditText mEdtBankAccount = (EditText) findViewById(R.id.edt_bank_account);
+        EditText mEdtMoney = (EditText) findViewById(R.id.edt_money);
+
+        //删除布局
+        Button delWriteoff = (Button) inflate.findViewById(R.id.btn_del_writeoff);
+        delWriteoff.setOnClickListener(v -> {
+//            if (meetingQuestionList.size()>size){
+            mLlWriteoff.removeView(inflate);
+//                meetingQuestionList.remove(size);
+//            }
+        });
+
+        mLlReceive.addView(inflate);
         mSlvApplyexp.fullScroll(ScrollView.FOCUS_DOWN);
     }
 

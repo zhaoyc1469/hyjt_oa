@@ -222,7 +222,9 @@
         <!-- android:name="com.hyjt.client.mvp.ui.receiver.InformReceiver" -->
         <!-- android:enabled="true" -->
         <!-- android:exported="true"/> -->
-        <activity android:name="com.hyjt.client.mvp.ui.activity.MdManageActivity"></activity>
+
+
+        <activity android:name="com.hyjt.client.mvp.ui.activity.MdManageActivity"/>
     </application>
 
 </manifest>

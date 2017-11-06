@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp">
+
+        <TextView
+            android:layout_width='wrap_content'
+            android:layout_height='match_parent'
+            android:layout_marginLeft='16dp'
+            android:layout_centerInParent='true'
+            android:text="核销借款单"
+            android:textSize="20sp"
+            android:textColor='@color/home_common_000000' />
+
+
+        <Button
+            android:id="@+id/btn_del_writeoff"
+            android:layout_width='70dp'
+            android:layout_height='wrap_content'
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="删除"
+            android:textSize="12sp"
+            android:textColor='@color/home_common_FFFFFF' />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="户名" />
+
+        <View
+            style="@style/home_common_line"/>
+        <EditText
+            android:id="@+id/edt_account_name"
+            style="@style/home_edt_new_meeting"
+            android:hint="请输入户名" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="开户银行" />
+
+        <View
+            style="@style/home_common_line"/>
+        <EditText
+            android:id="@+id/edt_openact_bank"
+            style="@style/home_edt_new_meeting"
+            android:focusable="false"
+            android:hint="请输入开户银行" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="银行账号" />
+
+        <View
+            style="@style/home_common_line"/>
+        <EditText
+            android:id="@+id/edt_bank_account"
+            style="@style/home_edt_new_meeting"
+            android:focusable="false"
+            android:hint="请输入银行账号" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="汇款金额" />
+
+        <View
+            style="@style/home_common_line"/>
+        <EditText
+            android:id="@+id/edt_money"
+            style="@style/home_edt_new_meeting"
+            android:hint="请输入汇款金额" />
+    </RelativeLayout>
+
+</LinearLayout>
