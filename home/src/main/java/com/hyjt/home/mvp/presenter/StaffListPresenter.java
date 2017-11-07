@@ -88,13 +88,7 @@ public class StaffListPresenter extends BasePresenter<StaffListContract.Model, S
                     else
                         mRootView.endLoadMore();//隐藏下拉加载更多的进度条
                 })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<StaffListResp>() {
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {
-
-                    }
-
+                .subscribe(new ErrorHandleSubscriber<StaffListResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull StaffListResp staffListResp) {
                         if (pullToRefresh) {
@@ -114,15 +108,9 @@ public class StaffListPresenter extends BasePresenter<StaffListContract.Model, S
                     public void onError(@NonNull Throwable e) {
                         if ("202".equals(e.getMessage())) {
                             mRootView.showNoLimits();
-//                            mRootView.killMyself();
                         } else {
                             mRootView.showMessage(e.getMessage());
                         }
-                    }
-
-                    @Override
-                    public void onComplete() {
-
                     }
                 });
     }

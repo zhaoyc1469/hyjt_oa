@@ -98,7 +98,6 @@ public class ApplyExpenseListPresenter extends BasePresenter<ApplyExpenseListCon
                         mRootView.endLoadMore();//隐藏下拉加载更多的进度条
                     }
                 })
-                .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandleSubscriber<ApplyExpenseListResp>(mErrorHandler) {
                     @Override

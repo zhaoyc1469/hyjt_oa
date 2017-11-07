@@ -4,7 +4,9 @@ import android.app.Application;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.EditText;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.hyjt.frame.api.parseResponse;
 import com.hyjt.frame.di.scope.ActivityScope;
 import com.hyjt.frame.mvp.BasePresenter;
@@ -30,11 +32,19 @@ import javax.inject.Inject;
 
 import com.hyjt.home.mvp.contract.ApplyExpenseCreateContract;
 import com.hyjt.home.mvp.model.entity.Reqs.ApplyExpCreateReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.BaseNumReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.CompLoanListReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanListReqs;
+import com.hyjt.home.mvp.model.entity.Resp.AEExpMoneyResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpTypeResp;
+import com.hyjt.home.mvp.model.entity.Resp.CompLoanListResp;
 import com.hyjt.home.mvp.model.entity.Resp.ImgUploadResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
+import com.hyjt.home.mvp.model.entity.Resp.PsonLoanListResp;
+import com.hyjt.home.mvp.ui.adapter.CompLoanAdapter;
+import com.hyjt.home.mvp.ui.adapter.PsonLoanAdapter;
 import com.hyjt.home.utils.ImgUtil;
 
 import java.io.File;
@@ -69,7 +79,6 @@ public class ApplyExpenseCreatePresenter extends BasePresenter<ApplyExpenseCreat
         this.mImageLoader = null;
         this.mApplication = null;
     }
-
 
 
     public void getFristLeader(String plType) {
@@ -124,7 +133,6 @@ public class ApplyExpenseCreatePresenter extends BasePresenter<ApplyExpenseCreat
                     }
                 });
     }
-
 
 
     public void sendFile(ArrayList<Uri> mFileURLList) {
@@ -206,6 +214,68 @@ public class ApplyExpenseCreatePresenter extends BasePresenter<ApplyExpenseCreat
                         mRootView.showMessage("创建成功");
                         mRootView.killMyself();
                     }
+                });
+    }
+
+    public void getPsonLoanList(EditText mEdtWriteoffNum, EditText mEdtBorrowMoney, EditText mEdtPayed, EditText Payed) {
+
+        mModel.getPsonLoanList(new PsonLoanListReqs("1", "9999", "", "", "",
+                "1", "", "", "", ""))
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .doOnSubscribe(disposable -> mRootView.showLoading("个人借款加载中..."))
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> mRootView.hideLoading())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<PsonLoanListResp>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull PsonLoanListResp psonLoanListResp) {
+                        mRootView.showExpPMoneyList(psonLoanListResp, mEdtWriteoffNum
+                                , mEdtBorrowMoney, mEdtPayed, Payed);
+                    }
+                });
+    }
+
+
+    public void getCompLoanList(EditText mEdtWriteoffNum, EditText mEdtBorrowMoney, EditText mEdtPayed, EditText Payed) {
+
+        mModel.getCompLoanList(new CompLoanListReqs("1", "9999", "", "", "",
+                "1", "", "", "", ""))
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .doOnSubscribe(disposable -> mRootView.showLoading("对公借款加载中..."))
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> mRootView.hideLoading())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<CompLoanListResp>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull CompLoanListResp compLoanListResp) {
+                        mRootView.showExpCMoneyList(compLoanListResp, mEdtWriteoffNum
+                                , mEdtBorrowMoney, mEdtPayed, Payed);
+                    }
+
+                });
+
+    }
+
+    public void getExpMoney(String num, EditText mEdtPayed, EditText Payed) {
+
+        mModel.getExpMoney(new BaseNumReqs(num))
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .doOnSubscribe(disposable -> mRootView.showLoading("加载核销金额..."))
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> mRootView.hideLoading())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<AEExpMoneyResp>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull AEExpMoneyResp aeexpMoneyResp) {
+                        mRootView.showExpMoney(aeexpMoneyResp, mEdtPayed, Payed);
+                    }
+
                 });
     }
 }

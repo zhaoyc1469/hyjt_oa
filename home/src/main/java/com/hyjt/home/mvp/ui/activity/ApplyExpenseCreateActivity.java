@@ -34,16 +34,20 @@ import com.hyjt.home.di.component.DaggerApplyExpenseCreateComponent;
 import com.hyjt.home.di.module.ApplyExpenseCreateModule;
 import com.hyjt.home.mvp.contract.ApplyExpenseCreateContract;
 import com.hyjt.home.mvp.model.entity.Reqs.ApplyExpCreateReqs;
-import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
+import com.hyjt.home.mvp.model.entity.Resp.AEExpMoneyResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpTypeResp;
+import com.hyjt.home.mvp.model.entity.Resp.CompLoanListResp;
 import com.hyjt.home.mvp.model.entity.Resp.ImgUploadResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
+import com.hyjt.home.mvp.model.entity.Resp.PsonLoanListResp;
 import com.hyjt.home.mvp.presenter.ApplyExpenseCreatePresenter;
 
 import com.hyjt.home.R;
 import com.hyjt.home.mvp.ui.adapter.ComnStringAdapter;
+import com.hyjt.home.mvp.ui.adapter.CompLoanAlertAdapter;
 import com.hyjt.home.mvp.ui.adapter.FrstLdAdapter;
+import com.hyjt.home.mvp.ui.adapter.PsonLoanAlertAdapter;
 import com.hyjt.home.utils.ImgUtil;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -55,7 +59,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
-import retrofit2.http.GET;
 
 import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 
@@ -190,7 +193,13 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
 
         EditText mEdtWriteoffNum = (EditText) inflate.findViewById(R.id.edt_writeoff_num);
         EditText mEdtBorrowMoney = (EditText) inflate.findViewById(R.id.edt_borrow_money);
+        EditText mEdtUnpayed = (EditText) inflate.findViewById(R.id.edt_unpayd);
+        EditText mEdtPayed = (EditText) inflate.findViewById(R.id.edt_payd);
         EditText mEdtWriteoffMoney = (EditText) inflate.findViewById(R.id.edt_writeoff_money);
+        Button mBtnToComp = (Button) inflate.findViewById(R.id.btn_to_comp);
+        Button mBtnToPson = (Button) inflate.findViewById(R.id.btn_to_pson);
+        mBtnToComp.setOnClickListener(v -> mPresenter.getCompLoanList(mEdtWriteoffNum, mEdtBorrowMoney, mEdtUnpayed, mEdtPayed));
+        mBtnToPson.setOnClickListener(v -> mPresenter.getPsonLoanList(mEdtWriteoffNum, mEdtBorrowMoney, mEdtUnpayed, mEdtPayed));
         //删除布局
         Button delWriteoff = (Button) inflate.findViewById(R.id.btn_del_writeoff);
         delWriteoff.setOnClickListener(v -> {
@@ -209,10 +218,10 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
         View inflate = LayoutInflater.from(this).inflate(R.layout.home_add_ae_receiver, null);
 
 
-        EditText mEdtAccountName = (EditText) findViewById(R.id.edt_account_name);
-        EditText mEdtOpenactBank = (EditText) findViewById(R.id.edt_openact_bank);
-        EditText mEdtBankAccount = (EditText) findViewById(R.id.edt_bank_account);
-        EditText mEdtMoney = (EditText) findViewById(R.id.edt_money);
+        EditText mEdtAccountName = (EditText) inflate.findViewById(R.id.edt_account_name);
+        EditText mEdtOpenactBank = (EditText) inflate.findViewById(R.id.edt_openact_bank);
+        EditText mEdtBankAccount = (EditText) inflate.findViewById(R.id.edt_bank_account);
+        EditText mEdtMoney = (EditText) inflate.findViewById(R.id.edt_money);
 
         //删除布局
         Button delWriteoff = (Button) inflate.findViewById(R.id.btn_del_writeoff);
@@ -393,6 +402,74 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
     @Override
     public RxPermissions getRxPermissions() {
         return new RxPermissions(this);
+    }
+
+    @Override
+    public void showExpCMoneyList(CompLoanListResp compLoanListResp, EditText mEdtWriteoffNum, EditText mEdtBorrowMoney, EditText mEdtUnpayed, EditText mEdtPayed) {
+
+        List<CompLoanListResp.RowsBean> rows = compLoanListResp.getRows();
+        if (rows == null ||rows.size() == 0){
+            new AlertDialog.Builder(this).setTitle("提示")
+                    .setMessage("您没有对公借款信息！")
+                    .setPositiveButton("确定", (dialog, which) -> finish()).show();
+            return;
+        }
+        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
+        dialog.setTitle("选择借款信息");
+        dialog.setView(layout).setCancelable(false)
+                .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
+        AlertDialog accAlert = dialog.create();
+        ListView accList = (ListView) layout.findViewById(R.id.accList);
+
+        CompLoanAlertAdapter compLoanAlertAdapter = new CompLoanAlertAdapter(mContext, rows);
+        accList.setAdapter(compLoanAlertAdapter);
+
+        compLoanAlertAdapter.setItemClickListener(position -> {
+            mEdtWriteoffNum.setText(rows.get(position).getCwCnum());
+            mEdtBorrowMoney.setText(rows.get(position).getCwCmoney());
+            mPresenter.getExpMoney(rows.get(position).getCwCnum(), mEdtUnpayed, mEdtPayed);
+            accAlert.dismiss();
+        });
+        accAlert.show();
+    }
+
+    @Override
+    public void showExpPMoneyList(PsonLoanListResp psonLoanListResp, EditText mEdtWriteoffNum, EditText mEdtBorrowMoney, EditText mEdtUnpayed, EditText mEdtPayed) {
+        List<PsonLoanListResp.RowsBean> rows = psonLoanListResp.getRows();
+        if (rows == null || rows.size() == 0){
+            new AlertDialog.Builder(this).setTitle("提示")
+                    .setMessage("您没有个人借款信息！")
+                    .setPositiveButton("确定", (dialog, which) -> finish()).show();
+            return;
+        }
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
+        dialog.setTitle("选择借款信息");
+        dialog.setView(layout).setCancelable(false)
+                .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
+        AlertDialog accAlert = dialog.create();
+        ListView accList = (ListView) layout.findViewById(R.id.accList);
+
+        PsonLoanAlertAdapter psonLoanAlertAdapter = new PsonLoanAlertAdapter(mContext, rows);
+        accList.setAdapter(psonLoanAlertAdapter);
+
+        psonLoanAlertAdapter.setItemClickListener(position -> {
+            mEdtWriteoffNum.setText(rows.get(position).getCwPnum());
+            mEdtBorrowMoney.setText(rows.get(position).getCwPmoney());
+            mPresenter.getExpMoney(rows.get(position).getCwPnum(), mEdtUnpayed, mEdtPayed);
+            accAlert.dismiss();
+        });
+        accAlert.show();
+    }
+
+    @Override
+    public void showExpMoney(AEExpMoneyResp aeexpMoneyResp, EditText mEdtUnpayed, EditText mEdtPayed) {
+        mEdtUnpayed.setText(aeexpMoneyResp.getUnPay());
+        mEdtPayed.setText(aeexpMoneyResp.getPayed());
     }
 
 

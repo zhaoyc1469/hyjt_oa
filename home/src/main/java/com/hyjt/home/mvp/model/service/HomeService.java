@@ -3,6 +3,7 @@ package com.hyjt.home.mvp.model.service;
 import com.hyjt.frame.api.BaseJson;
 import com.hyjt.home.mvp.model.entity.Reqs.ApplyExpCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.ApplyExpenseListReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.BaseNumReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.ClNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CompLoanContractReqs;
@@ -12,6 +13,7 @@ import com.hyjt.home.mvp.model.entity.Reqs.LUReqsListReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PlNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanListReqs;
+import com.hyjt.home.mvp.model.entity.Resp.AEExpMoneyResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpTypeResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpenseListResp;
@@ -471,9 +473,10 @@ public interface HomeService {
     Observable<BaseJson<Object>> ApplyExpeCreateReqs(@Body ApplyExpCreateReqs applyExpCreateReqs);
 
     //已核销金额及未核销金额计算
-//    @POST("/APICwExpense/GetPayed")
-//
-//    //获取费用类型 接口
+    @POST("/APICwExpense/GetPayed")
+    Observable<BaseJson<AEExpMoneyResp>> getExpMoney(@Body BaseNumReqs baseNumReqs);
+
+    //获取费用类型 接口
     @POST("/APICwExpense/GetCwEmode")
     Observable<BaseJson<ApplyExpTypeResp>> getApplyExpTypeList();
 //

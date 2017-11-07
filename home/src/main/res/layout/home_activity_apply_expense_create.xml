@@ -24,7 +24,15 @@
             android:layout_width="110dp"
             android:layout_height="29dp"
             android:background="@drawable/home_bg_new_btn_common"
-            android:text="@string/home_meeting_save" />
+            android:text="创建" />
+
+        <Button
+            android:id="@+id/btn_compute"
+            android:layout_width="110dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/home_bg_new_btn_common"
+            android:text="计算实付金额" />
 
     </LinearLayout>
 
@@ -280,7 +288,8 @@
                 android:id="@+id/rl_add_writeoff"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/home_bg_white_table">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -302,13 +311,16 @@
                     android:paddingBottom="0dp"
                     android:text="添加" />
 
+
+                <LinearLayout
+                    android:id="@+id/ll_writeoff"
+                    android:layout_below="@id/btn_add_writeoff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
+
             </RelativeLayout>
 
-            <LinearLayout
-                android:id="@+id/ll_writeoff"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"/>
 
 
 
@@ -318,7 +330,8 @@
                 android:id="@+id/rl_add_receive"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/home_bg_white_table">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -356,7 +369,8 @@
                 android:id="@+id/rl_add_file"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/home_bg_white_table">
 
                 <TextView
                     android:layout_width="match_parent"

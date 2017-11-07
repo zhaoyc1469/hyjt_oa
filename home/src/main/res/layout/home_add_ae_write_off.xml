@@ -39,15 +39,32 @@
 
         <TextView
             style="@style/home_tv_new_meeting"
-            android:text="借款单编号" />
+            android:text="借款单选择" />
 
         <View
+            android:layout_marginStart="90dp"
             style="@style/home_common_line"/>
-        <EditText
-            android:id="@+id/edt_writeoff_num"
-            style="@style/home_edt_new_meeting"
-            android:layout_marginLeft="120dp"
-            android:hint="选择借款单编号" />
+
+
+        <Button
+            android:id="@+id/btn_to_comp"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:text="对公借款"/>
+
+        <Button
+            android:id="@+id/btn_to_pson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/btn_to_comp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:text="个人借款"/>
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -58,25 +75,17 @@
 
         <TextView
             style="@style/home_tv_new_meeting"
-            android:text="借款单选择" />
+            android:text="借款单编号" />
 
         <View
+            android:layout_marginStart="90dp"
             style="@style/home_common_line"/>
-
-        <Button
-            android:id="@+id/btn_to_pson"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="0dp"
-            android:paddingBottom="0dp"
-            android:text="个人借款"/>
-
-        <Button
-            android:id="@+id/btn_to_comp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="对公借款"/>
-
+        <EditText
+            android:id="@+id/edt_writeoff_num"
+            style="@style/home_edt_new_meeting"
+            android:layout_marginLeft="95dp"
+            android:hint="选择借款单编号"
+            android:focusable="false"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -90,11 +99,12 @@
             android:text="借款单借款金额" />
 
         <View
+            android:layout_marginStart="120dp"
             style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_borrow_money"
             style="@style/home_edt_new_meeting"
-            android:layout_marginLeft="120dp"
+            android:layout_marginLeft="125dp"
             android:focusable="false"
             android:hint="请输入借款单借款金额" />
     </RelativeLayout>
@@ -110,12 +120,55 @@
             android:text="本次核销金额" />
 
         <View
+            android:layout_marginStart="120dp"
             style="@style/home_common_line"/>
         <EditText
             android:id="@+id/edt_writeoff_money"
             style="@style/home_edt_new_meeting"
-            android:layout_marginLeft="120dp"
+            android:layout_marginLeft="125dp"
             android:hint="请输入本次核销金额" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="未核销金额" />
+
+        <View
+            android:layout_marginStart="120dp"
+            style="@style/home_common_line"/>
+        <EditText
+            android:id="@+id/edt_unpayd"
+            style="@style/home_edt_new_meeting"
+            android:layout_marginLeft="125dp"
+            android:hint="未核销金额"
+            android:focusable="false" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="已核销金额" />
+
+        <View
+            android:layout_marginStart="120dp"
+            style="@style/home_common_line"/>
+        <EditText
+            android:id="@+id/edt_payd"
+            style="@style/home_edt_new_meeting"
+            android:layout_marginLeft="125dp"
+            android:hint="已核销金额"
+            android:focusable="false" />
     </RelativeLayout>
 
 </LinearLayout>
