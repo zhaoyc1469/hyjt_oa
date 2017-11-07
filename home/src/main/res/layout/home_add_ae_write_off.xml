@@ -58,6 +58,35 @@
 
         <TextView
             style="@style/home_tv_new_meeting"
+            android:text="借款单选择" />
+
+        <View
+            style="@style/home_common_line"/>
+
+        <Button
+            android:id="@+id/btn_to_pson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:text="个人借款"/>
+
+        <Button
+            android:id="@+id/btn_to_comp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="对公借款"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
             android:text="借款单借款金额" />
 
         <View
