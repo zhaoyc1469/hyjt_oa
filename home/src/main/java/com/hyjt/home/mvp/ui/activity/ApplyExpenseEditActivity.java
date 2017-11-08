@@ -32,18 +32,23 @@ import com.hyjt.home.di.component.DaggerApplyExpenseEditComponent;
 import com.hyjt.home.di.module.ApplyExpenseEditModule;
 import com.hyjt.home.mvp.contract.ApplyExpenseEditContract;
 import com.hyjt.home.mvp.model.entity.Reqs.ClNodeApproveReqs;
+import com.hyjt.home.mvp.model.entity.Resp.AEExpMoneyResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpTypeResp;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanDetailResp;
+import com.hyjt.home.mvp.model.entity.Resp.CompLoanListResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
+import com.hyjt.home.mvp.model.entity.Resp.PsonLoanListResp;
 import com.hyjt.home.mvp.presenter.ApplyExpenseEditPresenter;
 
 import com.hyjt.home.R;
 import com.hyjt.home.mvp.ui.adapter.ComnStringAdapter;
+import com.hyjt.home.mvp.ui.adapter.CompLoanAlertAdapter;
 import com.hyjt.home.mvp.ui.adapter.FrstLdAdapter;
 import com.hyjt.home.mvp.ui.adapter.PlCompBankActAdapter;
+import com.hyjt.home.mvp.ui.adapter.PsonLoanAlertAdapter;
 
 
 import org.simple.eventbus.EventBus;
@@ -171,9 +176,12 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         mEdtApplyTime.setText(applyExpDetailResp.getSqDate());
         mEdtExpenseReason.setText(applyExpDetailResp.getCwEreason());
         mEdtExpenseAmount.setText(applyExpDetailResp.getCwEmoney());
-//        mRgExpState = (RadioGroup) findViewById(R.id.rg_exp_state);
-//        mRbAgree = (RadioButton) findViewById(R.id.rb_agree);
-//        mRbRefuse = (RadioButton) findViewById(R.id.rb_refuse);
+
+        if ("是".equals(applyExpDetailResp.getCwEWriteoff())){
+            mRbAgree.setChecked(true);
+        } else {
+            mRbRefuse.setChecked(true);
+        }
         mEdtMoneyType.setText(applyExpDetailResp.getCwEmode());
         mEdtExpenseType.setText(applyExpDetailResp.getCwEPayMode());
         mEdtSureMoney.setText(applyExpDetailResp.getCwEPayMoney());
@@ -194,6 +202,9 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             mEdtExpenseType.setFocusable(false);
             mEdtSureMoney.setFocusable(false);
             mEdtRemark.setFocusable(false);
+
+            mRbAgree.setClickable(false);
+            mRbRefuse.setClickable(false);
         } else {
             canEdit = true;
             mEdtCompanyName.setOnClickListener(v -> mPresenter.getAECompany());
@@ -212,6 +223,13 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         for (int position = 0; position < writeOffPack.size(); position++) {
             setWriteOffPack(position);
         }
+
+
+//        .clear();
+//        writeOffPack.addAll(applyExpDetailResp.getWriteOffPack());
+//        for (int position = 0; position < writeOffPack.size(); position++) {
+//            setWriteOffPack(position);
+//        }
 
         if ("审批完成".equals(applyExpDetailResp.getFlowState())) {
             if (!"0".equals(applyExpDetailResp.getCashierQren())) {
@@ -499,8 +517,6 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             this.flowDetailsBean.setFlowid(flowDetailsBean.getFlowid());
             accAlert.dismiss();
         });
-        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(mEdtFristLeader.getWindowToken(), 0);
         accAlert.show();
     }
 
@@ -551,9 +567,75 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             mEdtMoneyType.setText(modePackList.get(position));
             accAlert.dismiss();
         });
-        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(mEdtMoneyType.getWindowToken(), 0);
         accAlert.show();
+    }
+
+    @Override
+    public void showExpPMoneyList(PsonLoanListResp psonLoanListResp, EditText mEdtWriteoffNum, EditText mEdtBorrowMoney, EditText mEdtUnpayed, EditText mEdtPayed) {
+        List<PsonLoanListResp.RowsBean> rows = psonLoanListResp.getRows();
+        if (rows == null || rows.size() == 0) {
+            new AlertDialog.Builder(this).setTitle("提示")
+                    .setMessage("您没有个人借款信息！")
+                    .setPositiveButton("确定", (dialog, which) -> finish()).show();
+            return;
+        }
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
+        dialog.setTitle("选择借款信息");
+        dialog.setView(layout).setCancelable(false)
+                .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
+        AlertDialog accAlert = dialog.create();
+        ListView accList = (ListView) layout.findViewById(R.id.accList);
+
+        PsonLoanAlertAdapter psonLoanAlertAdapter = new PsonLoanAlertAdapter(mContext, rows);
+        accList.setAdapter(psonLoanAlertAdapter);
+
+        psonLoanAlertAdapter.setItemClickListener(position -> {
+            mEdtWriteoffNum.setText(rows.get(position).getCwPnum());
+            mEdtBorrowMoney.setText(rows.get(position).getCwPmoney());
+            mPresenter.getExpMoney(rows.get(position).getCwPnum(), mEdtUnpayed, mEdtPayed);
+            accAlert.dismiss();
+        });
+        accAlert.show();
+    }
+
+    @Override
+    public void showExpCMoneyList(CompLoanListResp compLoanListResp, EditText mEdtWriteoffNum, EditText mEdtBorrowMoney, EditText mEdtUnpayed, EditText mEdtPayed) {
+
+        List<CompLoanListResp.RowsBean> rows = compLoanListResp.getRows();
+        if (rows == null || rows.size() == 0) {
+            new AlertDialog.Builder(this).setTitle("提示")
+                    .setMessage("您没有对公借款信息！")
+                    .setPositiveButton("确定", (dialog, which) -> finish()).show();
+            return;
+        }
+        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
+        dialog.setTitle("选择借款信息");
+        dialog.setView(layout).setCancelable(false)
+                .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
+        AlertDialog accAlert = dialog.create();
+        ListView accList = (ListView) layout.findViewById(R.id.accList);
+
+        CompLoanAlertAdapter compLoanAlertAdapter = new CompLoanAlertAdapter(mContext, rows);
+        accList.setAdapter(compLoanAlertAdapter);
+
+        compLoanAlertAdapter.setItemClickListener(position -> {
+            mEdtWriteoffNum.setText(rows.get(position).getCwCnum());
+            mEdtBorrowMoney.setText(rows.get(position).getCwCmoney());
+            mPresenter.getExpMoney(rows.get(position).getCwCnum(), mEdtUnpayed, mEdtPayed);
+            accAlert.dismiss();
+        });
+        accAlert.show();
+    }
+
+    @Override
+    public void showExpMoney(AEExpMoneyResp aeexpMoneyResp, EditText mEdtUnpayed, EditText mEdtPayed) {
+        mEdtUnpayed.setText(aeexpMoneyResp.getUnPay());
+        mEdtPayed.setText(aeexpMoneyResp.getPayed());
     }
 
 }

@@ -15,14 +15,20 @@ import javax.inject.Inject;
 import com.hyjt.home.mvp.contract.ApplyExpenseEditContract;
 import com.hyjt.home.mvp.model.entity.Reqs.ApplyExpenseListReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.BaseNumReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.ClNodeApproveReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.CompLoanListReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.PsonLoanListReqs;
+import com.hyjt.home.mvp.model.entity.Resp.AEExpMoneyResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpTypeResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpenseListResp;
+import com.hyjt.home.mvp.model.entity.Resp.CompLoanListResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
+import com.hyjt.home.mvp.model.entity.Resp.PsonLoanListResp;
 import com.hyjt.home.mvp.model.service.HomeService;
 
 import io.reactivex.Observable;
@@ -97,6 +103,30 @@ public class ApplyExpenseEditModel extends BaseModel implements ApplyExpenseEdit
         Observable<BaseJson<Object>> receiverConfirm = mRepositoryManager.obtainRetrofitService(HomeService.class)
                 .aeReceiverConfirm(baseIdReqs);
         return receiverConfirm;
+    }
+
+    @Override
+    public Observable<BaseJson<PsonLoanListResp>> getPsonLoanList(PsonLoanListReqs psonLoanListReqs) {
+        Log.e("http_reqs", psonLoanListReqs.toString());
+        Observable<BaseJson<PsonLoanListResp>> psonLoanReqsList = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .psonLoanReqsList(psonLoanListReqs);
+        return psonLoanReqsList;
+    }
+
+    @Override
+    public Observable<BaseJson<CompLoanListResp>> getCompLoanList(CompLoanListReqs compLoanListReqs) {
+        Log.e("http_CompLoan", compLoanListReqs.toString());
+        Observable<BaseJson<CompLoanListResp>> compLoanReqsList = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .compLoanReqsList(compLoanListReqs);
+        return compLoanReqsList;
+}
+
+    @Override
+    public Observable<BaseJson<AEExpMoneyResp>> getExpMoney(BaseNumReqs baseNumReqs) {
+        Log.e("http_BaseNumReqs", baseNumReqs.toString());
+        Observable<BaseJson<AEExpMoneyResp>> aeexpMoneyResp = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .getExpMoney(baseNumReqs);
+        return aeexpMoneyResp;
     }
 
     @Override

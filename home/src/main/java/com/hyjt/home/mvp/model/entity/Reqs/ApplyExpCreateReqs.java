@@ -256,6 +256,16 @@ public class ApplyExpCreateReqs {
         public void setCwRmoney(String cwRmoney) {
             CwRmoney = cwRmoney;
         }
+
+        @Override
+        public String toString() {
+            return "ReceivePackBean{" +
+                    "CwRname='" + CwRname + '\'' +
+                    ", CwRbank='" + CwRbank + '\'' +
+                    ", CwRnum='" + CwRnum + '\'' +
+                    ", CwRmoney='" + CwRmoney + '\'' +
+                    '}';
+        }
     }
 
     @Override
@@ -271,9 +281,9 @@ public class ApplyExpCreateReqs {
                 ", CwEPayMode='" + CwEPayMode + '\'' +
                 ", CwEtext='" + CwEtext + '\'' +
                 ", Flowid='" + Flowid + '\'' +
-                ", FilePack=" + FilePack +
+                ", FilePack=" + FilePack.toString() +
                 ", WriteOffPack=" + WriteOffPack.toString() +
-                ", ReceivePack=" + ReceivePack +
+                ", ReceivePack=" + ReceivePack.toString() +
                 '}';
     }
 }
