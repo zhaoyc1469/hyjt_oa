@@ -181,13 +181,13 @@
                         android:id="@+id/rb_agree"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="同意"
+                        android:text="核销"
                         android:textColor="@color/home_common_000000"/>
                     <RadioButton
                         android:id="@+id/rb_refuse"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="不同意"
+                        android:text="不核销"
                         android:textColor="@color/home_common_000000"/>
                 </RadioGroup>
 
@@ -224,7 +224,8 @@
 
                 <EditText
                     android:id="@+id/edt_sure_money"
-                    style="@style/home_edt_standard" />
+                    style="@style/home_edt_standard"
+                    android:focusable="false"/>
 
                 <View style="@style/home_common_line" />
             </RelativeLayout>
@@ -289,6 +290,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:background="@drawable/home_bg_white_table">
 
                 <TextView
@@ -331,6 +333,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:background="@drawable/home_bg_white_table">
 
                 <TextView
@@ -353,14 +356,14 @@
                     android:paddingBottom="0dp"
                     android:text="添加" />
 
+                <LinearLayout
+                    android:id="@+id/ll_receive"
+                    android:layout_below="@id/btn_add_receive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
+
             </RelativeLayout>
-
-
-            <LinearLayout
-                android:id="@+id/ll_receive"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"/>
 
 
 
@@ -392,15 +395,13 @@
                     android:paddingBottom="0dp"
                     android:text="添加" />
 
+                <LinearLayout
+                    android:id="@+id/ll_file_pack"
+                    android:layout_below="@id/btn_add_file"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
             </RelativeLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_file_pack"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

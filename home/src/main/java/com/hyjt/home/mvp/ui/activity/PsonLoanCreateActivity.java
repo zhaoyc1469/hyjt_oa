@@ -346,7 +346,7 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
         AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
-        dialog.setTitle("选择公司");
+        dialog.setTitle("选择银行账户");
         dialog.setView(layout).setCancelable(false)
                 .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
         AlertDialog accAlert = dialog.create();
@@ -361,8 +361,6 @@ public class PsonLoanCreateActivity extends BaseActivity<PsonLoanCreatePresenter
             mEdtOpenactBank.setText(bankPack.get(position).getBankName());
             accAlert.dismiss();
         });
-        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(mEdtFristLeader.getWindowToken(), 0);
         accAlert.show();
     }
 

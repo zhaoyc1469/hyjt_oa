@@ -16,6 +16,7 @@ import com.hyjt.home.mvp.model.entity.Resp.AEExpMoneyResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpTypeResp;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanListResp;
 import com.hyjt.home.mvp.model.entity.Resp.ImgUploadResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanListResp;
@@ -51,6 +52,8 @@ public interface ApplyExpenseCreateContract {
         void showExpPMoneyList(PsonLoanListResp psonLoanListResp, EditText edtWriteoffNum, EditText mEdtWriteoffNum, EditText mEdtBorrowMoney, EditText mEdtWriteoffMoney);
 
         void showExpMoney(AEExpMoneyResp aeexpMoneyResp, EditText mEdtPayed, EditText payed);
+
+        void showBankAccount(PLBankAccountResp plBankAccountResp, EditText mEdtAccountName, EditText mEdtOpenactBank, EditText mEdtBankAccount);
     }
 
 
@@ -72,5 +75,7 @@ public interface ApplyExpenseCreateContract {
         Observable<BaseJson<CompLoanListResp>> getCompLoanList(CompLoanListReqs compLoanListReqs);
 
         Observable<BaseJson<AEExpMoneyResp>> getExpMoney(BaseNumReqs baseNumReqs);
+
+        Observable<BaseJson<PLBankAccountResp>> getReceiveBank();
     }
 }

@@ -47,6 +47,7 @@ import com.hyjt.home.R;
 import com.hyjt.home.mvp.ui.adapter.CLContractAdapter;
 import com.hyjt.home.mvp.ui.adapter.CLSupplierAdapter;
 import com.hyjt.home.mvp.ui.adapter.ComnStringAdapter;
+import com.hyjt.home.mvp.ui.adapter.FrstLdAdapter;
 import com.hyjt.home.mvp.ui.adapter.PlCompBankActAdapter;
 import com.hyjt.home.mvp.ui.view.DatePickDialog;
 import com.hyjt.home.mvp.ui.view.DateTimePickDialog;
@@ -218,6 +219,8 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
             mEdtRemark.setFocusable(false);
         } else {
             setTimeEdit(mEdtCreditPeriod);
+            mEdtCompanyName.setOnClickListener(v -> mPresenter.getCLCompany());
+            mEdtFristLeader.setOnClickListener(v -> mPresenter.getFristLeader("对公预付款借款"));
             mBtnSelContract.setOnClickListener(v -> mPresenter.getContractList("0"));
             mBtnSelSupplier.setOnClickListener(v -> mPresenter.getSupplierList("1"));
         }
@@ -345,10 +348,45 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
     }
 
     @Override
+    public void loadFlowNode(PLFristLeaderResp plFristLeaderResp) {
+        List<PLFristLeaderResp.FlowDetailsBean> flowDetails = plFristLeaderResp.getFlowDetails();
+        flowDetailsBean = new PLFristLeaderResp.FlowDetailsBean();
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
+        dialog.setTitle("选择首签领导");
+        dialog.setView(layout).setCancelable(false)
+                .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
+        AlertDialog accAlert = dialog.create();
+        ListView accList = (ListView) layout.findViewById(R.id.accList);
+
+        FrstLdAdapter frstLdAdapter = new FrstLdAdapter(mContext, flowDetails);
+        accList.setAdapter(frstLdAdapter);
+
+        frstLdAdapter.setItemClickListener(position -> {
+            PLFristLeaderResp.FlowDetailsBean flowDetailsBean = flowDetails.get(position);
+            mEdtFristLeader.setText(flowDetailsBean.getLeader());
+            this.flowDetailsBean.setFlowid(flowDetailsBean.getFlowid());
+            accAlert.dismiss();
+        });
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(mEdtFristLeader.getWindowToken(), 0);
+        accAlert.show();
+    }
+
+    @Override
     public void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText editText) {
 
         List<PLCompBankAccountResp.BankPackBean> bankPack = compBankAccountResp.getBankPack();
         this.bankPackBean = new PLCompBankAccountResp.BankPackBean();
+
+        if (bankPack == null || bankPack.size() == 0) {
+            new AlertDialog.Builder(this).setTitle("提示")//设置对话框标题
+                    .setMessage("您没有预存银行账户信息！")//设置显示的内容
+                    .setPositiveButton("确定", (dialog, which) -> dialog.dismiss()).show();
+            return;
+        }
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

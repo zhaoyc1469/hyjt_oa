@@ -22,6 +22,7 @@ import com.hyjt.home.mvp.model.entity.Resp.AEExpMoneyResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpTypeResp;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanListResp;
 import com.hyjt.home.mvp.model.entity.Resp.ImgUploadResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanListResp;
@@ -107,5 +108,12 @@ public class ApplyExpenseCreateModel extends BaseModel implements ApplyExpenseCr
         Observable<BaseJson<AEExpMoneyResp>> aeexpMoneyResp = mRepositoryManager.obtainRetrofitService(HomeService.class)
                 .getExpMoney(baseNumReqs);
         return aeexpMoneyResp;
+    }
+
+    @Override
+    public Observable<BaseJson<PLBankAccountResp>> getReceiveBank() {
+        Observable<BaseJson<PLBankAccountResp>> bankAccount = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .psonLoanBankAcount();
+        return bankAccount;
     }
 }

@@ -21,12 +21,13 @@
             android:screenOrientation="portrait" />
 
         <!-- glide配置 -->
-         <!--<meta-data -->
-         <!--android:name="com.hyjt.frame.widget.imageloader.glide.GlideConfiguration" -->
-         <!--android:value="GlideModule" /> -->
+        <!--<meta-data -->
+        <!--android:name="com.hyjt.frame.widget.imageloader.glide.GlideConfiguration" -->
+        <!--android:value="GlideModule" /> -->
 
-        <meta-data android:name="com.hyjt.frame.widget.imageloader.glide.GlideConfigurationg"
-            tools:node="remove"/>
+        <meta-data
+            android:name="com.hyjt.frame.widget.imageloader.glide.GlideConfigurationg"
+            tools:node="remove" />
 
 
         <!-- GlobalConfiguration -->
@@ -164,9 +165,17 @@
             android:name=".mvp.ui.activity.ToCompLoanEditActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
-        <activity android:name=".mvp.ui.activity.ApplyExpenseListActivity" />
-        <activity android:name=".mvp.ui.activity.ApplyExpenseCreateActivity" />
-        <activity android:name=".mvp.ui.activity.ApplyExpenseEditActivity"></activity>
+        <activity
+            android:name=".mvp.ui.activity.ApplyExpenseListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.ApplyExpenseCreateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.ApplyExpenseEditActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
     </application>
 
 </manifest>

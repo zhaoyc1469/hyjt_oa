@@ -19,6 +19,9 @@ public class ApplyExpCreateReqs {
     private String CwEPayMode;
     private String CwEtext;
     private String Flowid;
+    private List<FilePackBean> FilePack;
+    private List<WriteoffPackBean> WriteOffPack;
+    private List<ReceivePackBean> ReceivePack;
 
     public String getCwEcompany() {
         return CwEcompany;
@@ -100,14 +103,28 @@ public class ApplyExpCreateReqs {
         Flowid = flowid;
     }
 
-    private List<FilePackBean> FilePack;
-
     public List<FilePackBean> getFilePack() {
         return FilePack;
     }
 
     public void setFilePack(List<FilePackBean> FilePack) {
         this.FilePack = FilePack;
+    }
+
+    public List<WriteoffPackBean> getWriteoffPack() {
+        return WriteOffPack;
+    }
+
+    public void setWriteoffPack(List<WriteoffPackBean> writeoffPack) {
+        WriteOffPack = writeoffPack;
+    }
+
+    public List<ReceivePackBean> getReceivePack() {
+        return ReceivePack;
+    }
+
+    public void setReceivePack(List<ReceivePackBean> receivePack) {
+        ReceivePack = receivePack;
     }
 
     public static class FilePackBean implements Serializable {
@@ -145,4 +162,118 @@ public class ApplyExpCreateReqs {
         }
     }
 
+    public static class WriteoffPackBean implements Serializable {
+
+        private String CwWid;
+        private String CwWidMoney;
+        private String CwWwiteoffMoney;
+
+        public WriteoffPackBean() {
+        }
+
+        public WriteoffPackBean(String cwWid, String cwWidMoney, String cwWwiteoffMoney) {
+            CwWid = cwWid;
+            CwWidMoney = cwWidMoney;
+            CwWwiteoffMoney = cwWwiteoffMoney;
+        }
+
+        public String getCwWid() {
+            return CwWid;
+        }
+
+        public void setCwWid(String cwWid) {
+            CwWid = cwWid;
+        }
+
+        public String getCwWidMoney() {
+            return CwWidMoney;
+        }
+
+        public void setCwWidMoney(String cwWidMoney) {
+            CwWidMoney = cwWidMoney;
+        }
+
+        public String getCwWwiteoffMoney() {
+            return CwWwiteoffMoney;
+        }
+
+        public void setCwWwiteoffMoney(String cwWwiteoffMoney) {
+            CwWwiteoffMoney = cwWwiteoffMoney;
+        }
+
+        @Override
+        public String toString() {
+            return "WriteoffPackBean{" +
+                    "CwWid='" + CwWid + '\'' +
+                    ", CwWidMoney='" + CwWidMoney + '\'' +
+                    ", CwWwiteoffMoney='" + CwWwiteoffMoney + '\'' +
+                    '}';
+        }
+    }
+
+    public static class ReceivePackBean implements Serializable {
+
+        private String CwRname;
+        private String CwRbank;
+        private String CwRnum;
+        private String CwRmoney;
+
+        public ReceivePackBean(String cwRname, String cwRbank, String cwRnum, String cwRmoney) {
+            CwRname = cwRname;
+            CwRbank = cwRbank;
+            CwRnum = cwRnum;
+            CwRmoney = cwRmoney;
+        }
+
+        public String getCwRname() {
+            return CwRname;
+        }
+
+        public void setCwRname(String cwRname) {
+            CwRname = cwRname;
+        }
+
+        public String getCwRbank() {
+            return CwRbank;
+        }
+
+        public void setCwRbank(String cwRbank) {
+            CwRbank = cwRbank;
+        }
+
+        public String getCwRnum() {
+            return CwRnum;
+        }
+
+        public void setCwRnum(String cwRnum) {
+            CwRnum = cwRnum;
+        }
+
+        public String getCwRmoney() {
+            return CwRmoney;
+        }
+
+        public void setCwRmoney(String cwRmoney) {
+            CwRmoney = cwRmoney;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "ApplyExpCreateReqs{" +
+                "CwEcompany='" + CwEcompany + '\'' +
+                ", CwELeader='" + CwELeader + '\'' +
+                ", CwEreason='" + CwEreason + '\'' +
+                ", CwEmoney='" + CwEmoney + '\'' +
+                ", CwEmode='" + CwEmode + '\'' +
+                ", CwEWriteoff='" + CwEWriteoff + '\'' +
+                ", CwEPayMoney='" + CwEPayMoney + '\'' +
+                ", CwEPayMode='" + CwEPayMode + '\'' +
+                ", CwEtext='" + CwEtext + '\'' +
+                ", Flowid='" + Flowid + '\'' +
+                ", FilePack=" + FilePack +
+                ", WriteOffPack=" + WriteOffPack.toString() +
+                ", ReceivePack=" + ReceivePack +
+                '}';
+    }
 }

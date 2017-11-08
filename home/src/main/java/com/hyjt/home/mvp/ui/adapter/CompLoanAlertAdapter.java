@@ -58,8 +58,8 @@ public class CompLoanAlertAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.mTvPlNum.setText(compList.get(position).getCwCnum());
-        holder.mTvPlAmount.setText(compList.get(position).getCwCmoney());
+        holder.mTvPlNum.setText("借款单编号:" + compList.get(position).getCwCnum());
+        holder.mTvPlAmount.setText("借款金额:" + compList.get(position).getCwCmoney());
         holder.rlItem.setOnClickListener(v -> {
             if (mOnItemClickListener != null) {
                 mOnItemClickListener.onItemClick(position);

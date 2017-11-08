@@ -14,13 +14,13 @@
             android:layout_height='match_parent'
             android:layout_marginLeft='16dp'
             android:layout_centerInParent='true'
-            android:text="核销借款单"
+            android:text="收款账户"
             android:textSize="20sp"
             android:textColor='@color/home_common_000000' />
 
 
         <Button
-            android:id="@+id/btn_del_writeoff"
+            android:id="@+id/btn_del_receive"
             android:layout_width='70dp'
             android:layout_height='wrap_content'
             android:layout_alignParentEnd="true"
@@ -29,6 +29,31 @@
             android:textSize="12sp"
             android:textColor='@color/home_common_FFFFFF' />
 
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/home_bg_white_table">
+
+        <TextView
+            style="@style/home_tv_new_meeting"
+            android:text="选择账户" />
+
+        <View
+            style="@style/home_common_line"/>
+
+
+        <Button
+            android:id="@+id/btn_sel_account"
+            android:layout_width='wrap_content'
+            android:layout_height='wrap_content'
+            android:layout_alignParentEnd="true"
+            android:text="选择银行账户"
+            android:layout_marginEnd="10dp"
+            android:textSize="12sp"
+            android:textColor='@color/home_common_FFFFFF' />
     </RelativeLayout>
 
     <RelativeLayout
@@ -64,7 +89,6 @@
         <EditText
             android:id="@+id/edt_openact_bank"
             style="@style/home_edt_new_meeting"
-            android:focusable="false"
             android:hint="请输入开户银行" />
     </RelativeLayout>
 
@@ -83,7 +107,6 @@
         <EditText
             android:id="@+id/edt_bank_account"
             style="@style/home_edt_new_meeting"
-            android:focusable="false"
             android:hint="请输入银行账号" />
     </RelativeLayout>
 
@@ -102,6 +125,7 @@
         <EditText
             android:id="@+id/edt_money"
             style="@style/home_edt_new_meeting"
+            android:inputType="number"
             android:hint="请输入汇款金额" />
     </RelativeLayout>
 

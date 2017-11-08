@@ -383,6 +383,13 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         List<PLCompBankAccountResp.BankPackBean> bankPack = compBankAccountResp.getBankPack();
         this.bankPackBean = new PLCompBankAccountResp.BankPackBean();
 
+        if (bankPack == null || bankPack.size() == 0) {
+            new AlertDialog.Builder(this).setTitle("提示")//设置对话框标题
+                    .setMessage("您没有预存银行账户信息！")//设置显示的内容
+                    .setPositiveButton("确定", (dialog, which) -> dialog.dismiss()).show();
+            return;
+        }
+
         AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);

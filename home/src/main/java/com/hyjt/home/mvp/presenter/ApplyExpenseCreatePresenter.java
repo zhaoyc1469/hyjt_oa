@@ -40,6 +40,7 @@ import com.hyjt.home.mvp.model.entity.Resp.AEExpMoneyResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpTypeResp;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanListResp;
 import com.hyjt.home.mvp.model.entity.Resp.ImgUploadResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanListResp;
@@ -135,6 +136,25 @@ public class ApplyExpenseCreatePresenter extends BasePresenter<ApplyExpenseCreat
     }
 
 
+    public void getReceiveBank(EditText mEdtAccountName, EditText mEdtOpenactBank, EditText mEdtBankAccount){
+
+        mModel.getReceiveBank()
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<PLBankAccountResp>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull PLBankAccountResp plBankAccountResp) {
+                        mRootView.showBankAccount(plBankAccountResp, mEdtAccountName, mEdtOpenactBank, mEdtBankAccount);
+                    }
+                });
+    }
+
+
     public void sendFile(ArrayList<Uri> mFileURLList) {
         List<ImgUploadResp> ImgUploadList = new ArrayList<>();
         // 请求外部存储权限用于适配android6.0的权限管理机制
@@ -199,7 +219,7 @@ public class ApplyExpenseCreatePresenter extends BasePresenter<ApplyExpenseCreat
 
 
     public void createApplyExp(ApplyExpCreateReqs applyExpCreateReqs) {
-
+        Log.e("http_reqs", applyExpCreateReqs.toString());
         mModel.createApplyExp(applyExpCreateReqs)
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())

@@ -32,6 +32,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_sel_act"
         android:layout_width="match_parent"
         android:layout_height="34dp"
         android:layout_marginTop="6dp"
@@ -126,6 +127,7 @@
             android:id="@+id/edt_writeoff_money"
             style="@style/home_edt_new_meeting"
             android:layout_marginLeft="125dp"
+            android:inputType="number"
             android:hint="请输入本次核销金额" />
     </RelativeLayout>
 

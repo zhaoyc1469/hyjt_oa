@@ -60,8 +60,8 @@ public class PsonLoanAlertAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.mTvPlNum.setText(psonList.get(position).getCwPnum());
-        holder.mTvPlAmount.setText(psonList.get(position).getCwPmoney());
+        holder.mTvPlNum.setText("借款单编号:" + psonList.get(position).getCwPnum());
+        holder.mTvPlAmount.setText("借款金额:" + psonList.get(position).getCwPmoney());
         holder.rlItem.setOnClickListener(v -> {
             if (mOnItemClickListener != null) {
                 mOnItemClickListener.onItemClick(position);

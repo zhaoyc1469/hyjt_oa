@@ -10,39 +10,37 @@ public class ApplyExpDetailResp {
 
 
     /**
-     * Id : 201709271058014523334cd29da064c
-     * CwEnum : FYBX20170927-0004
-     * SqDate : 2017/9/27 10:58:01
-     * CwEpersonal : 孙燚龙
-     * CwEcompany : 辽宁环宇矿业咨询有限公司
+     * Id : 201711081146429770889d4053686fc
+     * CwEnum : FYBX20171108-0009
+     * SqDate : 2017/11/8 11:46:42
+     * CwEpersonal : 李大鹏
+     * CwEcompany : 辽宁环宇工程咨询管理有限公司
      * CwEdepartment : 信息技术部
      * CwELeader : 李大鹏
-     * CwEmoney : ￥8,000.00
+     * CwEreason : 哈哈哈哈
+     * CwEmoney : ￥555,555.00
+     * CwEmode : 办公费
      * CwEWriteoff : 是
-     * CwEPayMoney : ￥0
-     * CwEPayMode : 现金
-     * CwBname : 建设银行
-     * CashierQren : /Upload/20170509103044154.jpg
-     * CashQrenTime : 2017/9/27 11:06:53
-     * CwEpersonalQren :
-     * PersonalQrenTime : 2017/9/27 11:08:06
-     * FlowState : 审批完成
-     * Flowid : 201709271058014898338ab536ddc52
-     * CwEState : 收款人已确认
-     * CurrentPerson :
-     * NodePerson : 李大鹏 '龙悦'胡成良'张斌'
-     * CwBnum : 121212
+     * CwEtext : 近近景近景
+     * CwEPayMoney : ￥554933
+     * CwEPayMode : 转账
+     * CashierQren : 0
+     * CwEpersonalQren : 0
+     * FlowState : 审批中
+     * Flowid : 2017110811464298508933ba23a32a9
+     * CwEState : 提交
+     * CurrentPerson : 李大鹏
      * CwExpenseReceipt : System.Data.Objects.DataClasses.EntityCollection`1[DAL.CwExpenseReceipt]
      * CwFileUploader : System.Data.Objects.DataClasses.EntityCollection`1[DAL.CwFileUploader]
      * CwFileUploader1Reference : System.Data.Objects.DataClasses.EntityReference`1[DAL.CwFileUploader]
      * CwWriteOff : System.Data.Objects.DataClasses.EntityCollection`1[DAL.CwWriteOff]
      * FileUploader : System.Data.Objects.DataClasses.EntityCollection`1[DAL.FileUploader]
-     * EntityState : Modified
+     * EntityState : Unchanged
      * EntityKey : System.Data.EntityKey
-     * WriteOffPack : [{"CwWid":"DGYFKD20170927-0002","CwWidMoney":"￥8000","Payed":"￥8000","UnPayed":"￥0","CwWwiteoffMoney":"￥8000"}]
+     * WriteOffPack : [{"CwWid":"DGYFKD20171029-0008","CwWidMoney":"￥5555","Payed":"￥0","UnPayed":"￥5555","CwWwiteoffMoney":"￥556"},{"CwWid":"DGYFKD20171029-0007","CwWidMoney":"￥1556","Payed":"￥0","UnPayed":"￥1556","CwWwiteoffMoney":"￥66"}]
      * ReceivePack : []
-     * FilePack : []
-     * FlowPack : [{"NodeName":"首签领导","NodePerson":"李大鹏","NodeSign":"/Upload/2017021410336078.jpg","NodeMemo":"同意","NodeMemotext":"ok","IsBank":"0","CwBname":"","CwBnum":""},{"NodeName":"总经理","NodePerson":"龙悦","NodeSign":"/Upload/20170511093651105.jpg","NodeMemo":"同意","NodeMemotext":"ok2","IsBank":"0","CwBname":"","CwBnum":""},{"NodeName":"董事长","NodePerson":"胡成良","NodeSign":"/Upload/20170509033410580.jpg","NodeMemo":"同意","NodeMemotext":"","IsBank":"0","CwBname":"","CwBnum":""},{"NodeName":"财务部","NodePerson":"张斌","NodeSign":"/Upload/20170509103633667.jpg","NodeMemo":"同意","NodeMemotext":"","IsBank":"1","CwBname":"建设银行","CwBnum":"121212"}]
+     * FilePack : [{"FileId":"2017110811464275207609ef7139799","FileName":"Screenshot_20171107-082838.png","FilePath":"/up/2017110811464275207609ef7139799Screenshot_20171107-082838.png"}]
+     * FlowPack : [{"NodeName":"首签领导","NodePerson":"李大鹏","NodeSign":"/Upload/2017021410336078.jpg","NodeMemo":null,"NodeMemotext":null,"IsBank":"0","CwBname":null,"CwBnum":null},{"NodeName":"总经理","NodePerson":"龙悦","NodeSign":"/Upload/20170511093651105.jpg","NodeMemo":null,"NodeMemotext":null,"IsBank":"0","CwBname":null,"CwBnum":null},{"NodeName":"董事长","NodePerson":"胡成良","NodeSign":"/Upload/20170509033410580.jpg","NodeMemo":null,"NodeMemotext":null,"IsBank":"0","CwBname":null,"CwBnum":null},{"NodeName":"财务部","NodePerson":"张斌","NodeSign":"/Upload/20170509103633667.jpg","NodeMemo":null,"NodeMemotext":null,"IsBank":"1","CwBname":null,"CwBnum":null}]
      */
 
     private String Id;
@@ -52,21 +50,19 @@ public class ApplyExpDetailResp {
     private String CwEcompany;
     private String CwEdepartment;
     private String CwELeader;
+    private String CwEreason;
     private String CwEmoney;
+    private String CwEmode;
     private String CwEWriteoff;
+    private String CwEtext;
     private String CwEPayMoney;
     private String CwEPayMode;
-    private String CwBname;
     private String CashierQren;
-    private String CashQrenTime;
     private String CwEpersonalQren;
-    private String PersonalQrenTime;
     private String FlowState;
     private String Flowid;
     private String CwEState;
     private String CurrentPerson;
-    private String NodePerson;
-    private String CwBnum;
     private String CwExpenseReceipt;
     private String CwFileUploader;
     private String CwFileUploader1Reference;
@@ -76,7 +72,7 @@ public class ApplyExpDetailResp {
     private String EntityKey;
     private List<WriteOffPackBean> WriteOffPack;
     private List<?> ReceivePack;
-    private List<?> FilePack;
+    private List<FilePackBean> FilePack;
     private List<FlowPackBean> FlowPack;
 
     public String getId() {
@@ -135,6 +131,14 @@ public class ApplyExpDetailResp {
         this.CwELeader = CwELeader;
     }
 
+    public String getCwEreason() {
+        return CwEreason;
+    }
+
+    public void setCwEreason(String CwEreason) {
+        this.CwEreason = CwEreason;
+    }
+
     public String getCwEmoney() {
         return CwEmoney;
     }
@@ -143,12 +147,28 @@ public class ApplyExpDetailResp {
         this.CwEmoney = CwEmoney;
     }
 
+    public String getCwEmode() {
+        return CwEmode;
+    }
+
+    public void setCwEmode(String CwEmode) {
+        this.CwEmode = CwEmode;
+    }
+
     public String getCwEWriteoff() {
         return CwEWriteoff;
     }
 
     public void setCwEWriteoff(String CwEWriteoff) {
         this.CwEWriteoff = CwEWriteoff;
+    }
+
+    public String getCwEtext() {
+        return CwEtext;
+    }
+
+    public void setCwEtext(String CwEtext) {
+        this.CwEtext = CwEtext;
     }
 
     public String getCwEPayMoney() {
@@ -167,14 +187,6 @@ public class ApplyExpDetailResp {
         this.CwEPayMode = CwEPayMode;
     }
 
-    public String getCwBname() {
-        return CwBname;
-    }
-
-    public void setCwBname(String CwBname) {
-        this.CwBname = CwBname;
-    }
-
     public String getCashierQren() {
         return CashierQren;
     }
@@ -183,28 +195,12 @@ public class ApplyExpDetailResp {
         this.CashierQren = CashierQren;
     }
 
-    public String getCashQrenTime() {
-        return CashQrenTime;
-    }
-
-    public void setCashQrenTime(String CashQrenTime) {
-        this.CashQrenTime = CashQrenTime;
-    }
-
     public String getCwEpersonalQren() {
         return CwEpersonalQren;
     }
 
     public void setCwEpersonalQren(String CwEpersonalQren) {
         this.CwEpersonalQren = CwEpersonalQren;
-    }
-
-    public String getPersonalQrenTime() {
-        return PersonalQrenTime;
-    }
-
-    public void setPersonalQrenTime(String PersonalQrenTime) {
-        this.PersonalQrenTime = PersonalQrenTime;
     }
 
     public String getFlowState() {
@@ -237,22 +233,6 @@ public class ApplyExpDetailResp {
 
     public void setCurrentPerson(String CurrentPerson) {
         this.CurrentPerson = CurrentPerson;
-    }
-
-    public String getNodePerson() {
-        return NodePerson;
-    }
-
-    public void setNodePerson(String NodePerson) {
-        this.NodePerson = NodePerson;
-    }
-
-    public String getCwBnum() {
-        return CwBnum;
-    }
-
-    public void setCwBnum(String CwBnum) {
-        this.CwBnum = CwBnum;
     }
 
     public String getCwExpenseReceipt() {
@@ -327,11 +307,11 @@ public class ApplyExpDetailResp {
         this.ReceivePack = ReceivePack;
     }
 
-    public List<?> getFilePack() {
+    public List<FilePackBean> getFilePack() {
         return FilePack;
     }
 
-    public void setFilePack(List<?> FilePack) {
+    public void setFilePack(List<FilePackBean> FilePack) {
         this.FilePack = FilePack;
     }
 
@@ -345,11 +325,11 @@ public class ApplyExpDetailResp {
 
     public static class WriteOffPackBean {
         /**
-         * CwWid : DGYFKD20170927-0002
-         * CwWidMoney : ￥8000
-         * Payed : ￥8000
-         * UnPayed : ￥0
-         * CwWwiteoffMoney : ￥8000
+         * CwWid : DGYFKD20171029-0008
+         * CwWidMoney : ￥5555
+         * Payed : ￥0
+         * UnPayed : ￥5555
+         * CwWwiteoffMoney : ￥556
          */
 
         private String CwWid;
@@ -399,16 +379,52 @@ public class ApplyExpDetailResp {
         }
     }
 
+    public static class FilePackBean {
+        /**
+         * FileId : 2017110811464275207609ef7139799
+         * FileName : Screenshot_20171107-082838.png
+         * FilePath : /up/2017110811464275207609ef7139799Screenshot_20171107-082838.png
+         */
+
+        private String FileId;
+        private String FileName;
+        private String FilePath;
+
+        public String getFileId() {
+            return FileId;
+        }
+
+        public void setFileId(String FileId) {
+            this.FileId = FileId;
+        }
+
+        public String getFileName() {
+            return FileName;
+        }
+
+        public void setFileName(String FileName) {
+            this.FileName = FileName;
+        }
+
+        public String getFilePath() {
+            return FilePath;
+        }
+
+        public void setFilePath(String FilePath) {
+            this.FilePath = FilePath;
+        }
+    }
+
     public static class FlowPackBean {
         /**
          * NodeName : 首签领导
          * NodePerson : 李大鹏
          * NodeSign : /Upload/2017021410336078.jpg
-         * NodeMemo : 同意
-         * NodeMemotext : ok
+         * NodeMemo : null
+         * NodeMemotext : null
          * IsBank : 0
-         * CwBname :
-         * CwBnum :
+         * CwBname : null
+         * CwBnum : null
          */
 
         private String NodeName;
@@ -444,7 +460,7 @@ public class ApplyExpDetailResp {
             this.NodeSign = NodeSign;
         }
 
-        public String getNodeMemo() {
+        public String  getNodeMemo() {
             return NodeMemo;
         }
 

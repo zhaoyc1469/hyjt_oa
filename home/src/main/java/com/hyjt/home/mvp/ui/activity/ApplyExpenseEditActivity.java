@@ -98,8 +98,11 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
     private String currentPerson = "";
     private List<ApplyExpDetailResp.FlowPackBean> flowPack = new ArrayList<>();
     private List<ApplyExpDetailResp.WriteOffPackBean> writeOffPack = new ArrayList<>();
+    //    private List<ApplyExpDetailResp> filePack = new ArrayList<>();
+    private List<ApplyExpDetailResp.FilePackBean> filePack = new ArrayList<>();
     private PLFristLeaderResp.FlowDetailsBean flowDetailsBean = new PLFristLeaderResp.FlowDetailsBean();
     private EditText mEdtMoneyType;
+    private boolean canEdit;
     //    private List<ApplyExpDetailResp.ReceivePack> writeOffPack = new ArrayList<>();
 
     @Override
@@ -166,19 +169,20 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         mEdtCompanyName.setText(applyExpDetailResp.getCwEcompany());
         mEdtFristLeader.setText(applyExpDetailResp.getCwELeader());
         mEdtApplyTime.setText(applyExpDetailResp.getSqDate());
-
-//        mEdtExpenseReason = (EditText) findViewById(R.id.edt_expense_reason);
+        mEdtExpenseReason.setText(applyExpDetailResp.getCwEreason());
         mEdtExpenseAmount.setText(applyExpDetailResp.getCwEmoney());
-//        mEdtExpenseType.setText(applyExpDetailResp.getCwE());
 //        mRgExpState = (RadioGroup) findViewById(R.id.rg_exp_state);
 //        mRbAgree = (RadioButton) findViewById(R.id.rb_agree);
 //        mRbRefuse = (RadioButton) findViewById(R.id.rb_refuse);
+        mEdtMoneyType.setText(applyExpDetailResp.getCwEmode());
         mEdtExpenseType.setText(applyExpDetailResp.getCwEPayMode());
         mEdtSureMoney.setText(applyExpDetailResp.getCwEPayMoney());
-        mEdtRemark.setText(applyExpDetailResp.getCwEPayMode());
+        mEdtRemark.setText(applyExpDetailResp.getCwEtext());
 
         if (!"提交".equals(applyExpDetailResp.getCwEState()) ||
                 !"1".equals(applyExpType)) {
+
+            canEdit = false;
             mLlBottomBtn.setVisibility(View.GONE);
             mEdtProposer.setFocusable(false);
             mEdtApplyTime.setFocusable(false);
@@ -191,6 +195,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             mEdtSureMoney.setFocusable(false);
             mEdtRemark.setFocusable(false);
         } else {
+            canEdit = true;
             mEdtCompanyName.setOnClickListener(v -> mPresenter.getAECompany());
             mEdtFristLeader.setOnClickListener(v -> mPresenter.getFristLeader("费用报销"));
             mEdtMoneyType.setOnClickListener(v -> mPresenter.getExpType());
@@ -200,6 +205,12 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         flowPack.addAll(applyExpDetailResp.getFlowPack());
         for (int position = 0; position < flowPack.size(); position++) {
             setFlowPack(position);
+        }
+
+        writeOffPack.clear();
+        writeOffPack.addAll(applyExpDetailResp.getWriteOffPack());
+        for (int position = 0; position < writeOffPack.size(); position++) {
+            setWriteOffPack(position);
         }
 
         if ("审批完成".equals(applyExpDetailResp.getFlowState())) {
@@ -311,7 +322,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             mRlRemark.setVisibility(View.VISIBLE);
             mLlAccount.setVisibility(View.GONE);
         }
-        mBtnSelAct.setOnClickListener(v -> mPresenter.selApplyExpBankAct(mEdtSendAccount));
+//        mBtnSelAct.setOnClickListener(v -> mPresenter.selApplyExpBankAct(mEdtSendAccount));
 
         if ("同意".equals(flowPackBean.getNodeMemo())) {
             mTvAprState.setVisibility(View.VISIBLE);
@@ -398,6 +409,44 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         mLlFlowNode.addView(inflate);
     }
 
+    private void setWriteOffPack(int position) {
+        View inflate = LayoutInflater.from(this).inflate(R.layout.home_add_ae_write_off, null);
+        ApplyExpDetailResp.WriteOffPackBean writeOffPackBean = writeOffPack.get(position);
+
+        RelativeLayout mRlSelAct = (RelativeLayout) inflate.findViewById(R.id.rl_sel_act);
+        EditText mEdtWriteoffNum = (EditText) inflate.findViewById(R.id.edt_writeoff_num);
+        EditText mEdtBorrowMoney = (EditText) inflate.findViewById(R.id.edt_borrow_money);
+        EditText mEdtUnpayed = (EditText) inflate.findViewById(R.id.edt_unpayd);
+        EditText mEdtPayed = (EditText) inflate.findViewById(R.id.edt_payd);
+        EditText mEdtWriteoffMoney = (EditText) inflate.findViewById(R.id.edt_writeoff_money);
+        Button mBtnToComp = (Button) inflate.findViewById(R.id.btn_to_comp);
+        Button mBtnToPson = (Button) inflate.findViewById(R.id.btn_to_pson);
+        mEdtWriteoffNum.setText(writeOffPackBean.getCwWid());
+        mEdtBorrowMoney.setText(writeOffPackBean.getCwWidMoney());
+        mEdtUnpayed.setText(writeOffPackBean.getUnPayed());
+        mEdtPayed.setText(writeOffPackBean.getPayed());
+        mEdtWriteoffMoney.setText(writeOffPackBean.getCwWwiteoffMoney());
+
+        //删除布局
+        Button delWriteoff = (Button) inflate.findViewById(R.id.btn_del_writeoff);
+        delWriteoff.setVisibility(View.GONE);
+        delWriteoff.setOnClickListener(v -> mLlWriteoff.removeView(inflate));
+
+        if (canEdit) {
+            mBtnToComp.setOnClickListener(v -> mPresenter.getCompLoanList(mEdtWriteoffNum, mEdtBorrowMoney, mEdtUnpayed, mEdtPayed));
+            mBtnToPson.setOnClickListener(v -> mPresenter.getPsonLoanList(mEdtWriteoffNum, mEdtBorrowMoney, mEdtUnpayed, mEdtPayed));
+
+        } else {
+            mRlSelAct.setVisibility(View.GONE);
+            delWriteoff.setVisibility(View.GONE);
+            mEdtWriteoffMoney.setFocusable(false);
+        }
+
+        mLlWriteoff.addView(inflate);
+        mSlvApplyexp.fullScroll(ScrollView.FOCUS_DOWN);
+
+    }
+
     @Override
     public void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText editText) {
 
@@ -423,8 +472,6 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             this.bankPackBean.setBankNum(flowDetailsBean.getBankNum());
             accAlert.dismiss();
         });
-        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
         accAlert.show();
     }
 

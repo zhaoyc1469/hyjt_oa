@@ -20,6 +20,7 @@ import com.hyjt.frame.utils.RxLifecycleUtils;
 import com.hyjt.frame.widget.imageloader.ImageLoader;
 import com.hyjt.home.mvp.contract.ToCompLoanEditContract;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.ClNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CompLoanContractReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CompLoanCreateReqs;
@@ -28,6 +29,8 @@ import com.hyjt.home.mvp.model.entity.Resp.CompLoanDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.CpContractListResp;
 import com.hyjt.home.mvp.model.entity.Resp.CpSupplierListResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 
 
@@ -211,6 +214,39 @@ public class ToCompLoanEditPresenter extends BasePresenter<ToCompLoanEditContrac
                     @Override
                     public void onNext(@NonNull CpSupplierListResp cpSupplierListResp) {
                         mRootView.showSupplierList(cpSupplierListResp);
+                    }
+                });
+    }
+
+
+
+    public void getFristLeader(String clType) {
+        mModel.getFristLeader(new BaseTypeReqs(clType))
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> mRootView.hideLoading())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ErrorHandleSubscriber<PLFristLeaderResp>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull PLFristLeaderResp plFristLeaderResp) {
+                        mRootView.loadFlowNode(plFristLeaderResp);
+                    }
+                });
+    }
+
+    public void getCLCompany() {
+        mModel.getCompany()
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> mRootView.hideLoading())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<PLCompanyResp>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull PLCompanyResp plCompanyResp) {
+
                     }
                 });
     }

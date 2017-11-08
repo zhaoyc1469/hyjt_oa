@@ -7,6 +7,7 @@ import com.hyjt.frame.api.BaseJson;
 import com.hyjt.frame.mvp.IModel;
 import com.hyjt.frame.mvp.IView;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
+import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.ClNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CompLoanContractReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CompLoanCreateReqs;
@@ -16,6 +17,8 @@ import com.hyjt.home.mvp.model.entity.Resp.CpContractListResp;
 import com.hyjt.home.mvp.model.entity.Resp.CpSupplierListResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 
 import io.reactivex.Observable;
@@ -33,6 +36,8 @@ public interface ToCompLoanEditContract {
         void showContractList(CpContractListResp cpContractListResp);
 
         void showSupplierList(CpSupplierListResp cpSupplierListResp);
+
+        void loadFlowNode(PLFristLeaderResp plFristLeaderResp);
     }
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存
@@ -55,6 +60,10 @@ public interface ToCompLoanEditContract {
         Observable<BaseJson<CpContractListResp>> getCLContractList(CompLoanContractReqs compLoanContractReqs);
 
         Observable<BaseJson<CpSupplierListResp>> getCLSupplierList(CompLoanContractReqs compLoanContractReqs);
+
+        Observable<BaseJson<PLCompanyResp>> getCompany();
+
+        Observable<BaseJson<PLFristLeaderResp>> getFristLeader(BaseTypeReqs baseTypeReqs);
 
 
     }
