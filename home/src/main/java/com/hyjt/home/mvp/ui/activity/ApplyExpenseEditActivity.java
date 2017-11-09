@@ -7,7 +7,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -38,6 +40,7 @@ import com.hyjt.home.mvp.model.entity.Resp.AEExpMoneyResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpTypeResp;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanListResp;
+import com.hyjt.home.mvp.model.entity.Resp.ImgUploadResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
@@ -52,6 +55,8 @@ import com.hyjt.home.mvp.ui.adapter.CompLoanAlertAdapter;
 import com.hyjt.home.mvp.ui.adapter.FrstLdAdapter;
 import com.hyjt.home.mvp.ui.adapter.PlCompBankActAdapter;
 import com.hyjt.home.mvp.ui.adapter.PsonLoanAlertAdapter;
+import com.hyjt.home.mvp.ui.view.Constant;
+import com.hyjt.home.mvp.ui.view.GetSingleSelectItem;
 
 
 import org.simple.eventbus.EventBus;
@@ -116,6 +121,11 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
     private List<ApplyExpCreateReqs.WriteoffPackBean> WriteoffList = new ArrayList<>();
     private List<ApplyExpCreateReqs.ReceivePackBean> ReceiveList = new ArrayList<>();
     private ApplyExpCreateReqs applyExpCreateReqs;
+    private RelativeLayout mRlAddReceive;
+    private Button mBtnAddReceive;
+    private RelativeLayout mRlAddFile;
+    private TextView mTvFilePack;
+    private Button mBtnAddFile;
     //    private List<ApplyExpDetailResp.ReceivePack> writeOffPack = new ArrayList<>();
 
     @Override
@@ -213,8 +223,33 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
 
             mRbAgree.setClickable(false);
             mRbRefuse.setClickable(false);
+
+            mBtnAddReceive.setVisibility(View.GONE);
+            mBtnAddFile.setVisibility(View.GONE);
         } else {
             canEdit = true;
+            mEdtExpenseType.setOnTouchListener(new GetSingleSelectItem(
+                    this, mEdtExpenseType, "支付方式", Constant.payTypeArr, false));
+
+            mEdtExpenseType.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    if ("转账".equals(s.toString())) {
+                        mRlAddReceive.setVisibility(View.VISIBLE);
+                    } else if ("现金".equals(s.toString())) {
+                        mRlAddReceive.setVisibility(View.GONE);
+                    }
+                }
+            });
+
             mEdtCompanyName.setOnClickListener(v -> mPresenter.getAECompany());
             mEdtFristLeader.setOnClickListener(v -> mPresenter.getFristLeader("费用报销"));
             mEdtMoneyType.setOnClickListener(v -> mPresenter.getExpType());
@@ -235,6 +270,8 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
 
         receivePack.clear();
         receivePack.addAll(applyExpDetailResp.getReceivePack());
+        if (receivePack.size() > 0)
+            mRlAddReceive.setVisibility(View.VISIBLE);
         for (int position = 0; position < receivePack.size(); position++) {
             setReceivePack(position);
         }
@@ -246,6 +283,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         }
 
         if ("审批完成".equals(applyExpDetailResp.getFlowState())) {
+
             if (!"0".equals(applyExpDetailResp.getCashierQren())) {
                 mBtnTellerConfirm.setVisibility(View.GONE);
                 Glide.with(this).load(getString(R.string.home_base_url) +
@@ -329,6 +367,11 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         mIvReceiverSign = (ImageView) findViewById(R.id.iv_receiver_sign);
         mBtnReceiverConfirm = (Button) findViewById(R.id.btn_receiver_confirm);
         mEdtMoneyType = (EditText) findViewById(R.id.edt_money_type);
+        mRlAddReceive = (RelativeLayout) findViewById(R.id.rl_add_receive);
+        mBtnAddReceive = (Button) findViewById(R.id.btn_add_receive);
+        mRlAddFile = (RelativeLayout) findViewById(R.id.rl_add_file);
+        mTvFilePack = (TextView) findViewById(R.id.tv_file_pack);
+        mBtnAddFile = (Button) findViewById(R.id.btn_add_file);
     }
 
     private void checkEditExp() {
@@ -441,6 +484,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
 //                    } else {
 //                        fileUploadOk(new ArrayList<>());
 //                    }
+                    fileUploadOk(new ArrayList<>());
                 }).setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
         builder.show();
 
@@ -478,7 +522,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             mRlRemark.setVisibility(View.VISIBLE);
             mLlAccount.setVisibility(View.GONE);
         }
-//        mBtnSelAct.setOnClickListener(v -> mPresenter.selApplyExpBankAct(mEdtSendAccount));
+        mBtnSelAct.setOnClickListener(v -> mPresenter.selApplyExpBankAct(mEdtSendAccount));
 
         if ("同意".equals(flowPackBean.getNodeMemo())) {
             mTvAprState.setVisibility(View.VISIBLE);
@@ -854,6 +898,36 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             accAlert.dismiss();
         });
         accAlert.show();
+    }
+
+
+    @Override
+    public void fileUploadOk(List<ImgUploadResp> imgUploadList) {
+
+        if (imgUploadList.size() > 0) {
+            for (int i = 0; i < imgUploadList.size(); i++) {
+                FileList.add(new ApplyExpCreateReqs.FilePackBean(imgUploadList.get(i).getId()
+                        , imgUploadList.get(i).getName()));
+            }
+        }
+
+        applyExpCreateReqs.setCwEcompany(mEdtCompanyName.getText().toString().trim());
+        applyExpCreateReqs.setCwELeader(mEdtFristLeader.getText().toString().trim());
+        applyExpCreateReqs.setCwEreason(mEdtExpenseReason.getText().toString().trim());
+        applyExpCreateReqs.setCwEmoney(mEdtExpenseAmount.getText().toString().trim());
+        applyExpCreateReqs.setCwEmode(mEdtMoneyType.getText().toString().trim());
+        applyExpCreateReqs.setCwEWriteoff(mRbRefuse.isChecked() ? "否" : "是");
+        applyExpCreateReqs.setCwEPayMode(mEdtExpenseType.getText().toString().trim());
+        applyExpCreateReqs.setCwEPayMoney(mEdtSureMoney.getText().toString().trim());
+        applyExpCreateReqs.setCwEtext(mEdtRemark.getText().toString().trim());
+        applyExpCreateReqs.setFlowid(flowDetailsBean.getFlowid());
+        applyExpCreateReqs.setWriteoffPack(WriteoffList);
+        applyExpCreateReqs.setReceivePack(ReceiveList);
+        applyExpCreateReqs.setFilePack(FileList);
+
+
+        mPresenter.editApplyExp(applyExpCreateReqs);
+
     }
 
 }

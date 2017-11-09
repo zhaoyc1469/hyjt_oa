@@ -304,24 +304,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
 
-            <LinearLayout
-                android:id="@+id/ll_writeoff"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-
-            <LinearLayout
-                android:id="@+id/ll_receiver"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-
-            <LinearLayout
-                android:id="@+id/ll_file_pack"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-
             <RelativeLayout
                 android:id="@+id/rl_send_account"
                 android:layout_width="match_parent"
@@ -437,6 +419,90 @@
                     android:layout_height="47dp"
                     android:layout_marginStart="86dp"
                     android:background="#000000" />
+            </RelativeLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/ll_writeoff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+
+
+            <RelativeLayout
+                android:id="@+id/rl_add_receive"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    android:id="@+id/tv_receiver_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="收款信息列表"
+                    android:textColor="@color/home_common_000000"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_add_receive"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:text="添加" />
+
+                <LinearLayout
+                    android:id="@+id/ll_receiver"
+                    android:layout_below="@id/tv_receiver_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_add_file"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    android:id="@+id/tv_file_pack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="附件列表"
+                    android:textColor="@color/home_common_000000"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_add_file"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:text="添加" />
+
+                <LinearLayout
+                    android:id="@+id/ll_file_pack"
+                    android:layout_below="@id/tv_file_pack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
             </RelativeLayout>
 
             <RelativeLayout

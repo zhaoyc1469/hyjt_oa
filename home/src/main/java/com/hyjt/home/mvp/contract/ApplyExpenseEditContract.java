@@ -17,11 +17,14 @@ import com.hyjt.home.mvp.model.entity.Resp.AEExpMoneyResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpTypeResp;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanListResp;
+import com.hyjt.home.mvp.model.entity.Resp.ImgUploadResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanListResp;
+
+import java.util.List;
 
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
@@ -42,6 +45,8 @@ public interface ApplyExpenseEditContract {
         void loadFlowNode(PLFristLeaderResp plFristLeaderResp);
 
         void showCompanyList(PLCompanyResp plCompanyResp);
+
+        void fileUploadOk(List<ImgUploadResp> imgUploadList);
 
         void showExpTypeList(ApplyExpTypeResp applyExpTypeResp);
 
