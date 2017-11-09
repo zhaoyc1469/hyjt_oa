@@ -13,6 +13,7 @@ import com.hyjt.frame.mvp.BaseModel;
 import javax.inject.Inject;
 
 import com.hyjt.home.mvp.contract.ApplyExpenseEditContract;
+import com.hyjt.home.mvp.model.entity.Reqs.ApplyExpCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.ApplyExpenseListReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseNumReqs;
@@ -25,6 +26,7 @@ import com.hyjt.home.mvp.model.entity.Resp.ApplyExpDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpTypeResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpenseListResp;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanListResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
@@ -127,6 +129,27 @@ public class ApplyExpenseEditModel extends BaseModel implements ApplyExpenseEdit
         Observable<BaseJson<AEExpMoneyResp>> aeexpMoneyResp = mRepositoryManager.obtainRetrofitService(HomeService.class)
                 .getExpMoney(baseNumReqs);
         return aeexpMoneyResp;
+    }
+
+    @Override
+    public Observable<BaseJson<PLBankAccountResp>> getReceiveBank() {
+        Observable<BaseJson<PLBankAccountResp>> bankAccount = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .psonLoanBankAcount();
+        return bankAccount;
+    }
+
+    @Override
+    public Observable<BaseJson<Object>> delApplyExp(BaseIdReqs baseIdReqs) {
+        Observable<BaseJson<Object>> delApplyExp = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .applyExpDel(baseIdReqs);
+        return delApplyExp;
+    }
+
+    @Override
+    public Observable<BaseJson<Object>> editApplyExp(ApplyExpCreateReqs applyExpCreateReqs) {
+        Observable<BaseJson<Object>> editApplyExp = mRepositoryManager.obtainRetrofitService(HomeService.class)
+                .applyExpEdit(applyExpCreateReqs);
+        return editApplyExp;
     }
 
     @Override

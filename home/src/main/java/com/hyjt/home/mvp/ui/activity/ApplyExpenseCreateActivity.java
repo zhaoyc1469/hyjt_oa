@@ -340,6 +340,8 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
         }
 
         if (mRbAgree.isChecked()) {
+
+            WriteoffList.clear();
             for (int i = 0; i < mLlWriteoff.getChildCount(); i++) {
                 View inflate = mLlWriteoff.getChildAt(i);
                 ApplyExpCreateReqs.WriteoffPackBean applyExp = new ApplyExpCreateReqs.WriteoffPackBean();
@@ -370,6 +372,37 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
 
         if ("转账".equals(mEdtExpenseType.getText().toString())) {
 
+            ReceiveList.clear();
+            for (int i = 0; i < mLlReceive.getChildCount(); i++) {
+                View inflate = mLlReceive.getChildAt(i);
+                ApplyExpCreateReqs.ReceivePackBean applyExpRec = new ApplyExpCreateReqs.ReceivePackBean();
+                EditText mEdtAccountName = (EditText) inflate.findViewById(R.id.edt_account_name);
+                EditText mEdtOpenactBank = (EditText) inflate.findViewById(R.id.edt_openact_bank);
+                EditText mEdtBankAccount = (EditText) inflate.findViewById(R.id.edt_bank_account);
+                EditText mEdtMoney = (EditText) inflate.findViewById(R.id.edt_money);
+
+                if (TextUtils.isEmpty(mEdtAccountName.getText())) {
+                    showMessage("收款信息户名为必选项");
+                    return;
+                }
+                if (TextUtils.isEmpty(mEdtOpenactBank.getText())) {
+                    showMessage("收款信息开户行为必选项");
+                    return;
+                }
+                if (TextUtils.isEmpty(mEdtBankAccount.getText())) {
+                    showMessage("收款信息账号为必填项");
+                    return;
+                }
+                if (TextUtils.isEmpty(mEdtMoney.getText())) {
+                    showMessage("收款信息金额为必填项");
+                    return;
+                }
+                applyExpRec.setCwRbank(mEdtOpenactBank.getText().toString());
+                applyExpRec.setCwRmoney(mEdtMoney.getText().toString());
+                applyExpRec.setCwRname(mEdtAccountName.getText().toString());
+                applyExpRec.setCwRnum(mEdtBankAccount.getText().toString());
+                ReceiveList.add(applyExpRec);
+            }
         } else {
             ReceiveList.clear();
         }

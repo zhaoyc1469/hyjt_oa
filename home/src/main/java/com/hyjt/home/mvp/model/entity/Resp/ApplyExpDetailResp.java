@@ -8,26 +8,25 @@ import java.util.List;
 
 public class ApplyExpDetailResp {
 
-
     /**
-     * Id : 201711081146429770889d4053686fc
-     * CwEnum : FYBX20171108-0009
-     * SqDate : 2017/11/8 11:46:42
+     * Id : 201711091358539331730cbd1cc8286
+     * CwEnum : FYBX20171109-0002
+     * SqDate : 2017/11/9 13:58:53
      * CwEpersonal : 李大鹏
      * CwEcompany : 辽宁环宇工程咨询管理有限公司
      * CwEdepartment : 信息技术部
      * CwELeader : 李大鹏
-     * CwEreason : 哈哈哈哈
-     * CwEmoney : ￥555,555.00
+     * CwEreason : 他刚刚给
+     * CwEmoney : ￥55,566.00
      * CwEmode : 办公费
      * CwEWriteoff : 是
-     * CwEtext : 近近景近景
-     * CwEPayMoney : ￥554933
+     * CwEtext : 不会哈哈哈
+     * CwEPayMoney : ￥54900
      * CwEPayMode : 转账
      * CashierQren : 0
      * CwEpersonalQren : 0
      * FlowState : 审批中
-     * Flowid : 2017110811464298508933ba23a32a9
+     * Flowid : 201711091358539411734279f4a3d11
      * CwEState : 提交
      * CurrentPerson : 李大鹏
      * CwExpenseReceipt : System.Data.Objects.DataClasses.EntityCollection`1[DAL.CwExpenseReceipt]
@@ -37,10 +36,10 @@ public class ApplyExpDetailResp {
      * FileUploader : System.Data.Objects.DataClasses.EntityCollection`1[DAL.FileUploader]
      * EntityState : Unchanged
      * EntityKey : System.Data.EntityKey
-     * WriteOffPack : [{"CwWid":"DGYFKD20171029-0008","CwWidMoney":"￥5555","Payed":"￥0","UnPayed":"￥5555","CwWwiteoffMoney":"￥556"},{"CwWid":"DGYFKD20171029-0007","CwWidMoney":"￥1556","Payed":"￥0","UnPayed":"￥1556","CwWwiteoffMoney":"￥66"}]
-     * ReceivePack : []
-     * FilePack : [{"FileId":"2017110811464275207609ef7139799","FileName":"Screenshot_20171107-082838.png","FilePath":"/up/2017110811464275207609ef7139799Screenshot_20171107-082838.png"}]
-     * FlowPack : [{"NodeName":"首签领导","NodePerson":"李大鹏","NodeSign":"/Upload/2017021410336078.jpg","NodeMemo":null,"NodeMemotext":null,"IsBank":"0","CwBname":null,"CwBnum":null},{"NodeName":"总经理","NodePerson":"龙悦","NodeSign":"/Upload/20170511093651105.jpg","NodeMemo":null,"NodeMemotext":null,"IsBank":"0","CwBname":null,"CwBnum":null},{"NodeName":"董事长","NodePerson":"胡成良","NodeSign":"/Upload/20170509033410580.jpg","NodeMemo":null,"NodeMemotext":null,"IsBank":"0","CwBname":null,"CwBnum":null},{"NodeName":"财务部","NodePerson":"张斌","NodeSign":"/Upload/20170509103633667.jpg","NodeMemo":null,"NodeMemotext":null,"IsBank":"1","CwBname":null,"CwBnum":null}]
+     * WriteOffPack : [{"CwWid":"DGYFKD20171029-0009","CwWidMoney":"￥5555","Payed":"￥0","UnPayed":"￥5555","CwWwiteoffMoney":"￥666"}]
+     * ReceivePack : [{"CwRname":"李大鹏","CwRbank":"中信银行","CwRnum":"1212122","CwRmoney":"￥6665"}]
+     * FilePack : [{"FileId":"201711091358534641462f216bce8fb","FileName":"Screenshot_20171107-082838.png","FilePath":"/up/201711091358534641462f216bce8fbScreenshot_20171107-082838.png"}]
+     * FlowPack : [{"NodeName":"首签领导","NodePerson":"李大鹏","NodeSign":"/Upload/2017021410336078.jpg","NodeMemo":null,"NodeMemotext":null,"IsBank":"0","CwBname":null,"CwBnum":null},{"NodeName":"董事长","NodePerson":"胡成良","NodeSign":"/Upload/20170509033410580.jpg","NodeMemo":null,"NodeMemotext":null,"IsBank":"0","CwBname":null,"CwBnum":null},{"NodeName":"财务部","NodePerson":"张斌","NodeSign":"/Upload/20170509103633667.jpg","NodeMemo":null,"NodeMemotext":null,"IsBank":"1","CwBname":null,"CwBnum":null}]
      */
 
     private String Id;
@@ -71,7 +70,7 @@ public class ApplyExpDetailResp {
     private String EntityState;
     private String EntityKey;
     private List<WriteOffPackBean> WriteOffPack;
-    private List<?> ReceivePack;
+    private List<ReceivePackBean> ReceivePack;
     private List<FilePackBean> FilePack;
     private List<FlowPackBean> FlowPack;
 
@@ -299,11 +298,11 @@ public class ApplyExpDetailResp {
         this.WriteOffPack = WriteOffPack;
     }
 
-    public List<?> getReceivePack() {
+    public List<ReceivePackBean> getReceivePack() {
         return ReceivePack;
     }
 
-    public void setReceivePack(List<?> ReceivePack) {
+    public void setReceivePack(List<ReceivePackBean> ReceivePack) {
         this.ReceivePack = ReceivePack;
     }
 
@@ -325,11 +324,11 @@ public class ApplyExpDetailResp {
 
     public static class WriteOffPackBean {
         /**
-         * CwWid : DGYFKD20171029-0008
+         * CwWid : DGYFKD20171029-0009
          * CwWidMoney : ￥5555
          * Payed : ￥0
          * UnPayed : ￥5555
-         * CwWwiteoffMoney : ￥556
+         * CwWwiteoffMoney : ￥666
          */
 
         private String CwWid;
@@ -379,11 +378,57 @@ public class ApplyExpDetailResp {
         }
     }
 
+    public static class ReceivePackBean {
+        /**
+         * CwRname : 李大鹏
+         * CwRbank : 中信银行
+         * CwRnum : 1212122
+         * CwRmoney : ￥6665
+         */
+
+        private String CwRname;
+        private String CwRbank;
+        private String CwRnum;
+        private String CwRmoney;
+
+        public String getCwRname() {
+            return CwRname;
+        }
+
+        public void setCwRname(String CwRname) {
+            this.CwRname = CwRname;
+        }
+
+        public String getCwRbank() {
+            return CwRbank;
+        }
+
+        public void setCwRbank(String CwRbank) {
+            this.CwRbank = CwRbank;
+        }
+
+        public String getCwRnum() {
+            return CwRnum;
+        }
+
+        public void setCwRnum(String CwRnum) {
+            this.CwRnum = CwRnum;
+        }
+
+        public String getCwRmoney() {
+            return CwRmoney;
+        }
+
+        public void setCwRmoney(String CwRmoney) {
+            this.CwRmoney = CwRmoney;
+        }
+    }
+
     public static class FilePackBean {
         /**
-         * FileId : 2017110811464275207609ef7139799
+         * FileId : 201711091358534641462f216bce8fb
          * FileName : Screenshot_20171107-082838.png
-         * FilePath : /up/2017110811464275207609ef7139799Screenshot_20171107-082838.png
+         * FilePath : /up/201711091358534641462f216bce8fbScreenshot_20171107-082838.png
          */
 
         private String FileId;
@@ -460,7 +505,7 @@ public class ApplyExpDetailResp {
             this.NodeSign = NodeSign;
         }
 
-        public String  getNodeMemo() {
+        public String getNodeMemo() {
             return NodeMemo;
         }
 

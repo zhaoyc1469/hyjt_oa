@@ -23,6 +23,7 @@ import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
 import javax.inject.Inject;
 
 import com.hyjt.home.mvp.contract.ApplyExpenseEditContract;
+import com.hyjt.home.mvp.model.entity.Reqs.ApplyExpCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseNumReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
@@ -34,6 +35,7 @@ import com.hyjt.home.mvp.model.entity.Resp.ApplyExpDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpTypeResp;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanListResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
@@ -271,6 +273,64 @@ public class ApplyExpenseEditPresenter extends BasePresenter<ApplyExpenseEditCon
                         mRootView.showExpMoney(aeexpMoneyResp, mEdtUnpayed, mEdtPayed);
                     }
 
+                });
+    }
+
+
+
+    public void getReceiveBank(EditText mEdtAccountName, EditText mEdtOpenactBank, EditText mEdtBankAccount){
+
+        mModel.getReceiveBank()
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<PLBankAccountResp>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull PLBankAccountResp plBankAccountResp) {
+                        mRootView.showBankAccount(plBankAccountResp, mEdtAccountName, mEdtOpenactBank, mEdtBankAccount);
+                    }
+                });
+    }
+
+    public void delApplyExp(String applyExpId) {
+        mModel.delApplyExp(new BaseIdReqs(applyExpId))
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+                    mRootView.hideLoading();//隐藏
+                }).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object object) {
+                        mRootView.showMessage("删除成功");
+                        mRootView.killMyself();
+                    }
+                });
+    }
+
+
+    public void editApplyExp(ApplyExpCreateReqs applyExpCreateReqs){
+        Log.e("http_reqs", applyExpCreateReqs.toString());
+        mModel.editApplyExp(applyExpCreateReqs)
+                .map(new parseResponse<>())
+                .subscribeOn(Schedulers.io())
+                .doOnSubscribe(disposable -> mRootView.showLoading("费用报销创建中..."))
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> mRootView.hideLoading())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<Object>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull Object obj) {
+                        mRootView.showMessage("编辑成功");
+                        mRootView.killMyself();
+                    }
                 });
     }
 }

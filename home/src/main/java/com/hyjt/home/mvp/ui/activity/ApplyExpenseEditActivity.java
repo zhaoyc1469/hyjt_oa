@@ -3,6 +3,7 @@ package com.hyjt.home.mvp.ui.activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -31,12 +32,13 @@ import com.hyjt.frame.utils.UiUtils;
 import com.hyjt.home.di.component.DaggerApplyExpenseEditComponent;
 import com.hyjt.home.di.module.ApplyExpenseEditModule;
 import com.hyjt.home.mvp.contract.ApplyExpenseEditContract;
+import com.hyjt.home.mvp.model.entity.Reqs.ApplyExpCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.ClNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Resp.AEExpMoneyResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.ApplyExpTypeResp;
-import com.hyjt.home.mvp.model.entity.Resp.CompLoanDetailResp;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanListResp;
+import com.hyjt.home.mvp.model.entity.Resp.PLBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
@@ -44,6 +46,7 @@ import com.hyjt.home.mvp.model.entity.Resp.PsonLoanListResp;
 import com.hyjt.home.mvp.presenter.ApplyExpenseEditPresenter;
 
 import com.hyjt.home.R;
+import com.hyjt.home.mvp.ui.adapter.BankAccountAdapter;
 import com.hyjt.home.mvp.ui.adapter.ComnStringAdapter;
 import com.hyjt.home.mvp.ui.adapter.CompLoanAlertAdapter;
 import com.hyjt.home.mvp.ui.adapter.FrstLdAdapter;
@@ -103,11 +106,16 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
     private String currentPerson = "";
     private List<ApplyExpDetailResp.FlowPackBean> flowPack = new ArrayList<>();
     private List<ApplyExpDetailResp.WriteOffPackBean> writeOffPack = new ArrayList<>();
-    //    private List<ApplyExpDetailResp> filePack = new ArrayList<>();
+    private List<ApplyExpDetailResp.ReceivePackBean> receivePack = new ArrayList<>();
     private List<ApplyExpDetailResp.FilePackBean> filePack = new ArrayList<>();
     private PLFristLeaderResp.FlowDetailsBean flowDetailsBean = new PLFristLeaderResp.FlowDetailsBean();
     private EditText mEdtMoneyType;
     private boolean canEdit;
+
+    private List<ApplyExpCreateReqs.FilePackBean> FileList = new ArrayList<>();
+    private List<ApplyExpCreateReqs.WriteoffPackBean> WriteoffList = new ArrayList<>();
+    private List<ApplyExpCreateReqs.ReceivePackBean> ReceiveList = new ArrayList<>();
+    private ApplyExpCreateReqs applyExpCreateReqs;
     //    private List<ApplyExpDetailResp.ReceivePack> writeOffPack = new ArrayList<>();
 
     @Override
@@ -177,7 +185,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         mEdtExpenseReason.setText(applyExpDetailResp.getCwEreason());
         mEdtExpenseAmount.setText(applyExpDetailResp.getCwEmoney());
 
-        if ("是".equals(applyExpDetailResp.getCwEWriteoff())){
+        if ("是".equals(applyExpDetailResp.getCwEWriteoff())) {
             mRbAgree.setChecked(true);
         } else {
             mRbRefuse.setChecked(true);
@@ -225,11 +233,17 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         }
 
 
-//        .clear();
-//        writeOffPack.addAll(applyExpDetailResp.getWriteOffPack());
-//        for (int position = 0; position < writeOffPack.size(); position++) {
-//            setWriteOffPack(position);
-//        }
+        receivePack.clear();
+        receivePack.addAll(applyExpDetailResp.getReceivePack());
+        for (int position = 0; position < receivePack.size(); position++) {
+            setReceivePack(position);
+        }
+
+        filePack.clear();
+        filePack.addAll(applyExpDetailResp.getFilePack());
+        for (int position = 0; position < filePack.size(); position++) {
+            setFilePack(position);
+        }
 
         if ("审批完成".equals(applyExpDetailResp.getFlowState())) {
             if (!"0".equals(applyExpDetailResp.getCashierQren())) {
@@ -279,7 +293,16 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         mIvTopSelect.setVisibility(View.GONE);
         mLlBottomBtn = (LinearLayout) findViewById(R.id.ll_bottom_btn);
         mBtnEditLoan = (Button) findViewById(R.id.btn_edit_loan);
+        mBtnEditLoan.setOnClickListener(v -> checkEditExp());
         mBtnDelLoan = (Button) findViewById(R.id.btn_del_loan);
+        mBtnDelLoan.setOnClickListener(v -> {
+            android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
+                    .setTitle("删除报销申请")
+                    .setMessage("确定删除该条报销申请?")
+                    .setPositiveButton("确定", (dialog, which) -> mPresenter.delApplyExp(applyExpId))
+                    .setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
         mSlvApplyexp = (ScrollView) findViewById(R.id.slv_applyexp);
         mEdtProposer = (EditText) findViewById(R.id.edt_proposer);
         mEdtApplyTime = (EditText) findViewById(R.id.edt_apply_time);
@@ -306,6 +329,121 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         mIvReceiverSign = (ImageView) findViewById(R.id.iv_receiver_sign);
         mBtnReceiverConfirm = (Button) findViewById(R.id.btn_receiver_confirm);
         mEdtMoneyType = (EditText) findViewById(R.id.edt_money_type);
+    }
+
+    private void checkEditExp() {
+        applyExpCreateReqs = new ApplyExpCreateReqs();
+
+        if (TextUtils.isEmpty(mEdtCompanyName.getText())) {
+            shortToast("请选择公司名称");
+            return;
+        }
+        if (TextUtils.isEmpty(mEdtFristLeader.getText())) {
+            shortToast("请选择首签领导");
+            return;
+        }
+        if (TextUtils.isEmpty(mEdtExpenseReason.getText())) {
+            shortToast("请填写借款事由");
+        }
+        if (TextUtils.isEmpty(mEdtExpenseAmount.getText())) {
+            shortToast("请填写借款金额");
+            return;
+        }
+        if (TextUtils.isEmpty(mEdtExpenseType.getText())) {
+            shortToast("请选择收款方式");
+            return;
+        }
+        if (!mRbAgree.isChecked() && !mRbRefuse.isChecked()) {
+            shortToast("请选择是否核销");
+            return;
+        }
+        if (TextUtils.isEmpty(mEdtSureMoney.getText())) {
+            shortToast("请计算实付金额");
+            return;
+        }
+
+        if (mRbAgree.isChecked()) {
+
+            WriteoffList.clear();
+            for (int i = 0; i < mLlWriteoff.getChildCount(); i++) {
+                View inflate = mLlWriteoff.getChildAt(i);
+                ApplyExpCreateReqs.WriteoffPackBean applyExp = new ApplyExpCreateReqs.WriteoffPackBean();
+
+                EditText mEdtWriteoffNum = (EditText) inflate.findViewById(R.id.edt_writeoff_num);
+                EditText mEdtBorrowMoney = (EditText) inflate.findViewById(R.id.edt_borrow_money);
+                EditText mEdtWriteoffMoney = (EditText) inflate.findViewById(R.id.edt_writeoff_money);
+                if (TextUtils.isEmpty(mEdtWriteoffNum.getText())) {
+                    showMessage("借款单编号为必选项");
+                    return;
+                }
+                if (TextUtils.isEmpty(mEdtBorrowMoney.getText())) {
+                    showMessage("借款单金额为必选项");
+                    return;
+                }
+                if (TextUtils.isEmpty(mEdtWriteoffMoney.getText())) {
+                    showMessage("本次核销金额为必填项");
+                    return;
+                }
+                applyExp.setCwWid(mEdtWriteoffNum.getText().toString());
+                applyExp.setCwWidMoney(mEdtBorrowMoney.getText().toString());
+                applyExp.setCwWwiteoffMoney(mEdtWriteoffMoney.getText().toString());
+                WriteoffList.add(applyExp);
+            }
+        } else {
+            WriteoffList.clear();
+        }
+
+        if ("转账".equals(mEdtExpenseType.getText().toString())) {
+
+            ReceiveList.clear();
+            for (int i = 0; i < mLlReceiver.getChildCount(); i++) {
+                View inflate = mLlReceiver.getChildAt(i);
+                ApplyExpCreateReqs.ReceivePackBean applyExpRec = new ApplyExpCreateReqs.ReceivePackBean();
+                EditText mEdtAccountName = (EditText) inflate.findViewById(R.id.edt_account_name);
+                EditText mEdtOpenactBank = (EditText) inflate.findViewById(R.id.edt_openact_bank);
+                EditText mEdtBankAccount = (EditText) inflate.findViewById(R.id.edt_bank_account);
+                EditText mEdtMoney = (EditText) inflate.findViewById(R.id.edt_money);
+
+                if (TextUtils.isEmpty(mEdtAccountName.getText())) {
+                    showMessage("收款信息户名为必选项");
+                    return;
+                }
+                if (TextUtils.isEmpty(mEdtOpenactBank.getText())) {
+                    showMessage("收款信息开户行为必选项");
+                    return;
+                }
+                if (TextUtils.isEmpty(mEdtBankAccount.getText())) {
+                    showMessage("收款信息账号为必填项");
+                    return;
+                }
+                if (TextUtils.isEmpty(mEdtMoney.getText())) {
+                    showMessage("收款信息金额为必填项");
+                    return;
+                }
+                applyExpRec.setCwRbank(mEdtOpenactBank.getText().toString());
+                applyExpRec.setCwRmoney(mEdtMoney.getText().toString());
+                applyExpRec.setCwRname(mEdtAccountName.getText().toString());
+                applyExpRec.setCwRnum(mEdtBankAccount.getText().toString());
+                ReceiveList.add(applyExpRec);
+            }
+        } else {
+            ReceiveList.clear();
+        }
+
+
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
+                .setTitle("报销申请")
+                .setMessage("确定编辑报销申请?")
+                .setPositiveButton("确定", (dialog, which) -> {
+//                    if (mFileURLList.size() > 0) {
+//                        progressDialog = ProgressDialog.show(this, null, "正在上传附件…");
+//                        mPresenter.sendFile(mFileURLList);
+//                    } else {
+//                        fileUploadOk(new ArrayList<>());
+//                    }
+                }).setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
+        builder.show();
+
     }
 
 
@@ -410,7 +548,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             mLlAccount.setVisibility(View.GONE);
         }
 
-        if (!getUserName().equals(currentPerson) || !currentPerson.equals(flowPackBean.getNodePerson().trim())) {
+        if (!getUserName().equals(currentPerson) || !currentPerson.equals(flowPackBean.getNodePerson().trim()) || !"2".equals(applyExpType)) {
             mEdtApprover.setEnabled(false);
             mEdtApprover.setFocusable(false);
             mEdtRemark.setEnabled(false);
@@ -461,8 +599,57 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         }
 
         mLlWriteoff.addView(inflate);
-        mSlvApplyexp.fullScroll(ScrollView.FOCUS_DOWN);
 
+    }
+
+    private void setReceivePack(int position) {
+        View inflate = LayoutInflater.from(this).inflate(R.layout.home_add_ae_receiver, null);
+
+        ApplyExpDetailResp.ReceivePackBean receivePackBean = receivePack.get(position);
+
+        EditText mEdtAccountName = (EditText) inflate.findViewById(R.id.edt_account_name);
+        EditText mEdtOpenactBank = (EditText) inflate.findViewById(R.id.edt_openact_bank);
+        EditText mEdtBankAccount = (EditText) inflate.findViewById(R.id.edt_bank_account);
+        EditText mEdtMoney = (EditText) inflate.findViewById(R.id.edt_money);
+
+        mEdtAccountName.setText(receivePackBean.getCwRname());
+        mEdtOpenactBank.setText(receivePackBean.getCwRbank());
+        mEdtBankAccount.setText(receivePackBean.getCwRnum());
+        mEdtMoney.setText(receivePackBean.getCwRmoney());
+
+
+        if (canEdit) {
+            Button mBtnSelAccount = (Button) inflate.findViewById(R.id.btn_sel_account);
+            mBtnSelAccount.setOnClickListener(v -> mPresenter.getReceiveBank(mEdtAccountName, mEdtOpenactBank, mEdtBankAccount));
+            Button delWriteoff = (Button) inflate.findViewById(R.id.btn_del_receive);
+            delWriteoff.setOnClickListener(v -> {
+                if (position >= receivePack.size())
+                    receivePack.remove(position);
+                mLlReceiver.removeView(inflate);
+            });
+        } else {
+            RelativeLayout mRlSelReciver = (RelativeLayout) inflate.findViewById(R.id.rl_sel_receiver);
+            mRlSelReciver.setVisibility(View.GONE);
+            Button delWriteoff = (Button) inflate.findViewById(R.id.btn_del_receive);
+            delWriteoff.setVisibility(View.GONE);
+        }
+
+        mLlReceiver.addView(inflate);
+    }
+
+    private void setFilePack(int position) {
+        ApplyExpDetailResp.FilePackBean filePackBean = filePack.get(position);
+        View inflate = LayoutInflater.from(this).inflate(R.layout.home_add_comn_filepack, null);
+        TextView certificate = (TextView) inflate.findViewById(R.id.tv_certificate);
+        certificate.setText(filePackBean.getFileName());
+        certificate.setOnClickListener(v -> {
+            // 弹出一个选择浏览器的框，选择浏览器再进入
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.home_url_othfile) + filePackBean.getFilePath()));
+            startActivity(intent);
+        });
+        Button DelFile = (Button) inflate.findViewById(R.id.btn_del_file);
+        DelFile.setVisibility(View.GONE);
+        mLlFilePack.addView(inflate);
     }
 
     @Override
@@ -636,6 +823,37 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
     public void showExpMoney(AEExpMoneyResp aeexpMoneyResp, EditText mEdtUnpayed, EditText mEdtPayed) {
         mEdtUnpayed.setText(aeexpMoneyResp.getUnPay());
         mEdtPayed.setText(aeexpMoneyResp.getPayed());
+    }
+
+    @Override
+    public void showBankAccount(PLBankAccountResp plBankAccountResp, EditText mEdtAccountName, EditText mEdtOpenactBank, EditText mEdtBankAccount) {
+        List<PLBankAccountResp.BankPackBean> bankPack = plBankAccountResp.getBankPack();
+        if (bankPack == null || bankPack.size() == 0) {
+            new AlertDialog.Builder(this).setTitle("提示")//设置对话框标题
+                    .setMessage("您没有预存银行账户信息！")//设置显示的内容
+                    .setPositiveButton("确定", (dialog, which) -> dialog.dismiss()).show();
+            return;
+        }
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.home_dialog_sel_list, null);
+        dialog.setTitle("选择银行账户");
+        dialog.setView(layout).setCancelable(false)
+                .setNegativeButton("取消", (dialog1, id) -> dialog1.cancel());
+        AlertDialog accAlert = dialog.create();
+        ListView accList = (ListView) layout.findViewById(R.id.accList);
+
+        BankAccountAdapter bankAccountAdapter = new BankAccountAdapter(mContext, bankPack);
+        accList.setAdapter(bankAccountAdapter);
+
+        bankAccountAdapter.setItemClickListener(position -> {
+            mEdtAccountName.setText(bankPack.get(position).getBankPerson());
+            mEdtBankAccount.setText(bankPack.get(position).getBankNum());
+            mEdtOpenactBank.setText(bankPack.get(position).getBankName());
+            accAlert.dismiss();
+        });
+        accAlert.show();
     }
 
 }

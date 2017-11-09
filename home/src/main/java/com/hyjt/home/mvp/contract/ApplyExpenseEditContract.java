@@ -6,6 +6,7 @@ import android.widget.EditText;
 import com.hyjt.frame.api.BaseJson;
 import com.hyjt.frame.mvp.IModel;
 import com.hyjt.frame.mvp.IView;
+import com.hyjt.home.mvp.model.entity.Reqs.ApplyExpCreateReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseIdReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseNumReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.BaseTypeReqs;
@@ -49,6 +50,8 @@ public interface ApplyExpenseEditContract {
         void showExpCMoneyList(CompLoanListResp compLoanListResp, EditText mEdtWriteoffNum, EditText mEdtBorrowMoney, EditText mEdtUnpayed, EditText mEdtPayed);
 
         void showExpMoney(AEExpMoneyResp aeexpMoneyResp, EditText mEdtPayed, EditText payed);
+
+        void showBankAccount(PLBankAccountResp plBankAccountResp, EditText mEdtAccountName, EditText mEdtOpenactBank, EditText mEdtBankAccount);
     }
 
     interface Model extends IModel {
@@ -75,5 +78,12 @@ public interface ApplyExpenseEditContract {
         Observable<BaseJson<CompLoanListResp>> getCompLoanList(CompLoanListReqs compLoanListReqs);
 
         Observable<BaseJson<AEExpMoneyResp>> getExpMoney(BaseNumReqs baseNumReqs);
+
+        Observable<BaseJson<PLBankAccountResp>> getReceiveBank();
+
+        Observable<BaseJson<Object>> delApplyExp(BaseIdReqs baseIdReqs);
+
+        Observable<BaseJson<Object>> editApplyExp(ApplyExpCreateReqs applyExpCreateReqs);
+
     }
 }

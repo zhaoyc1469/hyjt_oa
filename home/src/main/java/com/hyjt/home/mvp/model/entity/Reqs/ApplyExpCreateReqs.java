@@ -218,6 +218,10 @@ public class ApplyExpCreateReqs {
         private String CwRnum;
         private String CwRmoney;
 
+        public ReceivePackBean(){
+
+        }
+
         public ReceivePackBean(String cwRname, String cwRbank, String cwRnum, String cwRmoney) {
             CwRname = cwRname;
             CwRbank = cwRbank;

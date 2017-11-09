@@ -295,7 +295,7 @@ public class ApplyExpenseCreatePresenter extends BasePresenter<ApplyExpenseCreat
                     public void onNext(@NonNull AEExpMoneyResp aeexpMoneyResp) {
                         mRootView.showExpMoney(aeexpMoneyResp, mEdtPayed, Payed);
                     }
-
                 });
     }
+
 }

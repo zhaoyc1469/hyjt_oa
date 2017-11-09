@@ -479,14 +479,16 @@ public interface HomeService {
     //获取费用类型 接口
     @POST("/APICwExpense/GetCwEmode")
     Observable<BaseJson<ApplyExpTypeResp>> getApplyExpTypeList();
-//
-//    //费用报销 编辑
-//    @POST("/APICwExpense/Edit")
-//
-//    //费用报销 删除
-//    @POST("/APICwExpense/Delete")
-//
-//    //费用报销 审批
+
+    //费用报销 编辑
+    @POST("/APICwExpense/Edit")
+    Observable<BaseJson<Object>> applyExpEdit(@Body ApplyExpCreateReqs applyExp);
+
+    //费用报销 删除
+    @POST("/APICwExpense/Delete")
+    Observable<BaseJson<Object>> applyExpDel(@Body BaseIdReqs BaseIdReqs);
+
+    //费用报销 审批
     @POST("/APICwFlowInstanceNode/EditCwExpenseNode")
     Observable<BaseJson<Object>> aeFlowNodeApr(@Body ClNodeApproveReqs clNodeApproveReqs);
 

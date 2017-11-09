@@ -597,7 +597,7 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
             mLlAccount.setVisibility(View.GONE);
         }
 
-        if (!getUserName().equals(currentPerson) || !currentPerson.equals(flowPackBean.getNodePerson().trim())) {
+        if (!getUserName().equals(currentPerson) || !currentPerson.equals(flowPackBean.getNodePerson().trim()) || !"2".equals(compLoanType)) {
             mEdtApprover.setEnabled(false);
             mEdtApprover.setFocusable(false);
             mEdtRemark.setEnabled(false);
