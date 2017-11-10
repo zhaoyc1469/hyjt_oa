@@ -1,5 +1,6 @@
 package com.hyjt.home.mvp.ui.activity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +30,7 @@ import com.bumptech.glide.Glide;
 import com.hyjt.frame.base.BaseActivity;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.event.RefreshListEvent;
+import com.hyjt.frame.utils.PermissionUtil;
 import com.hyjt.frame.utils.UiUtils;
 
 import com.hyjt.home.di.component.DaggerApplyExpenseEditComponent;
@@ -57,12 +59,17 @@ import com.hyjt.home.mvp.ui.adapter.PlCompBankActAdapter;
 import com.hyjt.home.mvp.ui.adapter.PsonLoanAlertAdapter;
 import com.hyjt.home.mvp.ui.view.Constant;
 import com.hyjt.home.mvp.ui.view.GetSingleSelectItem;
+import com.hyjt.home.utils.ImgUtil;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 
 import org.simple.eventbus.EventBus;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 
 import static com.hyjt.frame.utils.Preconditions.checkNotNull;
 
@@ -126,6 +133,11 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
     private RelativeLayout mRlAddFile;
     private TextView mTvFilePack;
     private Button mBtnAddFile;
+
+
+    private ArrayList<Uri> mFileURLList = new ArrayList<>();
+    private RelativeLayout mRlAddWriteoff;
+    private Button mBtnAddWriteoff;
     //    private List<ApplyExpDetailResp.ReceivePack> writeOffPack = new ArrayList<>();
 
     @Override
@@ -230,6 +242,9 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             canEdit = true;
             mEdtExpenseType.setOnTouchListener(new GetSingleSelectItem(
                     this, mEdtExpenseType, "支付方式", Constant.payTypeArr, false));
+            if ("转账".equals(applyExpDetailResp.getCwEPayMode())) {
+                mLlReceiver.setVisibility(View.VISIBLE);
+            }
 
             mEdtExpenseType.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -372,6 +387,37 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         mRlAddFile = (RelativeLayout) findViewById(R.id.rl_add_file);
         mTvFilePack = (TextView) findViewById(R.id.tv_file_pack);
         mBtnAddFile = (Button) findViewById(R.id.btn_add_file);
+
+        mBtnAddReceive.setOnClickListener(v -> addReceiver());
+        mBtnAddFile.setOnClickListener(v -> {
+            Intent intentFile = new Intent(Intent.ACTION_GET_CONTENT);
+            intentFile.setType("*/*");//设置类型，我这里是任意类型，任意后缀的可以这样写。
+            intentFile.addCategory(Intent.CATEGORY_OPENABLE);
+            startActivityForResult(intentFile, 100);
+        });
+        mBtnAddFile.setVisibility(View.GONE);
+        mRlAddWriteoff = (RelativeLayout) findViewById(R.id.rl_add_writeoff);
+        mBtnAddWriteoff = (Button) findViewById(R.id.btn_add_writeoff);
+    }
+
+    private void addReceiver() {
+        View inflate = LayoutInflater.from(this).inflate(R.layout.home_add_ae_receiver, null);
+
+
+        Button mBtnSelAccount = (Button) inflate.findViewById(R.id.btn_sel_account);
+        EditText mEdtAccountName = (EditText) inflate.findViewById(R.id.edt_account_name);
+        EditText mEdtOpenactBank = (EditText) inflate.findViewById(R.id.edt_openact_bank);
+        EditText mEdtBankAccount = (EditText) inflate.findViewById(R.id.edt_bank_account);
+        EditText mEdtMoney = (EditText) inflate.findViewById(R.id.edt_money);
+
+        mBtnSelAccount.setOnClickListener(v -> mPresenter.getReceiveBank(mEdtAccountName, mEdtOpenactBank, mEdtBankAccount));
+
+        //删除布局
+        Button delWriteoff = (Button) inflate.findViewById(R.id.btn_del_receive);
+        delWriteoff.setOnClickListener(v -> mLlReceiver.removeView(inflate));
+
+        mLlReceiver.addView(inflate);
+        mSlvApplyexp.fullScroll(ScrollView.FOCUS_DOWN);
     }
 
     private void checkEditExp() {
@@ -930,4 +976,57 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
 
     }
 
+    @Override
+    public RxPermissions getRxPermissions() {
+        return new RxPermissions(this);
+    }
+
+
+    private void addFilePack(int position) {
+
+        View inflate = LayoutInflater.from(getApplicationContext()).inflate(R.layout.home_add_comn_filepack, null);
+        TextView certificate = (TextView) inflate.findViewById(R.id.tv_certificate);
+        Button DelFile = (Button) inflate.findViewById(R.id.btn_del_file);
+        DelFile.setOnClickListener(v -> {
+            mLlFilePack.removeView(inflate);
+            mFileURLList.remove(position - 1);
+        });
+
+
+        RxErrorHandler build = RxErrorHandler.builder()
+                .with(getApplicationContext())
+                .responseErrorListener((context, t) -> {
+                }).build();
+
+
+        PermissionUtil.externalStorage(new PermissionUtil.RequestPermission() {
+            @Override
+            public void onRequestPermissionSuccess() {
+                Uri uri = mFileURLList.get(position - 1);
+                String imageAbsolutePath = ImgUtil.getImageAbsolutePath(getApplicationContext(), uri);
+                File file = new File(imageAbsolutePath);
+                certificate.setText("" + file.getName());
+            }
+
+            @Override
+            public void onRequestPermissionFailure() {
+                shortToast("您需要打开存储权限");
+            }
+        }, getRxPermissions(), build);
+
+        mLlFilePack.addView(inflate);
+        mSlvApplyexp.fullScroll(ScrollView.FOCUS_DOWN);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100) {
+            if (resultCode == Activity.RESULT_OK) {
+                Uri uri = data.getData();
+                mFileURLList.add(uri);
+                addFilePack(mFileURLList.size());
+            }
+        }
+    }
 }

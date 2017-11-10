@@ -23,6 +23,7 @@ import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
 import com.hyjt.home.mvp.model.entity.Resp.PsonLoanListResp;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.List;
 
@@ -47,6 +48,8 @@ public interface ApplyExpenseEditContract {
         void showCompanyList(PLCompanyResp plCompanyResp);
 
         void fileUploadOk(List<ImgUploadResp> imgUploadList);
+
+        RxPermissions getRxPermissions();
 
         void showExpTypeList(ApplyExpTypeResp applyExpTypeResp);
 
