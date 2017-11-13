@@ -180,7 +180,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mIvTellerSign = (ImageView) findViewById(R.id.iv_teller_sign);
         mBtnTellerConfirm = (Button) findViewById(R.id.btn_teller_confirm);
         mRlSendAccount = (RelativeLayout) findViewById(R.id.rl_send_account);
-        mEdtReceiverAccount = (EditText) findViewById(R.id.edt_receiver_account);
+        mEdtReceiverAccount = (EditText) findViewById(R.id.edt_send_account);
         mIvReceiverSign = (ImageView) findViewById(R.id.iv_receiver_sign);
         mBtnReceiverConfirm = (Button) findViewById(R.id.btn_receiver_confirm);
         mRlReceiverConfirm = (RelativeLayout) findViewById(R.id.rl_receiver_confirm);

@@ -108,13 +108,15 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
     private android.widget.LinearLayout mLlReceiver;
     private android.widget.LinearLayout mLlFilePack;
     private android.widget.RelativeLayout mRlSendAccount;
-    private android.widget.EditText mEdtReceiverAccount;
+    private android.widget.EditText mEdtSendAccount;
     private android.widget.RelativeLayout mRlTellerConfirm;
     private android.widget.ImageView mIvTellerSign;
     private android.widget.Button mBtnTellerConfirm;
     private android.widget.RelativeLayout mRlReceiverConfirm;
     private android.widget.ImageView mIvReceiverSign;
     private android.widget.Button mBtnReceiverConfirm;
+    private RelativeLayout mRlSendBank;
+    private EditText mEdtSendBank;
     private ApplyExpenseEditActivity mContext;
     private PLCompBankAccountResp.BankPackBean bankPackBean;
     private String currentPerson = "";
@@ -274,6 +276,9 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             mEdtMoneyType.setOnClickListener(v -> mPresenter.getExpType());
         }
 
+        mEdtSendBank.setText(applyExpDetailResp.getCwBname());
+        mEdtSendAccount.setText(applyExpDetailResp.getCwBnum());
+
         flowPack.clear();
         flowPack.addAll(applyExpDetailResp.getFlowPack());
         for (int position = 0; position < flowPack.size(); position++) {
@@ -321,6 +326,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
                                 .setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
                         builder.show();
                     });
+                    mRlSendBank.setVisibility(View.VISIBLE);
                     mRlSendAccount.setVisibility(View.VISIBLE);
                 } else {
                     mRlTellerConfirm.setVisibility(View.GONE);
@@ -394,7 +400,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         mLlReceiver = (LinearLayout) findViewById(R.id.ll_receiver);
         mLlFilePack = (LinearLayout) findViewById(R.id.ll_file_pack);
         mRlSendAccount = (RelativeLayout) findViewById(R.id.rl_send_account);
-        mEdtReceiverAccount = (EditText) findViewById(R.id.edt_receiver_account);
+        mEdtSendAccount = (EditText) findViewById(R.id.edt_send_account);
         mRlTellerConfirm = (RelativeLayout) findViewById(R.id.rl_teller_confirm);
         mIvTellerSign = (ImageView) findViewById(R.id.iv_teller_sign);
         mBtnTellerConfirm = (Button) findViewById(R.id.btn_teller_confirm);
@@ -407,6 +413,8 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         mRlAddFile = (RelativeLayout) findViewById(R.id.rl_add_file);
         mTvFilePack = (TextView) findViewById(R.id.tv_file_pack);
         mBtnAddFile = (Button) findViewById(R.id.btn_add_file);
+        mRlSendBank = (RelativeLayout) findViewById(R.id.rl_send_bank);
+        mEdtSendBank = (EditText) findViewById(R.id.edt_send_bank);
 
         mBtnAddReceive.setOnClickListener(v -> addReceiver());
         mBtnAddFile.setOnClickListener(v -> {
@@ -762,6 +770,8 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             mEdtApprover.setFocusable(false);
             mEdtRemark.setEnabled(false);
             mEdtRemark.setFocusable(false);
+            mEdtSendBank.setEnabled(false);
+            mEdtSendBank.setFocusable(false);
             mEdtSendAccount.setEnabled(false);
             mEdtSendAccount.setFocusable(false);
             mLlAprBtn.setVisibility(View.GONE);

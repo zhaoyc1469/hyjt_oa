@@ -3,7 +3,6 @@ package com.hyjt.home.mvp.ui.activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -24,7 +23,6 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
 import com.hyjt.frame.base.BaseActivity;
-import com.hyjt.frame.base.delegate.IFragment;
 import com.hyjt.frame.di.component.AppComponent;
 import com.hyjt.frame.event.RefreshListEvent;
 import com.hyjt.home.di.component.DaggerToCompLoanEditComponent;
@@ -32,25 +30,19 @@ import com.hyjt.home.di.module.ToCompLoanEditModule;
 import com.hyjt.home.mvp.contract.ToCompLoanEditContract;
 import com.hyjt.home.mvp.model.entity.Reqs.ClNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Reqs.CompLoanCreateReqs;
-import com.hyjt.home.mvp.model.entity.Reqs.PlNodeApproveReqs;
 import com.hyjt.home.mvp.model.entity.Resp.CompLoanDetailResp;
-import com.hyjt.home.mvp.model.entity.Resp.CompLoanListResp;
 import com.hyjt.home.mvp.model.entity.Resp.CpContractListResp;
 import com.hyjt.home.mvp.model.entity.Resp.CpSupplierListResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLCompBankAccountResp;
-import com.hyjt.home.mvp.model.entity.Resp.PLCompanyResp;
 import com.hyjt.home.mvp.model.entity.Resp.PLFristLeaderResp;
-import com.hyjt.home.mvp.model.entity.Resp.PsonLoanDetailResp;
 import com.hyjt.home.mvp.presenter.ToCompLoanEditPresenter;
 
 import com.hyjt.home.R;
 import com.hyjt.home.mvp.ui.adapter.CLContractAdapter;
 import com.hyjt.home.mvp.ui.adapter.CLSupplierAdapter;
-import com.hyjt.home.mvp.ui.adapter.ComnStringAdapter;
 import com.hyjt.home.mvp.ui.adapter.FrstLdAdapter;
 import com.hyjt.home.mvp.ui.adapter.PlCompBankActAdapter;
 import com.hyjt.home.mvp.ui.view.DatePickDialog;
-import com.hyjt.home.mvp.ui.view.DateTimePickDialog;
 
 import org.simple.eventbus.EventBus;
 
@@ -95,7 +87,7 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
     private ToCompLoanEditActivity mContext;
     private LinearLayout mLlFlowNode;
     private RelativeLayout mRlSendAccount;
-    private EditText mEdtReceiverAccount;
+    private EditText mEdtSendAccount;
     private RelativeLayout mRlTellerConfirm;
     private ImageView mIvTellerSign;
     private Button mBtnTellerConfirm;
@@ -226,7 +218,7 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
         }
 
 
-        mEdtReceiverAccount.setText(compLoanDetailResp.getCwBname() + compLoanDetailResp.getCwBnum());
+        mEdtSendAccount.setText(compLoanDetailResp.getCwBname() + compLoanDetailResp.getCwBnum());
 
 
         if ("审批完成".equals(compLoanDetailResp.getFlowState())) {
@@ -459,7 +451,7 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
         mRlSelSupplier = (RelativeLayout) findViewById(R.id.rl_sel_supplier);
         mLlFlowNode = (LinearLayout) findViewById(R.id.ll_flow_node);
         mRlSendAccount = (RelativeLayout) findViewById(R.id.rl_send_account);
-        mEdtReceiverAccount = (EditText) findViewById(R.id.edt_receiver_account);
+        mEdtSendAccount = (EditText) findViewById(R.id.edt_send_account);
         mRlTellerConfirm = (RelativeLayout) findViewById(R.id.rl_teller_confirm);
         mIvTellerSign = (ImageView) findViewById(R.id.iv_teller_sign);
         mBtnTellerConfirm = (Button) findViewById(R.id.btn_teller_confirm);

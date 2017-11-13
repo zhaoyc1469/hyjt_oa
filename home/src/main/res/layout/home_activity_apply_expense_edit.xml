@@ -305,6 +305,25 @@
                 android:orientation="vertical" />
 
             <RelativeLayout
+                android:id="@+id/rl_send_bank"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:visibility="gone"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="付款银行" />
+
+                <EditText
+                    android:id="@+id/edt_send_bank"
+                    style="@style/home_edt_standard" />
+
+                <View style="@style/home_common_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/rl_send_account"
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
@@ -317,7 +336,7 @@
                     android:text="付款账户" />
 
                 <EditText
-                    android:id="@+id/edt_receiver_account"
+                    android:id="@+id/edt_send_account"
                     style="@style/home_edt_standard" />
 
                 <View style="@style/home_common_line" />
