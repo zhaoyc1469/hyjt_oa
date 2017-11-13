@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -237,6 +238,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             mRbRefuse.setClickable(false);
 
             mBtnAddReceive.setVisibility(View.GONE);
+            mBtnAddWriteoff.setVisibility(View.GONE);
             mBtnAddFile.setVisibility(View.GONE);
         } else {
             canEdit = true;
@@ -306,8 +308,16 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             } else {
                 if ("3".equals(applyExpType)) {
                     mBtnTellerConfirm.setOnClickListener(v -> {
-                        progressDialog = ProgressDialog.show(this, null, "出纳人员确认中…");
-                        mPresenter.tellerConfirm(applyExpId);
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                                .setTitle("出纳人员确认")
+                                .setMessage("是否确认出纳?")
+                                .setPositiveButton("确定", (dialog, which) -> {
+                                    progressDialog = ProgressDialog.show(this, null, "出纳人员确认中…");
+                                    mPresenter.tellerConfirm(applyExpId);
+                                })
+                                .setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
+                        builder.show();
                     });
                     mRlSendAccount.setVisibility(View.VISIBLE);
                 } else {
@@ -321,8 +331,16 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             } else {
                 if ("1".equals(applyExpType) && !"0".equals(applyExpDetailResp.getCashierQren())) {
                     mBtnReceiverConfirm.setOnClickListener(v -> {
-                        progressDialog = ProgressDialog.show(this, null, "收款人员确认中…");
-                        mPresenter.receiverConfirm(applyExpId);
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                                .setTitle("收款人员确认")
+                                .setMessage("是否确认已收款?")
+                                .setPositiveButton("确定", (dialog, which) -> {
+                                    progressDialog = ProgressDialog.show(this, null, "收款人员确认中…");
+                                    mPresenter.receiverConfirm(applyExpId);
+                                })
+                                .setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
+                        builder.show();
                     });
                 } else {
                     mRlReceiverConfirm.setVisibility(View.GONE);
@@ -398,6 +416,42 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         mBtnAddFile.setVisibility(View.GONE);
         mRlAddWriteoff = (RelativeLayout) findViewById(R.id.rl_add_writeoff);
         mBtnAddWriteoff = (Button) findViewById(R.id.btn_add_writeoff);
+        mBtnAddWriteoff.setOnClickListener(v -> addWriteOffPack());
+
+        mRgExpState.setOnCheckedChangeListener((group, checkedId) -> {
+            Log.e("checkedId", "" + checkedId);
+            if (R.id.rb_agree == checkedId) {
+                mRlAddWriteoff.setVisibility(View.VISIBLE);
+            } else {
+                mRlAddWriteoff.setVisibility(View.GONE);
+            }
+        });
+    }
+    private void addWriteOffPack() {
+        mEdtSureMoney.setText("");
+        View inflate = LayoutInflater.from(this).inflate(R.layout.home_add_ae_write_off, null);
+
+
+        EditText mEdtWriteoffNum = (EditText) inflate.findViewById(R.id.edt_writeoff_num);
+        EditText mEdtBorrowMoney = (EditText) inflate.findViewById(R.id.edt_borrow_money);
+        EditText mEdtUnpayed = (EditText) inflate.findViewById(R.id.edt_unpayd);
+        EditText mEdtPayed = (EditText) inflate.findViewById(R.id.edt_payd);
+        EditText mEdtWriteoffMoney = (EditText) inflate.findViewById(R.id.edt_writeoff_money);
+        Button mBtnToComp = (Button) inflate.findViewById(R.id.btn_to_comp);
+        Button mBtnToPson = (Button) inflate.findViewById(R.id.btn_to_pson);
+        mBtnToComp.setOnClickListener(v -> mPresenter.getCompLoanList(mEdtWriteoffNum, mEdtBorrowMoney, mEdtUnpayed, mEdtPayed));
+        mBtnToPson.setOnClickListener(v -> mPresenter.getPsonLoanList(mEdtWriteoffNum, mEdtBorrowMoney, mEdtUnpayed, mEdtPayed));
+        //删除布局
+        Button delWriteoff = (Button) inflate.findViewById(R.id.btn_del_writeoff);
+        delWriteoff.setOnClickListener(v -> {
+//            if (meetingQuestionList.size()>size){
+            mLlWriteoff.removeView(inflate);
+//                meetingQuestionList.remove(size);
+//            }
+        });
+
+        mLlWriteoff.addView(inflate);
+        mSlvApplyexp.fullScroll(ScrollView.FOCUS_DOWN);
     }
 
     private void addReceiver() {
@@ -956,7 +1010,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
                         , imgUploadList.get(i).getName()));
             }
         }
-
+        applyExpCreateReqs.setId(applyExpId);
         applyExpCreateReqs.setCwEcompany(mEdtCompanyName.getText().toString().trim());
         applyExpCreateReqs.setCwELeader(mEdtFristLeader.getText().toString().trim());
         applyExpCreateReqs.setCwEreason(mEdtExpenseReason.getText().toString().trim());
@@ -969,7 +1023,14 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         applyExpCreateReqs.setFlowid(flowDetailsBean.getFlowid());
         applyExpCreateReqs.setWriteoffPack(WriteoffList);
         applyExpCreateReqs.setReceivePack(ReceiveList);
+//        applyExpCreateReqs.setFilePack();
+        List<ApplyExpDetailResp.FilePackBean> filePack = applyExpDetailResp.getFilePack();
+        for (int i = 0; i < filePack.size(); i++) {
+            ApplyExpDetailResp.FilePackBean filePackBean = filePack.get(i);
+            FileList.add(new ApplyExpCreateReqs.FilePackBean(filePackBean.getFileId(), filePackBean.getFileName()));
+        }
         applyExpCreateReqs.setFilePack(FileList);
+
 
 
         mPresenter.editApplyExp(applyExpCreateReqs);

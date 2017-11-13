@@ -147,7 +147,7 @@
 
                 <TextView
                     style="@style/home_tv_standard"
-                    android:text="借款金额" />
+                    android:text="报销金额" />
 
                 <EditText
                     android:id="@+id/edt_expense_amount"
@@ -433,6 +433,7 @@
                 android:background="@drawable/home_bg_white_table">
 
                 <TextView
+                    android:id="@+id/tv_writeoff_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
@@ -455,7 +456,7 @@
 
                 <LinearLayout
                     android:id="@+id/ll_writeoff"
-                    android:layout_below="@id/btn_add_writeoff"
+                    android:layout_below="@id/tv_writeoff_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"/>

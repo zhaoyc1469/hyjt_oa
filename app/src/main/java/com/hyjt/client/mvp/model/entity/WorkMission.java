@@ -33,6 +33,7 @@ public class WorkMission {
     private String UnionAppeal;
     private String CwPersonalJK;
     private String CwCompanyJK;
+    private String CwExpense;
 
     public String getRecord() {
         return Record;
@@ -120,5 +121,13 @@ public class WorkMission {
 
     public void setCwCompanyJK(String CwCompanyJK) {
         this.CwCompanyJK = CwCompanyJK;
+    }
+
+    public String getCwExpense() {
+        return CwExpense;
+    }
+
+    public void setCwExpense(String cwExpense) {
+        CwExpense = cwExpense;
     }
 }

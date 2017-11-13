@@ -132,7 +132,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         moduleBeanDbDao.insert(new ModuleBeanDb("来访消息", 2, true, false, "h_lfxx", 26, 0, -1));
         moduleBeanDbDao.insert(new ModuleBeanDb("内部邮件", 2, true, false, "h_nbyj", 27, 0, -1));
         moduleBeanDbDao.insert(new ModuleBeanDb("汇报上级", 2, true, false, "h_hbsj", 28, 0, -1));
-        moduleBeanDbDao.insert(new ModuleBeanDb("评级协商", 2, true, false, "h_pjxs", 29, 0, -1));
+        moduleBeanDbDao.insert(new ModuleBeanDb("平级协商", 2, true, false, "h_pjxs", 29, 0, -1));
 
         moduleBeanDbDao.insert(new ModuleBeanDb("借款申请", 3, true, false, "h_jksq", 41, 0, -1));
         moduleBeanDbDao.insert(new ModuleBeanDb("报销申请", 3, true, false, "h_bxsq", 42, 0, -1));
@@ -156,9 +156,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         moduleBeanDbDao.insert(new ModuleBeanDb("项目资料", 5, true, false, "h_xmzl", 83, 0, -1));
 
         moduleBeanDbDao.insert(new ModuleBeanDb("个人借款", 6, true, false, "h_grjk", 101, 0, -1));
-        moduleBeanDbDao.insert(new ModuleBeanDb("对公借款", 6, true, false, "h_fysp", 102, 0, -1));
-        moduleBeanDbDao.insert(new ModuleBeanDb("费用报销", 6, true, false, "h_bxsp", 103, 0, -1));
-        moduleBeanDbDao.insert(new ModuleBeanDb("出纳确认", 6, true, false, "h_bxsp", 104, 0, -1));
+        moduleBeanDbDao.insert(new ModuleBeanDb("对公借款", 6, true, false, "h_dgjk", 102, 0, -1));
+        moduleBeanDbDao.insert(new ModuleBeanDb("费用报销", 6, true, false, "h_fybx", 103, 0, -1));
+        moduleBeanDbDao.insert(new ModuleBeanDb("出纳确认", 6, true, false, "h_cnqr", 104, 0, -1));
 
         moduleBeanDbDao.insert(new ModuleBeanDb("报告", 7, true, false, "h_bg", 121, 0, -1));
         moduleBeanDbDao.insert(new ModuleBeanDb("合同", 7, true, false, "h_ht", 122, 0, -1));

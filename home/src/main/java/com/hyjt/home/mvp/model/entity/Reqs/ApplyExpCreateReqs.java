@@ -9,6 +9,7 @@ import java.util.List;
 
 public class ApplyExpCreateReqs {
 
+    private String Id;
     private String CwEcompany;
     private String CwELeader;
     private String CwEreason;
@@ -22,6 +23,14 @@ public class ApplyExpCreateReqs {
     private List<FilePackBean> FilePack;
     private List<WriteoffPackBean> WriteOffPack;
     private List<ReceivePackBean> ReceivePack;
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
+    }
 
     public String getCwEcompany() {
         return CwEcompany;

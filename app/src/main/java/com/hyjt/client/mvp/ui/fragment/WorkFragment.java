@@ -615,7 +615,7 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
             moduleBeanDbDao.update(moduleBean);
         }
         if (Integer.parseInt(workMission.getWorkingConsult()) > 0) {
-            ModuleBeanDb moduleBean = moduleBeanDbDao.load("评级协商");
+            ModuleBeanDb moduleBean = moduleBeanDbDao.load("平级协商");
             moduleBean.setMessage_nub(Integer.parseInt(workMission.getWorkingConsult()));
             moduleBeanDbDao.update(moduleBean);
         }
@@ -642,6 +642,11 @@ public class WorkFragment extends BaseFragment<WorkPresenter> implements WorkCon
         if (Integer.parseInt(workMission.getCwCompanyJK()) > 0) {
             ModuleBeanDb moduleBean = moduleBeanDbDao.load("对公借款");
             moduleBean.setMessage_nub(Integer.parseInt(workMission.getCwCompanyJK()));
+            moduleBeanDbDao.update(moduleBean);
+        }
+        if (Integer.parseInt(workMission.getCwExpense()) > 0) {
+            ModuleBeanDb moduleBean = moduleBeanDbDao.load("费用报销");
+            moduleBean.setMessage_nub(Integer.parseInt(workMission.getCwExpense()));
             moduleBeanDbDao.update(moduleBean);
         }
         loadModuleList();

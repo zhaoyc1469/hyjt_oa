@@ -237,8 +237,15 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
             } else {
                 if ("3".equals(compLoanType)) {
                     mBtnTellerConfirm.setOnClickListener(v -> {
-                        progressDialog = ProgressDialog.show(this, null, "出纳人员确认中…");
-                        mPresenter.tellerConfirm(compLoanId);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                                .setTitle("出纳人员确认")
+                                .setMessage("是否确认出纳?")
+                                .setPositiveButton("确定", (dialog, which) -> {
+                                    progressDialog = ProgressDialog.show(this, null, "出纳人员确认中…");
+                                    mPresenter.tellerConfirm(compLoanId);
+                                })
+                                .setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
+                        builder.show();
                     });
                     mRlSendAccount.setVisibility(View.VISIBLE);
                 } else {
@@ -252,8 +259,16 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
             } else {
                 if ("1".equals(compLoanType) && !"0".equals(compLoanDetailResp.getCashierQren())) {
                     mBtnReceiverConfirm.setOnClickListener(v -> {
-                        progressDialog = ProgressDialog.show(this, null, "收款人员确认中…");
-                        mPresenter.receiverConfirm(compLoanId);
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                                .setTitle("收款人员确认")
+                                .setMessage("是否确认已收款?")
+                                .setPositiveButton("确定", (dialog, which) -> {
+                                    progressDialog = ProgressDialog.show(this, null, "收款人员确认中…");
+                                    mPresenter.receiverConfirm(compLoanId);
+                                })
+                                .setNegativeButton("返回", (dialog, which) -> dialog.dismiss());
+                        builder.show();
                     });
                 } else {
                     mRlReceiverConfirm.setVisibility(View.GONE);
@@ -271,7 +286,7 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
         finishTime.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 Calendar c = Calendar.getInstance();
-                new DatePickDialog(mContext, c).setOnDateTimeSetListener((dp,year, monthOfYear, dayOfMonth) -> {
+                new DatePickDialog(mContext, c).setOnDateTimeSetListener((dp, year, monthOfYear, dayOfMonth) -> {
                     finishTime.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
                     // 保存选择后时间
                     c.set(Calendar.YEAR, year);
