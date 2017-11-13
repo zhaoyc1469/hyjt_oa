@@ -112,9 +112,7 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
     private LinearLayout mLlReceive;
     private ApplyExpCreateReqs applyExpCreateReqs;
     private Button mBtnCompute;
-    private BigDecimal surePayMoney;
-    private BigDecimal subtract;
-    //    private LinearLayout mLlFilePack;
+    private BigDecimal surePayMoney = new BigDecimal(0);
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -258,6 +256,23 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
                 }
             }
         });
+
+        mEdtExpenseAmount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                getSureMoney();
+            }
+        });
     }
 
     private void addWriteOffPack() {
@@ -276,15 +291,50 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
         mBtnToPson.setOnClickListener(v -> mPresenter.getPsonLoanList(mEdtWriteoffNum, mEdtBorrowMoney, mEdtUnpayed, mEdtPayed));
         //删除布局
         Button delWriteoff = (Button) inflate.findViewById(R.id.btn_del_writeoff);
-        delWriteoff.setOnClickListener(v -> {
-//            if (meetingQuestionList.size()>size){
-            mLlWriteoff.removeView(inflate);
-//                meetingQuestionList.remove(size);
-//            }
+        delWriteoff.setOnClickListener(v -> mLlWriteoff.removeView(inflate));
+
+        mEdtWriteoffMoney.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                getSureMoney();
+            }
         });
 
         mLlWriteoff.addView(inflate);
         mSlvApplyexp.fullScroll(ScrollView.FOCUS_DOWN);
+    }
+
+    private void getSureMoney() {
+        if (TextUtils.isEmpty(mEdtExpenseAmount.getText())) {
+            surePayMoney = new BigDecimal(0);
+        } else {
+            surePayMoney = new BigDecimal(mEdtExpenseAmount.getText().toString());
+        }
+        if (mRbAgree.isChecked()) {
+            for (int i = 0; i < mLlWriteoff.getChildCount(); i++) {
+                View inflate = mLlWriteoff.getChildAt(i);
+                EditText mEdtWriteoffMoney = (EditText) inflate.findViewById(R.id.edt_writeoff_money);
+                BigDecimal bigDecimal;
+                if (TextUtils.isEmpty(mEdtWriteoffMoney.getText())) {
+                    bigDecimal = new BigDecimal(0);
+                } else {
+                    bigDecimal = new BigDecimal(mEdtWriteoffMoney.getText().toString());
+                }
+                surePayMoney = surePayMoney.subtract(bigDecimal);
+            }
+            mEdtSureMoney.setText(surePayMoney.toString());
+        } else {
+            mEdtSureMoney.setText(surePayMoney.toString());
+        }
+
     }
 
 
@@ -298,7 +348,7 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
         EditText mEdtBankAccount = (EditText) inflate.findViewById(R.id.edt_bank_account);
         EditText mEdtMoney = (EditText) inflate.findViewById(R.id.edt_money);
 
-        mBtnSelAccount.setOnClickListener(v -> mPresenter.getReceiveBank(mEdtAccountName,mEdtOpenactBank,mEdtBankAccount));
+        mBtnSelAccount.setOnClickListener(v -> mPresenter.getReceiveBank(mEdtAccountName, mEdtOpenactBank, mEdtBankAccount));
 
         //删除布局
         Button delWriteoff = (Button) inflate.findViewById(R.id.btn_del_receive);
@@ -550,7 +600,7 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
         if (rows == null || rows.size() == 0) {
             new AlertDialog.Builder(this).setTitle("提示")
                     .setMessage("您没有对公借款信息！")
-                    .setPositiveButton("确定", (dialog, which) -> finish()).show();
+                    .setPositiveButton("确定", (dialog, which) -> dialog.dismiss()).show();
             return;
         }
         AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
@@ -580,7 +630,7 @@ public class ApplyExpenseCreateActivity extends BaseActivity<ApplyExpenseCreateP
         if (rows == null || rows.size() == 0) {
             new AlertDialog.Builder(this).setTitle("提示")
                     .setMessage("您没有个人借款信息！")
-                    .setPositiveButton("确定", (dialog, which) -> finish()).show();
+                    .setPositiveButton("确定", (dialog, which) -> dialog.dismiss()).show();
             return;
         }
 

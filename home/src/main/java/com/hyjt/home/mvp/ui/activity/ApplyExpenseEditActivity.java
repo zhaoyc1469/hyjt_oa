@@ -67,6 +67,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import org.simple.eventbus.EventBus;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -139,6 +140,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
     private ArrayList<Uri> mFileURLList = new ArrayList<>();
     private RelativeLayout mRlAddWriteoff;
     private Button mBtnAddWriteoff;
+    private BigDecimal surePayMoney;
     //    private List<ApplyExpDetailResp.ReceivePack> writeOffPack = new ArrayList<>();
 
     @Override
@@ -426,11 +428,62 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
                 mRlAddWriteoff.setVisibility(View.GONE);
             }
         });
+
+        mEdtExpenseAmount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                getSureMoney();
+            }
+        });
     }
+
+    private void getSureMoney() {
+        if (TextUtils.isEmpty(mEdtExpenseAmount.getText())) {
+            surePayMoney = new BigDecimal(0);
+        } else {
+            String string = mEdtExpenseAmount.getText().toString();
+            if (string.contains("￥")) {
+                string = string.substring(1, string.length());
+                string = string.replace(",", "");
+            }
+            surePayMoney = new BigDecimal(string);
+        }
+        if (mRbAgree.isChecked()) {
+            for (int i = 0; i < mLlWriteoff.getChildCount(); i++) {
+                View inflate = mLlWriteoff.getChildAt(i);
+                EditText mEdtWriteoffMoney = (EditText) inflate.findViewById(R.id.edt_writeoff_money);
+                BigDecimal bigDecimal;
+                if (TextUtils.isEmpty(mEdtWriteoffMoney.getText())) {
+                    bigDecimal = new BigDecimal(0);
+                } else {
+                    String string = mEdtWriteoffMoney.getText().toString();
+                    if (string.contains("￥")) {
+                        string = string.substring(1, string.length());
+                        string = string.replace(",", "");
+                    }
+                    bigDecimal = new BigDecimal(string);
+                }
+                surePayMoney = surePayMoney.subtract(bigDecimal);
+            }
+            mEdtSureMoney.setText(surePayMoney.toString());
+        } else {
+            mEdtSureMoney.setText(surePayMoney.toString());
+        }
+    }
+
     private void addWriteOffPack() {
         mEdtSureMoney.setText("");
         View inflate = LayoutInflater.from(this).inflate(R.layout.home_add_ae_write_off, null);
-
 
         EditText mEdtWriteoffNum = (EditText) inflate.findViewById(R.id.edt_writeoff_num);
         EditText mEdtBorrowMoney = (EditText) inflate.findViewById(R.id.edt_borrow_money);
@@ -443,11 +496,23 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         mBtnToPson.setOnClickListener(v -> mPresenter.getPsonLoanList(mEdtWriteoffNum, mEdtBorrowMoney, mEdtUnpayed, mEdtPayed));
         //删除布局
         Button delWriteoff = (Button) inflate.findViewById(R.id.btn_del_writeoff);
-        delWriteoff.setOnClickListener(v -> {
-//            if (meetingQuestionList.size()>size){
-            mLlWriteoff.removeView(inflate);
-//                meetingQuestionList.remove(size);
-//            }
+        delWriteoff.setOnClickListener(v -> mLlWriteoff.removeView(inflate));
+
+        mEdtWriteoffMoney.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                getSureMoney();
+            }
         });
 
         mLlWriteoff.addView(inflate);
@@ -735,7 +800,22 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         if (canEdit) {
             mBtnToComp.setOnClickListener(v -> mPresenter.getCompLoanList(mEdtWriteoffNum, mEdtBorrowMoney, mEdtUnpayed, mEdtPayed));
             mBtnToPson.setOnClickListener(v -> mPresenter.getPsonLoanList(mEdtWriteoffNum, mEdtBorrowMoney, mEdtUnpayed, mEdtPayed));
+            mEdtWriteoffMoney.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    getSureMoney();
+                }
+            });
         } else {
             mRlSelAct.setVisibility(View.GONE);
             delWriteoff.setVisibility(View.GONE);
@@ -1030,7 +1110,6 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             FileList.add(new ApplyExpCreateReqs.FilePackBean(filePackBean.getFileId(), filePackBean.getFileName()));
         }
         applyExpCreateReqs.setFilePack(FileList);
-
 
 
         mPresenter.editApplyExp(applyExpCreateReqs);
