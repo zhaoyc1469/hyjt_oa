@@ -87,7 +87,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
     private ImageView mIvTellerSign;
     private Button mBtnTellerConfirm;
     private RelativeLayout mRlSendAccount;
-    private EditText mEdtReceiverAccount;
+    private EditText mEdtSendAccount;
     private ImageView mIvReceiverSign;
     private Button mBtnReceiverConfirm;
     private RelativeLayout mRlReceiverConfirm;
@@ -101,6 +101,8 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
     private PsonLoanEditActivity mContext;
     private String psonLoanType;
     private PLCompBankAccountResp.BankPackBean bankPackBean;
+    private RelativeLayout mRlSendBank;
+    private EditText mEdtSendBank;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -180,7 +182,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mIvTellerSign = (ImageView) findViewById(R.id.iv_teller_sign);
         mBtnTellerConfirm = (Button) findViewById(R.id.btn_teller_confirm);
         mRlSendAccount = (RelativeLayout) findViewById(R.id.rl_send_account);
-        mEdtReceiverAccount = (EditText) findViewById(R.id.edt_send_account);
+        mEdtSendAccount = (EditText) findViewById(R.id.edt_send_account);
         mIvReceiverSign = (ImageView) findViewById(R.id.iv_receiver_sign);
         mBtnReceiverConfirm = (Button) findViewById(R.id.btn_receiver_confirm);
         mRlReceiverConfirm = (RelativeLayout) findViewById(R.id.rl_receiver_confirm);
@@ -271,7 +273,8 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
                 mRlTellerConfirm.setVisibility(View.VISIBLE);
                 mRlReceiverConfirm.setVisibility(View.VISIBLE);
             }
-            mEdtReceiverAccount.setFocusable(false);
+            mEdtSendAccount.setFocusable(false);
+            mEdtSendBank.setFocusable(false);
         } else if ("2".equals(psonLoanType)) {
 //            mRlTellerConfirm.setVisibility(View.GONE);
 //            mRlReceiverConfirm.setVisibility(View.GONE);
@@ -293,7 +296,8 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mEdtOpenactBank.setText(psonLoanDetailResp.getCwRpbank());
         mEdtBankAccount.setText(psonLoanDetailResp.getCwRpnum());
         mEdtRemark.setText(psonLoanDetailResp.getCwPtext());
-        mEdtReceiverAccount.setText(psonLoanDetailResp.getCwBname() + psonLoanDetailResp.getCwBnum());
+        mEdtSendAccount.setText(psonLoanDetailResp.getCwBname());
+        mEdtSendBank.setText(psonLoanDetailResp.getCwBnum());
 //        mEdtRemark.setText(psonLoanDetailResp.getCw);
 
         flowPack.clear();
@@ -323,6 +327,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
                         mPresenter.tellerConfirm(psonLoanId);
                     });
                     mRlSendAccount.setVisibility(View.VISIBLE);
+                    mRlSendBank.setVisibility(View.VISIBLE);
                 } else {
                     mRlTellerConfirm.setVisibility(View.GONE);
                 }
@@ -345,6 +350,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         } else {
             mRlReceiverConfirm.setVisibility(View.GONE);
             mRlSendAccount.setVisibility(View.GONE);
+            mRlSendBank.setVisibility(View.GONE);
             mRlTellerConfirm.setVisibility(View.GONE);
         }
 
@@ -579,5 +585,10 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         }
 
         mLLFlowNode.addView(inflate);
+    }
+
+    private void initView() {
+        mRlSendBank = (RelativeLayout) findViewById(R.id.rl_send_bank);
+        mEdtSendBank = (EditText) findViewById(R.id.edt_send_bank);
     }
 }

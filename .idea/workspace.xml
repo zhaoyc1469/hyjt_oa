@@ -6,22 +6,18 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SkipReportDetailActivity.java" line="142" />
-    <bookmark url="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java" line="465" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58545980-12d8-4824-9ee9-7948b17b5c1f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/ApplyExpDetailResp.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/ApplyExpDetailResp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java" />
+    <list default="true" id="58545980-12d8-4824-9ee9-7948b17b5c1f" name="Default" comment="test">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanEditActivity.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanEditActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_edit.xml" afterPath="$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_edit.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/res/layout/home_activity_pson_loan_edit.xml" afterPath="$PROJECT_DIR$/home/src/main/res/layout/home_activity_pson_loan_edit.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/res/layout/home_activity_to_comp_loan_edit.xml" afterPath="$PROJECT_DIR$/home/src/main/res/layout/home_activity_to_comp_loan_edit.xml" />
     </list>
@@ -59,97 +55,105 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="327">
-      <file leaf-file-name="home_activity_apply_expense_create.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_create.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="279" column="51" selection-start-line="279" selection-start-column="51" selection-end-line="279" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ApplyExpenseCreateActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseCreateActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="128" column="49" selection-start-line="128" selection-start-column="49" selection-end-line="128" selection-end-column="49" />
-              <folding>
-                <element signature="e#11791#11792#0" expanded="true" />
-                <element signature="e#11837#11838#0" expanded="true" />
-                <element signature="e#13455#13456#0" expanded="true" />
-                <element signature="e#13501#13502#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home_add_ae_write_off.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_add_ae_write_off.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="126" column="24" selection-start-line="126" selection-start-column="24" selection-end-line="126" selection-end-column="24" />
+            <state relative-caret-position="5150">
+              <caret line="277" column="36" selection-start-line="277" selection-start-column="36" selection-end-line="277" selection-end-column="36" />
               <folding />
             </state>
           </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApplyExpenseEditActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ApplyExpenseEditActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="279" column="32" selection-start-line="279" selection-start-column="32" selection-end-line="279" selection-end-column="32" />
+            <state relative-caret-position="9225">
+              <caret line="442" column="0" selection-start-line="442" selection-start-column="0" selection-end-line="442" selection-end-column="0" />
               <folding>
+                <element signature="e#7766#7767#0" expanded="true" />
+                <element signature="e#7835#7836#0" expanded="true" />
                 <element signature="e#20003#20004#0" expanded="true" />
                 <element signature="e#20049#20050#0" expanded="true" />
                 <element signature="e#23158#23159#0" expanded="true" />
                 <element signature="e#23204#23205#0" expanded="true" />
                 <element signature="e#38004#38005#0" expanded="true" />
                 <element signature="e#38058#38059#0" expanded="true" />
+                <element signature="e#52874#52875#0" expanded="true" />
+                <element signature="e#52920#52921#0" expanded="true" />
+                <element signature="e#54107#54108#0" expanded="true" />
+                <element signature="e#54162#54163#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApplyExpDetailResp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/ApplyExpDetailResp.java">
+      <file leaf-file-name="home_activity_apply_expense_create.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_create.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="79" column="32" selection-start-line="79" selection-start-column="32" selection-end-line="79" selection-end-column="32" />
+            <state relative-caret-position="8325">
+              <caret line="368" column="0" selection-start-line="368" selection-start-column="0" selection-end-line="403" selection-end-column="29" />
               <folding>
-                <element signature="e#3341#3342#0" expanded="true" />
-                <element signature="e#3387#3388#0" expanded="true" />
-                <element signature="e#3420#3421#0" expanded="true" />
-                <element signature="e#3453#3454#0" expanded="true" />
-                <element signature="e#3482#3483#0" expanded="true" />
-                <element signature="e#3526#3527#0" expanded="true" />
-                <element signature="e#3557#3558#0" expanded="true" />
+                <element signature="e#12091#13622#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PsonLoanEditActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java">
+      <file leaf-file-name="home_activity_apply_expense_edit.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_edit.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="242" column="42" selection-start-line="242" selection-start-column="42" selection-end-line="242" selection-end-column="42" />
+            <state relative-caret-position="7600">
+              <caret line="304" column="49" selection-start-line="304" selection-start-column="49" selection-end-line="324" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PsonLoanDetailResp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/PsonLoanDetailResp.java">
+      <file leaf-file-name="PsonLoanEditActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="54" column="29" selection-start-line="54" selection-start-column="29" selection-end-line="56" selection-end-column="26" />
+            <state relative-caret-position="157">
+              <caret line="560" column="88" selection-start-line="560" selection-start-column="88" selection-end-line="560" selection-end-column="88" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PsonLoanEditPresenter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanEditPresenter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3500">
+              <caret line="178" column="43" selection-start-line="178" selection-start-column="43" selection-end-line="178" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PsonLoanEditContract.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/PsonLoanEditContract.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home_activity_pson_loan_edit.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_pson_loan_edit.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9200">
+              <caret line="368" column="0" selection-start-line="368" selection-start-column="0" selection-end-line="368" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -158,33 +162,23 @@
       <file leaf-file-name="ToCompLoanEditActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanEditActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="849">
-              <caret line="219" column="0" selection-start-line="219" selection-start-column="0" selection-end-line="220" selection-end-column="98" />
+            <state relative-caret-position="1125">
+              <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HandlerScheduler.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.reactivex.rxjava2/rxandroid/2.0.1/67244b35fe87c5899f87151f8b63981b7c9b37db/rxandroid-2.0.1-sources.jar!/io/reactivex/android/schedulers/HandlerScheduler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home_activity_apply_expense_edit.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_edit.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="316" column="38" selection-start-line="316" selection-start-column="38" selection-end-line="316" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
+      <file leaf-file-name="home_activity_to_comp_loan_edit.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_to_comp_loan_edit.xml">
           <provider editor-type-id="android-designer2">
             <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9350">
+              <caret line="374" column="0" selection-start-line="374" selection-start-column="0" selection-end-line="374" selection-end-column="0" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -1081,6 +1075,10 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="transformNative_libsWithStripDebugSymbolForRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="compileReleaseSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
@@ -1125,6 +1123,10 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="transformClassesWithRetrolambdaForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="transformNative_libsWithStripDebugSymbolForDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays the signing info for each variant." />
@@ -1821,6 +1823,10 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="transformNative_libsWithStripDebugSymbolForRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="compileReleaseSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
@@ -1908,6 +1914,10 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="transformClassesWithRetrolambdaForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="transformNative_libsWithStripDebugSymbolForDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
@@ -4360,11 +4370,11 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="9027960265215" />
         <entry key="D:\android_workspace\hyjt\hyjt_oa" value="10546241157160" />
         <entry key="D:\android_workspace\hyjt_oa" value="9029507008428" />
         <entry key="E:\android_workspace\hyjt\hyjt_oa" value="9026681249150" />
         <entry key="E:\workspace\git\huanyujt\oa\hyjt_oa" value="9008675752655" />
+        <entry key="$PROJECT_DIR$" value="9027960265215" />
         <entry key="F:\android_workspace\hyjt_oa" value="10550750071131" />
       </map>
     </option>
@@ -5253,10 +5263,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Reqs/ClNodeApproveReqs.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/ToCompLoanEditContract.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ToCompLoanEditModel.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Reqs/CompLoanCreateReqs.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/CompLoanDetailResp.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanCreateActivity.java" />
         <option value="$PROJECT_DIR$/home/src/main/res/layout/home_activity_to_comp_loan_create.xml" />
-        <option value="$PROJECT_DIR$/home/src/main/res/layout/home_activity_to_comp_loan_edit.xml" />
         <option value="$PROJECT_DIR$/home/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/fragment/LinkmanFragment.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/ApplyExpDetailResp.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanListPresenter.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ContributeIdeaListPresenter.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ReportTopListPresenter.java" />
@@ -5265,53 +5281,47 @@
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/LaborUnionReqsListPresenter.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/SLConsultListPresenter.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanEditPresenter.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ToCompLoanEditPresenter.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/ApplyxpCompanyResp.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ApplyExpenseEditModel.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/ApplyExpTypeResp.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ApplyExpenseEditPresenter.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseListActivity.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanListActivity.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanCreateActivity.java" />
+        <option value="$PROJECT_DIR$/home/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/home/src/main/res/layout/home_add_ae_receiver.xml" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/StaffListPresenter.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ApplyExpenseListPresenter.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Reqs/BaseNumReqs.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/AEExpMoneyResp.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/adapter/CompLoanAlertAdapter.java" />
-        <option value="$PROJECT_DIR$/home/src/main/res/layout/home_item_psonloan_alert.xml" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/adapter/PsonLoanAlertAdapter.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanCreateActivity.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/ApplyExpenseCreateContract.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanCreateActivity.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ApplyExpenseCreateModel.java" />
-        <option value="$PROJECT_DIR$/home/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_create.xml" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ToCompLoanEditModel.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ToCompLoanEditPresenter.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/ToCompLoanEditContract.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java" />
-        <option value="$PROJECT_DIR$/home/src/main/res/layout/home_add_ae_write_off.xml" />
-        <option value="$PROJECT_DIR$/home/src/main/res/layout/home_add_ae_receiver.xml" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ApplyExpenseCreatePresenter.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/service/HomeService.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ApplyExpenseEditModel.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ApplyExpenseEditPresenter.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/ApplyExpenseEditContract.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Reqs/ApplyExpCreateReqs.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/receiver/InformReceiver.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/model/entity/WorkMission.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/fragment/WorkFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/activity/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/home/src/main/res/layout/home_item_psonloan_alert.xml" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/adapter/CompLoanAlertAdapter.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/AEExpMoneyResp.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ApplyExpenseCreatePresenter.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/ApplyExpenseCreateContract.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseCreateActivity.java" />
-        <option value="$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_edit.xml" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanEditActivity.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/ApplyExpDetailResp.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/adapter/PsonLoanAlertAdapter.java" />
+        <option value="$PROJECT_DIR$/home/src/main/res/layout/home_add_ae_write_off.xml" />
+        <option value="$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_create.xml" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Reqs/ApplyExpCreateReqs.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/ApplyExpenseEditContract.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java" />
+        <option value="$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_edit.xml" />
+        <option value="$PROJECT_DIR$/home/src/main/res/layout/home_activity_pson_loan_edit.xml" />
+        <option value="$PROJECT_DIR$/home/src/main/res/layout/home_activity_to_comp_loan_edit.xml" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanEditActivity.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1932" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -5368,178 +5378,26 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt_oa" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt_oa" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt_oa" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt_oa" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mvp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt_oa" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mvp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt_oa" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mvp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="ProjectPane">
         <subPane />
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="android.sdk.path" value="E:/software/developSoftware/AndroidSDK/newsdk" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../jcjr" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="device.picker.selection" value="TWGDU16C20005986" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
-    <property name="ExportApk.ApkPath" value="C:\Users\Administrator\Desktop\apk" />
+    <property name="ExportApk.ApkPath" value="C:\Users\Administrator\Desktop" />
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.BuildType" value="release" />
     <property name="show.do.not.ask.upgrade.gradle.plugin" value="2.2.3" />
@@ -5558,11 +5416,11 @@
       <recent name="com.hyjt" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\android_workspace\hyjt\hyjt_oa\app\src\main\res\mipmap-xxhdpi" />
       <recent name="F:\android_workspace\hyjt_oa\home\src\main\res\layout" />
       <recent name="D:\android_workspace\hyjt\hyjt_oa\app\src\main\res\layout" />
       <recent name="D:\android_workspace\hyjt\hyjt_oa\home\src\main\res\layout" />
       <recent name="D:\android_workspace\hyjt\hyjt_oa\home\src\main\res\drawable" />
+      <recent name="D:\android_workspace\hyjt\hyjt_oa\db\src\main\java\com\example\db" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.hyjt.home.mvp.ui.adapter" />
@@ -5940,6 +5798,20 @@
       <option name="presentableId" value="Default" />
       <updated>1504441898688</updated>
     </task>
+    <task id="LOCAL-00014" summary="test">
+      <created>1504664091063</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1504664091063</updated>
+    </task>
+    <task id="LOCAL-00015" summary="test">
+      <created>1504664100447</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1504664100447</updated>
+    </task>
     <task id="LOCAL-00016" summary="test">
       <created>1504674606557</created>
       <option name="number" value="00016" />
@@ -6249,68 +6121,52 @@
       <updated>1509975363400</updated>
     </task>
     <task id="LOCAL-00060" summary="test">
-      <created>1510133081794</created>
+      <created>1510063004050</created>
       <option name="number" value="00060" />
       <option name="presentableId" value="LOCAL-00060" />
       <option name="project" value="LOCAL" />
-      <updated>1510133081795</updated>
+      <updated>1510063004051</updated>
     </task>
     <task id="LOCAL-00061" summary="test">
-      <created>1510221263026</created>
+      <created>1510147590871</created>
       <option name="number" value="00061" />
       <option name="presentableId" value="LOCAL-00061" />
       <option name="project" value="LOCAL" />
-      <updated>1510221263027</updated>
+      <updated>1510147590872</updated>
     </task>
     <task id="LOCAL-00062" summary="test">
-      <created>1510307082650</created>
+      <created>1510237111491</created>
       <option name="number" value="00062" />
       <option name="presentableId" value="LOCAL-00062" />
       <option name="project" value="LOCAL" />
-      <updated>1510307082651</updated>
+      <updated>1510237111492</updated>
     </task>
-    <task id="LOCAL-00063" summary="test">
-      <created>1510554774049</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1510554774049</updated>
-    </task>
-    <task id="LOCAL-00064" summary="test">
-      <created>1510562805039</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1510562805039</updated>
-    </task>
-    <option name="localTasksCounter" value="65" />
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-9" y="-9" width="1932" height="1048" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3409091" sideWeight="0.49573562" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34312573" sideWeight="0.49573562" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3372503" sideWeight="0.5127932" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5183983" sideWeight="0.48720682" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.519389" sideWeight="0.48720682" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32951945" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32575756" sideWeight="0.4978678" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3243243" sideWeight="0.4978678" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24972914" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25426438" sideWeight="0.4809384" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3538961" sideWeight="0.4978678" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35306782" sideWeight="0.4809384" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25865802" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25851938" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3576759" sideWeight="0.51906157" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -6322,6 +6178,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3548766" sideWeight="0.4978678" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -6432,54 +6290,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java</url>
-          <line>306</line>
+          <line>310</line>
           <properties />
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java</url>
-          <line>250</line>
+          <line>252</line>
           <properties />
           <option name="timeStamp" value="49" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java</url>
-          <line>164</line>
-          <properties />
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java</url>
-          <line>364</line>
-          <properties />
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java</url>
-          <line>439</line>
-          <properties />
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java</url>
-          <line>458</line>
-          <properties />
-          <option name="timeStamp" value="58" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java</url>
-          <line>459</line>
-          <properties />
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java</url>
-          <line>466</line>
-          <properties />
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="62" />
+      <option name="time" value="55" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="app">
@@ -6488,477 +6310,431 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.reactivex.rxjava2/rxjava/2.1.0/e11f8b99796174be4f0f255d717f295d5e49a53b/rxjava-2.1.0-sources.jar!/io/reactivex/annotations/NonNull.java">
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Reqs/PsonLoanCreateReqs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+        <state relative-caret-position="550">
+          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="27" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/StaffMsgModel.java">
+    <entry file="file://$PROJECT_DIR$/frame/src/main/java/com/hyjt/frame/widget/imageloader/glide/GlideConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-138">
-          <caret line="52" column="60" selection-start-line="52" selection-start-column="60" selection-end-line="52" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ReportTopDetailPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2328">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ReportTopDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="34" column="68" selection-start-line="34" selection-start-column="68" selection-end-line="34" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SkipReportCreateActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanCreatePresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="140" column="5" selection-start-line="124" selection-start-column="0" selection-end-line="140" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/PsonLoanCreateContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="49" column="45" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/PsonLoanCreateModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="57" column="69" selection-start-line="57" selection-start-column="69" selection-end-line="60" selection-end-column="27" />
+        <state relative-caret-position="50">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/home/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="171" column="57" selection-start-line="171" selection-start-column="57" selection-end-line="171" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="android-manifest">
         <state />
       </provider>
-    </entry>
-    <entry file="file://D:/AndroidSDK/sources/android-25/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+        <state relative-caret-position="650">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="28" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ToCompLoanListModel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="41" column="102" selection-start-line="41" selection-start-column="102" selection-end-line="45" selection-end-column="32" />
+        <state relative-caret-position="5625">
+          <caret line="225" column="0" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ToCompLoanEditModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="114" column="46" selection-start-line="114" selection-start-column="46" selection-end-line="114" selection-end-column="47" />
-        </state>
+    <entry file="file://$PROJECT_DIR$/frame/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/ToCompLoanEditContract.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanCreateActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11234">
-          <caret line="337" column="88" selection-start-line="337" selection-start-column="88" selection-end-line="343" selection-end-column="9" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_add_ae_receiver.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="34" column="40" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="40" />
-          <folding />
+        <state relative-caret-position="1150">
+          <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanEditPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="114" column="18" selection-start-line="114" selection-start-column="18" selection-end-line="114" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/PsonLoanEditContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="45" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/PsonLoanEditModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="76" column="76" selection-start-line="76" selection-start-column="76" selection-end-line="79" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ApplyExpenseCreateModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3444">
-          <caret line="113" column="69" selection-start-line="113" selection-start-column="69" selection-end-line="116" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ApplyExpenseEditModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4797">
-          <caret line="150" column="50" selection-start-line="150" selection-start-column="50" selection-end-line="150" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/service/HomeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17015">
-          <caret line="484" column="79" selection-start-line="484" selection-start-column="71" selection-end-line="484" selection-end-column="79" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/home/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="88" column="64" selection-start-line="88" selection-start-column="64" selection-end-line="88" selection-end-column="64" />
+        <state relative-caret-position="157">
+          <caret line="94" column="17" selection-start-line="94" selection-start-column="17" selection-end-line="94" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/res/anim/home_anim_enter_bottom.xml">
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanListPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="231">
+          <caret line="59" column="4" selection-start-line="59" selection-start-column="4" selection-end-line="125" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/pop_pl_finance.xml">
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/ApplyExpenseEditContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="984">
-          <caret line="51" column="38" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="38" />
-          <folding />
+        <state relative-caret-position="125">
+          <caret line="45" column="112" selection-start-line="45" selection-start-column="112" selection-end-line="45" selection-end-column="112" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/view/FinancePlPop.java">
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/PsonLoanListContract.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2788">
-          <caret line="79" column="57" selection-start-line="79" selection-start-column="57" selection-end-line="79" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/AddressBookActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/ApplyExpenseCreateContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="902">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="47" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/ApplyExpTypeResp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ApplyExpenseCreatePresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="220" column="44" selection-start-line="220" selection-start-column="44" selection-end-line="220" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ToCompLoanEditPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="134" column="16" selection-start-line="134" selection-start-column="16" selection-end-line="134" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ApplyExpenseEditPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="182" column="24" selection-start-line="182" selection-start-column="24" selection-end-line="182" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Reqs/ApplyExpCreateReqs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="9" column="31" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="31" />
-          <folding>
-            <element signature="e#671#672#0" expanded="false" />
-            <element signature="e#696#697#0" expanded="false" />
-            <element signature="e#732#733#0" expanded="false" />
-            <element signature="e#755#756#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="98" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="125">
+          <caret line="43" column="65" selection-start-line="43" selection-start-column="65" selection-end-line="43" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/receiver/InformReceiver.java">
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/StaffListPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3485">
-          <caret line="98" column="57" selection-start-line="98" selection-start-column="57" selection-end-line="98" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+        <state relative-caret-position="-532">
+          <caret line="89" column="18" selection-start-line="89" selection-start-column="18" selection-end-line="89" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/h_grjk.png">
-      <provider selected="true" editor-type-id="images">
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/StaffListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="111" column="12" selection-start-line="111" selection-start-column="12" selection-end-line="111" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frame/src/main/java/com/hyjt/frame/api/parseResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="25" column="36" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/PsonLoanListModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="43" column="102" selection-start-line="43" selection-start-column="102" selection-end-line="47" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/ToCompLoanListContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="37" column="36" selection-start-line="37" selection-start-column="36" selection-end-line="39" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ToCompLoanListModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="41" column="102" selection-start-line="41" selection-start-column="102" selection-end-line="45" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Reqs/BaseNumReqs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/service/HomeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="476" column="38" selection-start-line="476" selection-start-column="38" selection-end-line="476" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ApplyExpenseCreateModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="104" column="59" selection-start-line="104" selection-start-column="48" selection-end-line="104" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ToCompLoanListPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="33" column="113" selection-start-line="33" selection-start-column="113" selection-end-line="33" selection-end-column="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/adapter/ComnStringAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_dialog_sel_item.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/model/entity/WorkMission.java">
+    <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_item_comploan.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_item_contribute_i.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/adapter/CompLoanAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3403">
-          <caret line="125" column="34" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
-          <folding>
-            <element signature="e#824#825#0" expanded="false" />
-            <element signature="e#853#854#0" expanded="false" />
-            <element signature="e#897#898#0" expanded="false" />
-            <element signature="e#933#934#0" expanded="false" />
-            <element signature="e#967#968#0" expanded="false" />
-            <element signature="e#997#998#0" expanded="false" />
-            <element signature="e#1043#1044#0" expanded="false" />
-            <element signature="e#1081#1082#0" expanded="false" />
-            <element signature="e#1116#1117#0" expanded="false" />
-            <element signature="e#1147#1148#0" expanded="false" />
-            <element signature="e#1195#1196#0" expanded="false" />
-            <element signature="e#1235#1236#0" expanded="false" />
-            <element signature="e#1271#1272#0" expanded="false" />
-            <element signature="e#1303#1304#0" expanded="false" />
-            <element signature="e#1353#1354#0" expanded="false" />
-            <element signature="e#1395#1396#0" expanded="false" />
-            <element signature="e#1439#1440#0" expanded="false" />
-            <element signature="e#1479#1480#0" expanded="false" />
-            <element signature="e#1644#1645#0" expanded="false" />
-            <element signature="e#1681#1682#0" expanded="false" />
-            <element signature="e#1741#1742#0" expanded="false" />
-            <element signature="e#1793#1794#0" expanded="false" />
-            <element signature="e#1834#1835#0" expanded="false" />
-            <element signature="e#1871#1872#0" expanded="false" />
-            <element signature="e#1931#1932#0" expanded="false" />
-            <element signature="e#1983#1984#0" expanded="false" />
-            <element signature="e#2024#2025#0" expanded="false" />
-            <element signature="e#2061#2062#0" expanded="false" />
-            <element signature="e#2121#2122#0" expanded="false" />
-            <element signature="e#2173#2174#0" expanded="false" />
-            <element signature="e#2211#2212#0" expanded="false" />
-            <element signature="e#2245#2246#0" expanded="false" />
-            <element signature="e#2299#2300#0" expanded="false" />
-            <element signature="e#2345#2346#0" expanded="false" />
-            <element signature="e#2384#2385#0" expanded="false" />
-            <element signature="e#2419#2420#0" expanded="false" />
-            <element signature="e#2475#2476#0" expanded="false" />
-            <element signature="e#2523#2524#0" expanded="false" />
-            <element signature="e#2561#2562#0" expanded="false" />
-            <element signature="e#2595#2596#0" expanded="false" />
-            <element signature="e#2649#2650#0" expanded="false" />
-            <element signature="e#2695#2696#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="125">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/activity/SplashActivity.java">
+    <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_item_applyexpense.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_item_psonloan_alert.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1599">
-          <caret line="59" column="52" selection-start-line="59" selection-start-column="52" selection-end-line="59" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#6123#6124#0" expanded="false" />
-            <element signature="e#6147#6148#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="-168">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/AEExpMoneyResp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/activity/LoginActivity.java">
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4100">
-          <caret line="134" column="50" selection-start-line="134" selection-start-column="50" selection-end-line="134" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#8261#8262#0" expanded="false" />
-            <element signature="e#8285#8286#0" expanded="false" />
-            <element signature="e#10789#10790#0" expanded="false" />
-            <element signature="e#10829#10830#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="4125">
+          <caret line="217" column="9" selection-start-line="217" selection-start-column="9" selection-end-line="219" selection-end-column="77" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frame/src/main/java/com/hyjt/frame/base/BaseActivity.java">
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ApplyExpenseCreatePresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="999">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+        <state relative-caret-position="4550">
+          <caret line="233" column="51" selection-start-line="233" selection-start-column="34" selection-end-line="233" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/adapter/PsonLoanAlertAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="55" column="81" selection-start-line="55" selection-start-column="81" selection-end-line="55" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/adapter/CompLoanAlertAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_add_ae_write_off.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="4250">
+          <caret line="170" column="37" selection-start-line="170" selection-start-column="37" selection-end-line="170" selection-end-column="37" />
           <folding />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hyjt/client/mvp/ui/fragment/WorkFragment.java">
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ApplyExpenseListPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="642" column="0" selection-start-line="642" selection-start-column="0" selection-end-line="642" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="2250">
+          <caret line="120" column="45" selection-start-line="120" selection-start-column="45" selection-end-line="120" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.reactivex.rxjava2/rxandroid/2.0.1/67244b35fe87c5899f87151f8b63981b7c9b37db/rxandroid-2.0.1-sources.jar!/io/reactivex/android/schedulers/HandlerScheduler.java">
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/ApplyExpenseListContract.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="425">
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ApplyExpenseEditPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1300">
+          <caret line="91" column="43" selection-start-line="91" selection-start-column="43" selection-end-line="91" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/ApplyExpenseEditContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/ImgUploadResp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Reqs/ApplyExpCreateReqs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1650">
+          <caret line="118" column="16" selection-start-line="118" selection-start-column="16" selection-end-line="118" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/ApplyExpenseCreateContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="43" column="64" selection-start-line="43" selection-start-column="64" selection-end-line="45" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseCreateActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="128" column="49" selection-start-line="128" selection-start-column="49" selection-end-line="128" selection-end-column="49" />
-          <folding>
-            <element signature="e#11791#11792#0" expanded="true" />
-            <element signature="e#11837#11838#0" expanded="true" />
-            <element signature="e#13455#13456#0" expanded="true" />
-            <element signature="e#13501#13502#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="5150">
+          <caret line="277" column="36" selection-start-line="277" selection-start-column="36" selection-end-line="277" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_create.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="279" column="51" selection-start-line="279" selection-start-column="51" selection-end-line="279" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_add_ae_write_off.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="126" column="24" selection-start-line="126" selection-start-column="24" selection-end-line="126" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_edit.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="316" column="38" selection-start-line="316" selection-start-column="38" selection-end-line="316" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanEditActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="849">
-          <caret line="219" column="0" selection-start-line="219" selection-start-column="0" selection-end-line="220" selection-end-column="98" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="242" column="42" selection-start-line="242" selection-start-column="42" selection-end-line="242" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/PsonLoanDetailResp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="54" column="29" selection-start-line="54" selection-start-column="29" selection-end-line="56" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/entity/Resp/ApplyExpDetailResp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="79" column="32" selection-start-line="79" selection-start-column="32" selection-end-line="79" selection-end-column="32" />
+        <state relative-caret-position="8325">
+          <caret line="368" column="0" selection-start-line="368" selection-start-column="0" selection-end-line="403" selection-end-column="29" />
           <folding>
-            <element signature="e#3341#3342#0" expanded="true" />
-            <element signature="e#3387#3388#0" expanded="true" />
-            <element signature="e#3420#3421#0" expanded="true" />
-            <element signature="e#3453#3454#0" expanded="true" />
-            <element signature="e#3482#3483#0" expanded="true" />
-            <element signature="e#3526#3527#0" expanded="true" />
-            <element signature="e#3557#3558#0" expanded="true" />
+            <element signature="e#12091#13622#0" expanded="false" />
           </folding>
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="279" column="32" selection-start-line="279" selection-start-column="32" selection-end-line="279" selection-end-column="32" />
+        <state relative-caret-position="9225">
+          <caret line="442" column="0" selection-start-line="442" selection-start-column="0" selection-end-line="442" selection-end-column="0" />
           <folding>
+            <element signature="e#7766#7767#0" expanded="true" />
+            <element signature="e#7835#7836#0" expanded="true" />
             <element signature="e#20003#20004#0" expanded="true" />
             <element signature="e#20049#20050#0" expanded="true" />
             <element signature="e#23158#23159#0" expanded="true" />
             <element signature="e#23204#23205#0" expanded="true" />
             <element signature="e#38004#38005#0" expanded="true" />
             <element signature="e#38058#38059#0" expanded="true" />
+            <element signature="e#52874#52875#0" expanded="true" />
+            <element signature="e#52920#52921#0" expanded="true" />
+            <element signature="e#54107#54108#0" expanded="true" />
+            <element signature="e#54162#54163#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_edit.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7600">
+          <caret line="304" column="49" selection-start-line="304" selection-start-column="49" selection-end-line="324" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_pson_loan_edit.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9200">
+          <caret line="368" column="0" selection-start-line="368" selection-start-column="0" selection-end-line="368" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_to_comp_loan_edit.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9350">
+          <caret line="374" column="0" selection-start-line="374" selection-start-column="0" selection-end-line="374" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanEditActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/PsonLoanEditContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanEditPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3500">
+          <caret line="178" column="43" selection-start-line="178" selection-start-column="43" selection-end-line="178" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="560" column="88" selection-start-line="560" selection-start-column="88" selection-end-line="560" selection-end-column="88" />
+          <folding />
         </state>
       </provider>
     </entry>

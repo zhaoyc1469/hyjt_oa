@@ -102,6 +102,8 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
     private Button mBtnDelLoan;
     private CpSupplierListResp.SupPackBean supPackBean = new CpSupplierListResp.SupPackBean();
     private CpContractListResp.RowsBean ContractRowsBean = new CpContractListResp.RowsBean();
+    private RelativeLayout mRlSendBank;
+    private EditText mEdtSendBank;
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -218,7 +220,8 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
         }
 
 
-        mEdtSendAccount.setText(compLoanDetailResp.getCwBname() + compLoanDetailResp.getCwBnum());
+        mEdtSendBank.setText(compLoanDetailResp.getCwBname());
+        mEdtSendAccount.setText(compLoanDetailResp.getCwBnum());
 
 
         if ("审批完成".equals(compLoanDetailResp.getFlowState())) {
@@ -240,6 +243,7 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
                         builder.show();
                     });
                     mRlSendAccount.setVisibility(View.VISIBLE);
+                    mRlSendBank.setVisibility(View.VISIBLE);
                 } else {
                     mRlTellerConfirm.setVisibility(View.GONE);
                 }
@@ -269,6 +273,7 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
         } else {
             mRlReceiverConfirm.setVisibility(View.GONE);
             mRlSendAccount.setVisibility(View.GONE);
+            mRlSendBank.setVisibility(View.GONE);
             mRlTellerConfirm.setVisibility(View.GONE);
         }
     }
@@ -479,6 +484,8 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
             builder.show();
         });
 
+        mRlSendBank = (RelativeLayout) findViewById(R.id.rl_send_bank);
+        mEdtSendBank = (EditText) findViewById(R.id.edt_send_bank);
     }
 
     private void editCloan() {
