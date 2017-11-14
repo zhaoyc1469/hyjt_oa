@@ -464,7 +464,11 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
                 string = string.substring(1, string.length());
                 string = string.replace(",", "");
             }
-            surePayMoney = new BigDecimal(string);
+            if (string.length() > 0){
+                surePayMoney = new BigDecimal(string);
+            } else {
+                surePayMoney = new BigDecimal(0);
+            }
         }
         if (mRbAgree.isChecked()) {
             for (int i = 0; i < mLlWriteoff.getChildCount(); i++) {
@@ -479,7 +483,11 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
                         string = string.substring(1, string.length());
                         string = string.replace(",", "");
                     }
-                    bigDecimal = new BigDecimal(string);
+                    if (string.length() > 0){
+                        bigDecimal = new BigDecimal(string);
+                    } else {
+                        bigDecimal = new BigDecimal(0);
+                    }
                 }
                 surePayMoney = surePayMoney.subtract(bigDecimal);
             }
@@ -671,6 +679,8 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
 
         TextView mTvNodeName = (TextView) inflate.findViewById(R.id.tv_node_name);
         EditText mEdtApprover = (EditText) inflate.findViewById(R.id.edt_approver);
+        RelativeLayout mRlNodeSendBank = (RelativeLayout) inflate.findViewById(R.id.rl_node_send_bank);
+        EditText mEdtNodeSendBank = (EditText) inflate.findViewById(R.id.edt_node_send_bank);
         RelativeLayout mRlAccount = (RelativeLayout) inflate.findViewById(R.id.rl_company_act);
         RelativeLayout mRlSelAct = (RelativeLayout) inflate.findViewById(R.id.rl_sel_act);
         LinearLayout mLlAccount = (LinearLayout) inflate.findViewById(R.id.ll_company_act);
@@ -695,7 +705,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             mRlRemark.setVisibility(View.VISIBLE);
             mLlAccount.setVisibility(View.GONE);
         }
-        mBtnSelAct.setOnClickListener(v -> mPresenter.selApplyExpBankAct(mEdtSendAccount));
+        mBtnSelAct.setOnClickListener(v -> mPresenter.selApplyExpBankAct(mEdtNodeSendBank, mEdtSendAccount));
 
         if ("同意".equals(flowPackBean.getNodeMemo())) {
             mTvAprState.setVisibility(View.VISIBLE);
@@ -759,7 +769,8 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         }
         mEdtRemark.setText(flowPackBean.getNodeMemotext());
         if (!TextUtils.isEmpty(flowPackBean.getCwBname())) {
-            mEdtSendAccount.setText(flowPackBean.getCwBname() + " " + flowPackBean.getCwBnum());
+            mEdtNodeSendBank.setText(flowPackBean.getCwBname());
+            mEdtSendAccount.setText(flowPackBean.getCwBnum());
         }
         if ("1".equals(applyExpType) || "3".equals(applyExpType)) {
             mLlAccount.setVisibility(View.GONE);
@@ -770,8 +781,8 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             mEdtApprover.setFocusable(false);
             mEdtRemark.setEnabled(false);
             mEdtRemark.setFocusable(false);
-            mEdtSendBank.setEnabled(false);
-            mEdtSendBank.setFocusable(false);
+            mRlNodeSendBank.setEnabled(false);
+            mRlNodeSendBank.setFocusable(false);
             mEdtSendAccount.setEnabled(false);
             mEdtSendAccount.setFocusable(false);
             mLlAprBtn.setVisibility(View.GONE);
@@ -887,7 +898,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
     }
 
     @Override
-    public void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText editText) {
+    public void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText mEdtNodeSendBank, EditText mEdtSendAccount) {
 
         List<PLCompBankAccountResp.BankPackBean> bankPack = compBankAccountResp.getBankPack();
         this.bankPackBean = new PLCompBankAccountResp.BankPackBean();
@@ -906,7 +917,8 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
 
         compBankActAdapter.setItemClickListener(position -> {
             PLCompBankAccountResp.BankPackBean flowDetailsBean = bankPack.get(position);
-            editText.setText(flowDetailsBean.getBankName() + flowDetailsBean.getBankNum());
+            mEdtNodeSendBank.setText(flowDetailsBean.getBankName());
+            mEdtSendAccount.setText(flowDetailsBean.getBankNum());
             this.bankPackBean.setBankName(flowDetailsBean.getBankName());
             this.bankPackBean.setBankNum(flowDetailsBean.getBankNum());
             accAlert.dismiss();

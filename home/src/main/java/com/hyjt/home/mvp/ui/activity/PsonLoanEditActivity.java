@@ -155,6 +155,8 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mLlFilePack = (LinearLayout) findViewById(R.id.ll_file_pack);
         mRlAddFile = (RelativeLayout) findViewById(R.id.rl_add_file);
         mBtnAddFile = (Button) findViewById(R.id.btn_add_file);
+        mRlSendBank = (RelativeLayout) findViewById(R.id.rl_send_bank);
+        mEdtSendBank = (EditText) findViewById(R.id.edt_send_bank);
 
         mBtnEditLoan = (Button) findViewById(R.id.btn_edit_loan);
         mBtnEditLoan.setOnClickListener(v -> {
@@ -385,7 +387,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
     }
 
     @Override
-    public void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText editText) {
+    public void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText mEdtNodeSendBank, EditText mEdtSendAccount) {
         List<PLCompBankAccountResp.BankPackBean> bankPack = compBankAccountResp.getBankPack();
         this.bankPackBean = new PLCompBankAccountResp.BankPackBean();
 
@@ -410,13 +412,12 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
 
         compBankActAdapter.setItemClickListener(position -> {
             PLCompBankAccountResp.BankPackBean flowDetailsBean = bankPack.get(position);
-            editText.setText(flowDetailsBean.getBankName() + flowDetailsBean.getBankNum());
+            mEdtNodeSendBank.setText(flowDetailsBean.getBankName());
+            mEdtSendAccount.setText(flowDetailsBean.getBankNum());
             this.bankPackBean.setBankName(flowDetailsBean.getBankName());
             this.bankPackBean.setBankNum(flowDetailsBean.getBankNum());
             accAlert.dismiss();
         });
-        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
         accAlert.show();
     }
 
@@ -476,6 +477,8 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
 
         TextView mTvNodeName = (TextView) inflate.findViewById(R.id.tv_node_name);
         EditText mEdtApprover = (EditText) inflate.findViewById(R.id.edt_approver);
+        RelativeLayout mRlNodeSendBank = (RelativeLayout) inflate.findViewById(R.id.rl_node_send_bank);
+        EditText mEdtNodeSendBank = (EditText) inflate.findViewById(R.id.edt_node_send_bank);
         RelativeLayout mRlAccount = (RelativeLayout) inflate.findViewById(R.id.rl_company_act);
         RelativeLayout mRlSelAct = (RelativeLayout) inflate.findViewById(R.id.rl_sel_act);
         LinearLayout mLlAccount = (LinearLayout) inflate.findViewById(R.id.ll_company_act);
@@ -500,7 +503,7 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
             mRlRemark.setVisibility(View.VISIBLE);
             mLlAccount.setVisibility(View.GONE);
         }
-        mBtnSelAct.setOnClickListener(v -> mPresenter.selCompBankAct(mEdtSendAccount));
+        mBtnSelAct.setOnClickListener(v -> mPresenter.selCompBankAct(mEdtNodeSendBank, mEdtSendAccount));
 
         if ("同意".equals(flowPackBean.getNodeMemo())) {
             mTvAprState.setVisibility(View.VISIBLE);
@@ -564,7 +567,8 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         }
         mEdtRemark.setText(flowPackBean.getNodeMemotext());
         if (!TextUtils.isEmpty(flowPackBean.getCwBname())) {
-            mEdtSendAccount.setText(flowPackBean.getCwBname() + " " + flowPackBean.getCwBnum());
+            mEdtNodeSendBank.setText(flowPackBean.getCwBname());
+            mEdtSendAccount.setText(flowPackBean.getCwBnum());
         }
         if ("1".equals(psonLoanType) || "3".equals(psonLoanType)) {
             mLlAccount.setVisibility(View.GONE);
@@ -575,6 +579,8 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
             mEdtApprover.setFocusable(false);
             mEdtRemark.setEnabled(false);
             mEdtRemark.setFocusable(false);
+            mEdtNodeSendBank.setEnabled(false);
+            mEdtNodeSendBank.setFocusable(false);
             mEdtSendAccount.setEnabled(false);
             mEdtSendAccount.setFocusable(false);
             mLlAprBtn.setVisibility(View.GONE);
@@ -587,8 +593,4 @@ public class PsonLoanEditActivity extends BaseActivity<PsonLoanEditPresenter> im
         mLLFlowNode.addView(inflate);
     }
 
-    private void initView() {
-        mRlSendBank = (RelativeLayout) findViewById(R.id.rl_send_bank);
-        mEdtSendBank = (EditText) findViewById(R.id.edt_send_bank);
-    }
 }

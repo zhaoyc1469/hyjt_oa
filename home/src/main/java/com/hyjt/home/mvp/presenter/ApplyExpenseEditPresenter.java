@@ -86,7 +86,7 @@ public class ApplyExpenseEditPresenter extends BasePresenter<ApplyExpenseEditCon
                 });
     }
 
-    public void selApplyExpBankAct(EditText mEdtSendAccount) {
+    public void selApplyExpBankAct(EditText mEdtNodeSendBank, EditText mEdtSendAccount) {
 
         mModel.applyExpBankAccount()
                 .map(new parseResponse<>())
@@ -99,7 +99,7 @@ public class ApplyExpenseEditPresenter extends BasePresenter<ApplyExpenseEditCon
                 .subscribe(new ErrorHandleSubscriber<PLCompBankAccountResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull PLCompBankAccountResp CompBankAccountResp) {
-                        mRootView.showAprBankAccount(CompBankAccountResp, mEdtSendAccount);
+                        mRootView.showAprBankAccount(CompBankAccountResp, mEdtNodeSendBank, mEdtSendAccount);
                     }
                 });
     }

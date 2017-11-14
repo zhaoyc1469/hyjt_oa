@@ -31,7 +31,7 @@ public interface ToCompLoanEditContract {
 
         void showCLDetail(CompLoanDetailResp compLoanDetailResp);
 
-        void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText editText);
+        void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText mEdtNodeSendBank, EditText mEdtSendAccount);
 
         void showContractList(CpContractListResp cpContractListResp);
 

@@ -388,7 +388,7 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
     }
 
     @Override
-    public void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText editText) {
+    public void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText mEdtNodeSendBank, EditText mEdtSendAccount) {
 
         List<PLCompBankAccountResp.BankPackBean> bankPack = compBankAccountResp.getBankPack();
         this.bankPackBean = new PLCompBankAccountResp.BankPackBean();
@@ -414,13 +414,12 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
 
         compBankActAdapter.setItemClickListener(position -> {
             PLCompBankAccountResp.BankPackBean flowDetailsBean = bankPack.get(position);
-            editText.setText(flowDetailsBean.getBankName() + flowDetailsBean.getBankNum());
+            mEdtNodeSendBank.setText(flowDetailsBean.getBankName());
+            mEdtSendAccount.setText(flowDetailsBean.getBankNum());
             this.bankPackBean.setBankName(flowDetailsBean.getBankName());
             this.bankPackBean.setBankNum(flowDetailsBean.getBankNum());
             accAlert.dismiss();
         });
-        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
         accAlert.show();
     }
 
@@ -517,6 +516,8 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
 
         TextView mTvNodeName = (TextView) inflate.findViewById(R.id.tv_node_name);
         EditText mEdtApprover = (EditText) inflate.findViewById(R.id.edt_approver);
+        RelativeLayout mRlNodeSendBank = (RelativeLayout) inflate.findViewById(R.id.rl_node_send_bank);
+        EditText mEdtNodeSendBank = (EditText) inflate.findViewById(R.id.edt_node_send_bank);
         RelativeLayout mRlAccount = (RelativeLayout) inflate.findViewById(R.id.rl_company_act);
         RelativeLayout mRlSelAct = (RelativeLayout) inflate.findViewById(R.id.rl_sel_act);
         LinearLayout mLlAccount = (LinearLayout) inflate.findViewById(R.id.ll_company_act);
@@ -541,7 +542,7 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
             mRlRemark.setVisibility(View.VISIBLE);
             mLlAccount.setVisibility(View.GONE);
         }
-        mBtnSelAct.setOnClickListener(v -> mPresenter.selCompBankAct(mEdtSendAccount));
+        mBtnSelAct.setOnClickListener(v -> mPresenter.selCompBankAct(mEdtNodeSendBank, mEdtSendAccount));
 
         if ("同意".equals(flowPackBean.getNodeMemo())) {
             mTvAprState.setVisibility(View.VISIBLE);

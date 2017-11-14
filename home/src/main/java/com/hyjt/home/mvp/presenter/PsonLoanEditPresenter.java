@@ -165,7 +165,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 });
     }
 
-    public void selCompBankAct(EditText editText) {
+    public void selCompBankAct(EditText mEdtNodeSendBank, EditText mEdtSendAccount) {
         mModel.compBankAccount()
                 .map(new parseResponse<>())
                 .subscribeOn(Schedulers.io())
@@ -176,7 +176,7 @@ public class PsonLoanEditPresenter extends BasePresenter<PsonLoanEditContract.Mo
                 .subscribe(new ErrorHandleSubscriber<PLCompBankAccountResp>(mErrorHandler) {
                     @Override
                     public void onNext(@NonNull PLCompBankAccountResp CompBankAccountResp) {
-                        mRootView.showAprBankAccount(CompBankAccountResp, editText);
+                        mRootView.showAprBankAccount(CompBankAccountResp, mEdtNodeSendBank, mEdtSendAccount);
                     }
                 });
     }

@@ -41,7 +41,7 @@ public interface ApplyExpenseEditContract {
 
         void showAEDetail(ApplyExpDetailResp applyExpDetailResp);
 
-        void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText editText);
+        void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText mEdtNodeSendBank, EditText mEdtSendAccount);
 
         void loadFlowNode(PLFristLeaderResp plFristLeaderResp);
 

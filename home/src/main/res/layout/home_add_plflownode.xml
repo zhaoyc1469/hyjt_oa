@@ -116,6 +116,23 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rl_node_send_bank"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/home_bg_white_table">
+
+                <TextView
+                    style="@style/home_tv_standard"
+                    android:text="放款银行" />
+
+                <EditText
+                    android:id="@+id/edt_node_send_bank"
+                    style="@style/home_edt_standard"/>
+                <View style="@style/home_common_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/rl_company_act"
                 android:layout_width="match_parent"
                 android:layout_height="34dp"

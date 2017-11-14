@@ -30,7 +30,7 @@ public interface PsonLoanEditContract {
 
         void loadFlowNode(PLFristLeaderResp plFristLeaderResp);
 
-        void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText editText);
+        void showAprBankAccount(PLCompBankAccountResp compBankAccountResp, EditText mEdtNodeSendBank, EditText editText);
     }
 
     interface Model extends IModel {
