@@ -28,6 +28,7 @@
 
         <Button
             android:id="@+id/btn_compute"
+            android:visibility="gone"
             android:layout_width="110dp"
             android:layout_height="29dp"
             android:layout_marginStart="20dp"
