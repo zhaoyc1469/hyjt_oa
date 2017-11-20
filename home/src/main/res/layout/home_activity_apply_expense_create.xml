@@ -130,7 +130,7 @@
 
                 <TextView
                     style="@style/home_tv_standard"
-                    android:text="借款金额" />
+                    android:text="报销金额" />
 
                 <EditText
                     android:id="@+id/edt_expense_amount"

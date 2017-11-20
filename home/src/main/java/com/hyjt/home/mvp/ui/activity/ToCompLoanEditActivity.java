@@ -569,13 +569,24 @@ public class ToCompLoanEditActivity extends BaseActivity<ToCompLoanEditPresenter
                             ClNodeApproveReqs nodeApr = new ClNodeApproveReqs();
                             nodeApr.setId(compLoanId);
                             nodeApr.setNodeMemo("同意");
-                            if (bankPackBean != null) {
-                                nodeApr.setCwBname(bankPackBean.getBankName() != null ? bankPackBean.getBankName() : "");
-                                nodeApr.setCwBnum(bankPackBean.getBankNum() != null ? bankPackBean.getBankNum() : "");
+
+                            if (!TextUtils.isEmpty(mEdtNodeSendBank.getText())){
+                                nodeApr.setCwBname(mEdtNodeSendBank.getText().toString());
                             } else {
                                 nodeApr.setCwBname("");
+                            }
+                            if (TextUtils.isEmpty(mEdtSendAccount.getText())){
+                                nodeApr.setCwBnum(mEdtSendAccount.getText().toString());
+                            } else {
                                 nodeApr.setCwBnum("");
                             }
+//                            if (bankPackBean != null) {
+//                                nodeApr.setCwBname(bankPackBean.getBankName() != null ? bankPackBean.getBankName() : "");
+//                                nodeApr.setCwBnum(bankPackBean.getBankNum() != null ? bankPackBean.getBankNum() : "");
+//                            } else {
+//                                nodeApr.setCwBname("");
+//                                nodeApr.setCwBnum("");
+//                            }
                             nodeApr.setNodeMemotext(mEdtRemark.getText().toString().trim());
 
                             mPresenter.flowNodeApr(nodeApr);

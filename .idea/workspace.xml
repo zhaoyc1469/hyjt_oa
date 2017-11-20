@@ -6,6 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="http_reqs" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
@@ -15,10 +16,11 @@
     <bookmark url="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java" line="465" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58545980-12d8-4824-9ee9-7948b17b5c1f" name="Default" comment="">
+    <list default="true" id="58545980-12d8-4824-9ee9-7948b17b5c1f" name="Default" comment="test">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/proguard-rules.pro" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frame/proguard-rules.pro" afterPath="$PROJECT_DIR$/frame/proguard-rules.pro" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanEditActivity.java" afterPath="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanEditActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_create.xml" afterPath="$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_create.xml" />
     </list>
     <ignored path="hyjt_oa.iws" />
@@ -55,21 +57,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="327">
-      <file leaf-file-name="home_activity_apply_expense_create.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_create.xml">
-          <provider selected="true" editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="562">
-              <caret line="35" column="36" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+      <file leaf-file-name="ApplyExpenseEditActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="26814">
+              <caret line="733" column="54" selection-start-line="733" selection-start-column="54" selection-end-line="743" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frame/build.gradle">
+      <file leaf-file-name="PsonLoanEditActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="173">
+              <caret line="553" column="45" selection-start-line="553" selection-start-column="45" selection-end-line="553" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PsonLoanEditPresenter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanEditPresenter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4797">
+              <caret line="155" column="34" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SuperviseSolveListActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SuperviseSolveListActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="93" column="45" selection-start-line="93" selection-start-column="45" selection-end-line="93" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home_anim_exit_bottom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/res/anim/home_anim_exit_bottom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -78,81 +107,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApplyExpenseEditActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java">
+      <file leaf-file-name="home_bg_dp_pop.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/res/drawable/home_bg_dp_pop.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-246">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExitAppEvent.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frame/src/main/java/com/hyjt/frame/event/ExitAppEvent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppDelegate.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frame/src/main/java/com/hyjt/frame/base/delegate/AppDelegate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-5581">
+              <caret line="36" column="26" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActivityDelegate.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frame/src/main/java/com/hyjt/frame/base/delegate/ActivityDelegate.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="164">
-              <caret line="464" column="49" selection-start-line="464" selection-start-column="49" selection-end-line="464" selection-end-column="49" />
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApplyExpenseCreateActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseCreateActivity.java">
+      <file leaf-file-name="ToCompLoanEditActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanEditActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="128" column="41" selection-start-line="128" selection-start-column="41" selection-end-line="128" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PsonLoanEditActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="162" column="49" selection-start-line="162" selection-start-column="49" selection-end-line="162" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="23" column="25" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proguard-rules.pro" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/proguard-rules.pro">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-164">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proguard-rules.pro" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/proguard-rules.pro">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="245" column="13" selection-start-line="245" selection-start-column="13" selection-end-line="245" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proguard-rules.pro" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frame/proguard-rules.pro">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="649">
-              <caret line="260" column="0" selection-start-line="34" selection-start-column="2" selection-end-line="260" selection-end-column="0" />
+            <state relative-caret-position="22058">
+              <caret line="588" column="31" selection-start-line="582" selection-start-column="49" selection-end-line="588" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -1051,6 +1050,10 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="transformNative_libsWithStripDebugSymbolForRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="compileReleaseSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
@@ -1095,6 +1098,10 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="transformClassesWithRetrolambdaForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="transformNative_libsWithStripDebugSymbolForDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays the signing info for each variant." />
@@ -1791,6 +1798,10 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="transformNative_libsWithStripDebugSymbolForRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="compileReleaseSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
@@ -1878,6 +1889,10 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="transformClassesWithRetrolambdaForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="transformNative_libsWithStripDebugSymbolForDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
@@ -5223,7 +5238,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanListPresenter.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ContributeIdeaListPresenter.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ReportTopListPresenter.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/SkipReportListPresenter.java" />
@@ -5267,13 +5281,14 @@
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanEditPresenter.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/ToCompLoanEditPresenter.java" />
         <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/ToCompLoanEditContract.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanEditActivity.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java" />
-        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java" />
         <option value="$PROJECT_DIR$/frame/proguard-rules.pro" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/proguard-rules.pro" />
+        <option value="$PROJECT_DIR$/local.properties" />
         <option value="$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_create.xml" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanEditActivity.java" />
+        <option value="$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java" />
       </list>
     </option>
   </component>
@@ -5337,104 +5352,6 @@
               <option name="myItemId" value="hyjt_oa" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle Scripts" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt_oa" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt_oa" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt_oa" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt_oa" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mvp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hyjt_oa" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -5451,15 +5368,159 @@
               <option name="myItemId" value="hyjt_oa" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frame" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hyjt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hyjt_oa" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frame" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hyjt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="event" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hyjt_oa" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frame" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hyjt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="base" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hyjt_oa" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frame" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hyjt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="base" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="delegate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hyjt_oa" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frame" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hyjt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane />
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -5469,7 +5530,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../jcjr" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
-    <property name="device.picker.selection" value="Pixel_API_25" />
+    <property name="device.picker.selection" value="TWGDU16C20005986" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
     <property name="ExportApk.ApkPath" value="C:\Users\Administrator\Desktop\apk" />
     <property name="ExportApk.Flavors" value="" />
@@ -5510,120 +5571,6 @@
       <recent name="com.hyjt.client.mvp.ui.adapter" />
       <recent name="com.hyjt.home.mvp.model.entity.Reqs" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanEditActivity.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/home/src/main/res/layout/home_activity_pson_loan_edit.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/home/src/main/res/layout/home_activity_to_comp_loan_edit.xml</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -5986,13 +5933,6 @@
       <option name="presentableId" value="Default" />
       <updated>1504441898688</updated>
     </task>
-    <task id="LOCAL-00018" summary="test">
-      <created>1504679220694</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1504679220694</updated>
-    </task>
     <task id="LOCAL-00019" summary="test">
       <created>1504682047174</created>
       <option name="number" value="00019" />
@@ -6329,20 +6269,27 @@
       <option name="project" value="LOCAL" />
       <updated>1510628758963</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="test">
+      <created>1510648629700</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1510648629704</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3409091" sideWeight="0.49573562" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3409091" sideWeight="0.49573562" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3372503" sideWeight="0.5127932" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5183983" sideWeight="0.48720682" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5183983" sideWeight="0.48720682" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32951945" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32575756" sideWeight="0.4978678" order="9" side_tool="false" content_ui="tabs" />
@@ -6350,8 +6297,7 @@
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24972914" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25426438" sideWeight="0.47454843" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3538961" sideWeight="0.4978678" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25426438" sideWeight="0.47454843" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -6368,6 +6314,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3538961" sideWeight="0.4978678" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -6546,84 +6493,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/PsonLoanCreateModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="57" column="69" selection-start-line="57" selection-start-column="69" selection-end-line="60" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="171" column="57" selection-start-line="171" selection-start-column="57" selection-end-line="171" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://D:/AndroidSDK/sources/android-25/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ToCompLoanListModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="41" column="102" selection-start-line="41" selection-start-column="102" selection-end-line="45" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ToCompLoanEditModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="114" column="46" selection-start-line="114" selection-start-column="46" selection-end-line="114" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanCreateActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11234">
-          <caret line="337" column="88" selection-start-line="337" selection-start-column="88" selection-end-line="343" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_add_ae_receiver.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="34" column="40" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/contract/PsonLoanEditContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="45" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/PsonLoanEditModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="76" column="76" selection-start-line="76" selection-start-column="76" selection-end-line="79" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ApplyExpenseCreateModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3444">
-          <caret line="113" column="69" selection-start-line="113" selection-start-column="69" selection-end-line="116" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/model/ApplyExpenseEditModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4797">
@@ -6701,12 +6570,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
           <caret line="9" column="31" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="31" />
-          <folding>
-            <element signature="e#671#672#0" expanded="false" />
-            <element signature="e#696#697#0" expanded="false" />
-            <element signature="e#732#733#0" expanded="false" />
-            <element signature="e#755#756#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -6777,18 +6640,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5166">
           <caret line="126" column="24" selection-start-line="126" selection-start-column="24" selection-end-line="126" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_edit.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12956">
-          <caret line="316" column="38" selection-start-line="316" selection-start-column="38" selection-end-line="316" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -6796,158 +6647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2214">
           <caret line="54" column="29" selection-start-line="54" selection-start-column="29" selection-end-line="56" selection-end-column="26" />
-          <folding>
-            <element signature="e#2576#2577#0" expanded="false" />
-            <element signature="e#2606#2607#0" expanded="false" />
-            <element signature="e#2652#2653#0" expanded="false" />
-            <element signature="e#2685#2686#0" expanded="false" />
-            <element signature="e#2719#2720#0" expanded="false" />
-            <element signature="e#2749#2750#0" expanded="false" />
-            <element signature="e#2795#2796#0" expanded="false" />
-            <element signature="e#2828#2829#0" expanded="false" />
-            <element signature="e#2861#2862#0" expanded="false" />
-            <element signature="e#2890#2891#0" expanded="false" />
-            <element signature="e#2934#2935#0" expanded="false" />
-            <element signature="e#2965#2966#0" expanded="false" />
-            <element signature="e#2994#2995#0" expanded="false" />
-            <element signature="e#3019#3020#0" expanded="false" />
-            <element signature="e#3055#3056#0" expanded="false" />
-            <element signature="e#3083#3084#0" expanded="false" />
-            <element signature="e#3116#3117#0" expanded="false" />
-            <element signature="e#3145#3146#0" expanded="false" />
-            <element signature="e#3189#3190#0" expanded="false" />
-            <element signature="e#3225#3226#0" expanded="false" />
-            <element signature="e#3258#3259#0" expanded="false" />
-            <element signature="e#3287#3288#0" expanded="false" />
-            <element signature="e#3331#3332#0" expanded="false" />
-            <element signature="e#3367#3368#0" expanded="false" />
-            <element signature="e#3405#3406#0" expanded="false" />
-            <element signature="e#3439#3440#0" expanded="false" />
-            <element signature="e#3493#3494#0" expanded="false" />
-            <element signature="e#3539#3540#0" expanded="false" />
-            <element signature="e#3576#3577#0" expanded="false" />
-            <element signature="e#3609#3610#0" expanded="false" />
-            <element signature="e#3661#3662#0" expanded="false" />
-            <element signature="e#3705#3706#0" expanded="false" />
-            <element signature="e#3745#3746#0" expanded="false" />
-            <element signature="e#3781#3782#0" expanded="false" />
-            <element signature="e#3839#3840#0" expanded="false" />
-            <element signature="e#3889#3890#0" expanded="false" />
-            <element signature="e#3925#3926#0" expanded="false" />
-            <element signature="e#3957#3958#0" expanded="false" />
-            <element signature="e#4007#4008#0" expanded="false" />
-            <element signature="e#4049#4050#0" expanded="false" />
-            <element signature="e#4085#4086#0" expanded="false" />
-            <element signature="e#4117#4118#0" expanded="false" />
-            <element signature="e#4167#4168#0" expanded="false" />
-            <element signature="e#4209#4210#0" expanded="false" />
-            <element signature="e#4244#4245#0" expanded="false" />
-            <element signature="e#4275#4276#0" expanded="false" />
-            <element signature="e#4323#4324#0" expanded="false" />
-            <element signature="e#4363#4364#0" expanded="false" />
-            <element signature="e#4397#4398#0" expanded="false" />
-            <element signature="e#4427#4428#0" expanded="false" />
-            <element signature="e#4473#4474#0" expanded="false" />
-            <element signature="e#4511#4512#0" expanded="false" />
-            <element signature="e#4546#4547#0" expanded="false" />
-            <element signature="e#4577#4578#0" expanded="false" />
-            <element signature="e#4625#4626#0" expanded="false" />
-            <element signature="e#4665#4666#0" expanded="false" />
-            <element signature="e#4700#4701#0" expanded="false" />
-            <element signature="e#4731#4732#0" expanded="false" />
-            <element signature="e#4779#4780#0" expanded="false" />
-            <element signature="e#4819#4820#0" expanded="false" />
-            <element signature="e#4853#4854#0" expanded="false" />
-            <element signature="e#4883#4884#0" expanded="false" />
-            <element signature="e#4929#4930#0" expanded="false" />
-            <element signature="e#4967#4968#0" expanded="false" />
-            <element signature="e#5005#5006#0" expanded="false" />
-            <element signature="e#5039#5040#0" expanded="false" />
-            <element signature="e#5093#5094#0" expanded="false" />
-            <element signature="e#5139#5140#0" expanded="false" />
-            <element signature="e#5181#5182#0" expanded="false" />
-            <element signature="e#5219#5220#0" expanded="false" />
-            <element signature="e#5371#5372#0" expanded="false" />
-            <element signature="e#5403#5404#0" expanded="false" />
-            <element signature="e#5453#5454#0" expanded="false" />
-            <element signature="e#5495#5496#0" expanded="false" />
-            <element signature="e#5528#5529#0" expanded="false" />
-            <element signature="e#5557#5558#0" expanded="false" />
-            <element signature="e#5601#5602#0" expanded="false" />
-            <element signature="e#5637#5638#0" expanded="false" />
-            <element signature="e#5673#5674#0" expanded="false" />
-            <element signature="e#5705#5706#0" expanded="false" />
-            <element signature="e#5755#5756#0" expanded="false" />
-            <element signature="e#5797#5798#0" expanded="false" />
-            <element signature="e#5837#5838#0" expanded="false" />
-            <element signature="e#5873#5874#0" expanded="false" />
-            <element signature="e#5931#5932#0" expanded="false" />
-            <element signature="e#5981#5982#0" expanded="false" />
-            <element signature="e#6020#6021#0" expanded="false" />
-            <element signature="e#6055#6056#0" expanded="false" />
-            <element signature="e#6111#6112#0" expanded="false" />
-            <element signature="e#6159#6160#0" expanded="false" />
-            <element signature="e#6197#6198#0" expanded="false" />
-            <element signature="e#6231#6232#0" expanded="false" />
-            <element signature="e#6285#6286#0" expanded="false" />
-            <element signature="e#6331#6332#0" expanded="false" />
-            <element signature="e#6367#6368#0" expanded="false" />
-            <element signature="e#6399#6400#0" expanded="false" />
-            <element signature="e#6449#6450#0" expanded="false" />
-            <element signature="e#6491#6492#0" expanded="false" />
-            <element signature="e#6538#6539#0" expanded="false" />
-            <element signature="e#6569#6570#0" expanded="false" />
-            <element signature="e#6629#6630#0" expanded="false" />
-            <element signature="e#6669#6670#0" expanded="false" />
-            <element signature="e#6716#6717#0" expanded="false" />
-            <element signature="e#6747#6748#0" expanded="false" />
-            <element signature="e#6807#6808#0" expanded="false" />
-            <element signature="e#6847#6848#0" expanded="false" />
-            <element signature="e#7239#7240#0" expanded="false" />
-            <element signature="e#7276#7277#0" expanded="false" />
-            <element signature="e#7324#7325#0" expanded="false" />
-            <element signature="e#7368#7369#0" expanded="false" />
-            <element signature="e#7407#7408#0" expanded="false" />
-            <element signature="e#7446#7447#0" expanded="false" />
-            <element signature="e#7498#7499#0" expanded="false" />
-            <element signature="e#7546#7547#0" expanded="false" />
-            <element signature="e#7585#7586#0" expanded="false" />
-            <element signature="e#7624#7625#0" expanded="false" />
-            <element signature="e#7676#7677#0" expanded="false" />
-            <element signature="e#7724#7725#0" expanded="false" />
-            <element signature="e#8336#8337#0" expanded="false" />
-            <element signature="e#8375#8376#0" expanded="false" />
-            <element signature="e#8427#8428#0" expanded="false" />
-            <element signature="e#8475#8476#0" expanded="false" />
-            <element signature="e#8516#8517#0" expanded="false" />
-            <element signature="e#8557#8558#0" expanded="false" />
-            <element signature="e#8613#8614#0" expanded="false" />
-            <element signature="e#8665#8666#0" expanded="false" />
-            <element signature="e#8704#8705#0" expanded="false" />
-            <element signature="e#8743#8744#0" expanded="false" />
-            <element signature="e#8795#8796#0" expanded="false" />
-            <element signature="e#8843#8844#0" expanded="false" />
-            <element signature="e#8882#8883#0" expanded="false" />
-            <element signature="e#8921#8922#0" expanded="false" />
-            <element signature="e#8973#8974#0" expanded="false" />
-            <element signature="e#9021#9022#0" expanded="false" />
-            <element signature="e#9064#9065#0" expanded="false" />
-            <element signature="e#9107#9108#0" expanded="false" />
-            <element signature="e#9167#9168#0" expanded="false" />
-            <element signature="e#9223#9224#0" expanded="false" />
-            <element signature="e#9260#9261#0" expanded="false" />
-            <element signature="e#9297#9298#0" expanded="false" />
-            <element signature="e#9345#9346#0" expanded="false" />
-            <element signature="e#9389#9390#0" expanded="false" />
-            <element signature="e#9427#9428#0" expanded="false" />
-            <element signature="e#9465#9466#0" expanded="false" />
-            <element signature="e#9515#9516#0" expanded="false" />
-            <element signature="e#9561#9562#0" expanded="false" />
-            <element signature="e#9598#9599#0" expanded="false" />
-            <element signature="e#9635#9636#0" expanded="false" />
-            <element signature="e#9683#9684#0" expanded="false" />
-            <element signature="e#9727#9728#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -6955,200 +6654,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3239">
           <caret line="79" column="32" selection-start-line="79" selection-start-column="32" selection-end-line="79" selection-end-column="32" />
-          <folding>
-            <element signature="e#3586#3587#0" expanded="false" />
-            <element signature="e#3611#3612#0" expanded="false" />
-            <element signature="e#3647#3648#0" expanded="false" />
-            <element signature="e#3675#3676#0" expanded="false" />
-            <element signature="e#3708#3709#0" expanded="false" />
-            <element signature="e#3737#3738#0" expanded="false" />
-            <element signature="e#3781#3782#0" expanded="false" />
-            <element signature="e#3817#3818#0" expanded="false" />
-            <element signature="e#3850#3851#0" expanded="false" />
-            <element signature="e#3879#3880#0" expanded="false" />
-            <element signature="e#3923#3924#0" expanded="false" />
-            <element signature="e#3959#3960#0" expanded="false" />
-            <element signature="e#3997#3998#0" expanded="false" />
-            <element signature="e#4031#4032#0" expanded="false" />
-            <element signature="e#4085#4086#0" expanded="false" />
-            <element signature="e#4131#4132#0" expanded="false" />
-            <element signature="e#4168#4169#0" expanded="false" />
-            <element signature="e#4201#4202#0" expanded="false" />
-            <element signature="e#4253#4254#0" expanded="false" />
-            <element signature="e#4297#4298#0" expanded="false" />
-            <element signature="e#4337#4338#0" expanded="false" />
-            <element signature="e#4373#4374#0" expanded="false" />
-            <element signature="e#4431#4432#0" expanded="false" />
-            <element signature="e#4481#4482#0" expanded="false" />
-            <element signature="e#4517#4518#0" expanded="false" />
-            <element signature="e#4549#4550#0" expanded="false" />
-            <element signature="e#4599#4600#0" expanded="false" />
-            <element signature="e#4641#4642#0" expanded="false" />
-            <element signature="e#4677#4678#0" expanded="false" />
-            <element signature="e#4709#4710#0" expanded="false" />
-            <element signature="e#4759#4760#0" expanded="false" />
-            <element signature="e#4801#4802#0" expanded="false" />
-            <element signature="e#4836#4837#0" expanded="false" />
-            <element signature="e#4867#4868#0" expanded="false" />
-            <element signature="e#4915#4916#0" expanded="false" />
-            <element signature="e#4955#4956#0" expanded="false" />
-            <element signature="e#4989#4990#0" expanded="false" />
-            <element signature="e#5019#5020#0" expanded="false" />
-            <element signature="e#5065#5066#0" expanded="false" />
-            <element signature="e#5103#5104#0" expanded="false" />
-            <element signature="e#5141#5142#0" expanded="false" />
-            <element signature="e#5175#5176#0" expanded="false" />
-            <element signature="e#5229#5230#0" expanded="false" />
-            <element signature="e#5275#5276#0" expanded="false" />
-            <element signature="e#5309#5310#0" expanded="false" />
-            <element signature="e#5339#5340#0" expanded="false" />
-            <element signature="e#5385#5386#0" expanded="false" />
-            <element signature="e#5423#5424#0" expanded="false" />
-            <element signature="e#5461#5462#0" expanded="false" />
-            <element signature="e#5495#5496#0" expanded="false" />
-            <element signature="e#5549#5550#0" expanded="false" />
-            <element signature="e#5595#5596#0" expanded="false" />
-            <element signature="e#5632#5633#0" expanded="false" />
-            <element signature="e#5665#5666#0" expanded="false" />
-            <element signature="e#5717#5718#0" expanded="false" />
-            <element signature="e#5761#5762#0" expanded="false" />
-            <element signature="e#5799#5800#0" expanded="false" />
-            <element signature="e#5833#5834#0" expanded="false" />
-            <element signature="e#5887#5888#0" expanded="false" />
-            <element signature="e#5933#5934#0" expanded="false" />
-            <element signature="e#5975#5976#0" expanded="false" />
-            <element signature="e#6013#6014#0" expanded="false" />
-            <element signature="e#6165#6166#0" expanded="false" />
-            <element signature="e#6197#6198#0" expanded="false" />
-            <element signature="e#6247#6248#0" expanded="false" />
-            <element signature="e#6289#6290#0" expanded="false" />
-            <element signature="e#6322#6323#0" expanded="false" />
-            <element signature="e#6351#6352#0" expanded="false" />
-            <element signature="e#6395#6396#0" expanded="false" />
-            <element signature="e#6431#6432#0" expanded="false" />
-            <element signature="e#6466#6467#0" expanded="false" />
-            <element signature="e#6497#6498#0" expanded="false" />
-            <element signature="e#6545#6546#0" expanded="false" />
-            <element signature="e#6585#6586#0" expanded="false" />
-            <element signature="e#6625#6626#0" expanded="false" />
-            <element signature="e#6661#6662#0" expanded="false" />
-            <element signature="e#6719#6720#0" expanded="false" />
-            <element signature="e#6769#6770#0" expanded="false" />
-            <element signature="e#6812#6813#0" expanded="false" />
-            <element signature="e#6851#6852#0" expanded="false" />
-            <element signature="e#7012#7013#0" expanded="false" />
-            <element signature="e#7049#7050#0" expanded="false" />
-            <element signature="e#7109#7110#0" expanded="false" />
-            <element signature="e#7161#7162#0" expanded="false" />
-            <element signature="e#7212#7213#0" expanded="false" />
-            <element signature="e#7259#7260#0" expanded="false" />
-            <element signature="e#7448#7449#0" expanded="false" />
-            <element signature="e#7481#7482#0" expanded="false" />
-            <element signature="e#7533#7534#0" expanded="false" />
-            <element signature="e#7577#7578#0" expanded="false" />
-            <element signature="e#7616#7617#0" expanded="false" />
-            <element signature="e#7651#7652#0" expanded="false" />
-            <element signature="e#7707#7708#0" expanded="false" />
-            <element signature="e#7755#7756#0" expanded="false" />
-            <element signature="e#7793#7794#0" expanded="false" />
-            <element signature="e#7827#7828#0" expanded="false" />
-            <element signature="e#7881#7882#0" expanded="false" />
-            <element signature="e#7927#7928#0" expanded="false" />
-            <element signature="e#7963#7964#0" expanded="false" />
-            <element signature="e#7995#7996#0" expanded="false" />
-            <element signature="e#8045#8046#0" expanded="false" />
-            <element signature="e#8087#8088#0" expanded="false" />
-            <element signature="e#8142#8143#0" expanded="false" />
-            <element signature="e#8177#8178#0" expanded="false" />
-            <element signature="e#8350#8351#0" expanded="false" />
-            <element signature="e#8384#8385#0" expanded="false" />
-            <element signature="e#8546#8547#0" expanded="false" />
-            <element signature="e#8577#8578#0" expanded="false" />
-            <element signature="e#8637#8638#0" expanded="false" />
-            <element signature="e#8677#8678#0" expanded="false" />
-            <element signature="e#8724#8725#0" expanded="false" />
-            <element signature="e#8755#8756#0" expanded="false" />
-            <element signature="e#8815#8816#0" expanded="false" />
-            <element signature="e#8855#8856#0" expanded="false" />
-            <element signature="e#9279#9280#0" expanded="false" />
-            <element signature="e#9315#9316#0" expanded="false" />
-            <element signature="e#9361#9362#0" expanded="false" />
-            <element signature="e#9403#9404#0" expanded="false" />
-            <element signature="e#9444#9445#0" expanded="false" />
-            <element signature="e#9485#9486#0" expanded="false" />
-            <element signature="e#9541#9542#0" expanded="false" />
-            <element signature="e#9593#9594#0" expanded="false" />
-            <element signature="e#9629#9630#0" expanded="false" />
-            <element signature="e#9665#9666#0" expanded="false" />
-            <element signature="e#9711#9712#0" expanded="false" />
-            <element signature="e#9753#9754#0" expanded="false" />
-            <element signature="e#9791#9792#0" expanded="false" />
-            <element signature="e#9829#9830#0" expanded="false" />
-            <element signature="e#9879#9880#0" expanded="false" />
-            <element signature="e#9925#9926#0" expanded="false" />
-            <element signature="e#9971#9972#0" expanded="false" />
-            <element signature="e#10017#10018#0" expanded="false" />
-            <element signature="e#10492#10493#0" expanded="false" />
-            <element signature="e#10530#10531#0" expanded="false" />
-            <element signature="e#10580#10581#0" expanded="false" />
-            <element signature="e#10626#10627#0" expanded="false" />
-            <element signature="e#10664#10665#0" expanded="false" />
-            <element signature="e#10702#10703#0" expanded="false" />
-            <element signature="e#10752#10753#0" expanded="false" />
-            <element signature="e#10798#10799#0" expanded="false" />
-            <element signature="e#10835#10836#0" expanded="false" />
-            <element signature="e#10872#10873#0" expanded="false" />
-            <element signature="e#10920#10921#0" expanded="false" />
-            <element signature="e#10964#10965#0" expanded="false" />
-            <element signature="e#11003#11004#0" expanded="false" />
-            <element signature="e#11042#11043#0" expanded="false" />
-            <element signature="e#11094#11095#0" expanded="false" />
-            <element signature="e#11142#11143#0" expanded="false" />
-            <element signature="e#11540#11541#0" expanded="false" />
-            <element signature="e#11577#11578#0" expanded="false" />
-            <element signature="e#11625#11626#0" expanded="false" />
-            <element signature="e#11669#11670#0" expanded="false" />
-            <element signature="e#11708#11709#0" expanded="false" />
-            <element signature="e#11747#11748#0" expanded="false" />
-            <element signature="e#11799#11800#0" expanded="false" />
-            <element signature="e#11847#11848#0" expanded="false" />
-            <element signature="e#11886#11887#0" expanded="false" />
-            <element signature="e#11925#11926#0" expanded="false" />
-            <element signature="e#11977#11978#0" expanded="false" />
-            <element signature="e#12025#12026#0" expanded="false" />
-            <element signature="e#12637#12638#0" expanded="false" />
-            <element signature="e#12676#12677#0" expanded="false" />
-            <element signature="e#12728#12729#0" expanded="false" />
-            <element signature="e#12776#12777#0" expanded="false" />
-            <element signature="e#12817#12818#0" expanded="false" />
-            <element signature="e#12858#12859#0" expanded="false" />
-            <element signature="e#12914#12915#0" expanded="false" />
-            <element signature="e#12966#12967#0" expanded="false" />
-            <element signature="e#13005#13006#0" expanded="false" />
-            <element signature="e#13044#13045#0" expanded="false" />
-            <element signature="e#13096#13097#0" expanded="false" />
-            <element signature="e#13144#13145#0" expanded="false" />
-            <element signature="e#13183#13184#0" expanded="false" />
-            <element signature="e#13222#13223#0" expanded="false" />
-            <element signature="e#13274#13275#0" expanded="false" />
-            <element signature="e#13322#13323#0" expanded="false" />
-            <element signature="e#13365#13366#0" expanded="false" />
-            <element signature="e#13408#13409#0" expanded="false" />
-            <element signature="e#13468#13469#0" expanded="false" />
-            <element signature="e#13524#13525#0" expanded="false" />
-            <element signature="e#13561#13562#0" expanded="false" />
-            <element signature="e#13598#13599#0" expanded="false" />
-            <element signature="e#13646#13647#0" expanded="false" />
-            <element signature="e#13690#13691#0" expanded="false" />
-            <element signature="e#13728#13729#0" expanded="false" />
-            <element signature="e#13766#13767#0" expanded="false" />
-            <element signature="e#13816#13817#0" expanded="false" />
-            <element signature="e#13862#13863#0" expanded="false" />
-            <element signature="e#13899#13900#0" expanded="false" />
-            <element signature="e#13936#13937#0" expanded="false" />
-            <element signature="e#13984#13985#0" expanded="false" />
-            <element signature="e#14028#14029#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -7167,7 +6672,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
           <caret line="88" column="86" selection-start-line="88" selection-start-column="71" selection-end-line="88" selection-end-column="86" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -7175,7 +6679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="43" column="126" selection-start-line="43" selection-start-column="126" selection-end-line="43" selection-end-column="126" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -7183,7 +6686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="749">
           <caret line="91" column="107" selection-start-line="91" selection-start-column="92" selection-end-line="91" selection-end-column="107" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -7191,7 +6693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
           <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -7199,31 +6700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="574">
           <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanEditActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="408" column="47" selection-start-line="408" selection-start-column="47" selection-end-line="408" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanEditPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="167" column="30" selection-start-line="167" selection-start-column="16" selection-end-line="167" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="162" column="49" selection-start-line="162" selection-start-column="49" selection-end-line="162" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -7239,7 +6715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-164">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -7247,42 +6722,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="649">
           <caret line="260" column="0" selection-start-line="34" selection-start-column="2" selection-end-line="260" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/proguard-rules.pro">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
+        <state relative-caret-position="10045">
           <caret line="245" column="13" selection-start-line="245" selection-start-column="13" selection-end-line="245" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="464" column="49" selection-start-line="464" selection-start-column="49" selection-end-line="464" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseCreateActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="128" column="41" selection-start-line="128" selection-start-column="41" selection-end-line="128" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_create.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="35" column="36" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -7296,8 +6742,149 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
+        <state relative-caret-position="1558">
           <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradle.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseCreateActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2419">
+          <caret line="128" column="43" selection-start-line="128" selection-start-column="43" selection-end-line="128" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_create.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5412">
+          <caret line="132" column="38" selection-start-line="132" selection-start-column="34" selection-end-line="132" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/res/layout/home_activity_apply_expense_edit.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="12956">
+          <caret line="316" column="38" selection-start-line="316" selection-start-column="38" selection-end-line="316" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ToCompLoanEditActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22058">
+          <caret line="588" column="31" selection-start-line="582" selection-start-column="49" selection-end-line="588" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/ApplyExpenseEditActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26814">
+          <caret line="733" column="54" selection-start-line="733" selection-start-column="54" selection-end-line="743" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/presenter/PsonLoanEditPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4797">
+          <caret line="155" column="34" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/SuperviseSolveListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="93" column="45" selection-start-line="93" selection-start-column="45" selection-end-line="93" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/res/anim/home_anim_exit_bottom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/res/drawable/home_bg_dp_pop.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-246">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frame/src/main/java/com/hyjt/frame/event/ExitAppEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frame/src/main/java/com/hyjt/frame/base/delegate/AppDelegate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5581">
+          <caret line="36" column="26" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frame/src/main/java/com/hyjt/frame/base/delegate/ActivityDelegate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/src/main/java/com/hyjt/home/mvp/ui/activity/PsonLoanEditActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="553" column="45" selection-start-line="553" selection-start-column="45" selection-end-line="553" selection-end-column="45" />
           <folding />
         </state>
       </provider>
