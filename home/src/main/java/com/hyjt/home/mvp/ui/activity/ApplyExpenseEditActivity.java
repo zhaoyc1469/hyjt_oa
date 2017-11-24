@@ -685,7 +685,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         RelativeLayout mRlSelAct = (RelativeLayout) inflate.findViewById(R.id.rl_sel_act);
         LinearLayout mLlAccount = (LinearLayout) inflate.findViewById(R.id.ll_company_act);
         RelativeLayout mRlRemark = (RelativeLayout) inflate.findViewById(R.id.rl_remark);
-        EditText mEdtSendAccount = (EditText) inflate.findViewById(R.id.edt_send_account);
+        EditText mEdtNodeSendAccount = (EditText) inflate.findViewById(R.id.edt_send_account);
         Button mBtnSelAct = (Button) inflate.findViewById(R.id.btn_sel_bank_account);
         LinearLayout mLlAprBtn = (LinearLayout) inflate.findViewById(R.id.ll_apr_btn);
         ImageView mIvSign = (ImageView) inflate.findViewById(R.id.iv_teller_sign);
@@ -705,7 +705,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             mRlRemark.setVisibility(View.VISIBLE);
             mLlAccount.setVisibility(View.GONE);
         }
-        mBtnSelAct.setOnClickListener(v -> mPresenter.selApplyExpBankAct(mEdtNodeSendBank, mEdtSendAccount));
+        mBtnSelAct.setOnClickListener(v -> mPresenter.selApplyExpBankAct(mEdtNodeSendBank, mEdtNodeSendAccount));
 
         if ("同意".equals(flowPackBean.getNodeMemo())) {
             mTvAprState.setVisibility(View.VISIBLE);
@@ -737,8 +737,8 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
                             } else {
                                 nodeApr.setCwBname("");
                             }
-                            if (TextUtils.isEmpty(mEdtSendAccount.getText())){
-                                nodeApr.setCwBnum(mEdtSendAccount.getText().toString());
+                            if (!TextUtils.isEmpty(mEdtNodeSendAccount.getText())){
+                                nodeApr.setCwBnum(mEdtNodeSendAccount.getText().toString());
                             } else {
                                 nodeApr.setCwBnum("");
                             }
@@ -781,7 +781,7 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
         mEdtRemark.setText(flowPackBean.getNodeMemotext());
         if (!TextUtils.isEmpty(flowPackBean.getCwBname())) {
             mEdtNodeSendBank.setText(flowPackBean.getCwBname());
-            mEdtSendAccount.setText(flowPackBean.getCwBnum());
+            mEdtNodeSendAccount.setText(flowPackBean.getCwBnum());
         }
         if ("1".equals(applyExpType) || "3".equals(applyExpType)) {
             mLlAccount.setVisibility(View.GONE);
@@ -794,8 +794,8 @@ public class ApplyExpenseEditActivity extends BaseActivity<ApplyExpenseEditPrese
             mEdtRemark.setFocusable(false);
             mRlNodeSendBank.setEnabled(false);
             mRlNodeSendBank.setFocusable(false);
-            mEdtSendAccount.setEnabled(false);
-            mEdtSendAccount.setFocusable(false);
+            mEdtNodeSendAccount.setEnabled(false);
+            mEdtNodeSendAccount.setFocusable(false);
             mLlAprBtn.setVisibility(View.GONE);
 //            mRlRemark.setVisibility(View.GONE);
 //            mLlAccount.setVisibility(View.GONE);
